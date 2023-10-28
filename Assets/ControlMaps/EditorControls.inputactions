@@ -1,0 +1,134 @@
+{
+    "name": "EditorControls",
+    "maps": [
+        {
+            "name": "LevelEditor",
+            "id": "8c6d298d-39e9-480c-a180-56e817cc3e2e",
+            "actions": [
+                {
+                    "name": "AddWall",
+                    "type": "Button",
+                    "id": "9c4e3c6d-9206-47ef-87ab-baafc9a96f18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddPath",
+                    "type": "Button",
+                    "id": "8aad56e4-ea1b-4d1b-b2d0-f45a702fd693",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddEnemy",
+                    "type": "Button",
+                    "id": "846d226a-7678-41b2-a19a-8d21e1c1681d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddBonus",
+                    "type": "Button",
+                    "id": "459e51a5-6837-420a-957d-ecc1201afbef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AddCheckpoint",
+                    "type": "Button",
+                    "id": "472a8e3a-d598-42c7-a321-43d447906283",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "88c63a06-0fa5-45a5-b801-96405596a708",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "01009586-19e3-4a18-a59e-d2fccf83663a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddWall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6ceeb3d-ce14-4207-8d96-4f2168851982",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddPath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a12f258c-6476-4cea-81fe-ea7c8a1f2f00",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddEnemy",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab01ac50-8fdd-4686-8ff5-58cb02b4f364",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddBonus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e3f9d6b-2d7d-437d-8105-ee3b7b9a8980",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AddCheckpoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcc25a8f-a2a0-4500-bee7-7876389a9a83",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
