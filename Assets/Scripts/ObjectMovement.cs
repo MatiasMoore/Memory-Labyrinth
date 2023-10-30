@@ -18,50 +18,26 @@ public class ObjectMovement
     private bool _isPathComplete = true;
     private bool _isMoving;
 
-
-    private Vector2 _currentDirection;
+    private Vector2 _currentPosition;
+    private float _acceptableError = 0.001f;
+    private float _timeToPassPoint;
+    private float _timer;
     public ObjectMovement(Transform transform, Rigidbody2D rigidbody, float speed)
     {
         _transform = transform;
         _rigidbody = rigidbody;
         _speed = speed;
-    }
-    private Vector2 GetDirectionTo(Vector2 point)
-    {
-        if (_transform.position.x < point.x)
-        {
-            Debug.Log("Moving right");
-            return Vector2.right;
-        }
-        if (_transform.position.x > point.x)
-        {
-            Debug.Log("Moving left");
-            return Vector2.left;
-        }
-
-        if (_transform.position.y > point.y)
-        {
-            Debug.Log("Moving down");
-            return Vector2.down;
-        }
-
-        if (_transform.position.y < point.y)
-        {
-            Debug.Log("Moving up");
-            return Vector2.up;
-        }
-
-        Debug.Log("Stay");
-        return Vector2.zero;
+        _timeToPassPoint = 1 / speed;
     }
     private void MoveToNextPoint()
     {
         if (_path.Count - 1 > _currentPositionIndex)
         {
             Debug.Log($"Start moving from ({_transform.position.x}, {_transform.position.y}) to ({_path[_currentPositionIndex + 1].x}, {_path[_currentPositionIndex + 1].y})");
-            
+
+            _timer = 0;
+            _currentPosition = _transform.position;
             _currentPositionIndex++;
-            _currentDirection = GetDirectionTo(_path[_currentPositionIndex]);
             _isMoving = true;
         } else
         {
@@ -72,21 +48,25 @@ public class ObjectMovement
 
                 Debug.Log("Path complete!");
             }
-
         }
     }
-    private void Movement()
-    {    
-        Vector2 velocity =  _currentDirection * _speed;
-        _rigidbody.velocity = velocity;  
+    private bool IsStayOnPoint(Vector2 point)
+    {
+        return (Mathf.Abs(_transform.position.x - point.x) < _acceptableError && Mathf.Abs(_transform.position.y - point.y) < _acceptableError);
+    }
+    private void Movement(float timeFromLastFrame)
+    {
+        float t = _timer / _timeToPassPoint;
+        Vector2 newPosition = Vector2.Lerp(_currentPosition, _path[_currentPositionIndex],  (t*t)*(3-2*t));
+        Vector2 velocity = (newPosition - (Vector2)_transform.position) / timeFromLastFrame;
+        _rigidbody.velocity = velocity;
+        _timer += timeFromLastFrame;
     }
     private void CheckEndOfTheMovement()
     {
-        Vector2 _curentPosition = _transform.position;
-        if (_curentPosition == _path[_currentPositionIndex])
+        if (IsStayOnPoint(_path[_currentPositionIndex]))
         {
             _rigidbody.velocity = Vector2.zero;
-            _transform.position = _path[_currentPositionIndex];
             _isMoving = false;
 
             Debug.Log("Point reached");
@@ -101,11 +81,9 @@ public class ObjectMovement
     }
     public void StopMove()
     {
-
         _path.RemoveRange(_currentPositionIndex+1, _path.Count - _currentPositionIndex - 1);
-
     }
-    public void UpdatePosition()
+    public void UpdatePosition(float timeFromLastFrame)
     {
         if (_isPathComplete)
         {
@@ -114,15 +92,12 @@ public class ObjectMovement
 
         if (_isMoving)
         {
-            Movement();
+            Movement(timeFromLastFrame);
             CheckEndOfTheMovement();
 
         } else
         {
             MoveToNextPoint();
         }
-
     }
-
-
 }

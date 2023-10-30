@@ -19,7 +19,7 @@ public class MainCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
-        _objectMovement.UpdatePosition();
+        _objectMovement.UpdatePosition(Time.deltaTime);
     }
 
     public void FollowPath(List<Vector2> path)
