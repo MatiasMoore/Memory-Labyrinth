@@ -19,7 +19,7 @@ public class ObjectMovement
     private bool _isMoving;
 
     private Vector2 _currentPosition;
-    private float _acceptableError = 0.001f;
+    private float _acceptableError = 0.01f;
     private float _timeToPassPoint;
     private float _timer;
     public ObjectMovement(Transform transform, Rigidbody2D rigidbody, float speed)
