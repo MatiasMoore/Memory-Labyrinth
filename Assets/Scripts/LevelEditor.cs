@@ -70,6 +70,9 @@ public class LevelEditor : MonoBehaviour
         addEnemyAction.performed -= addEnemy;
         addBonusAction.performed -= addBonus;
         addCheckpointAction.performed -= addCheckpoint;
+
+        PrefabUtility.SaveAsPrefabAsset(parent, "Assets/Prefabs/Levels/Level.prefab");
+
         Debug.Log("Disabled editor!");
     }
 
@@ -110,11 +113,13 @@ public class LevelEditor : MonoBehaviour
     {
         Vector3 mouseGridPos = getMousePosAllignedWithGrid();
         GameObject prevObject = getObjectAtPosition(mouseGridPos);
-        if (prevObject == null || prevObject.GetPrefabDefinition() == pathPrefab.GetPrefabDefinition())
+        if (prevObject == null || prevObject.GetPrefabDefinition() == pathPrefab)
         {
             if (prevObject != null)
                 Destroy(prevObject);
-            Instantiate(wallPrefab, mouseGridPos, Quaternion.identity, parent.transform);
+            GameObject prefab = PrefabUtility.InstantiatePrefab(wallPrefab) as GameObject;
+            prefab.transform.parent = parent.transform;
+            prefab.transform.position = mouseGridPos;
             Debug.Log("Added wall");
         }
     }
@@ -124,7 +129,9 @@ public class LevelEditor : MonoBehaviour
         Vector3 mouseGridPos = getMousePosAllignedWithGrid();
         if (getObjectAtPosition(mouseGridPos) == null)
         {
-            Instantiate(pathPrefab, mouseGridPos, Quaternion.identity, parent.transform);
+            GameObject prefab = PrefabUtility.InstantiatePrefab(pathPrefab) as GameObject;
+            prefab.transform.parent = parent.transform;
+            prefab.transform.position = mouseGridPos;
             Debug.Log("Added path");
         }
     }
