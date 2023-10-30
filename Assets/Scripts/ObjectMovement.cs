@@ -94,17 +94,16 @@ public class ObjectMovement
     }
     public void FollowPath(List<Vector2> path)
     {
-        _path = path;
+        _path = new List<Vector2>(path);
         _isPathComplete = false;
         _currentPositionIndex = -1;
         MoveToNextPoint();
     }
     public void StopMove()
     {
-        if (_transform.position.x != _path[_currentPositionIndex].x || _transform.position.y != _path[_currentPositionIndex].y)
-        {
-            _path.RemoveRange(_currentPositionIndex+1, _path.Count - _currentPositionIndex - 1);
-        }
+
+        _path.RemoveRange(_currentPositionIndex+1, _path.Count - _currentPositionIndex - 1);
+
     }
     public void UpdatePosition()
     {
