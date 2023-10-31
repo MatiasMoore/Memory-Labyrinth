@@ -13,23 +13,24 @@ public class PathCreator : MonoBehaviour
 
     List<Vector3> _pathPoints = new List<Vector3>();
 
+    public bool isNewPathReady { get; private set; }
+
+    public static PathCreator Instance { get; private set; }
+
+    public List<Vector3> getNewPath()
+    {
+        isNewPathReady = false;
+        return _pathPoints;
+    }
+
     private void Start()
     {
-        TouchControls.Instance.addCallbackToTouchDown(touchPressed);
-        TouchControls.Instance.addCallbackToTouchUp(touchLetGo);
+        TouchControls.Instance.addCallbackToTouchDown(startDrawing);
+        TouchControls.Instance.addCallbackToTouchUp(stopDrawing);
         _line = GetComponent<LineRenderer>();
-    }
 
-    private void touchPressed(InputAction.CallbackContext context)
-    {
-        Debug.Log("Pressing!");
-        startDrawing();
-    }
-
-    private void touchLetGo(InputAction.CallbackContext context)
-    {
-        Debug.Log("Letting go!");
-        stopDrawing();
+        if (Instance != null) return;
+        Instance = this;
     }
 
     private GameObject getObjectAtPosition(Vector3 mousePos)
@@ -55,7 +56,7 @@ public class PathCreator : MonoBehaviour
         }
     }
 
-    private void startDrawing()
+    private void startDrawing(InputAction.CallbackContext context)
     {
         if (_drawingPath != null)
         {
@@ -67,12 +68,12 @@ public class PathCreator : MonoBehaviour
     }
 
 
-    private void stopDrawing()
+    private void stopDrawing(InputAction.CallbackContext context)
     {
         StopCoroutine(_drawingPath);
         _line.positionCount = 0;
+        isNewPathReady = _pathPoints.Count > 1;
     }
-
 
     private void addPositionToPath(Vector3 newPos)
     {
