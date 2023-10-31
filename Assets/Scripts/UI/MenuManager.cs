@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private static GameObject mainMenuCanvas, optionsMenuCanvas, achievmentsMenuCanvas;
+    [SerializeField] private static GameObject _mainMenuCanvas, _optionsMenuCanvas, _achievmentsMenuCanvas;
     public static bool isInitialised { get; private set; }
 
     public static void Init()
@@ -10,9 +10,9 @@ public class MenuManager : MonoBehaviour
         isInitialised = true;
 
         GameObject UI = GameObject.Find("UI");
-        mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
-        optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
-        achievmentsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
+        _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
+        _optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
+        _achievmentsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
     }
 
     public static void OpenMenu(Menu menu, GameObject callingMenu)
@@ -23,13 +23,13 @@ public class MenuManager : MonoBehaviour
         switch(menu)
         {
             case Menu.MAIN:
-                mainMenuCanvas.SetActive(true);
+                _mainMenuCanvas.SetActive(true);
                 break;
             case Menu.OPTIONS:
-                optionsMenuCanvas.SetActive(true);
+                _optionsMenuCanvas.SetActive(true);
                 break;
             case Menu.ACHIEVMENTS:
-                achievmentsMenuCanvas.SetActive(true);
+                _achievmentsMenuCanvas.SetActive(true);
                 break;
         }
 

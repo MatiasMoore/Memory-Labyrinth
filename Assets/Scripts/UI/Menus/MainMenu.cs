@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public void onClickPlay()
     {
         Debug.Log("PLAY BUTTON CLICKED!");
+        SceneManager.LoadScene("Scenes/LevelPathFindingTest");
     }
 
     public void onClickOptions()
