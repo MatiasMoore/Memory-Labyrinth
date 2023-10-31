@@ -28,7 +28,7 @@ public class LevelEditor : MonoBehaviour
     [SerializeField]
     private GameObject checkpointPrefab;
 
-    private PlayerInput playerInput;
+    private PlayerInput _playerInput;
 
     //Buttons
     private InputAction addWallAction;
@@ -42,15 +42,15 @@ public class LevelEditor : MonoBehaviour
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        _playerInput = GetComponent<PlayerInput>();
 
-        addWallAction = playerInput.actions["AddWall"];
-        addPathAction = playerInput.actions["AddPath"];
-        addEnemyAction = playerInput.actions["AddEnemy"];
-        addBonusAction = playerInput.actions["AddBonus"];
-        addCheckpointAction = playerInput.actions["AddCheckpoint"];
+        addWallAction = _playerInput.actions["AddWall"];
+        addPathAction = _playerInput.actions["AddPath"];
+        addEnemyAction = _playerInput.actions["AddEnemy"];
+        addBonusAction = _playerInput.actions["AddBonus"];
+        addCheckpointAction = _playerInput.actions["AddCheckpoint"];
 
-        mousePositionAction = playerInput.actions["MousePosition"];
+        mousePositionAction = _playerInput.actions["MousePosition"];
     }
 
     private void OnEnable()
