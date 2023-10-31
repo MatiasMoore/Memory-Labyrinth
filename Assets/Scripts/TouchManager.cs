@@ -54,12 +54,14 @@ public class TouchManager : MonoBehaviour
 
     private void touchPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Pressing!");
+        /**
         //float value = context.ReadValue<fl/oat>();
         //Debug.Log(value);
 
         Vector3 touchPos = touchPositionAction.ReadValue<Vector2>();
         Debug.Log(touchPos);
-        /**/
+        
         touchPos.z = player.transform.position.z - Camera.main.transform.position.z;
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(touchPos);
 
