@@ -4,43 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(LineRenderer))]
+
 public class PathCreator : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject wallPrefab;
+    Coroutine _drawingPath;
+    private LineRenderer _line;
 
-    [SerializeField]
-    private GameObject pathPrefab;
+    List<Vector3> _pathPoints = new List<Vector3>();
 
-    private PlayerInput playerInput;
-
-    private InputAction touchPositionAction;
-    private InputAction touchPressAction;
-
-    Coroutine drawing;
-    private GameObject lineObject;
-    private LineRenderer line;
-
-    List<Vector3> pathPoints = new List<Vector3>();
-
-    private void Awake()
+    private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        touchPressAction = playerInput.actions["TouchPress"];
-        touchPositionAction = playerInput.actions["TouchPosition"];
-    }
-
-    private void OnEnable()
-    {
-        touchPressAction.performed += touchPressed;
-        touchPressAction.canceled += touchLetGo;
-        Debug.Log("Enabled Path Creator!");
-    }
-
-    private void OnDisable()
-    {
-        touchPressAction.performed -= touchPressed;
-        touchPressAction.canceled -= touchLetGo;
+        TouchControls.Instance.addCallbackToTouchDown(touchPressed);
+        TouchControls.Instance.addCallbackToTouchUp(touchLetGo);
+        _line = GetComponent<LineRenderer>();
     }
 
     private void touchPressed(InputAction.CallbackContext context)
@@ -80,38 +57,36 @@ public class PathCreator : MonoBehaviour
 
     private void startDrawing()
     {
-        if (drawing != null)
+        if (_drawingPath != null)
         {
-            StopCoroutine(drawing);
+            StopCoroutine(_drawingPath);
         }
-        pathPoints.Clear();
-        lineObject = Instantiate(Resources.Load("Line") as GameObject, new Vector3(0, 0, 0), Quaternion.identity);
-        line = lineObject.GetComponent<LineRenderer>();
-        line.positionCount = 0;
-        drawing = StartCoroutine(drawLine());
+        _pathPoints.Clear();
+        _line.positionCount = 0;
+        _drawingPath = StartCoroutine(drawLine());
     }
 
 
     private void stopDrawing()
     {
-        StopCoroutine(drawing);
-        Destroy(lineObject);
+        StopCoroutine(_drawingPath);
+        _line.positionCount = 0;
     }
 
 
     private void addPositionToPath(Vector3 newPos)
     {
-        if (pathPoints.Contains(newPos))
+        if (_pathPoints.Contains(newPos))
         {
-            int index = pathPoints.IndexOf(newPos);
-            int countToRemove = pathPoints.Count - index;
-            pathPoints.RemoveRange(index, countToRemove);
-            line.positionCount -= countToRemove;
+            int index = _pathPoints.IndexOf(newPos);
+            int countToRemove = _pathPoints.Count - index;
+            _pathPoints.RemoveRange(index, countToRemove);
+            _line.positionCount -= countToRemove;
         }
 
-        line.positionCount++;
-        line.SetPosition(line.positionCount - 1, newPos);
-        pathPoints.Add(newPos);
+        _line.positionCount++;
+        _line.SetPosition(_line.positionCount - 1, newPos);
+        _pathPoints.Add(newPos);
         Debug.Log("Added pos:");
         Debug.Log(newPos);
     }
@@ -120,14 +95,14 @@ public class PathCreator : MonoBehaviour
     {
         while (true)
         {
-            Vector3 screenCoords = touchPositionAction.ReadValue<Vector2>();
+            Vector3 screenCoords = TouchControls.Instance.getTouchPosition();
             screenCoords.z = 5;
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCoords);
             worldPos.z = 5;
 
             Vector3 groundOffset = new Vector3(0, 0, -1);
 
-            if (pathPoints.Count == 0)
+            if (_pathPoints.Count == 0)
             {
                 GameObject obj = getObjectAtPosition(worldPos);
                 if (obj != null && obj.tag == "Path") 
@@ -137,7 +112,7 @@ public class PathCreator : MonoBehaviour
             }
             else
             {
-                Vector2 lastPos = pathPoints[pathPoints.Count - 1];
+                Vector2 lastPos = _pathPoints[_pathPoints.Count - 1];
                 Vector2 dir = (Vector2)(worldPos) - lastPos;
 
                 RaycastHit2D[] sphereCasts = Physics2D.RaycastAll(lastPos, dir, dir.magnitude);
@@ -165,7 +140,7 @@ public class PathCreator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        foreach (Vector3 pos in pathPoints)
+        foreach (Vector3 pos in _pathPoints)
         {
             Gizmos.DrawSphere(pos, 0.2f);
         }
