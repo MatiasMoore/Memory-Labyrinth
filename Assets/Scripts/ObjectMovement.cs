@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class ObjectMovement
 {
-
-
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private List<Vector2> _path = new List<Vector2>();
@@ -33,15 +33,18 @@ public class ObjectMovement
         {
             Debug.Log("Smooth step");
             return (t * t) * (3 - 2 * t); // Smooth step
-        } else if (_currentPositionIndex == _path.Count - 1)
+        }
+        else if (_currentPositionIndex == _path.Count - 1)
         {
             Debug.Log("Deceleration");
             return Mathf.Sqrt(t); // Deceleration
-        } else if (_currentPositionIndex == 0)
+        }
+        else if (_currentPositionIndex == 0)
         {
             Debug.Log("Acceleration");
-            return t*t * 0.9f; // Acceleration
-        } else
+            return t * t * 0.9f; // Acceleration
+        }
+        else
         {
             Debug.Log("Linear");
             return t;
@@ -56,7 +59,8 @@ public class ObjectMovement
             _timer = 0;
             _currentPosition = _transform.position;
             _currentPositionIndex++;
-        } else
+        }
+        else
         {
             _isPathComplete = true;
             _rigidbody.velocity = Vector2.zero;
@@ -66,11 +70,11 @@ public class ObjectMovement
     private bool IsStayOnPoint()
     {
 
-        return (1 - _timer/_timeToPassPoint) < _acceptableError;
+        return (1 - _timer / _timeToPassPoint) < _acceptableError;
     }
     private void Movement(float timeFromLastFrame)
     {
-        
+
         Vector2 newPosition = Vector2.Lerp(_currentPosition, _path[_currentPositionIndex], GetInterpolationFunction());
         Vector2 velocity = (newPosition - (Vector2)_transform.position) / timeFromLastFrame;
         _rigidbody.velocity = velocity;
@@ -84,7 +88,7 @@ public class ObjectMovement
         {
             currentPosition = _path[_currentPositionIndex];
         }
-        
+
         _path = new List<Vector2>(path);
         _path.Insert(0, currentPosition);
         _isPathComplete = false;
@@ -93,10 +97,10 @@ public class ObjectMovement
     }
     public void StopMove()
     {
-        _path.RemoveRange(_currentPositionIndex+1, _path.Count - _currentPositionIndex - 1);
+        _path.RemoveRange(_currentPositionIndex + 1, _path.Count - _currentPositionIndex - 1);
         _currentPosition = _transform.position;
         _timer = 0;
-        
+
     }
     public void UpdatePosition(float timeFromLastFrame)
     {
