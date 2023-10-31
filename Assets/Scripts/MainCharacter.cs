@@ -5,16 +5,12 @@ using UnityEngine;
 
 public class MainCharacter : MonoBehaviour
 {
-    public List<Vector2> _debugPath;
-
     [SerializeField] private float _speed;
     private ObjectMovement _objectMovement; 
 
     void Start()
     {
         _objectMovement = new ObjectMovement(GetComponent<Transform>(), GetComponent<Rigidbody2D>(), _speed);
-
-        _objectMovement.FollowPath(_debugPath);
     }
 
     void FixedUpdate()
