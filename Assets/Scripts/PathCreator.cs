@@ -10,9 +10,12 @@ public class PathCreator : MonoBehaviour
 {
     Coroutine _drawingPath;
     private LineRenderer _line;
+    private Transform _playerTransform;
 
-    List<Vector3> _pathPoints = new List<Vector3>();
+    //Final list of path points
+    private List<Vector3> _pathPoints = new List<Vector3>();
 
+    //Property to check if the path is ready
     public bool isNewPathReady { get; private set; }
 
     public static PathCreator Instance { get; private set; }
@@ -25,35 +28,15 @@ public class PathCreator : MonoBehaviour
 
     private void Start()
     {
+        //Functions need to be called on up/down touch events
         TouchControls.Instance.addCallbackToTouchDown(startDrawing);
         TouchControls.Instance.addCallbackToTouchUp(stopDrawing);
+
         _line = GetComponent<LineRenderer>();
+        _playerTransform = GetComponent<Transform>();
 
         if (Instance != null) return;
         Instance = this;
-    }
-
-    private GameObject getObjectAtPosition(Vector3 mousePos)
-    {
-        Vector3 raycastOrigin = mousePos;
-        Vector3 raycastDir = mousePos - raycastOrigin;
-        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDir);
-        if (hit)
-        {
-            if (hit.transform.gameObject.tag == "Wall" || hit.transform.gameObject.tag == "Path")
-            {
-                return hit.transform.gameObject;
-            }
-            else
-            {
-                return null;
-            }
-        }
-        else
-        {
-            Debug.Log("Raycast missed");
-            return null;
-        }
     }
 
     private void startDrawing(InputAction.CallbackContext context)
@@ -64,6 +47,17 @@ public class PathCreator : MonoBehaviour
         }
         _pathPoints.Clear();
         _line.positionCount = 0;
+
+        //The first position is player's path tile
+        Collider2D startingPathCollider = Physics2D.OverlapPoint(_playerTransform.position, 1 << LayerMask.NameToLayer("Path"));
+        if (startingPathCollider == null ) 
+        {
+            throw new Exception("Player is not standing on a path tile. Can't start creating a path. Please put the player on a path tile.");
+        }
+        Vector3 firstPos = startingPathCollider.gameObject.transform.position;
+        firstPos.z = _playerTransform.position.z;
+        addPositionToPath(firstPos);
+        //Starts the main coroutine
         _drawingPath = StartCoroutine(drawLine());
     }
 
@@ -77,64 +71,66 @@ public class PathCreator : MonoBehaviour
 
     private void addPositionToPath(Vector3 newPos)
     {
+        //Prevents loops
         if (_pathPoints.Contains(newPos))
         {
+            //if it's the last point just don't do anything
+            if (_pathPoints[_pathPoints.Count - 1] == newPos)
+                return;
+
+            //Remove all points after the duplicate(including the duplicate)
             int index = _pathPoints.IndexOf(newPos);
             int countToRemove = _pathPoints.Count - index;
             _pathPoints.RemoveRange(index, countToRemove);
             _line.positionCount -= countToRemove;
         }
 
+        //Draws new line position and adds point to list
         _line.positionCount++;
         _line.SetPosition(_line.positionCount - 1, newPos);
         _pathPoints.Add(newPos);
-        Debug.Log("Added pos:");
-        Debug.Log(newPos);
+
+        Debug.Log("Added pos: " + newPos + " to path");
     }
 
     private IEnumerator drawLine()
     {
         while (true)
         {
-            Vector3 screenCoords = TouchControls.Instance.getTouchPosition();
-            screenCoords.z = 5;
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenCoords);
-            worldPos.z = 5;
+            //Player touch pos
+            Vector2 touchWorldPos = TouchControls.Instance.getTouchWorldPosition2d();
+            float distToPlayer = (touchWorldPos - (Vector2)_playerTransform.position).magnitude;
 
-            Vector3 groundOffset = new Vector3(0, 0, -1);
+            //Raycast from last path point to player touch position
+            Vector2 lastPos = _pathPoints[_pathPoints.Count - 1];
+            Vector2 dir = touchWorldPos - lastPos;
+            RaycastHit2D[] sphereCasts = Physics2D.RaycastAll(lastPos, dir, dir.magnitude);
 
-            if (_pathPoints.Count == 0)
+            //Check every result
+            foreach (RaycastHit2D sphereCast in sphereCasts)
             {
-                GameObject obj = getObjectAtPosition(worldPos);
-                if (obj != null && obj.tag == "Path") 
-                { 
-                    addPositionToPath(obj.transform.position + groundOffset);
-                }
-            }
-            else
-            {
-                Vector2 lastPos = _pathPoints[_pathPoints.Count - 1];
-                Vector2 dir = (Vector2)(worldPos) - lastPos;
-
-                RaycastHit2D[] sphereCasts = Physics2D.RaycastAll(lastPos, dir, dir.magnitude);
-                foreach (RaycastHit2D sphereCast in sphereCasts) 
+                if (sphereCast)// hit happened
                 {
-                    if (sphereCast)// hit happened
+                    GameObject hitObj = sphereCast.transform.gameObject;
+                    String tag = hitObj.tag;
+
+                    //Add every path's position to the path
+                    if (tag == "Path")
                     {
-                        GameObject obj = sphereCast.transform.gameObject;
-                        String tag = obj.tag;
-                        Debug.Log(tag);
-                        if (tag == "Path")
-                        {
-                            addPositionToPath(obj.transform.position + groundOffset);
-                        }
-                        else if (tag == "Wall")
-                        {
-                            break;
-                        }
+                        Vector3 posToAdd = hitObj.transform.position;
+                        posToAdd.z = _playerTransform.position.z;
+
+                        addPositionToPath(posToAdd);
+                    }
+                    //Stop as soon as a wall is hit
+                    else if (tag == "Wall")
+                    {
+                        break;
                     }
                 }
             }
+
+            //Wait for next frame
             yield return null;
         }
     }
