@@ -34,6 +34,7 @@ public class PathCreator : MonoBehaviour
 
         _line = GetComponent<LineRenderer>();
         _playerTransform = GetComponent<Transform>();
+        isNewPathReady = false;
 
         if (Instance != null) return;
         Instance = this;
