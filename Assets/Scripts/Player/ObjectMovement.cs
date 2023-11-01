@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class ObjectMovement
 {
     private Transform _transform;
