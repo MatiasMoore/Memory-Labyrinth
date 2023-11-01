@@ -20,6 +20,11 @@ public class PathCreator : MonoBehaviour
 
     public static PathCreator Instance { get; private set; }
 
+    public bool IsPathBeingDrawn()
+    {
+        return _drawingPath != null;
+    }
+
     public List<Vector3> GetNewPath()
     {
         isNewPathReady = false;
@@ -35,6 +40,7 @@ public class PathCreator : MonoBehaviour
         _line = GetComponent<LineRenderer>();
         _playerTransform = GetComponent<Transform>();
         isNewPathReady = false;
+        _line.positionCount = 0;
 
         if (Instance != null) return;
         Instance = this;
@@ -66,6 +72,7 @@ public class PathCreator : MonoBehaviour
     private void StopDrawing(InputAction.CallbackContext context)
     {
         StopCoroutine(_drawingPath);
+        _drawingPath = null;
         _line.positionCount = 0;
         isNewPathReady = _pathPoints.Count > 1;
     }
