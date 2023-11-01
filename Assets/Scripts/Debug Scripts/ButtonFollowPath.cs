@@ -5,7 +5,7 @@ using UnityEngine;
 public class ButtonFollowPath : MonoBehaviour
 {
     public MainCharacter Player;
-    public List<Vector2> path;
+    public List<Vector3> path;
     void OnMouseDown()
     {
         Player.FollowPath(path);
