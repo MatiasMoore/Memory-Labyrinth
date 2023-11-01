@@ -19,7 +19,14 @@ public class MainCharacter : MonoBehaviour
     void FixedUpdate()
     {
         _objectMovement.UpdatePosition(Time.fixedDeltaTime);
-        Debug.Log(_pathCreator.isNewPathReady);
+    }
+
+    private void Update()
+    {
+        if (_pathCreator.isNewPathReady)
+        {
+            FollowPath(_pathCreator.GetNewPath());
+        }
     }
 
     public void FollowPath(List<Vector3> path)
