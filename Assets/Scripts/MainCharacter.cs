@@ -15,10 +15,10 @@ public class MainCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
-        _objectMovement.UpdatePosition(Time.deltaTime);
+        _objectMovement.UpdatePosition(Time.fixedDeltaTime);
     }
 
-    public void FollowPath(List<Vector2> path)
+    public void FollowPath(List<Vector3> path)
     {
         _objectMovement.FollowPath(path);
     }
