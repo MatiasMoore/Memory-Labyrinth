@@ -20,7 +20,7 @@ public class PathCreator : MonoBehaviour
 
     public static PathCreator Instance { get; private set; }
 
-    public List<Vector3> getNewPath()
+    public List<Vector3> GetNewPath()
     {
         isNewPathReady = false;
         return _pathPoints;
@@ -29,8 +29,8 @@ public class PathCreator : MonoBehaviour
     private void Start()
     {
         //Functions need to be called on up/down touch events
-        TouchControls.Instance.addCallbackToTouchDown(startDrawing);
-        TouchControls.Instance.addCallbackToTouchUp(stopDrawing);
+        TouchControls.Instance.addCallbackToTouchDown(StartDrawing);
+        TouchControls.Instance.addCallbackToTouchUp(StopDrawing);
 
         _line = GetComponent<LineRenderer>();
         _playerTransform = GetComponent<Transform>();
@@ -40,7 +40,7 @@ public class PathCreator : MonoBehaviour
         Instance = this;
     }
 
-    private void startDrawing(InputAction.CallbackContext context)
+    private void StartDrawing(InputAction.CallbackContext context)
     {
         if (_drawingPath != null)
         {
@@ -57,20 +57,20 @@ public class PathCreator : MonoBehaviour
         }
         Vector3 firstPos = startingPathCollider.gameObject.transform.position;
         firstPos.z = _playerTransform.position.z;
-        addPositionToPath(firstPos);
+        AddPositionToPath(firstPos);
         //Starts the main coroutine
-        _drawingPath = StartCoroutine(drawLine());
+        _drawingPath = StartCoroutine(DrawPath());
     }
 
 
-    private void stopDrawing(InputAction.CallbackContext context)
+    private void StopDrawing(InputAction.CallbackContext context)
     {
         StopCoroutine(_drawingPath);
         _line.positionCount = 0;
         isNewPathReady = _pathPoints.Count > 1;
     }
 
-    private void addPositionToPath(Vector3 newPos)
+    private void AddPositionToPath(Vector3 newPos)
     {
         //Prevents loops
         if (_pathPoints.Contains(newPos))
@@ -94,7 +94,7 @@ public class PathCreator : MonoBehaviour
         Debug.Log("Added pos: " + newPos + " to path");
     }
 
-    private IEnumerator drawLine()
+    private IEnumerator DrawPath()
     {
         while (true)
         {
@@ -121,7 +121,7 @@ public class PathCreator : MonoBehaviour
                         Vector3 posToAdd = hitObj.transform.position;
                         posToAdd.z = _playerTransform.position.z;
 
-                        addPositionToPath(posToAdd);
+                        AddPositionToPath(posToAdd);
                     }
                     //Stop as soon as a wall is hit
                     else if (tag == "Wall")
