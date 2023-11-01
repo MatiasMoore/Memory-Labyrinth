@@ -19,11 +19,50 @@ public class ObjectMovement
     private Vector2 _currentPosition;
     private float _acceptableError = 0.01f;
     private float _timer;
+
     public ObjectMovement(Transform transform, Rigidbody2D rigidbody, float speed)
     {
         _transform = transform;
         _rigidbody = rigidbody;
         _timeToPassPoint = 1 / speed;
+    }
+
+    public void FollowPath(List<Vector3> path)
+    {
+        Vector2 currentPosition = _transform.position;
+        if (_path.Count > 0)
+        {
+            currentPosition = _path[_currentPositionIndex];
+        }
+        _path = new List<Vector2>();
+        foreach (var item in path)
+        {
+            _path.Add((Vector2)item);
+        }
+        _path.Insert(0, currentPosition);
+        _isPathComplete = false;
+        _currentPositionIndex = 0;
+        MoveToNextPoint();
+    }
+
+    public void StopMove()
+    {
+        _path.RemoveRange(_currentPositionIndex + 1, _path.Count - _currentPositionIndex - 1);
+        _currentPosition = _transform.position;
+        _timer = 0;
+    }
+
+    public void UpdatePosition(float timeFromLastFrame)
+    {
+        if (_isPathComplete)
+        {
+            return;
+        }
+        if (IsStayOnPoint())
+        {
+            MoveToNextPoint();
+        }
+        Movement(timeFromLastFrame);
     }
 
     private float GetInterpolationFunction()
@@ -50,6 +89,7 @@ public class ObjectMovement
             return t;
         }
     }
+
     private void MoveToNextPoint()
     {
         if (_path.Count - 1 > _currentPositionIndex)
@@ -67,11 +107,13 @@ public class ObjectMovement
             Debug.Log("Path complete!");
         }
     }
+
     private bool IsStayOnPoint()
     {
 
         return (Mathf.Abs(_transform.position.x - _path[_currentPositionIndex].x) < _acceptableError) && (Mathf.Abs(_transform.position.y - _path[_currentPositionIndex].y) < _acceptableError);
     }
+
     private void Movement(float timeFromLastFrame)
     {
         Vector2 newPosition = Vector2.Lerp(_currentPosition, _path[_currentPositionIndex], GetInterpolationFunction());
@@ -79,40 +121,5 @@ public class ObjectMovement
         _rigidbody.velocity = velocity;
         Debug.Log($"velocity{velocity}");
         _timer += timeFromLastFrame;
-    }
-    public void FollowPath(List<Vector3> path)
-    {
-        Vector2 currentPosition = _transform.position;
-        if (_path.Count > 0)
-        {
-            currentPosition = _path[_currentPositionIndex];
-        }
-        _path = new List<Vector2>();
-        foreach (var item in path)
-        {
-            _path.Add((Vector2)item);
-        } 
-        _path.Insert(0, currentPosition);
-        _isPathComplete = false;
-        _currentPositionIndex = 0;
-        MoveToNextPoint();
-    }
-    public void StopMove()
-    {
-        _path.RemoveRange(_currentPositionIndex + 1, _path.Count - _currentPositionIndex - 1);
-        _currentPosition = _transform.position;
-        _timer = 0;
-    }
-    public void UpdatePosition(float timeFromLastFrame)
-    {
-        if (_isPathComplete)
-        {
-            return;
-        }
-        if (IsStayOnPoint())
-        {
-            MoveToNextPoint();
-        }
-        Movement(timeFromLastFrame);        
     }
 }
