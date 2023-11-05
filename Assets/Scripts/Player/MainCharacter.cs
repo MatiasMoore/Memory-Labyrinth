@@ -23,7 +23,7 @@ public class MainCharacter : MonoBehaviour
     private float _speed;
 
     [SerializeField]
-    public ObjectMovementState.State _currentState = ObjectMovementState.State.STAY;
+    public ObjectMovementState.State _currentState;
     private ObjectMovementState _objectMovement;
     private PathCreator _pathCreator;
 

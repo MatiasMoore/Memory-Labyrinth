@@ -9,12 +9,12 @@ public class ObjectMovementState
 {
     public enum State
     {
-        STAY,
-        SMOOTHSTEP,
-        ACCELERATION,
-        DECELERATION,
-        LINEAR,
-        TELEPORT
+        Stay,
+        SmoothStep,
+        Acceleration,
+        Deceleration,
+        Linear,
+        teleport
     }
 
     private State _currentState;
@@ -43,7 +43,7 @@ public class ObjectMovementState
         _rigidbody = rigidbody;
         _timeToPassPoint = 1 / speed;
 
-        _currentState = State.STAY;
+        _currentState = State.Stay;
         _path = new List<Vector2>();
     }
 
@@ -51,22 +51,22 @@ public class ObjectMovementState
     {
         switch (_currentState)
         {
-            case State.STAY:
+            case State.Stay:
                 Stay(deltaTime);
                 break;
-            case State.ACCELERATION:
+            case State.Acceleration:
                 Acceleration(deltaTime);
                 break;
-            case State.LINEAR:
+            case State.Linear:
                 Linear(deltaTime);
                 break;
-            case State.DECELERATION:
+            case State.Deceleration:
                 Deceleration(deltaTime);
                 break;
-            case State.SMOOTHSTEP:
+            case State.SmoothStep:
                 SmoothStep(deltaTime);
                 break;
-            case State.TELEPORT:
+            case State.teleport:
                 Teleport(deltaTime);
                 break;
         }
@@ -79,7 +79,7 @@ public class ObjectMovementState
         _path = new List<Vector2>(path);
         _timer = 0;
         _currentPosition = _transform.position;
-        SwitchStateTo(State.ACCELERATION);
+        SwitchStateTo(State.Acceleration);
     }
 
     public void FollowPath(List<Vector3> path)
@@ -91,7 +91,7 @@ public class ObjectMovementState
         }
         _timer = 0;
         _currentPosition = _transform.position;
-        SwitchStateTo(State.ACCELERATION);
+        SwitchStateTo(State.Acceleration);
     }
 
     public void StopMove()
@@ -106,7 +106,7 @@ public class ObjectMovementState
     {
         StopMove();
         _path.Add(position);
-        SwitchStateTo(State.TELEPORT);
+        SwitchStateTo(State.teleport);
         Debug.Log($"PLAYER: Teleporting to {_path[1]}");
     }
 
@@ -124,7 +124,7 @@ public class ObjectMovementState
             RemoveReachedPointFromPath(_path[0]);
 
             if (IsDeceleration())
-                SwitchStateTo(State.DECELERATION);
+                SwitchStateTo(State.Deceleration);
         }
     }
 
@@ -137,11 +137,11 @@ public class ObjectMovementState
             RemoveReachedPointFromPath(_path[0]);
 
             if (IsStay())
-                SwitchStateTo(State.STAY);
+                SwitchStateTo(State.Stay);
             if (IsDeceleration())
-                SwitchStateTo(State.DECELERATION);
+                SwitchStateTo(State.Deceleration);
             if (IsLinear())
-                SwitchStateTo(State.LINEAR);
+                SwitchStateTo(State.Linear);
         }
     }
 
@@ -154,7 +154,7 @@ public class ObjectMovementState
             RemoveReachedPointFromPath(_path[0]);
 
             if (IsStay())
-                SwitchStateTo(State.STAY);
+                SwitchStateTo(State.Stay);
         }
     }
 
@@ -167,28 +167,28 @@ public class ObjectMovementState
             RemoveReachedPointFromPath(_path[0]);
 
             if (IsStay())
-                SwitchStateTo(State.STAY);
+                SwitchStateTo(State.Stay);
         }
     }
 
     private void Stay(float deltaTime)
     {
         if (IsSmoothStep())
-            SwitchStateTo(State.SMOOTHSTEP);
+            SwitchStateTo(State.SmoothStep);
         if (IsAcceleration())
-            SwitchStateTo(State.ACCELERATION);
+            SwitchStateTo(State.Acceleration);
     }
 
     private void Teleport(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(State.DECELERATION, _timeToPassPoint, deltaTime));
+        UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime));
 
         if (IsStayOnPoint(_path[0]))
         {
             RemoveReachedPointFromPath(_path[0]);
             _transform.position = new Vector3(_path[0].x, _path[0].y, _transform.position.z);
             RemoveReachedPointFromPath(_path[0]);
-            SwitchStateTo(State.STAY);
+            SwitchStateTo(State.Stay);
         }
     }
 
@@ -204,11 +204,11 @@ public class ObjectMovementState
         float t = _timer / time;
         return state switch
         {
-            State.STAY => 0,
-            State.ACCELERATION => t * t, // Acceleration
-            State.LINEAR => t,
-            State.DECELERATION => Mathf.Sqrt(t), // Deceleration
-            State.SMOOTHSTEP => t * t * (3 - 2 * t), // Smooth step
+            State.Stay => 0,
+            State.Acceleration => t * t, // Acceleration
+            State.Linear => t,
+            State.Deceleration => Mathf.Sqrt(t), // Deceleration
+            State.SmoothStep => t * t * (3 - 2 * t), // Smooth step
             _ => throw new System.Exception($"Unknown state to interpolate: {_currentState}"),
         };
     }
