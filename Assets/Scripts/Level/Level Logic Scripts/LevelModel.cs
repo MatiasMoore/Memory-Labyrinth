@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class LevelModel : MonoBehaviour
 {
+    [SerializeField]
+    MainCharacter _mainCharacter;
 
-    public void onPlayerDeath(){
+    public void Start()
+    {
+        _mainCharacter.AddOnDamageAction(onPlayerDamage);
+        _mainCharacter.AddOnDeathAction(onPlayerDeath);
+        Debug.Log("LevelModel Awake");
+    }
+
+    public void onPlayerDeath()
+    {
         Debug.Log("Player died");
     }
 
-    public void onPlayerWin(){
+    public void onPlayerWin()
+    {
         Debug.Log("Player won");
     }
 
-    public void onPlayerDamage(){
+    public void onPlayerDamage()
+    {
         Debug.Log($"Player damaged");
     }
 
-    public void onPlayerGetBonus(){
+    public void onPlayerGetBonus()
+    {
         Debug.Log($"Player get bonus");
     }
 }
