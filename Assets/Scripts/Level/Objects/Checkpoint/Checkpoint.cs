@@ -15,9 +15,15 @@ public class Checkpoint : MonoBehaviour
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
+    public int GetQueue()
+    {
+        return _queue;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        CheckpointCompatable checkpointObject = other.gameObject.GetComponent<CheckpointCompatable>();
+        CheckpointCompatable checkpointObject =
+            other.gameObject.GetComponent<CheckpointCompatable>();
         if (checkpointObject != null)
         {
             Debug.Log($"Checkpoint {other.gameObject.name} for {_queue}");

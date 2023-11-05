@@ -10,6 +10,6 @@ public class PlayerChecpointCompability : CheckpointCompatable
         if (mainCharacter != null)
         {
             mainCharacter.getCheckpoint(chekpoint);
-        }        
+        }
     }
 }

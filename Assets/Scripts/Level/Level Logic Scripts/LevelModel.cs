@@ -47,6 +47,7 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDamage()
     {
         Debug.Log($"Player damaged");
+        _mainCharacter.TeleportTo(_currentCheckpoint.transform.position);
     }
 
     public void onPlayerGetBonus(int value)
@@ -58,5 +59,13 @@ public class LevelModel : MonoBehaviour
     public void onPlayerGetCheckpoint(Checkpoint checkpoint)
     {
         Debug.Log($"Player get checkpoint {checkpoint}");
+        if (_currentCheckpoint == null)
+        {
+            _currentCheckpoint = checkpoint;
+        }
+        else if (checkpoint.GetQueue() > _currentCheckpoint.GetQueue())
+        {
+            _currentCheckpoint = checkpoint;
+        }
     }
 }
