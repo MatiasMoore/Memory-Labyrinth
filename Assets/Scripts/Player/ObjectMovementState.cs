@@ -104,7 +104,7 @@ public class ObjectMovementState
 
     private void Linear(float deltaTime)
     {
-        UpdateVelocity(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
 
         if (IsStayOnPoint(_path[0]))
         {
@@ -117,7 +117,7 @@ public class ObjectMovementState
 
     private void Acceleration(float deltaTime)
     {
-        UpdateVelocity(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
 
         if (IsStayOnPoint(_path[0]))
         {
@@ -134,7 +134,7 @@ public class ObjectMovementState
 
     private void Deceleration(float deltaTime)
     {
-        UpdateVelocity(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
 
         if (IsStayOnPoint(_path[0]))
         {
@@ -147,7 +147,7 @@ public class ObjectMovementState
 
     private void SmoothStep(float deltaTime)
     {
-        UpdateVelocity(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
 
         if (IsStayOnPoint(_path[0]))
         {
@@ -166,7 +166,7 @@ public class ObjectMovementState
             SwitchStateTo(State.ACCELERATION);
     }
 
-    private void UpdateVelocity(float positionStage)
+    private void UpdatePosition(float positionStage)
     {
         Vector2 newPosition = Vector2.Lerp(_currentPosition, _path[0], positionStage);
         _rigidbody.MovePosition(newPosition);
