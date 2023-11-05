@@ -16,7 +16,7 @@ public class Bonus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        BonusCompatable bonusObject = other.gameObject.GetComponent<BonusCompatable>();
+        BonusCompatible bonusObject = other.gameObject.GetComponent<BonusCompatible>();
         if (bonusObject != null)
         {
             Debug.Log($"Bonus {other.gameObject.name} for {_value}");
