@@ -38,8 +38,6 @@ public class CameraScript : MonoBehaviour
                 bounds.Encapsulate(collider2D.bounds);
             else if (collider != null)
                 bounds.Encapsulate(collider.bounds);
-            else
-                bounds.Encapsulate(obj.transform.position);
         }
 
         //Add edge padding
