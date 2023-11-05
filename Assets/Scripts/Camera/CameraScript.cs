@@ -31,15 +31,19 @@ public class CameraScript : MonoBehaviour
         Bounds bounds = new Bounds();
         foreach (GameObject obj in objsToFit)
         {
-            Collider2D collider2D = obj.GetComponent<Collider2D>();
-            Collider collider = obj.GetComponent<Collider>();
+            // Egor: in order to camera does not scale relative to UI objects
+            if (obj.tag != "UI")
+            {
+                Collider2D collider2D = obj.GetComponent<Collider2D>();
+                Collider collider = obj.GetComponent<Collider>();
 
-            if (collider2D != null)
-                bounds.Encapsulate(collider2D.bounds);
-            else if (collider != null)
-                bounds.Encapsulate(collider.bounds);
-            else
-                bounds.Encapsulate(obj.transform.position);
+                if (collider2D != null)
+                    bounds.Encapsulate(collider2D.bounds);
+                else if (collider != null)
+                    bounds.Encapsulate(collider.bounds);
+                else
+                    bounds.Encapsulate(obj.transform.position);
+            }
         }
 
         //Add edge padding
