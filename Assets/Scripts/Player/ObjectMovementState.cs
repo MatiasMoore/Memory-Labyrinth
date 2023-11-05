@@ -4,6 +4,7 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ObjectMovementState
 {
     public enum State
