@@ -20,6 +20,9 @@ public class MainCharacter : MonoBehaviour
     private UnityEvent<int> _onBonusEvent;
 
     [SerializeField]
+    private UnityEvent<Checkpoint> _onCheckpointEvent;
+
+    [SerializeField]
     private float _speed;
 
     [SerializeField]
@@ -80,8 +83,17 @@ public class MainCharacter : MonoBehaviour
 
     public void getBonus(int bonus)
     {
-        //invoke event with argument
         _onBonusEvent.Invoke(bonus);
+    }
+
+    public void getCheckpoint(Checkpoint checkpoint)
+    {
+        _onCheckpointEvent.Invoke(checkpoint);
+    }
+
+    public void AddOnCheckpointAction(UnityAction<Checkpoint> listener)
+    {
+        _onCheckpointEvent.AddListener(listener);
     }
 
     public void AddOnBonusAction(UnityAction<int> listener)

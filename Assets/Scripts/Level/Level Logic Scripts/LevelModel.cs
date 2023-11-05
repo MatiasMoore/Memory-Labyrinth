@@ -11,6 +11,9 @@ public class LevelModel : MonoBehaviour
     private Finish _finishPoint;
 
     [SerializeField]
+    private Checkpoint _currentCheckpoint;
+
+    [SerializeField]
     int _bonusMoneyAmount;
 
     public void Start()
@@ -18,6 +21,7 @@ public class LevelModel : MonoBehaviour
         _mainCharacter.AddOnDamageAction(onPlayerDamage);
         _mainCharacter.AddOnDeathAction(onPlayerDeath);
         _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
+        _mainCharacter.AddOnCheckpointAction(onPlayerGetCheckpoint);
 
         _finishPoint.AddOnTriggerAction(onPlayerWin);
         Debug.Log("LevelModel Awake");
@@ -43,11 +47,25 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDamage()
     {
         Debug.Log($"Player damaged");
+        _mainCharacter.TeleportTo(_currentCheckpoint.transform.position);
     }
 
     public void onPlayerGetBonus(int value)
     {
         _bonusMoneyAmount += value;
         Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
+    }
+
+    public void onPlayerGetCheckpoint(Checkpoint checkpoint)
+    {
+        Debug.Log($"Player get checkpoint {checkpoint}");
+        if (_currentCheckpoint == null)
+        {
+            _currentCheckpoint = checkpoint;
+        }
+        else if (checkpoint.GetQueue() > _currentCheckpoint.GetQueue())
+        {
+            _currentCheckpoint = checkpoint;
+        }
     }
 }
