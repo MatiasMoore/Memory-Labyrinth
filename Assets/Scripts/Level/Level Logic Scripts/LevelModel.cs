@@ -8,6 +8,9 @@ public class LevelModel : MonoBehaviour
     MainCharacter _mainCharacter;
 
     [SerializeField]
+    private Finish _finishPoint;
+
+    [SerializeField]
     int _bonusMoneyAmount;
 
     public void Start()
@@ -15,6 +18,8 @@ public class LevelModel : MonoBehaviour
         _mainCharacter.AddOnDamageAction(onPlayerDamage);
         _mainCharacter.AddOnDeathAction(onPlayerDeath);
         _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
+
+        _finishPoint.AddOnTriggerAction(onPlayerWin);
         Debug.Log("LevelModel Awake");
     }
 
@@ -23,9 +28,16 @@ public class LevelModel : MonoBehaviour
         Debug.Log("Player died");
     }
 
-    public void onPlayerWin()
+    public void onPlayerWin(Collider2D collider)
     {
-        Debug.Log("Player won");
+        if (collider.gameObject == _mainCharacter.gameObject)
+        {
+            Debug.Log($"Player won");
+        }
+        else
+        {
+            Debug.Log($"Player won, but not by himself");
+        }
     }
 
     public void onPlayerDamage()
