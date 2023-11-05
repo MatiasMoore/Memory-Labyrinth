@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MainCharacter : MonoBehaviour
 {
+    [SerializeField] private int _health;
+    [SerializeField] private UnityEvent _onDeathEvent;
+    [SerializeField] private UnityEvent _onDamageEvent;
     [SerializeField] private float _speed;
     
     [SerializeField] public ObjectMovementState.State _currentState = ObjectMovementState.State.STAY;
@@ -45,6 +49,16 @@ public class MainCharacter : MonoBehaviour
     public void TeleportTo(Vector3 position)
     {
         _objectMovement.TeleportTo((Vector2)position);
+    }
+
+    public void getDamage(int damage)
+    {
+        _health -= damage;
+        _onDamageEvent.Invoke();
+        if (_health <= 0)
+        {
+            _onDeathEvent.Invoke();
+        }
     }
 
 }
