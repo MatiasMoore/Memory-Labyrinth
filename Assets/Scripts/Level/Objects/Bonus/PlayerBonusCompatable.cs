@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBonusCompatable : BonusCompatable
+public class PlayerBonusCompatible : BonusCompatible
 {
     public override void getBonus(int value)
     {
