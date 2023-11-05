@@ -13,7 +13,8 @@ public class ObjectMovementState
         SMOOTHSTEP,
         ACCELERATION,
         DECELERATION,
-        LINEAR
+        LINEAR,
+        TELEPORT
     }
 
     private State _currentState;
@@ -65,6 +66,9 @@ public class ObjectMovementState
             case State.SMOOTHSTEP:
                 SmoothStep(deltaTime);
                 break;
+            case State.TELEPORT:
+                Teleport(deltaTime);
+                break;
         }
     }
 
@@ -96,6 +100,14 @@ public class ObjectMovementState
         {
             _path.RemoveRange(1, _path.Count - 1);
         }
+    }
+
+    public void TeleportTo(Vector2 position)
+    {
+        StopMove();
+        _path.Add(position);
+        SwitchStateTo(State.TELEPORT);
+        Debug.Log($"PLAYER: Teleporting to {_path[1]}");
     }
 
     public State GetState()
@@ -165,6 +177,19 @@ public class ObjectMovementState
             SwitchStateTo(State.SMOOTHSTEP);
         if (IsAcceleration())
             SwitchStateTo(State.ACCELERATION);
+    }
+
+    private void Teleport(float deltaTime)
+    {
+        UpdatePosition(InterpolateByState(State.DECELERATION, _timeToPassPoint, deltaTime));
+
+        if (IsStayOnPoint(_path[0]))
+        {
+            RemoveReachedPointFromPath(_path[0]);
+            _transform.position = new Vector3(_path[0].x, _path[0].y, _transform.position.z);
+            RemoveReachedPointFromPath(_path[0]);
+            SwitchStateTo(State.STAY);
+        }
     }
 
     private void UpdatePosition(float positionStage)

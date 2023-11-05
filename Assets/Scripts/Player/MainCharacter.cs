@@ -41,4 +41,10 @@ public class MainCharacter : MonoBehaviour
     {
         _objectMovement.StopMove();
     }
+
+    public void TeleportTo(Vector3 position)
+    {
+        _objectMovement.TeleportTo((Vector2)position);
+    }
+
 }
