@@ -7,10 +7,14 @@ public class LevelModel : MonoBehaviour
     [SerializeField]
     MainCharacter _mainCharacter;
 
+    [SerializeField]
+    int _bonusMoneyAmount;
+
     public void Start()
     {
         _mainCharacter.AddOnDamageAction(onPlayerDamage);
         _mainCharacter.AddOnDeathAction(onPlayerDeath);
+        _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
         Debug.Log("LevelModel Awake");
     }
 
@@ -29,8 +33,9 @@ public class LevelModel : MonoBehaviour
         Debug.Log($"Player damaged");
     }
 
-    public void onPlayerGetBonus()
+    public void onPlayerGetBonus(int value)
     {
-        Debug.Log($"Player get bonus");
+        _bonusMoneyAmount += value;
+        Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
     }
 }

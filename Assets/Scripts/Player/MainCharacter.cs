@@ -17,6 +17,9 @@ public class MainCharacter : MonoBehaviour
     private UnityEvent _onDamageEvent;
 
     [SerializeField]
+    private UnityEvent<int> _onBonusEvent;
+
+    [SerializeField]
     private float _speed;
 
     [SerializeField]
@@ -73,6 +76,17 @@ public class MainCharacter : MonoBehaviour
         {
             _onDeathEvent.Invoke();
         }
+    }
+
+    public void getBonus(int bonus)
+    {
+        //invoke event with argument
+        _onBonusEvent.Invoke(bonus);
+    }
+
+    public void AddOnBonusAction(UnityAction<int> listener)
+    {
+        _onBonusEvent.AddListener(listener);
     }
 
     public void AddOnDeathAction(UnityAction listener)
