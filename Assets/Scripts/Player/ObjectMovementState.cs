@@ -125,6 +125,8 @@ public class ObjectMovementState
 
             if (IsDeceleration())
                 SwitchStateTo(State.Deceleration);
+            if (IsStay())
+                SwitchStateTo(State.Stay);
         }
     }
 
