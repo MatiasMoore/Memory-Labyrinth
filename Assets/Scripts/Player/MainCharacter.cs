@@ -54,6 +54,7 @@ public class MainCharacter : MonoBehaviour
         {
             FollowPath(_pathCreator.GetNewPath());
         }
+        _pathCreator.SetActive(_currentState == ObjectMovementState.State.Stay);
     }
 
     public void FollowPath(List<Vector3> path)
