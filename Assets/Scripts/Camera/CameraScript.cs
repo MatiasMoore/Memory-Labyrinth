@@ -12,7 +12,10 @@ public class CameraScript : MonoBehaviour
     public bool fitOnUpdate = true;
 
     [SerializeField]
-    private float _padding = 0.0f;
+    private Vector3 _padding = Vector3.zero;
+
+    [SerializeField]
+    private Vector3 _centerOffset = Vector3.zero;
 
     private Camera _cam;
 
@@ -25,7 +28,7 @@ public class CameraScript : MonoBehaviour
             FitObjectsInsideCam(FindObjectsOfType<GameObject>(), _padding);
     }
 
-    public void FitObjectsInsideCam(GameObject[] objsToFit, float padding)
+    public void FitObjectsInsideCam(GameObject[] objsToFit, Vector3 padding)
     {
         //Create bounds and add every object's bound inside it
         Bounds bounds = new Bounds();
@@ -51,7 +54,7 @@ public class CameraScript : MonoBehaviour
         float horizontal = bounds.size.x * _cam.pixelHeight / _cam.pixelWidth;
 
         float size = Mathf.Max(horizontal, vertical) * 0.5f;
-        Vector3 center = bounds.center;
+        Vector3 center = bounds.center + _centerOffset;
         center.z = _cam.transform.position.z;
 
         if (size > 0)
