@@ -96,6 +96,12 @@ public class ObjectMovementState
 
     public void StopMove()
     {
+        if (GetState() == State.teleport)
+        {
+            Debug.Log("Can't stop while teleporting");
+            return;
+        }
+
         if (_path.Count > 1)
         {
             _path.RemoveRange(1, _path.Count - 1);
