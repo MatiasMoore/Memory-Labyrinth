@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 1510629}
   m_Layer: 5
   m_Name: Background Raw Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 1556812}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 52289839}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 59571778}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 121135325}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 139764763}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 153006472}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 153419777}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 164093564}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 168932173}
   m_Layer: 5
   m_Name: Options Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1098,7 +1098,7 @@ GameObject:
   - component: {fileID: 171350861}
   m_Layer: 5
   m_Name: Music Slider
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 190534109}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 219419329}
   m_Layer: 5
   m_Name: Back Panel Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 227722692}
   m_Layer: 5
   m_Name: Achievement Object (17)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1480,7 +1480,7 @@ GameObject:
   - component: {fileID: 232727862}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 255643877}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1597,7 +1597,7 @@ GameObject:
   - component: {fileID: 279632608}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,7 +1692,7 @@ GameObject:
   - component: {fileID: 309490995}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1829,7 +1829,7 @@ GameObject:
   - component: {fileID: 336836341}
   m_Layer: 5
   m_Name: Accept Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1992,7 +1992,7 @@ GameObject:
   - component: {fileID: 337558001}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2129,7 +2129,7 @@ GameObject:
   - component: {fileID: 363973999}
   m_Layer: 5
   m_Name: Achievement Object (14)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2253,7 +2253,7 @@ GameObject:
   - component: {fileID: 365693450}
   m_Layer: 5
   m_Name: Music Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2386,7 +2386,7 @@ GameObject:
   - component: {fileID: 385940570}
   m_Layer: 0
   m_Name: Click Sound
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 398987372}
   m_Layer: 5
   m_Name: Sound Slider
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2604,7 +2604,7 @@ GameObject:
   - component: {fileID: 475274016}
   m_Layer: 5
   m_Name: Scroll
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2672,7 +2672,7 @@ GameObject:
   - component: {fileID: 485250075}
   m_Layer: 5
   m_Name: Money Amount Text
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2806,7 +2806,7 @@ GameObject:
   - component: {fileID: 492713613}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2941,7 +2941,7 @@ GameObject:
   - component: {fileID: 492773157}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3078,7 +3078,7 @@ GameObject:
   - component: {fileID: 527367092}
   m_Layer: 5
   m_Name: Achievement Object (5)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3203,7 +3203,7 @@ GameObject:
   - component: {fileID: 533267456}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3296,7 +3296,7 @@ GameObject:
   - component: {fileID: 539938140}
   m_Layer: 5
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3335,7 +3335,7 @@ GameObject:
   - component: {fileID: 567422501}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3430,7 +3430,7 @@ GameObject:
   - component: {fileID: 569949393}
   m_Layer: 5
   m_Name: Background Settings List
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3506,7 +3506,7 @@ GameObject:
   - component: {fileID: 585228908}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3602,7 +3602,7 @@ GameObject:
   - component: {fileID: 610988389}
   m_Layer: 5
   m_Name: Background Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 674604536}
   m_Layer: 5
   m_Name: Money Plus Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3836,7 +3836,7 @@ GameObject:
   - component: {fileID: 698432058}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3931,7 +3931,7 @@ GameObject:
   - component: {fileID: 701382271}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4067,7 +4067,7 @@ GameObject:
   - component: {fileID: 721132819}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4164,7 +4164,7 @@ GameObject:
   - component: {fileID: 729947527}
   m_Layer: 5
   m_Name: Achievements Menu Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4278,7 +4278,7 @@ GameObject:
   - component: {fileID: 734881877}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4373,7 +4373,7 @@ GameObject:
   - component: {fileID: 747586468}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4510,7 +4510,7 @@ GameObject:
   - component: {fileID: 750998690}
   m_Layer: 5
   m_Name: Achievement Object (18)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4635,7 +4635,7 @@ GameObject:
   - component: {fileID: 754499673}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4731,7 +4731,7 @@ GameObject:
   - component: {fileID: 757188663}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 769031853}
   m_Layer: 5
   m_Name: Achievement Object (8)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 819452421}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5049,7 +5049,7 @@ GameObject:
   - component: {fileID: 857740095}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5144,7 +5144,7 @@ GameObject:
   - component: {fileID: 871700129}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5280,7 +5280,7 @@ GameObject:
   - component: {fileID: 892252045}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5376,7 +5376,7 @@ GameObject:
   - component: {fileID: 924356829}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5470,7 +5470,7 @@ GameObject:
   - component: {fileID: 948264906}
   m_Layer: 5
   m_Name: Buttons
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5536,7 +5536,7 @@ GameObject:
   - component: {fileID: 963711541}
   m_Layer: 5
   m_Name: Sound Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5671,7 +5671,7 @@ GameObject:
   - component: {fileID: 994242656}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5768,7 +5768,7 @@ GameObject:
   - component: {fileID: 1003063025}
   m_Layer: 5
   m_Name: Achievement Object (4)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5892,7 +5892,7 @@ GameObject:
   - component: {fileID: 1006375695}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6014,6 +6014,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006375693}
   m_CullTransparentMesh: 1
+--- !u!1 &1025442420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1025442422}
+  - component: {fileID: 1025442421}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: UI
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1025442421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025442420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b58aa103153b04aa3c8594e8321ed9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1025442422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025442420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 488.78967, y: 903.8331, z: -17.91022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1030433815
 GameObject:
   m_ObjectHideFlags: 0
@@ -6028,7 +6072,7 @@ GameObject:
   - component: {fileID: 1030433817}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6123,7 +6167,7 @@ GameObject:
   - component: {fileID: 1035624065}
   m_Layer: 5
   m_Name: Logo Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6198,7 +6242,7 @@ GameObject:
   - component: {fileID: 1037095155}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6332,7 +6376,7 @@ GameObject:
   - component: {fileID: 1039239839}
   m_Layer: 5
   m_Name: Achievments Menu Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6467,7 +6511,7 @@ GameObject:
   - component: {fileID: 1042101623}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6563,7 +6607,7 @@ GameObject:
   - component: {fileID: 1062602379}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6659,7 +6703,7 @@ GameObject:
   - component: {fileID: 1107968551}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6754,7 +6798,7 @@ GameObject:
   - component: {fileID: 1111671258}
   m_Layer: 5
   m_Name: Back Panel Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6833,7 +6877,7 @@ GameObject:
   - component: {fileID: 1117869969}
   m_Layer: 5
   m_Name: Achievement Object (12)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6958,7 +7002,7 @@ GameObject:
   - component: {fileID: 1121607751}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7147,7 +7191,7 @@ GameObject:
   - component: {fileID: 1161207828}
   m_Layer: 5
   m_Name: Achievement Object (9)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7272,7 +7316,7 @@ GameObject:
   - component: {fileID: 1161757028}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7368,7 +7412,7 @@ GameObject:
   - component: {fileID: 1176769870}
   m_Layer: 5
   m_Name: Close Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7512,7 +7556,7 @@ GameObject:
   - component: {fileID: 1179603355}
   m_Layer: 5
   m_Name: Money Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7607,7 +7651,7 @@ GameObject:
   - component: {fileID: 1186120915}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7744,7 +7788,7 @@ GameObject:
   - component: {fileID: 1189177846}
   m_Layer: 5
   m_Name: Achievement Object (15)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7869,7 +7913,7 @@ GameObject:
   - component: {fileID: 1199279129}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7964,7 +8008,7 @@ GameObject:
   - component: {fileID: 1202514862}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8099,7 +8143,7 @@ GameObject:
   - component: {fileID: 1222232336}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8235,7 +8279,7 @@ GameObject:
   - component: {fileID: 1229777841}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8330,7 +8374,7 @@ GameObject:
   - component: {fileID: 1233955665}
   m_Layer: 5
   m_Name: Money Background
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8403,7 +8447,7 @@ GameObject:
   - component: {fileID: 1256556679}
   m_Layer: 5
   m_Name: Handle Slide Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8443,7 +8487,7 @@ GameObject:
   - component: {fileID: 1300839630}
   m_Layer: 5
   m_Name: Achievement Object (16)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8567,7 +8611,7 @@ GameObject:
   - component: {fileID: 1392033846}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8703,7 +8747,7 @@ GameObject:
   - component: {fileID: 1393706070}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8800,7 +8844,7 @@ GameObject:
   - component: {fileID: 1401575588}
   m_Layer: 5
   m_Name: Options Menu Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8915,7 +8959,7 @@ GameObject:
   - component: {fileID: 1405501977}
   m_Layer: 5
   m_Name: Achievement Object
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9041,7 +9085,7 @@ GameObject:
   - component: {fileID: 1420498006}
   m_Layer: 5
   m_Name: Play Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9212,7 +9256,7 @@ GameObject:
   - component: {fileID: 1423225478}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9348,7 +9392,7 @@ GameObject:
   - component: {fileID: 1445875488}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9444,7 +9488,7 @@ GameObject:
   - component: {fileID: 1481810268}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9540,7 +9584,7 @@ GameObject:
   - component: {fileID: 1511256447}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9633,7 +9677,7 @@ GameObject:
   - component: {fileID: 1512497141}
   m_Layer: 0
   m_Name: UI
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9671,7 +9715,7 @@ GameObject:
   - component: {fileID: 1528992851}
   m_Layer: 5
   m_Name: Vertical Layout (Elements)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9737,7 +9781,7 @@ GameObject:
   - component: {fileID: 1556528618}
   m_Layer: 5
   m_Name: Scroll Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9790,7 +9834,7 @@ GameObject:
   - component: {fileID: 1561359149}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9884,7 +9928,7 @@ GameObject:
   - component: {fileID: 1570664996}
   m_Layer: 5
   m_Name: Sound
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9949,7 +9993,7 @@ GameObject:
   - component: {fileID: 1571150335}
   m_Layer: 5
   m_Name: Menu Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10085,7 +10129,7 @@ GameObject:
   - component: {fileID: 1576175713}
   m_Layer: 5
   m_Name: Achievement Object (3)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10209,7 +10253,7 @@ GameObject:
   - component: {fileID: 1584037747}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10341,7 +10385,7 @@ GameObject:
   - component: {fileID: 1610272883}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10380,7 +10424,7 @@ GameObject:
   - component: {fileID: 1637552591}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10475,7 +10519,7 @@ GameObject:
   - component: {fileID: 1641017937}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10612,7 +10656,7 @@ GameObject:
   - component: {fileID: 1644951341}
   m_Layer: 5
   m_Name: Achievement Object (6)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10738,7 +10782,7 @@ GameObject:
   - component: {fileID: 1653970011}
   m_Layer: 5
   m_Name: Achievement Object (20)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10862,7 +10906,7 @@ GameObject:
   - component: {fileID: 1657739117}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10998,7 +11042,7 @@ GameObject:
   - component: {fileID: 1678107680}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11095,7 +11139,7 @@ GameObject:
   - component: {fileID: 1710554931}
   m_Layer: 5
   m_Name: Achievement Object (11)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11218,7 +11262,7 @@ GameObject:
   - component: {fileID: 1716863871}
   m_Layer: 5
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11283,7 +11327,7 @@ GameObject:
   - component: {fileID: 1727571805}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11420,7 +11464,7 @@ GameObject:
   - component: {fileID: 1742226443}
   m_Layer: 5
   m_Name: Achievement Object (19)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11546,7 +11590,7 @@ GameObject:
   - component: {fileID: 1750953590}
   m_Layer: 5
   m_Name: Achievement Object (1)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11669,7 +11713,7 @@ GameObject:
   - component: {fileID: 1788380250}
   m_Layer: 5
   m_Name: Buttons
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11734,7 +11778,7 @@ GameObject:
   - component: {fileID: 1804227794}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11869,7 +11913,7 @@ GameObject:
   - component: {fileID: 1805802230}
   m_Layer: 5
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11945,7 +11989,7 @@ GameObject:
   - component: {fileID: 1807251807}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12042,7 +12086,7 @@ GameObject:
   - component: {fileID: 1827012583}
   m_Layer: 5
   m_Name: Achievement Object (7)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12168,7 +12212,7 @@ GameObject:
   - component: {fileID: 1831361630}
   m_Layer: 5
   m_Name: Achievement Object (13)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12294,7 +12338,7 @@ GameObject:
   - component: {fileID: 1840014292}
   m_Layer: 5
   m_Name: Main Menu Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12410,7 +12454,7 @@ GameObject:
   - component: {fileID: 1841573081}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12504,7 +12548,7 @@ GameObject:
   - component: {fileID: 1843778742}
   m_Layer: 5
   m_Name: Vertical Layout (container)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12588,7 +12632,7 @@ GameObject:
   - component: {fileID: 1871895040}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12723,7 +12767,7 @@ GameObject:
   - component: {fileID: 1896814455}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12798,7 +12842,7 @@ GameObject:
   - component: {fileID: 1926506294}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12875,7 +12919,7 @@ GameObject:
   - component: {fileID: 1926659861}
   m_Layer: 5
   m_Name: Decline Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13039,7 +13083,7 @@ GameObject:
   - component: {fileID: 1926816821}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13135,7 +13179,7 @@ GameObject:
   - component: {fileID: 1942121321}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13231,7 +13275,7 @@ GameObject:
   - component: {fileID: 1973581233}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13327,7 +13371,7 @@ GameObject:
   - component: {fileID: 1986604379}
   m_Layer: 5
   m_Name: Icon
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13423,7 +13467,7 @@ GameObject:
   - component: {fileID: 2039850794}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13520,7 +13564,7 @@ GameObject:
   - component: {fileID: 2041449528}
   m_Layer: 5
   m_Name: Achievement Object (2)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13644,7 +13688,7 @@ GameObject:
   - component: {fileID: 2059571226}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13779,7 +13823,7 @@ GameObject:
   - component: {fileID: 2075016583}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13915,7 +13959,7 @@ GameObject:
   - component: {fileID: 2075463857}
   m_Layer: 5
   m_Name: Achievments Button
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14088,7 +14132,7 @@ GameObject:
   - component: {fileID: 2085767410}
   m_Layer: 5
   m_Name: Achievement Object (10)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14212,7 +14256,7 @@ GameObject:
   - component: {fileID: 2091666480}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14348,7 +14392,7 @@ GameObject:
   - component: {fileID: 2097938329}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14443,7 +14487,7 @@ GameObject:
   - component: {fileID: 2117402423}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14518,7 +14562,7 @@ GameObject:
   - component: {fileID: 2121447909}
   m_Layer: 5
   m_Name: Background List
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14595,7 +14639,7 @@ GameObject:
   - component: {fileID: 2127371095}
   m_Layer: 5
   m_Name: Achievement Text (TMP)
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14731,7 +14775,7 @@ GameObject:
   - component: {fileID: 2133275443}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14827,7 +14871,7 @@ GameObject:
   - component: {fileID: 2140615277}
   m_Layer: 5
   m_Name: Check/Uncheck
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14914,4 +14958,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1158582802}
+  - {fileID: 1025442422}
   - {fileID: 1512497141}
