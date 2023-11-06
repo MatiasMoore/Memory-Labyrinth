@@ -15,6 +15,8 @@ public class PathCreator : MonoBehaviour
     //Final list of path points
     private List<Vector3> _pathPoints = new List<Vector3>();
 
+    private bool _isActive;
+
     //Property to check if the path is ready
     public bool isNewPathReady { get; private set; }
 
@@ -31,8 +33,23 @@ public class PathCreator : MonoBehaviour
         return _pathPoints;
     }
 
+    public void SetActive(bool isActive)
+    {
+        _isActive = isActive;
+        if (!isActive )
+        {
+            if ( _drawingPath != null ) 
+                StopCoroutine(_drawingPath);
+            _drawingPath = null;
+            _line.positionCount = 0;
+            isNewPathReady = false;
+        }
+    }
+
     private void Start()
     {
+        _isActive = true;
+
         //Functions need to be called on up/down touch events
         TouchControls.Instance.addCallbackToTouchDown(StartDrawing);
         TouchControls.Instance.addCallbackToTouchUp(StopDrawing);
@@ -48,10 +65,9 @@ public class PathCreator : MonoBehaviour
 
     private void StartDrawing(InputAction.CallbackContext context)
     {
-        if (_drawingPath != null)
-        {
-            StopCoroutine(_drawingPath);
-        }
+        if (!_isActive || _drawingPath != null) 
+            return;
+
         _pathPoints.Clear();
         _line.positionCount = 0;
 
@@ -71,6 +87,9 @@ public class PathCreator : MonoBehaviour
 
     private void StopDrawing(InputAction.CallbackContext context)
     {
+        if (!_isActive || _drawingPath == null)
+            return;
+
         StopCoroutine(_drawingPath);
         _drawingPath = null;
         _line.positionCount = 0;
