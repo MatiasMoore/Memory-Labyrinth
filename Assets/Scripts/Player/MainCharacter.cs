@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class MainCharacter : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class MainCharacter : MonoBehaviour
 
     void Start()
     {
+        TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+
         _objectMovement = new ObjectMovementState(
             GetComponent<Transform>(),
             GetComponent<Rigidbody2D>(),
@@ -60,6 +63,15 @@ public class MainCharacter : MonoBehaviour
     public void FollowPath(List<Vector3> path)
     {
         _objectMovement.FollowPath(path);
+    }
+
+
+    private void StopMovingOnTouch(InputAction.CallbackContext context)
+    {
+        if (_currentState != ObjectMovementState.State.Stay)
+        {
+            _objectMovement.StopMove();
+        }
     }
 
     public void StopMoving()
