@@ -3,14 +3,12 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private static GameObject _mainMenuCanvas, _optionsMenuCanvas, _achievementsMenuCanvas;
-    public static bool isInitialised { get; private set; }
+
+    public static MenuManager Instance { get; private set; }
 
     public static void Init()
     {
-        isInitialised = true;
-
         GameObject UI = GameObject.Find("UI");
-
         _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
         _optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
         _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
@@ -18,9 +16,6 @@ public class MenuManager : MonoBehaviour
 
     public static void OpenMenu(Menu menu, GameObject callingMenu)
     {
-        if (!isInitialised)
-            Init();
-
         switch(menu)
         {
             case Menu.MAIN:
@@ -35,5 +30,17 @@ public class MenuManager : MonoBehaviour
         }
 
         callingMenu.SetActive(false);
+    }
+
+    void Awake()
+    {
+        if (Instance != null) 
+            return;
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
+        Init();
     }
 }
