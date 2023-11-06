@@ -5,8 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void onClickPlay()
     {
-        Debug.Log("PLAY BUTTON CLICKED!");
-        SceneManager.LoadScene("Scenes/LevelPathFindingTest");
+        SceneManager.LoadScene(0);
     }
 
     public void onClickOptions()
@@ -16,6 +15,6 @@ public class MainMenu : MonoBehaviour
 
     public void onClickAchievements()
     {
-        MenuManager.OpenMenu(Menu.ACHIEVMENTS, gameObject);
+        MenuManager.OpenMenu(Menu.ACHIEVEMENTS, gameObject);
     }
 }
