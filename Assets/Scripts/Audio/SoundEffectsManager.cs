@@ -21,14 +21,17 @@ public class SoundEffectsManager : MonoBehaviour
 
     public void PlaySoundEffect(ResourceManager.SoundEffect soundEffect)
     {
-        Debug.Log("Audio: Playing sound effect");
         var clip = ResourceManager.GetAudioClip(soundEffect);
+        if (clip == null)
+            throw new System.Exception("Audio file for sound effect " + soundEffect.ToString() + " couldn't be found");
         _audioSource.PlayOneShot(clip);
     }
 
     public void PlaySoundEffect(ResourceManager.SoundEffect soundEffect, AudioSource audioSource)
     {
         var clip = ResourceManager.GetAudioClip(soundEffect);
+        if (clip == null)
+            throw new System.Exception("Audio file for sound effect " + soundEffect.ToString() + " couldn't be found");
         audioSource.PlayOneShot(clip);
     }
 
