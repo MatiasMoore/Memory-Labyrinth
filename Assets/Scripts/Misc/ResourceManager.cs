@@ -8,7 +8,7 @@ public class ResourceManager : MonoBehaviour
     public static AudioClip GetAudioClip(SoundEffect soundEffect)
     {
         if (!_soundEffectToPath.ContainsKey(soundEffect))
-            throw new System.Exception("Sound effect doesn't have audio clip");
+            throw new System.Exception("Sound effect " + soundEffect.ToString() + " doesn't have audio clip");
 
         return Resources.Load<AudioClip>(_soundEffectToPath[soundEffect]);
     }
@@ -26,7 +26,7 @@ public class ResourceManager : MonoBehaviour
     {
         MenuClick,
         SliderClick,
-        LevelStart,
+        LevelStarted,
         LevelFinished,
         LevelFailed,
         PlayerHit,
@@ -46,6 +46,9 @@ public class ResourceManager : MonoBehaviour
         { SoundEffect.CheckpointActivated, _audioFilesDirectoryPath + "CheckpointActivated" },
         { SoundEffect.TeleportStarted, _audioFilesDirectoryPath + "TeleportStarted" },
         { SoundEffect.TeleportFinished, _audioFilesDirectoryPath + "TeleportFinished" },
+        { SoundEffect.LevelFinished, _audioFilesDirectoryPath + "LevelFinished" },
+        { SoundEffect.LevelFailed, _audioFilesDirectoryPath + "LevelFailed" },
+        { SoundEffect.LevelStarted, _audioFilesDirectoryPath + "LevelStarted" },
         { SoundEffect.NewPathPoint, _audioFilesDirectoryPath + "NewPathPoint" },
     };
 
