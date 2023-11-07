@@ -3,7 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private static GameObject _mainMenuCanvas, _optionsMenuCanvas, _achievementsMenuCanvas, _pauseMenuCanvas, _gameWindow = null;
+    [SerializeField] private static GameObject _mainMenuCanvas;
+    [SerializeField] private static GameObject _optionsMenuCanvas;
+    [SerializeField] private static GameObject _achievementsMenuCanvas;
+    [SerializeField] private static GameObject _pauseMenuCanvas;
+    [SerializeField] private static GameObject _gameWindow;
+
+    public enum Page
+    {
+        MAIN,
+        OPTIONS,
+        ACHIEVEMENTS,
+        PAUSE,
+        GAME,
+        WIN,
+        LOSE
+    }
 
     private static void Init()
     {
@@ -37,7 +52,7 @@ public class MenuManager : MonoBehaviour
                 SetActivePage(_gameWindow);
                 break;
         }
-        
+
         SetInactivePage(callingPage);
     }
 
