@@ -30,9 +30,9 @@ public class MenuManager : MonoBehaviour
     private static void Init()
     {
         GameObject UI = GameObject.Find("UI");
-        _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
-        _optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
-        _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
+        _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
+        _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
+        _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
     }
 
     public static void OpenPage(Page page, GameObject callingPage)
@@ -56,16 +56,16 @@ public class MenuManager : MonoBehaviour
         // По хорошему сделать enum где хранятся buildindex каждой сцены и из него брать
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
-            _optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
-            _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
+            _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
+            _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
+            _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
         }
         else
         {
-            _gameWindow = GameObject.Find("Level Model").transform.gameObject;
-            _pauseMenuCanvas = UI.transform.Find("Pause Menu (Canvas)").gameObject;
-            _winPanel = UI.transform.Find("Win Panel (Canvas)").gameObject;
-            _losePanel = UI.transform.Find("Lose Panel (Canvas)").gameObject;
+            _gameWindow = GameObject.Find(GetPageName(Page.GAME)).transform.gameObject;
+            _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
+            _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
+            _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
         }
     }
 
@@ -88,6 +88,31 @@ public class MenuManager : MonoBehaviour
             case Page.GAME:
                 return _gameWindow;
             default:
+                Debug.LogError("MENU MANAGER: GetPageGameObject -> return null");
+                return null;
+        }
+    }
+
+    private static string GetPageName(Page page)
+    {
+        switch (page)
+        {
+            case Page.MAIN:
+                return new string("Main Menu Canvas");
+            case Page.OPTIONS:
+                return new string("Options Menu Canvas");
+            case Page.ACHIEVEMENTS:
+                return new string("Achievements Menu Canvas");
+            case Page.PAUSE:
+                return new string("Pause Menu (Canvas)");
+            case Page.WIN:
+                return new string("Win Panel (Canvas)");
+            case Page.LOSE:
+                return new string("Lose Panel (Canvas)");
+            case Page.GAME:
+                return new string("Level Model");
+            default:
+                Debug.LogError("MENU MANAGER: GetPageName -> return null");
                 return null;
         }
     }
