@@ -10,11 +10,11 @@ public class MainMenu : MonoBehaviour
 
     public void onClickOptions()
     {
-        MenuManager.OpenPage(Page.OPTIONS, gameObject);
+        MenuManager.OpenPage(MenuManager.Page.OPTIONS, gameObject);
     }
 
     public void onClickAchievements()
     {
-        MenuManager.OpenPage(Page.ACHIEVEMENTS, gameObject);
+        MenuManager.OpenPage(MenuManager.Page.ACHIEVEMENTS, gameObject);
     }
 }

@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     public void OnClickResume()
     {
         Debug.Log("RESUMED!");
-        MenuManager.OpenPage(Page.GAME, gameObject);
+        MenuManager.OpenPage(MenuManager.Page.GAME, gameObject);
         Time.timeScale = 1f;
         _isPaused = false;
     }
