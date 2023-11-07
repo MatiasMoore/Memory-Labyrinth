@@ -28,30 +28,17 @@ public class MenuManager : MonoBehaviour
         _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
     }
 
-    public static void OpenPage(Page Page, GameObject callingPage)
+    public static void OpenPage(Page page, GameObject callingPage)
     {
         // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
         // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
         UpdatePages();
 
-        switch(Page)
-        {
-            case Page.MAIN:
-                SetActivePage(_mainMenuCanvas);
-                break;
-            case Page.OPTIONS:
-                SetActivePage(_optionsMenuCanvas);
-                break;
-            case Page.ACHIEVEMENTS:
-                SetActivePage(_achievementsMenuCanvas);
-                break;
-            case Page.PAUSE:
-                SetActivePage(_pauseMenuCanvas);
-                break;
-            case Page.GAME:
-                SetActivePage(_gameWindow);
-                break;
-        }
+        GameObject activatedPage = GetPageGameObject(page);
+        if(activatedPage != null)
+            SetActivePage(activatedPage);
+        else
+            Debug.LogError("MENU MANAGER: activated page is null");
 
         SetInactivePage(callingPage);
     }
@@ -84,6 +71,25 @@ public class MenuManager : MonoBehaviour
     {
         if(menuObject != null)
             menuObject.SetActive(false);
+    }
+
+    private static GameObject GetPageGameObject(Page page)
+    {
+        switch (page)
+        {
+            case Page.MAIN:
+                return _mainMenuCanvas;
+            case Page.OPTIONS:
+                return _optionsMenuCanvas;
+            case Page.ACHIEVEMENTS:
+                return _achievementsMenuCanvas;
+            case Page.PAUSE:
+                return _pauseMenuCanvas;
+            case Page.GAME:
+                return _gameWindow;
+            default:
+                return null;
+        }
     }
 
     private void Awake()
