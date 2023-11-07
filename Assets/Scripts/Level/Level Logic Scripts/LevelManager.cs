@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     private GameObject _levelPrefab;
 
     [SerializeField]
-    private ResourceManagerForLevels.Level _currentLevel;
+    private ResourceManager.Level _currentLevel;
 
     public void Start()
     {
@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     public void StartLevel()
     {
         //place prefab on scene
-        _levelPrefab = ResourceManagerForLevels.LoadLevel(_currentLevel);
+        _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
         Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 }

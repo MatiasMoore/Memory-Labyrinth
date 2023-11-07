@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -62,5 +63,32 @@ public class ResourceManager : MonoBehaviour
         { Music.MenuMusic, _musicFilesDirectoryPath + "MenuMusic" },
         { Music.LevelMusic, _musicFilesDirectoryPath + "LevelMusic" }
     };
+
+    public enum Level
+    {
+        Level1
+    }
+
+    [SerializeField]
+    private static string _pathToLevels = "assets/Prefabs/Levels/";
+
+    [SerializeField]
+    private static Dictionary<Level, string> _levels = new Dictionary<Level,string>()
+    {
+        {Level.Level1, _pathToLevels + "Level1.prefab"}
+    };
+
+    public static GameObject LoadLevel(Level levelToLoad)
+    {
+        if (_levels.ContainsKey(levelToLoad))
+        {
+            return AssetDatabase.LoadAssetAtPath<GameObject>(_levels[levelToLoad]);
+        }
+        else
+        {
+            Debug.LogError($"Level {levelToLoad} not found");
+            return null;
+        }
+    }    
 
 }
