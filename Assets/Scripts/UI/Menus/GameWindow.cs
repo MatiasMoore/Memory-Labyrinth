@@ -8,6 +8,7 @@ public class GameWindow : MonoBehaviour
     {
         Debug.Log("PAUSED!");
         MenuManager.OpenPage(Page.PAUSE, null);
+        Time.timeScale = 0f;
         PauseMenu._isPaused = true;
     }
 }
