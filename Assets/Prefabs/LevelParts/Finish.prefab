@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2533539919433591461}
   - component: {fileID: 3763603288433475554}
   - component: {fileID: 9103178320758241374}
-  - component: {fileID: 6560019410809001161}
   - component: {fileID: 1557926887669940901}
   m_Layer: 0
   m_Name: Finish
@@ -132,33 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &6560019410809001161
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2938282033239356441}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &1557926887669940901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +143,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f4390c1b5ca374f968773fbc7ca8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _finishEvent:
-    m_PersistentCalls:
-      m_Calls: []

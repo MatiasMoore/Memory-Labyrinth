@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelModel : MonoBehaviour
 {
@@ -9,6 +10,15 @@ public class LevelModel : MonoBehaviour
 
     [SerializeField]
     private Checkpoint _currentCheckpoint;
+
+    [SerializeField]
+    private UnityEvent _onLevelLose;
+
+    [SerializeField]
+    private UnityEvent _onLevelWin;
+
+    [SerializeField]
+    private UnityEvent _onPlayerGetBonus;
 
     [SerializeField]
     int _bonusMoneyAmount;
@@ -27,11 +37,13 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDeath()
     {
         Debug.Log("Player died");
+        _onLevelLose.Invoke();
     }
 
     public void onPlayerWin()
     {
         Debug.Log("Player win");
+        _onLevelWin.Invoke();
     }
 
     public void onPlayerDamage()
@@ -43,6 +55,7 @@ public class LevelModel : MonoBehaviour
     public void onPlayerGetBonus(int value)
     {
         _bonusMoneyAmount += value;
+        _onPlayerGetBonus.Invoke();
         Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
     }
 
@@ -57,5 +70,20 @@ public class LevelModel : MonoBehaviour
         {
             _currentCheckpoint = checkpoint;
         }
+    }
+
+    public void AddOnFinishAction(UnityAction action)
+    {
+        _onLevelWin.AddListener(action);
+    }
+
+    public void AddOnLoseAction(UnityAction action)
+    {
+        _onLevelLose.AddListener(action);
+    }
+
+    public void AddOnBonusAction(UnityAction action)
+    {
+        _onPlayerGetBonus.AddListener(action);
     }
 }
