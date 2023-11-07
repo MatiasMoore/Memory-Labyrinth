@@ -41,12 +41,10 @@ public class MenuManager : MonoBehaviour
         // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
         UpdatePages();
 
-        GameObject activatedPage = GetPageGameObject(page);
-        if(activatedPage != null)
-            SetActivePage(activatedPage);
-        else
-            Debug.LogError("MENU MANAGER: OpenPage -> activated page is null");
+        // Enable required page
+        SetActivePage(GetPageGameObject(page));
 
+        // Disable calling page
         SetInactivePage(callingPage);
     }
 
