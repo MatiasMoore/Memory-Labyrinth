@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ResourceManager;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
@@ -21,11 +22,14 @@ public class MusicManager : MonoBehaviour
     public void PlayMusic(ResourceManager.Music music)
     {
         var musicClip = ResourceManager.GetAudioClip(music);
+        if (musicClip == null)
+            throw new System.Exception("Audio file for music " + music.ToString() + " couldn't be found");
         if (_audioSource.isPlaying)
         {
             _audioSource.Stop();
         }
         _audioSource.clip = musicClip;
+        _audioSource.loop = true;
         _audioSource.Play();
     }
 
