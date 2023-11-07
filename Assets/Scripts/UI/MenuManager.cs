@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private static GameObject _mainMenuCanvas;
-    [SerializeField] private static GameObject _optionsMenuCanvas;
-    [SerializeField] private static GameObject _achievementsMenuCanvas;
-    [SerializeField] private static GameObject _pauseMenuCanvas;
-    [SerializeField] private static GameObject _gameWindow;
-    [SerializeField] private static GameObject _winPanel;
-    [SerializeField] private static GameObject _losePanel;
+    private static GameObject _mainMenuCanvas;
+    private static GameObject _optionsMenuCanvas;
+    private static GameObject _achievementsMenuCanvas;
+    private static GameObject _pauseMenuCanvas;
+    private static GameObject _gameWindow;
+    private static GameObject _winPanel;
+    private static GameObject _losePanel;
 
     public enum Page
     {
