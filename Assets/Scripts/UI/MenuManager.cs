@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private static GameObject _pauseMenuCanvas;
     [SerializeField] private static GameObject _gameWindow;
     [SerializeField] private static GameObject _winPanel;
+    [SerializeField] private static GameObject _losePanel;
 
     public enum Page
     {
@@ -60,6 +61,7 @@ public class MenuManager : MonoBehaviour
             _gameWindow = LevelModel.transform.gameObject;
             _pauseMenuCanvas = UI.transform.Find("Pause Menu (Canvas)").gameObject;
             _winPanel = UI.transform.Find("Win Panel (Canvas)").gameObject;
+            _losePanel = UI.transform.Find("Lose Panel (Canvas)").gameObject;
         }
     }
 
@@ -89,6 +91,8 @@ public class MenuManager : MonoBehaviour
                 return _pauseMenuCanvas;
             case Page.WIN:
                 return _winPanel;
+            case Page.LOSE:
+                return _losePanel;
             case Page.GAME:
                 return _gameWindow;
             default:
