@@ -4,6 +4,6 @@ public class OptionsMenu : MonoBehaviour
 {
     public void onClickBack()
     {
-        MenuManager.OpenPage(Page.MAIN, gameObject);
+        MenuManager.OpenPage(MenuManager.Page.MAIN, gameObject);
     }
 }
