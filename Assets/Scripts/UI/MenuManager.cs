@@ -22,6 +22,11 @@ public class MenuManager : MonoBehaviour
         LOSE
     }
 
+    private void Awake()
+    {
+        Init();
+    }
+
     private static void Init()
     {
         GameObject UI = GameObject.Find("UI");
@@ -40,7 +45,7 @@ public class MenuManager : MonoBehaviour
         if(activatedPage != null)
             SetActivePage(activatedPage);
         else
-            Debug.LogError("MENU MANAGER: activated page is null");
+            Debug.LogError("MENU MANAGER: OpenPage -> activated page is null");
 
         SetInactivePage(callingPage);
     }
@@ -48,7 +53,6 @@ public class MenuManager : MonoBehaviour
     private static void UpdatePages()
     {
         GameObject UI = GameObject.Find("UI");
-        GameObject LevelModel = GameObject.Find("Level Model");
         // По хорошему сделать enum где хранятся buildindex каждой сцены и из него брать
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
@@ -58,23 +62,11 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            _gameWindow = LevelModel.transform.gameObject;
+            _gameWindow = GameObject.Find("Level Model").transform.gameObject;
             _pauseMenuCanvas = UI.transform.Find("Pause Menu (Canvas)").gameObject;
             _winPanel = UI.transform.Find("Win Panel (Canvas)").gameObject;
             _losePanel = UI.transform.Find("Lose Panel (Canvas)").gameObject;
         }
-    }
-
-    private static void SetActivePage(GameObject menuObject)
-    {
-        if (menuObject != null)
-            menuObject.SetActive(true);
-    }
-
-    private static void SetInactivePage(GameObject menuObject)
-    {
-        if(menuObject != null)
-            menuObject.SetActive(false);
     }
 
     private static GameObject GetPageGameObject(Page page)
@@ -100,8 +92,19 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private static void SetActivePage(GameObject menuObject)
     {
-        Init();
+        if (menuObject != null)
+            menuObject.SetActive(true);
+        else
+            Debug.LogError("MENU MANAGER: SetActivePage -> page is null");
+    }
+
+    private static void SetInactivePage(GameObject menuObject)
+    {
+        if(menuObject != null)
+            menuObject.SetActive(false);
+        else
+            Debug.LogError("MENU MANAGER: SetInactivePage -> page is null");
     }
 }
