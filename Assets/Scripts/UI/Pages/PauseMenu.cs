@@ -12,7 +12,6 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickResume()
     {
-        Debug.Log("RESUMED!");
         MenuManager.OpenPage(MenuManager.Page.GAME, gameObject);
         Time.timeScale = 1f;
         _isPaused = false;
@@ -20,7 +19,6 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickToMainMenu()
     {
-        Debug.Log("MAIN MENU!");
         // «десь должен быть Scene Manager (при этом братьс€ ID главного меню)
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
@@ -28,7 +26,6 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickRestart()
     {
-        Debug.Log("RESTARTED!");
         // «десь должен быть Scene Manager (при этом братьс€ ID текущего уровн€)
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
