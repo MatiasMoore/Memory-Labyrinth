@@ -522,6 +522,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2105625447552125853, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1974046542}
+    - target: {fileID: 2105625447552125853, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickPause
+      objectReference: {fileID: 0}
     - target: {fileID: 6208607949766528626, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -541,22 +549,6 @@ PrefabInstance:
     - target: {fileID: 6208607949766528626, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -48.09895
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289167620673276153, guid: 59397a5840843a74186427538eaad3be, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289167620673276153, guid: 59397a5840843a74186427538eaad3be, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289167620673276153, guid: 59397a5840843a74186427538eaad3be, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6289167620673276153, guid: 59397a5840843a74186427538eaad3be, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7214596251200928358, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1006,6 +998,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974046541}
   - component: {fileID: 1974046540}
+  - component: {fileID: 1974046542}
   m_Layer: 0
   m_Name: Level Model
   m_TagString: Untagged
@@ -1048,6 +1041,18 @@ Transform:
   - {fileID: 1793641960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974046542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974046539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2e5b539d7e8fc41ac688739141a377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
