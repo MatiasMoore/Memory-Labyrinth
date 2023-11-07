@@ -8,7 +8,7 @@ public class ResourceManager : MonoBehaviour
     public static AudioClip GetAudioClip(SoundEffect soundEffect)
     {
         if (!_soundEffectToPath.ContainsKey(soundEffect))
-            throw new System.Exception("Sound effect doesn't have audio clip");
+            throw new System.Exception("Sound effect " + soundEffect.ToString() + " doesn't have audio clip");
 
         return Resources.Load<AudioClip>(_soundEffectToPath[soundEffect]);
     }
