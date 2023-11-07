@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class Teleport : MonoBehaviour
 {
     [SerializeField]
@@ -11,7 +10,6 @@ public class Teleport : MonoBehaviour
 
     public void Start()
     {
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
