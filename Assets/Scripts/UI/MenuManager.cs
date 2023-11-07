@@ -7,7 +7,6 @@ public class MenuManager : MonoBehaviour
     private static GameObject _optionsMenuCanvas;
     private static GameObject _achievementsMenuCanvas;
     private static GameObject _pauseMenuCanvas;
-    private static GameObject _gameWindow;
     private static GameObject _winPanel;
     private static GameObject _losePanel;
 
@@ -17,7 +16,6 @@ public class MenuManager : MonoBehaviour
         OPTIONS,
         ACHIEVEMENTS,
         PAUSE,
-        GAME,
         WIN,
         LOSE
     }
@@ -60,7 +58,6 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            _gameWindow = GameObject.Find(GetPageName(Page.GAME)).transform.gameObject;
             _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
             _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
             _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
@@ -83,8 +80,6 @@ public class MenuManager : MonoBehaviour
                 return _winPanel;
             case Page.LOSE:
                 return _losePanel;
-            case Page.GAME:
-                return _gameWindow;
             default:
                 Debug.LogError("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
                 return null;
@@ -107,8 +102,6 @@ public class MenuManager : MonoBehaviour
                 return new string("Win Panel (Canvas)");
             case Page.LOSE:
                 return new string("Lose Panel (Canvas)");
-            case Page.GAME:
-                return new string("Level Model");
             default:
                 Debug.LogError("MENU MANAGER: GetPageName -> return null (page is not defined in switch)");
                 return null;
@@ -127,7 +120,5 @@ public class MenuManager : MonoBehaviour
     {
         if(menuObject != null)
             menuObject.SetActive(false);
-        else
-            Debug.LogError("MENU MANAGER: SetInactivePage -> menuObject is null");
     }
 }
