@@ -1,12 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private static GameObject _mainMenuCanvas, _optionsMenuCanvas, _achievementsMenuCanvas;
+    [SerializeField] private static GameObject _mainMenuCanvas, _optionsMenuCanvas, _achievementsMenuCanvas, _pauseMenuCanvas, _gameWindow = null;
 
-    public static MenuManager Instance { get; private set; }
-
-    public static void Init()
+    private static void Init()
     {
         GameObject UI = GameObject.Find("UI");
         _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
@@ -14,33 +13,66 @@ public class MenuManager : MonoBehaviour
         _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
     }
 
-    public static void OpenMenu(Menu menu, GameObject callingMenu)
+    public static void OpenPage(Page Page, GameObject callingPage)
     {
-        switch(menu)
+        // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
+        // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
+        UpdatePages();
+
+        switch(Page)
         {
-            case Menu.MAIN:
-                _mainMenuCanvas.SetActive(true);
+            case Page.MAIN:
+                SetActivePage(_mainMenuCanvas);
                 break;
-            case Menu.OPTIONS:
-                _optionsMenuCanvas.SetActive(true);
+            case Page.OPTIONS:
+                SetActivePage(_optionsMenuCanvas);
                 break;
-            case Menu.ACHIEVEMENTS:
-                _achievementsMenuCanvas.SetActive(true);
+            case Page.ACHIEVEMENTS:
+                SetActivePage(_achievementsMenuCanvas);
+                break;
+            case Page.PAUSE:
+                SetActivePage(_pauseMenuCanvas);
+                break;
+            case Page.GAME:
+                SetActivePage(_gameWindow);
                 break;
         }
-
-        callingMenu.SetActive(false);
+        
+        SetInactivePage(callingPage);
     }
 
-    void Awake()
+    private static void UpdatePages()
     {
-        if (Instance != null) 
-            return;
+        GameObject UI = GameObject.Find("UI");
+        GameObject LevelModel = GameObject.Find("Level Model");
+        // По хорошему сделать enum где хранятся buildindex каждой сцены и из него брать
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            _mainMenuCanvas = UI.transform.Find("Main Menu Canvas").gameObject;
+            _optionsMenuCanvas = UI.transform.Find("Options Menu Canvas").gameObject;
+            _achievementsMenuCanvas = UI.transform.Find("Achievements Menu Canvas").gameObject;
+        }
+        else
+        {
+            _gameWindow = LevelModel.transform.gameObject;
+            _pauseMenuCanvas = UI.transform.Find("Pause Menu (Canvas)").gameObject;
+        }
+    }
 
-        Instance = this;
+    private static void SetActivePage(GameObject menuObject)
+    {
+        if (menuObject != null)
+            menuObject.SetActive(true);
+    }
 
-        DontDestroyOnLoad(gameObject);
+    private static void SetInactivePage(GameObject menuObject)
+    {
+        if(menuObject != null)
+            menuObject.SetActive(false);
+    }
 
+    private void Awake()
+    {
         Init();
     }
 }
