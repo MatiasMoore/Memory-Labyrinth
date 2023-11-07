@@ -12,7 +12,8 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickResume()
     {
-        MenuManager.OpenPage(MenuManager.Page.GAME, gameObject);
+        // Это временный фикс (НАДО ДОБАВИТЬ В ENUM PAGES поле NULL и от этого отталкиваться)
+        MenuManager.OpenPage(MenuManager.Page.PAUSE, gameObject);
         Time.timeScale = 1f;
         _isPaused = false;
     }
