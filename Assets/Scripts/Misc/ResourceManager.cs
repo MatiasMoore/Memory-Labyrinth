@@ -36,16 +36,16 @@ public class ResourceManager : MonoBehaviour
         NewPathPoint
     }
 
-    const string audioFilesDirectoryPath = "Audio/SoundEffects/";
+    const string _audioFilesDirectoryPath = "Audio/SoundEffects/";
 
     private static Dictionary<SoundEffect, string> _soundEffectToPath = new Dictionary<SoundEffect, string>
     {
-        { SoundEffect.PlayerHit, audioFilesDirectoryPath + "PlayerHit" },
-        { SoundEffect.BonusPickup, audioFilesDirectoryPath + "BonusPickup" },
-        { SoundEffect.CheckpointActivated, audioFilesDirectoryPath + "CheckpointActivated" },
-        { SoundEffect.TeleportStarted, audioFilesDirectoryPath + "TeleportStarted" },
-        { SoundEffect.TeleportFinished, audioFilesDirectoryPath + "TeleportFinished" },
-        { SoundEffect.NewPathPoint, audioFilesDirectoryPath + "NewPathPoint" },
+        { SoundEffect.PlayerHit, _audioFilesDirectoryPath + "PlayerHit" },
+        { SoundEffect.BonusPickup, _audioFilesDirectoryPath + "BonusPickup" },
+        { SoundEffect.CheckpointActivated, _audioFilesDirectoryPath + "CheckpointActivated" },
+        { SoundEffect.TeleportStarted, _audioFilesDirectoryPath + "TeleportStarted" },
+        { SoundEffect.TeleportFinished, _audioFilesDirectoryPath + "TeleportFinished" },
+        { SoundEffect.NewPathPoint, _audioFilesDirectoryPath + "NewPathPoint" },
     };
 
     //Music
@@ -55,12 +55,12 @@ public class ResourceManager : MonoBehaviour
         LevelMusic
     }
 
-    const string musicFilesDirectoryPath = "Audio/Music/";
+    const string _musicFilesDirectoryPath = "Audio/Music/";
 
     private static Dictionary<Music, string> _musicToPath = new Dictionary<Music, string>
     {
-        { Music.MenuMusic, musicFilesDirectoryPath + "MenuMusic" },
-        { Music.LevelMusic, musicFilesDirectoryPath + "LevelMusic" }
+        { Music.MenuMusic, _musicFilesDirectoryPath + "MenuMusic" },
+        { Music.LevelMusic, _musicFilesDirectoryPath + "LevelMusic" }
     };
 
 }
