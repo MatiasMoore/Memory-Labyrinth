@@ -88,7 +88,7 @@ public class MenuManager : MonoBehaviour
             case Page.GAME:
                 return _gameWindow;
             default:
-                Debug.LogError("MENU MANAGER: GetPageGameObject -> return null");
+                Debug.LogError("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
                 return null;
         }
     }
@@ -112,7 +112,7 @@ public class MenuManager : MonoBehaviour
             case Page.GAME:
                 return new string("Level Model");
             default:
-                Debug.LogError("MENU MANAGER: GetPageName -> return null");
+                Debug.LogError("MENU MANAGER: GetPageName -> return null (page is not defined in switch)");
                 return null;
         }
     }
@@ -122,7 +122,7 @@ public class MenuManager : MonoBehaviour
         if (menuObject != null)
             menuObject.SetActive(true);
         else
-            Debug.LogError("MENU MANAGER: SetActivePage -> page is null");
+            Debug.LogError("MENU MANAGER: SetActivePage -> menuObject is null");
     }
 
     private static void SetInactivePage(GameObject menuObject)
@@ -130,6 +130,6 @@ public class MenuManager : MonoBehaviour
         if(menuObject != null)
             menuObject.SetActive(false);
         else
-            Debug.LogError("MENU MANAGER: SetInactivePage -> page is null");
+            Debug.LogError("MENU MANAGER: SetInactivePage -> menuObject is null");
     }
 }
