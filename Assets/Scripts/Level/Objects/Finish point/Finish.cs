@@ -7,9 +7,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Finish : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEvent<Collider2D> _finishEvent;
-
     public void Start()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
@@ -18,11 +15,16 @@ public class Finish : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _finishEvent.Invoke(other);
-    }
-
-    public void AddOnTriggerAction(UnityAction<Collider2D> action)
-    {
-        _finishEvent.AddListener(action);
+        FinishCompatible finishObject =
+            other.gameObject.GetComponent<FinishCompatible>();
+        if (finishObject != null)
+        {
+            Debug.Log($"Finish {other.gameObject.name}");
+            finishObject.OnFinish(other);
+        }
+        else
+        {
+            Debug.Log($"{other.gameObject.name} can't finish");
+        }   
     }
 }

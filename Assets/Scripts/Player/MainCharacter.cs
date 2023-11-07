@@ -21,6 +21,9 @@ public class MainCharacter : MonoBehaviour
     private UnityEvent<int> _onBonusEvent;
 
     [SerializeField]
+    private UnityEvent _onFinishEvent;
+
+    [SerializeField]
     private UnityEvent<Checkpoint> _onCheckpointEvent;
 
     [SerializeField]
@@ -102,6 +105,17 @@ public class MainCharacter : MonoBehaviour
     public void getCheckpoint(Checkpoint checkpoint)
     {
         _onCheckpointEvent.Invoke(checkpoint);
+    }
+
+    public void Finish()
+    {
+        _objectMovement.StopMove();
+        _onFinishEvent.Invoke();
+    }
+
+    public void AddOnFinishAction(UnityAction listener)
+    {
+        _onFinishEvent.AddListener(listener);
     }
 
     public void AddOnCheckpointAction(UnityAction<Checkpoint> listener)
