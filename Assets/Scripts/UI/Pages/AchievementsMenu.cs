@@ -4,6 +4,7 @@ public class AchievementsMenu: MonoBehaviour
 {
     public void onClickBack()
     {
-        MenuManager.OpenPage(MenuManager.Page.MAIN, gameObject);
+        MenuManager.ClosePage(MenuManager.Page.ACHIEVEMENTS);
+        MenuManager.OpenPage(MenuManager.Page.MAIN);
     }
 }

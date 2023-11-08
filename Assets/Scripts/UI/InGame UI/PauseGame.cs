@@ -7,7 +7,7 @@ public class PauseGame : MonoBehaviour
     public void OnClickPause()
     {
         Debug.Log("PAUSED!");
-        MenuManager.OpenPage(MenuManager.Page.PAUSE, null);
+        MenuManager.OpenPage(MenuManager.Page.PAUSE);
         Time.timeScale = 0f;
         PauseMenu._isPaused = true;
     }
