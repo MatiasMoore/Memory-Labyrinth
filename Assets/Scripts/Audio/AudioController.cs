@@ -36,8 +36,6 @@ public class AudioController : MonoBehaviour
             levelModel.AddOnFinishAction(PlayLevelFinishedSound);
             levelModel.AddOnLoseAction(PlayLevelFailedSound);
         }
-
-        MusicManager.Instance.PlayMusic(ResourceManager.Music.LevelMusic);
     }
 
     private void SceneChanged(Scene prev, Scene current)
