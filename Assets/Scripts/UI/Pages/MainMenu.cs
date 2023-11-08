@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void onClickPlay()
     {
-        SceneManager.LoadScene(0);
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
     }
 
     public void onClickOptions()

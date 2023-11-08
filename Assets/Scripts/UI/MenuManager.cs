@@ -56,18 +56,20 @@ public class MenuManager : MonoBehaviour
     private static void UpdatePages()
     {
         GameObject UI = GameObject.Find("UI");
-        // По хорошему сделать enum где хранятся buildindex каждой сцены и из него брать
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        var currentScene = ResourceManager.GetCurrentScene();
+
+        switch (currentScene)
         {
-            _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
-            _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
-            _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
-        }
-        else
-        {
-            _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
-            _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
-            _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
+            case ResourceManager.AvailableScene.MainMenu:
+                _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
+                _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
+                _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
+                break;
+            case ResourceManager.AvailableScene.GameField:
+                _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
+                _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
+                _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
+                break;
         }
     }
 

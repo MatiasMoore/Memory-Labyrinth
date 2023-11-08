@@ -24,15 +24,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickToMainMenu()
     {
-        // Здесь должен быть Scene Manager (при этом браться ID главного меню)
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
     }
 
     public void OnClickRestart()
     {
-        // Здесь должен быть Scene Manager (при этом браться ID текущего уровня)
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
+        // Надо чтоб подгружался префаб нужного уровня
     }
 }
