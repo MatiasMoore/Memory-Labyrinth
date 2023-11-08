@@ -81,6 +81,11 @@ public class ResourceManager : MonoBehaviour
         SceneManager.LoadScene(sceneBuildIndex);
     }
 
+    public static AvailableScene GetCurrentScene()
+    {
+        return (AvailableScene)SceneManager.GetActiveScene().buildIndex;
+    }
+
     public enum Level
     {
         Level1
