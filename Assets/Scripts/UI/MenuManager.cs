@@ -81,8 +81,7 @@ public class MenuManager : MonoBehaviour
             case Page.LOSE:
                 return _losePanel;
             default:
-                Debug.LogError("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
-                return null;
+                throw new System.Exception("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
         }
     }
 
@@ -103,8 +102,7 @@ public class MenuManager : MonoBehaviour
             case Page.LOSE:
                 return new string("Lose Panel (Canvas)");
             default:
-                Debug.LogError("MENU MANAGER: GetPageName -> return null (page is not defined in switch)");
-                return null;
+                throw new System.Exception("MENU MANAGER: GetPageName -> return null (page is not defined in switch)");
         }
     }
 
@@ -113,12 +111,14 @@ public class MenuManager : MonoBehaviour
         if (menuObject != null)
             menuObject.SetActive(true);
         else
-            Debug.LogError("MENU MANAGER: SetActivePage -> menuObject is null");
+            throw new System.Exception("MENU MANAGER: SetActivePage -> menuObject is null");
     }
 
     private static void SetInactivePage(GameObject menuObject)
     {
         if(menuObject != null)
             menuObject.SetActive(false);
+        else
+            throw new System.Exception("MENU MANAGER: SetInactivePage -> menuObject is null");
     }
 }
