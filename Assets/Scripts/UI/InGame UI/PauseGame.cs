@@ -9,6 +9,6 @@ public class PauseGame : MonoBehaviour
         Debug.Log("PAUSED!");
         MenuManager.OpenPage(MenuManager.Page.PAUSE);
         Time.timeScale = 0f;
-        PauseMenu._isPaused = true;
+        PauseMenu.setPausedGame(true);
     }
 }
