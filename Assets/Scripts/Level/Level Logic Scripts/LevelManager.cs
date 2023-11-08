@@ -21,6 +21,5 @@ public class LevelManager : MonoBehaviour
         //place prefab on scene
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
         Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        AudioController.Instance.Init();
     }
 }

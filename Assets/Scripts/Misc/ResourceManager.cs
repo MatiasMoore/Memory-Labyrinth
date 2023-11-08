@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -67,15 +68,31 @@ public class ResourceManager : MonoBehaviour
         { Music.LevelMusic, _musicFilesDirectoryPath + "LevelMusic" }
     };
 
+    public enum AvailableScene
+    {
+        Bootstrap = 0,
+        MainMenu = 1,
+        GameField = 2
+    }
+
+    public static void LoadScene(AvailableScene sceneToLoad)
+    {
+        int sceneBuildIndex = (int)sceneToLoad;
+        SceneManager.LoadScene(sceneBuildIndex);
+    }
+
+    public static AvailableScene GetCurrentScene()
+    {
+        return (AvailableScene)SceneManager.GetActiveScene().buildIndex;
+    }
+
     public enum Level
     {
         Level1
     }
 
-    [SerializeField]
     private static string _pathToLevels = "assets/Prefabs/Levels/";
 
-    [SerializeField]
     private static Dictionary<Level, string> _levels = new Dictionary<Level,string>()
     {
         {Level.Level1, _pathToLevels + "Level1.prefab"}

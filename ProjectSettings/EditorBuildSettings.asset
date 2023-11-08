@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/LevelPathFindingTest.unity
-    guid: 81cebeda1d884384b98f5c2c6a0a68e8
+    path: Assets/Scenes/Bootstrap.unity
+    guid: 7e6b6eea34ac8544a915e7192a5b3c6e
   - enabled: 1
     path: Assets/Scenes/UI/Start Menu.unity
     guid: dc016e1e753e77c43ba232d075d94e1e
+  - enabled: 1
+    path: Assets/Scenes/Game Field.unity
+    guid: c60a2a2c244ab4f48b1633dace1c00ed
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 6b28a60631dbc3d4a8dc4601214779a7, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 01c86f1947ba53944b2c4a7ca74d782f, type: 2}

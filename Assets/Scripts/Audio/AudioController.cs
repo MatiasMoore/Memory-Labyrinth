@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class AudioController : MonoBehaviour
@@ -14,6 +15,11 @@ public class AudioController : MonoBehaviour
     }
 
     public void Init()
+    {
+        SceneManager.activeSceneChanged += SceneChanged;
+    }
+
+    public void SetupListeners()
     {
         var mainCharacter = FindObjectOfType<MainCharacter>();
         if (mainCharacter != null) 
@@ -32,6 +38,19 @@ public class AudioController : MonoBehaviour
         }
 
         MusicManager.Instance.PlayMusic(ResourceManager.Music.LevelMusic);
+    }
+
+    private void SceneChanged(Scene prev, Scene current)
+    {
+        PlayMusicForScene(ResourceManager.GetCurrentScene());
+    }
+
+    private void PlayMusicForScene(ResourceManager.AvailableScene scene)
+    {
+        if (scene == ResourceManager.AvailableScene.MainMenu)
+            MusicManager.Instance.PlayMusic(ResourceManager.Music.MenuMusic);
+        else if (scene == ResourceManager.AvailableScene.GameField)
+            MusicManager.Instance.PlayMusic(ResourceManager.Music.LevelMusic);
     }
 
     private void PlayBonusPickupSound(int bonusValue)
