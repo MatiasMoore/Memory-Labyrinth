@@ -8,13 +8,18 @@ public class PauseMenu : MonoBehaviour
      * 2) Надо что-то придумать с загрузкой этого же самого уровня при нажатии на кнопку рестарта (сейчас загружается только тестовый уровень (по ID))
     */
 
-    public static bool _isPaused = false;
+    private static bool _isPausedGame = false;
+
+    public static void setPausedGame(bool flag)
+    {
+        _isPausedGame = flag;
+    }
 
     public void OnClickResume()
     {
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
         Time.timeScale = 1f;
-        _isPaused = false;
+        setPausedGame(false);
     }
 
     public void OnClickToMainMenu()
