@@ -46,9 +46,9 @@ public class AudioController : MonoBehaviour
     private void PlayMusicForScene(ResourceManager.AvailableScene scene)
     {
         if (scene == ResourceManager.AvailableScene.MainMenu)
-            MusicManager.Instance.PlayMusic(ResourceManager.Music.MenuMusic);
+            MusicManager.Instance.PlayMusicWithBlending(ResourceManager.Music.MenuMusic);
         else if (scene == ResourceManager.AvailableScene.GameField)
-            MusicManager.Instance.PlayMusic(ResourceManager.Music.LevelMusic);
+            MusicManager.Instance.PlayMusicWithBlending(ResourceManager.Music.LevelMusic);
     }
 
     private void PlayBonusPickupSound(int bonusValue)
