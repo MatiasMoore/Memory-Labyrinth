@@ -72,10 +72,8 @@ public class ResourceManager : MonoBehaviour
         Level1
     }
 
-    [SerializeField]
     private static string _pathToLevels = "assets/Prefabs/Levels/";
 
-    [SerializeField]
     private static Dictionary<Level, string> _levels = new Dictionary<Level,string>()
     {
         {Level.Level1, _pathToLevels + "Level1.prefab"}
