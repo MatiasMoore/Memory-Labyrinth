@@ -68,6 +68,12 @@ public class PathCreator : MonoBehaviour
         if (!_isActive || _drawingPath != null) 
             return;
 
+        //Don't start drawing a path if the player is not touching a path
+        Vector2 touchWorldPos = TouchControls.Instance.getTouchWorldPosition2d();
+        Collider2D colliderTouchedByPlayer = Physics2D.OverlapPoint(touchWorldPos, 1 << LayerMask.NameToLayer("Path"));
+        if (colliderTouchedByPlayer == null)
+            return;
+
         _pathPoints.Clear();
         _line.positionCount = 0;
 
