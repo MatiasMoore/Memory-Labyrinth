@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
     }
 
-    public static void OpenPage(Page page, GameObject callingPage)
+    public static void OpenPage(Page page)
     {
         // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
         // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
@@ -41,9 +41,16 @@ public class MenuManager : MonoBehaviour
 
         // Enable required page
         SetActivePage(GetPageGameObject(page));
+    }
 
-        // Disable calling page
-        SetInactivePage(callingPage);
+    public static void ClosePage(Page page)
+    {
+        // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
+        // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
+        UpdatePages();
+
+        // Disable required page
+        SetInactivePage(GetPageGameObject(page));
     }
 
     private static void UpdatePages()
