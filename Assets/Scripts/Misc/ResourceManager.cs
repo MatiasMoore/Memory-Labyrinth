@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -66,6 +67,19 @@ public class ResourceManager : MonoBehaviour
         { Music.MenuMusic, _musicFilesDirectoryPath + "MenuMusic" },
         { Music.LevelMusic, _musicFilesDirectoryPath + "LevelMusic" }
     };
+
+    public enum AvailableScene
+    {
+        Bootstrap = 0,
+        MainMenu = 1,
+        GameField = 2
+    }
+
+    public static void LoadScene(AvailableScene sceneToLoad)
+    {
+        int sceneBuildIndex = (int)sceneToLoad;
+        SceneManager.LoadScene(sceneBuildIndex);
+    }
 
     public enum Level
     {
