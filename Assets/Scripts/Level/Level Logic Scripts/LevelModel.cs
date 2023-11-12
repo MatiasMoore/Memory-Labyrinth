@@ -23,6 +23,14 @@ public class LevelModel : MonoBehaviour
     [SerializeField]
     int _bonusMoneyAmount;
 
+    [SerializeField]
+    private GameObject _rightPathBuilder;
+
+    [SerializeField]
+    private float _startLevelTime;
+
+    private float _timer;
+
     public void Start()
     {
         _mainCharacter.AddOnDamageAction(onPlayerDamage);
@@ -31,7 +39,19 @@ public class LevelModel : MonoBehaviour
         _mainCharacter.AddOnCheckpointAction(onPlayerGetCheckpoint);
         _mainCharacter.AddOnFinishAction(onPlayerWin);
 
+        _rightPathBuilder.GetComponent<RightPathBuilder>().ShowRightPath(_startLevelTime * 0.9f);
+    }
 
+    public void FixedUpdate()
+    {
+        _timer += Time.fixedDeltaTime;
+
+        if (_timer > _startLevelTime && _timer != 0)
+        {
+            _rightPathBuilder.SetActive(false);
+            // Show fog
+        }
+        
     }
 
     public void onPlayerDeath()
