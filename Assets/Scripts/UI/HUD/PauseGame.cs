@@ -8,7 +8,7 @@ public class PauseGame : MonoBehaviour
     {
         Time.timeScale = 0f;
         MenuManager.OpenPage(MenuManager.Page.PAUSE);
-        PauseMenu.setPausedGame(true);
+        PauseMenu.SetPausedGame(true);
         Timer.SetTimerStatus(false);
 
         MenuManager.FireButtonClickAction();

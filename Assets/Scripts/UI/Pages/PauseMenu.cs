@@ -5,7 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     private static bool _isPausedGame = false;
 
-    public static void setPausedGame(bool flag)
+    public static void SetPausedGame(bool flag)
     {
         _isPausedGame = flag;
     }
@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
-        setPausedGame(false);
+        SetPausedGame(false);
         Timer.SetTimerStatus(true);
 
         MenuManager.FireButtonClickAction();
