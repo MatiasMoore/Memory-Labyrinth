@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     public static void FireButtonClickAction()
     {
         _buttonClick?.Invoke();
+        Debug.Log("MENU MANAGER: FireButtonClickAction()");
     }
 
     public enum Page
@@ -30,52 +31,39 @@ public class MenuManager : MonoBehaviour
 
     public static void OpenPage(Page page)
     {
-        UpdatePages();
         SetActivePage(GetPageGameObject(page));
     }
 
     public static void ClosePage(Page page)
     {
-        UpdatePages();
         SetInactivePage(GetPageGameObject(page));
-    }
-
-    private static void UpdatePages()
-    {
-        GameObject UI = GameObject.Find("UI");
-        var currentScene = ResourceManager.GetCurrentScene();
-
-        switch (currentScene)
-        {
-            case ResourceManager.AvailableScene.MainMenu:
-                _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
-                _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
-                _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
-                break;
-            case ResourceManager.AvailableScene.GameField:
-                _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
-                _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
-                _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
-                break;
-        }
     }
 
     private static GameObject GetPageGameObject(Page page)
     {
+        GameObject UI = GameObject.Find("UI");
+        if (UI == null)
+            throw new System.Exception("MENU MANAGER: GetPageGameObject -> No UI object in scene");
+
         switch (page)
         {
             case Page.MAIN:
-
+                _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
                 return _mainMenuCanvas;
             case Page.OPTIONS:
+                _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
                 return _optionsMenuCanvas;
             case Page.ACHIEVEMENTS:
+                _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
                 return _achievementsMenuCanvas;
             case Page.PAUSE:
+                _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
                 return _pauseMenuCanvas;
             case Page.WIN:
+                _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
                 return _winPanel;
             case Page.LOSE:
+                _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
                 return _losePanel;
             default:
                 throw new System.Exception("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
