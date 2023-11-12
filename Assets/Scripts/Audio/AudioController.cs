@@ -33,8 +33,8 @@ public class AudioController : MonoBehaviour
         var levelModel = FindObjectOfType<LevelModel>();
         if (levelModel != null) 
         {
-            levelModel.AddOnFinishAction(PlayLevelFinishedSound);
-            levelModel.AddOnLoseAction(PlayLevelFailedSound);
+            levelModel._onLevelWin += PlayLevelFinishedSound;
+            levelModel._onLevelLose += PlayLevelFailedSound;
         }
     }
 

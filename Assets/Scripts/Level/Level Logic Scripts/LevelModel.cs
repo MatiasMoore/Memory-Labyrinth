@@ -13,14 +13,11 @@ public class LevelModel : MonoBehaviour
     [SerializeField]
     private Checkpoint _currentCheckpoint;
 
-    [SerializeField]
-    private UnityEvent _onLevelLose;
+    public event UnityAction _onLevelLose;
 
-    [SerializeField]
-    private UnityEvent _onLevelWin;
+    public event UnityAction _onLevelWin;
 
-    [SerializeField]
-    private UnityEvent _onPlayerGetBonus;
+    public event UnityAction _onPlayerGetBonus;
 
     [SerializeField]
     int _bonusMoneyAmount;
@@ -107,18 +104,4 @@ public class LevelModel : MonoBehaviour
         }
     }
 
-    public void AddOnFinishAction(UnityAction action)
-    {
-        _onLevelWin.AddListener(action);
-    }
-
-    public void AddOnLoseAction(UnityAction action)
-    {
-        _onLevelLose.AddListener(action);
-    }
-
-    public void AddOnBonusAction(UnityAction action)
-    {
-        _onPlayerGetBonus.AddListener(action);
-    }
 }
