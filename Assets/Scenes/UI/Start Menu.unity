@@ -4011,7 +4011,7 @@ GameObject:
   - component: {fileID: 729947528}
   - component: {fileID: 729947527}
   m_Layer: 5
-  m_Name: Achievements Menu Canvas
+  m_Name: Achievements Menu
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8635,7 +8635,7 @@ GameObject:
   - component: {fileID: 1401575584}
   - component: {fileID: 1401575588}
   m_Layer: 5
-  m_Name: Options Menu Canvas
+  m_Name: Options Menu
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12116,7 +12116,7 @@ GameObject:
   - component: {fileID: 1840014288}
   - component: {fileID: 1840014292}
   m_Layer: 5
-  m_Name: Main Menu Canvas
+  m_Name: Main Menu
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
