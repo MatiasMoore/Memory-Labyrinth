@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class MenuManager : MonoBehaviour
 
     public static void FireButtonClickAction()
     {
-        _buttonClick.Invoke();
+        _buttonClick?.Invoke();
     }
 
     public enum Page
@@ -27,26 +28,15 @@ public class MenuManager : MonoBehaviour
         LOSE
     }
 
-    private void Awake()
-    {
-        Init();
-    }
-
-    private static void Init()
-    {
-        GameObject UI = GameObject.Find("UI");
-        _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
-        _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
-        _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
-    }
-
     public static void OpenPage(Page page)
     {
+        UpdatePages();
         SetActivePage(GetPageGameObject(page));
     }
 
     public static void ClosePage(Page page)
     {
+        UpdatePages();
         SetInactivePage(GetPageGameObject(page));
     }
 
@@ -75,6 +65,7 @@ public class MenuManager : MonoBehaviour
         switch (page)
         {
             case Page.MAIN:
+
                 return _mainMenuCanvas;
             case Page.OPTIONS:
                 return _optionsMenuCanvas;
