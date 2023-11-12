@@ -14,7 +14,8 @@ public class ObjectMovementState
         Acceleration,
         Deceleration,
         Linear,
-        teleport
+        Teleport,
+        Turn
     }
 
     private State _currentState;
@@ -36,6 +37,10 @@ public class ObjectMovementState
     private readonly int _cellToAccelerate = 1;
 
     private readonly int _cellToDecelerate = 1;
+
+    private readonly float _decelerationTimeOffset = 1.4f;
+
+    private readonly float _accelerationTimeOffset = 1.4f;
 
     public ObjectMovementState(Transform transform, Rigidbody2D rigidbody, float speed)
     {
@@ -66,8 +71,11 @@ public class ObjectMovementState
             case State.SmoothStep:
                 SmoothStep(deltaTime);
                 break;
-            case State.teleport:
+            case State.Teleport:
                 Teleport(deltaTime);
+                break;
+            case State.Turn:
+                Turn(deltaTime);
                 break;
         }
     }
@@ -76,14 +84,26 @@ public class ObjectMovementState
 
     public void FollowPath(List<Vector2> path)
     {
+        path.RemoveRange(0, 1);
         _path = new List<Vector2>(path);
         _timer = 0;
         _currentPosition = _transform.position;
-        SwitchStateTo(State.Acceleration);
+        if (IsSmoothStep())
+        {
+            SwitchStateTo(State.SmoothStep);
+        }
+        else
+        {
+            if (IsAcceleration() && !isTurn())
+                SwitchStateTo(State.Acceleration);
+            else
+                SwitchStateTo(State.Turn);
+        }
     }
 
     public void FollowPath(List<Vector3> path)
     {
+        path.RemoveRange(0, 1);
         _path = new List<Vector2>();
         foreach (var point in path)
         {
@@ -91,12 +111,22 @@ public class ObjectMovementState
         }
         _timer = 0;
         _currentPosition = _transform.position;
-        SwitchStateTo(State.Acceleration);
+        if (IsSmoothStep())
+        {
+            SwitchStateTo(State.SmoothStep);
+        }
+        else
+        {
+            if (IsAcceleration() && !isTurn())
+                SwitchStateTo(State.Acceleration);
+            else
+                SwitchStateTo(State.Turn);
+        }
     }
 
     public void StopMove()
     {
-        if (GetState() == State.teleport)
+        if (GetState() == State.Teleport)
         {
             Debug.Log("Can't stop while teleporting");
             return;
@@ -105,6 +135,9 @@ public class ObjectMovementState
         if (_path.Count > 1)
         {
             _path.RemoveRange(1, _path.Count - 1);
+            _timer = 0;
+            _currentPosition = _transform.position;
+            SwitchStateTo(State.Deceleration);
         }
     }
 
@@ -112,7 +145,7 @@ public class ObjectMovementState
     {
         StopMove();
         _path.Add(position);
-        SwitchStateTo(State.teleport);
+        SwitchStateTo(State.Teleport);
         Debug.Log($"PLAYER: Teleporting to {_path[1]}");
     }
 
@@ -123,9 +156,12 @@ public class ObjectMovementState
 
     private void Linear(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
 
-        if (IsStayOnPoint(_path[0]))
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime), true);
+
+        if (_timer > _timeToPassPoint)
         {
             RemoveReachedPointFromPath(_path[0]);
 
@@ -133,14 +169,19 @@ public class ObjectMovementState
                 SwitchStateTo(State.Deceleration);
             if (IsStay())
                 SwitchStateTo(State.Stay);
+            if (isTurn())
+                SwitchStateTo(State.Turn);
         }
     }
 
     private void Acceleration(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
 
-        if (IsStayOnPoint(_path[0]))
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint * _accelerationTimeOffset, deltaTime), true);
+
+        if (_timer > _timeToPassPoint * _accelerationTimeOffset)
         {
             RemoveReachedPointFromPath(_path[0]);
 
@@ -150,14 +191,19 @@ public class ObjectMovementState
                 SwitchStateTo(State.Deceleration);
             if (IsLinear())
                 SwitchStateTo(State.Linear);
+            if (isTurn())
+                SwitchStateTo(State.Turn);
         }
     }
 
     private void Deceleration(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
 
-        if (IsStayOnPoint(_path[0]))
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint * _decelerationTimeOffset,deltaTime),false);
+
+        if (_timer > _timeToPassPoint * _decelerationTimeOffset)
         {
             RemoveReachedPointFromPath(_path[0]);
 
@@ -168,9 +214,12 @@ public class ObjectMovementState
 
     private void SmoothStep(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint, deltaTime));
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
 
-        if (IsStayOnPoint(_path[0]))
+        UpdatePosition(InterpolateByState(_currentState, _timeToPassPoint * _accelerationTimeOffset * _decelerationTimeOffset, deltaTime), false);
+
+        if (_timer > _timeToPassPoint * _accelerationTimeOffset * _decelerationTimeOffset)
         {
             RemoveReachedPointFromPath(_path[0]);
 
@@ -189,9 +238,12 @@ public class ObjectMovementState
 
     private void Teleport(float deltaTime)
     {
-        UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime));
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
 
-        if (IsStayOnPoint(_path[0]))
+        UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime), false);
+
+        if (_timer > _timeToPassPoint)
         {
             RemoveReachedPointFromPath(_path[0]);
             _transform.position = new Vector3(_path[0].x, _path[0].y, _transform.position.z);
@@ -200,9 +252,36 @@ public class ObjectMovementState
         }
     }
 
-    private void UpdatePosition(float positionStage)
+    private void Turn(float deltaTime)
     {
-        Vector2 newPosition = Vector2.Lerp(_currentPosition, _path[0], positionStage);
+        if (_timer == 0)
+            _currentPosition = (Vector2)_transform.position;
+
+        UpdatePosition(InterpolateByState(State.Linear, _timeToPassPoint, deltaTime), false);
+
+        if (_timer > _timeToPassPoint)
+        {
+            RemoveReachedPointFromPath(_path[0]);
+            if (IsLinear())
+                SwitchStateTo(State.Linear);
+            if (IsDeceleration())
+                SwitchStateTo(State.Deceleration);
+            if (IsStay())
+                SwitchStateTo(State.Stay);
+        }
+    }
+
+    private void UpdatePosition(float positionStage, bool isUnClamped)
+    {
+        Vector2 newPosition;
+        if (isUnClamped)
+            newPosition = Vector2.LerpUnclamped(_currentPosition, _path[0], positionStage);
+        else
+            newPosition = Vector2.Lerp(_currentPosition, _path[0], positionStage);
+
+        // Debug.Log(
+        //     $"PLAYER: current position: {_currentPosition}, transform {(Vector2)_transform.position}, newPosition: {newPosition}, delta: {(Vector2)_transform.position - newPosition}, target position: {_path[0]}, stage: {positionStage}, isUnClamped: {isUnClamped}"
+        // );
         _rigidbody.MovePosition(newPosition);
     }
 
@@ -213,27 +292,20 @@ public class ObjectMovementState
         return state switch
         {
             State.Stay => 0,
-            State.Acceleration => t * t, // Acceleration
+            State.Acceleration => 1 - Mathf.Cos((t * Mathf.PI) / 2), // Acceleration
             State.Linear => t,
-            State.Deceleration => Mathf.Sqrt(t), // Deceleration
-            State.SmoothStep => t * t * (3 - 2 * t), // Smooth step
+            State.Deceleration => 1 - (1 - t) * (1 - t), // Deceleration
+            State.SmoothStep => t < 0.5 ? 2 * t * t : 1 - Mathf.Pow(-2 * t + 2, 2) / 2, // Smooth step
             _ => throw new System.Exception($"Unknown state to interpolate: {_currentState}"),
         };
     }
 
     private void RemoveReachedPointFromPath(Vector2 point)
     {
-        _currentPosition = point;
+        Debug.Log($"PLAYER: removepoint: transform {(Vector2)_transform.position}, point {point}");
         _path.Remove(point);
         _timer = 0;
     }
-
-    private bool IsStayOnPoint(Vector2 currentPosition)
-    {
-        return (Mathf.Abs(_transform.position.x - currentPosition.x) < _acceptableError)
-            && (Mathf.Abs(_transform.position.y - currentPosition.y) < _acceptableError);
-    }
-
     private bool IsSmoothStep()
     {
         return _path.Count == 1;
@@ -246,7 +318,7 @@ public class ObjectMovementState
 
     private bool IsAcceleration()
     {
-        return _path.Count <= _cellToAccelerate && _path.Count >= 1;
+        return _path.Count >= _cellToAccelerate;
     }
 
     private bool IsStay()
@@ -254,16 +326,26 @@ public class ObjectMovementState
         return _path.Count == 0;
     }
 
+    private bool isTurn()
+    {
+        if (_path.Count < 2)
+            return false;
+        Vector2 currentDirection = _path[0] - _currentPosition;
+        currentDirection.Normalize();
+        Vector2 nextDirection = _path[1] - _currentPosition;
+        nextDirection.Normalize();
+
+        return Vector2.Dot(currentDirection, nextDirection) <= 1 - _acceptableError;
+    }
+
     private bool IsLinear()
     {
-        return !IsSmoothStep() && !IsDeceleration() && !IsAcceleration() && !IsStay();
+        return !IsSmoothStep() && !IsDeceleration() && !IsStay() && !isTurn();
     }
 
     private void SwitchStateTo(State newState)
     {
-        Debug.Log(
-            $"PLAYER: Switching from {_currentState} to {newState}, Path length: {_path.Count}"
-        );
+        Debug.Log($"PLAYER: Switching from {_currentState} to {newState}, Path length: {_path.Count}");
         _currentState = newState;
     }
 }
