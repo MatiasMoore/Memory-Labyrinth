@@ -14,6 +14,7 @@ public class MainCharacter : MonoBehaviour
     public event UnityAction _onDamageEvent;
     public event UnityAction<int> _onBonusEvent;
     public event UnityAction _onFinishEvent;
+    public event UnityAction _onTeleportEvent;
     public event UnityAction<Checkpoint> _onCheckpointEvent;
 
     [SerializeField]
@@ -84,6 +85,7 @@ public class MainCharacter : MonoBehaviour
     public void TeleportTo(Vector3 position)
     {
         _objectMovement.TeleportTo((Vector2)position);
+        _onTeleportEvent?.Invoke();
     }
 
     public void getDamage(int damage)
