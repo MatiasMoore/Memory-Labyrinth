@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ResourceManager : MonoBehaviour
 {
+    public static event UnityAction<AvailableScene, AvailableScene> activeSceneChanged;
+
     public static AudioClip GetAudioClip(SoundEffect soundEffect)
     {
         if (!_soundEffectToPath.ContainsKey(soundEffect))
@@ -77,8 +80,11 @@ public class ResourceManager : MonoBehaviour
 
     public static void LoadScene(AvailableScene sceneToLoad)
     {
+        AvailableScene currentScene = GetCurrentScene();
         int sceneBuildIndex = (int)sceneToLoad;
         SceneManager.LoadScene(sceneBuildIndex);
+
+        activeSceneChanged.Invoke(currentScene, sceneToLoad);
     }
 
     public static AvailableScene GetCurrentScene()
