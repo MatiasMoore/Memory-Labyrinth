@@ -16,7 +16,7 @@ public class AudioController : MonoBehaviour
 
     public void Init()
     {
-        SceneManager.activeSceneChanged += SceneChanged;
+        ResourceManager.activeSceneChanged += SceneChanged;   
     }
 
     public void SetupListeners()
@@ -38,9 +38,9 @@ public class AudioController : MonoBehaviour
         }
     }
 
-    private void SceneChanged(Scene prev, Scene current)
+    private void SceneChanged(ResourceManager.AvailableScene prev, ResourceManager.AvailableScene current)
     {
-        PlayMusicForScene(ResourceManager.GetCurrentScene());
+        PlayMusicForScene(current);
     }
 
     private void PlayMusicForScene(ResourceManager.AvailableScene scene)
