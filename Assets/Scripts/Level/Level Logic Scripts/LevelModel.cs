@@ -13,14 +13,11 @@ public class LevelModel : MonoBehaviour
     [SerializeField]
     private Checkpoint _currentCheckpoint;
 
-    [SerializeField]
-    private UnityEvent _onLevelLose;
+    public event UnityAction _onLevelLose;
 
-    [SerializeField]
-    private UnityEvent _onLevelWin;
+    public event UnityAction _onLevelWin;
 
-    [SerializeField]
-    private UnityEvent _onPlayerGetBonus;
+    public event UnityAction _onPlayerGetBonus;
 
     [SerializeField]
     int _bonusMoneyAmount;
@@ -39,11 +36,11 @@ public class LevelModel : MonoBehaviour
     {
         _mainCharacter = _player.GetComponent<MainCharacter>();
 
-        _mainCharacter.AddOnDamageAction(onPlayerDamage);
-        _mainCharacter.AddOnDeathAction(onPlayerDeath);
-        _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
-        _mainCharacter.AddOnCheckpointAction(onPlayerGetCheckpoint);
-        _mainCharacter.AddOnFinishAction(onPlayerWin);
+        _mainCharacter._onDamageEvent += onPlayerDamage;
+        _mainCharacter._onDeathEvent += onPlayerDeath;
+        _mainCharacter._onBonusEvent += onPlayerGetBonus;
+        _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
+        _mainCharacter._onFinishEvent += onPlayerWin;
 
         _rightPathBuilder.GetComponent<RightPathBuilder>().ShowRightPath(_startLevelTime * 0.9f);
         _mainCharacter.SetActive(false);
@@ -107,18 +104,4 @@ public class LevelModel : MonoBehaviour
         }
     }
 
-    public void AddOnFinishAction(UnityAction action)
-    {
-        _onLevelWin.AddListener(action);
-    }
-
-    public void AddOnLoseAction(UnityAction action)
-    {
-        _onLevelLose.AddListener(action);
-    }
-
-    public void AddOnBonusAction(UnityAction action)
-    {
-        _onPlayerGetBonus.AddListener(action);
-    }
 }
