@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class MenuManager : MonoBehaviour
 {
@@ -9,6 +9,13 @@ public class MenuManager : MonoBehaviour
     private static GameObject _pauseMenuCanvas;
     private static GameObject _winPanel;
     private static GameObject _losePanel;
+
+    public static event UnityAction _buttonClick;
+
+    public static void FireButtonClickAction()
+    {
+        _buttonClick.Invoke();
+    }
 
     public enum Page
     {
@@ -35,21 +42,11 @@ public class MenuManager : MonoBehaviour
 
     public static void OpenPage(Page page)
     {
-        // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
-        // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
-        UpdatePages();
-
-        // Enable required page
         SetActivePage(GetPageGameObject(page));
     }
 
     public static void ClosePage(Page page)
     {
-        // Подгрузка объектов со сцены (в случае перехода с одной сцены на другую)
-        // по идее это должно вызываться при каждом переходе с одной сцены на другую в SceneManager
-        UpdatePages();
-
-        // Disable required page
         SetInactivePage(GetPageGameObject(page));
     }
 

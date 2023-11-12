@@ -6,20 +6,30 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _textMesh;
 
-    public bool _isRunning;
+    private static bool _timerStatus;
+
+    public static void SetTimerStatus(bool flag)
+    {
+        _timerStatus = flag;
+    }
+
+    public static bool GetTimerStatus()
+    {
+        return _timerStatus;
+    }
 
     private float elapsedTime;
 
-    void Start()
+    private void Start()
     {
-        _isRunning = true;
+        SetTimerStatus(true);
 
         _textMesh.text = "00:00";
     }
 
-    void Update()
+    private void Update()
     {
-        if (_isRunning)
+        if (_timerStatus)
         {
             elapsedTime += Time.deltaTime;
 
