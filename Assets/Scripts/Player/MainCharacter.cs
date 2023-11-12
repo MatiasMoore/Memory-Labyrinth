@@ -33,6 +33,7 @@ public class MainCharacter : MonoBehaviour
     public ObjectMovementState.State _currentState;
     private ObjectMovementState _objectMovement;
     private PathCreator _pathCreator;
+    private bool _isActive;
 
     void Start()
     {
@@ -55,12 +56,20 @@ public class MainCharacter : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (_pathCreator.isNewPathReady)
+    {   
+        if (_isActive)
         {
-            FollowPath(_pathCreator.GetNewPath());
+            if (_pathCreator.isNewPathReady)
+            {
+                FollowPath(_pathCreator.GetNewPath());
+            }
+            _pathCreator.SetActive(_currentState == ObjectMovementState.State.Stay);
         }
-        _pathCreator.SetActive(_currentState == ObjectMovementState.State.Stay);
+    }
+
+    public void SetActive(bool isActive)
+    {
+        _isActive = isActive;
     }
 
     public void FollowPath(List<Vector3> path)

@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class LevelModel : MonoBehaviour
 {
     [SerializeField]
-    MainCharacter _mainCharacter;
+    private GameObject _player;
+
+    private MainCharacter _mainCharacter;
 
     [SerializeField]
     private Checkpoint _currentCheckpoint;
@@ -31,8 +33,12 @@ public class LevelModel : MonoBehaviour
 
     private float _timer;
 
+    private bool _isLevelStarted = false;
+
     public void Start()
     {
+        _mainCharacter = _player.GetComponent<MainCharacter>();
+
         _mainCharacter.AddOnDamageAction(onPlayerDamage);
         _mainCharacter.AddOnDeathAction(onPlayerDeath);
         _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
@@ -40,6 +46,8 @@ public class LevelModel : MonoBehaviour
         _mainCharacter.AddOnFinishAction(onPlayerWin);
 
         _rightPathBuilder.GetComponent<RightPathBuilder>().ShowRightPath(_startLevelTime * 0.9f);
+        _mainCharacter.SetActive(false);
+        _player.GetComponent<PathCreator>().SetActive(false);
     }
 
     public void FixedUpdate()
@@ -48,10 +56,17 @@ public class LevelModel : MonoBehaviour
 
         if (_timer > _startLevelTime && _timer != 0)
         {
-            _rightPathBuilder.SetActive(false);
-            // Show fog
+            StartLevel();
         }
-        
+
+    }
+
+    private void StartLevel()
+    {
+        _rightPathBuilder.SetActive(false);
+        // TODO: Show fog
+        _player.GetComponent<PathCreator>().SetActive(true);
+        _mainCharacter.SetActive(true);
     }
 
     public void onPlayerDeath()
