@@ -12,9 +12,10 @@ public class PauseMenu : MonoBehaviour
 
     public void OnClickResume()
     {
-        MenuManager.ClosePage(MenuManager.Page.PAUSE);
         Time.timeScale = 1f;
+        MenuManager.ClosePage(MenuManager.Page.PAUSE);
         setPausedGame(false);
+        Timer.SetTimerStatus(true);
 
         MenuManager.FireButtonClickAction();
     }
