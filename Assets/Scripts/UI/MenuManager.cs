@@ -4,10 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private static GameObject _mainMenuCanvas;
-    private static GameObject _optionsMenuCanvas;
-    private static GameObject _achievementsMenuCanvas;
-    private static GameObject _pauseMenuCanvas;
+    private static GameObject _mainMenu;
+    private static GameObject _optionsMenu;
+    private static GameObject _achievementsMenu;
+    private static GameObject _pauseMenu;
     private static GameObject _winPanel;
     private static GameObject _losePanel;
 
@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
     public static void FireButtonClickAction()
     {
         _buttonClick?.Invoke();
-        Debug.Log("MENU MANAGER: FireButtonClickAction()");
     }
 
     public enum Page
@@ -48,17 +47,17 @@ public class MenuManager : MonoBehaviour
         switch (page)
         {
             case Page.MAIN:
-                _mainMenuCanvas = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
-                return _mainMenuCanvas;
+                _mainMenu = UI.transform.Find(GetPageName(Page.MAIN)).gameObject;
+                return _mainMenu;
             case Page.OPTIONS:
-                _optionsMenuCanvas = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
-                return _optionsMenuCanvas;
+                _optionsMenu = UI.transform.Find(GetPageName(Page.OPTIONS)).gameObject;
+                return _optionsMenu;
             case Page.ACHIEVEMENTS:
-                _achievementsMenuCanvas = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
-                return _achievementsMenuCanvas;
+                _achievementsMenu = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
+                return _achievementsMenu;
             case Page.PAUSE:
-                _pauseMenuCanvas = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
-                return _pauseMenuCanvas;
+                _pauseMenu = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
+                return _pauseMenu;
             case Page.WIN:
                 _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
                 return _winPanel;
@@ -66,7 +65,7 @@ public class MenuManager : MonoBehaviour
                 _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
                 return _losePanel;
             default:
-                throw new System.Exception("MENU MANAGER: GetPageGameObject -> return null (page is not defined in switch)");
+                throw new System.Exception("MENU MANAGER: GetPageGameObject -> page is not defined in switch");
         }
     }
 
@@ -75,19 +74,19 @@ public class MenuManager : MonoBehaviour
         switch (page)
         {
             case Page.MAIN:
-                return new string("Main Menu Canvas");
+                return new string("Main Menu");
             case Page.OPTIONS:
-                return new string("Options Menu Canvas");
+                return new string("Options Menu");
             case Page.ACHIEVEMENTS:
-                return new string("Achievements Menu Canvas");
+                return new string("Achievements Menu");
             case Page.PAUSE:
-                return new string("Pause Menu (Canvas)");
+                return new string("Pause Menu");
             case Page.WIN:
-                return new string("Win Panel (Canvas)");
+                return new string("Win Panel");
             case Page.LOSE:
-                return new string("Lose Panel (Canvas)");
+                return new string("Lose Panel");
             default:
-                throw new System.Exception("MENU MANAGER: GetPageName -> return null (page is not defined in switch)");
+                throw new System.Exception("MENU MANAGER: GetPageName -> page is not defined in switch");
         }
     }
 
@@ -101,7 +100,7 @@ public class MenuManager : MonoBehaviour
 
     private static void SetInactivePage(GameObject menuObject)
     {
-        if(menuObject != null)
+        if (menuObject != null)
             menuObject.SetActive(false);
         else
             throw new System.Exception("MENU MANAGER: SetInactivePage -> menuObject is null");
