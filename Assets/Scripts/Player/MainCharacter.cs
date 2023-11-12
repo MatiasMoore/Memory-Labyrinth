@@ -10,21 +10,11 @@ public class MainCharacter : MonoBehaviour
 {
     [SerializeField]
     private int _health;
-
-    [SerializeField]
-    private UnityEvent _onDeathEvent;
-
-    [SerializeField]
-    private UnityEvent _onDamageEvent;
-
-    [SerializeField]
-    private UnityEvent<int> _onBonusEvent;
-
-    [SerializeField]
-    private UnityEvent _onFinishEvent;
-
-    [SerializeField]
-    private UnityEvent<Checkpoint> _onCheckpointEvent;
+    public event UnityAction _onDeathEvent;
+    public event UnityAction _onDamageEvent;
+    public event UnityAction<int> _onBonusEvent;
+    public event UnityAction _onFinishEvent;
+    public event UnityAction<Checkpoint> _onCheckpointEvent;
 
     [SerializeField]
     private float _speed;
@@ -120,30 +110,5 @@ public class MainCharacter : MonoBehaviour
     {
         _objectMovement.StopMove();
         _onFinishEvent.Invoke();
-    }
-
-    public void AddOnFinishAction(UnityAction listener)
-    {
-        _onFinishEvent.AddListener(listener);
-    }
-
-    public void AddOnCheckpointAction(UnityAction<Checkpoint> listener)
-    {
-        _onCheckpointEvent.AddListener(listener);
-    }
-
-    public void AddOnBonusAction(UnityAction<int> listener)
-    {
-        _onBonusEvent.AddListener(listener);
-    }
-
-    public void AddOnDeathAction(UnityAction listener)
-    {
-        _onDeathEvent.AddListener(listener);
-    }
-
-    public void AddOnDamageAction(UnityAction listener)
-    {
-        _onDamageEvent.AddListener(listener);
     }
 }

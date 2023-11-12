@@ -24,10 +24,10 @@ public class AudioController : MonoBehaviour
         var mainCharacter = FindObjectOfType<MainCharacter>();
         if (mainCharacter != null) 
         {
-            mainCharacter.AddOnBonusAction(PlayBonusPickupSound);
-            mainCharacter.AddOnCheckpointAction(PlayCheckpointActivatedSound);
-            mainCharacter.AddOnDamageAction(PlayPlayerDamageSound);
-            mainCharacter.AddOnDeathAction(PlayPlayerDeathSound);
+            mainCharacter._onBonusEvent += PlayBonusPickupSound;
+            mainCharacter._onCheckpointEvent += PlayCheckpointActivatedSound;
+            mainCharacter._onDamageEvent += PlayPlayerDamageSound;
+            mainCharacter._onDeathEvent += PlayPlayerDeathSound;
         }
 
         var levelModel = FindObjectOfType<LevelModel>();

@@ -39,11 +39,11 @@ public class LevelModel : MonoBehaviour
     {
         _mainCharacter = _player.GetComponent<MainCharacter>();
 
-        _mainCharacter.AddOnDamageAction(onPlayerDamage);
-        _mainCharacter.AddOnDeathAction(onPlayerDeath);
-        _mainCharacter.AddOnBonusAction(onPlayerGetBonus);
-        _mainCharacter.AddOnCheckpointAction(onPlayerGetCheckpoint);
-        _mainCharacter.AddOnFinishAction(onPlayerWin);
+        _mainCharacter._onDamageEvent += onPlayerDamage;
+        _mainCharacter._onDeathEvent += onPlayerDeath;
+        _mainCharacter._onBonusEvent += onPlayerGetBonus;
+        _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
+        _mainCharacter._onFinishEvent += onPlayerWin;
 
         _rightPathBuilder.GetComponent<RightPathBuilder>().ShowRightPath(_startLevelTime * 0.9f);
         _mainCharacter.SetActive(false);
