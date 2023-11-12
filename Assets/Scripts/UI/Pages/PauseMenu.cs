@@ -5,16 +5,17 @@ public class PauseMenu : MonoBehaviour
 {
     private static bool _isPausedGame = false;
 
-    public static void setPausedGame(bool flag)
+    public static void SetPausedGame(bool flag)
     {
         _isPausedGame = flag;
     }
 
     public void OnClickResume()
     {
-        MenuManager.ClosePage(MenuManager.Page.PAUSE);
         Time.timeScale = 1f;
-        setPausedGame(false);
+        MenuManager.ClosePage(MenuManager.Page.PAUSE);
+        SetPausedGame(false);
+        Timer.SetTimerStatus(true);
 
         MenuManager.FireButtonClickAction();
     }
