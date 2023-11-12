@@ -6,5 +6,7 @@ public class AchievementsMenu: MonoBehaviour
     {
         MenuManager.ClosePage(MenuManager.Page.ACHIEVEMENTS);
         MenuManager.OpenPage(MenuManager.Page.MAIN);
+
+        MenuManager.FireButtonClickAction();
     }
 }

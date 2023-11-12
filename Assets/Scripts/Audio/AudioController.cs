@@ -80,4 +80,10 @@ public class AudioController : MonoBehaviour
     {
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.LevelFailed);
     }
+
+    // UI Sounds
+    private void PlayClickSound()
+    {
+        SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.CheckpointActivated);
+    }
 }
