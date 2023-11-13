@@ -140,6 +140,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayLevelIntro()
     {
+        FogController.Instance.SetFogVisibile(false);
         StartShowPath();
         float timer = 0;
 
@@ -151,5 +152,8 @@ public class LevelManager : MonoBehaviour
         }
 
         StopShowPath();
+
+        FogController.Instance.SetFogVisibile(true);
+        FogController.Instance.FadeInToAllTargets();
     }
 }

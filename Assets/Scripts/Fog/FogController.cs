@@ -5,8 +5,19 @@ using UnityEngine;
 public class FogController : MonoBehaviour
 {
     private FogMaskTarget[] _masks = { };
+    private SpriteRenderer _spriteRenderer;
 
-    public void FindTargets()
+    public static FogController Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null) return;
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        Instance = this;
+    }
+
+    public void FadeInToAllTargets()
     {
         _masks = FindObjectsOfType<FogMaskTarget>();
         foreach (var mask in _masks)
@@ -27,5 +38,10 @@ public class FogController : MonoBehaviour
             float startRadius = Mathf.Max(toTopLeft, toTopRight, toBottomRight, toBottomLeft) * 1.1f;
             mask.FadeMaskRadius(startRadius, mask.GetPreferredRadius(), 2.5f);
         }
+    }
+
+    public void SetFogVisibile(bool isVisible)
+    {
+        _spriteRenderer.enabled = isVisible;
     }
 }
