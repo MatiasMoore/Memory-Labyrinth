@@ -27,9 +27,15 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickNextLevel()
     {
-        // Should be transition to next level
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        ResourceManager.LoadLevel(ResourceManager.Level.Level1);
+
+        // If level index is out of enum range, load Main Menu
+        if ((int)(LevelManager._currentLevel + 1) > LevelManager.GetLastLevelIndex())
+            ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+        // Else load next level
+        else
+            ResourceManager.LoadLevel(LevelManager._currentLevel + 1);
+
 
         MenuManager.FireButtonClickAction();
     }
@@ -43,9 +49,7 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // The same level must be loaded
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        ResourceManager.LoadLevel(ResourceManager.Level.Level1);
 
         MenuManager.FireButtonClickAction();
     }
