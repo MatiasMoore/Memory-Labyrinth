@@ -17,7 +17,7 @@ public class FogController : MonoBehaviour
         Instance = this;
     }
 
-    public void FadeInToAllTargets()
+    public void FadeInToAllTargets(float timeToFadeIn)
     {
         _masks = FindObjectsOfType<FogMaskTarget>();
         foreach (var mask in _masks)
@@ -36,7 +36,7 @@ public class FogController : MonoBehaviour
             float toBottomLeft = (bottomLeft - maskPos).magnitude;
 
             float startRadius = Mathf.Max(toTopLeft, toTopRight, toBottomRight, toBottomLeft) * 1.1f;
-            mask.FadeMaskRadius(startRadius, mask.GetPreferredRadius(), 2.5f);
+            mask.FadeMaskRadius(startRadius, mask.GetPreferredRadius(), timeToFadeIn);
         }
     }
 
