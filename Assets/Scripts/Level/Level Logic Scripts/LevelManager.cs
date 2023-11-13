@@ -24,5 +24,8 @@ public class LevelManager : MonoBehaviour
         var audioController = FindObjectOfType<AudioController>();
         if (audioController != null )
             audioController.SetupListeners();
+
+        // UI Listeners
+        MenuController.SetupListeners();
     }
 }
