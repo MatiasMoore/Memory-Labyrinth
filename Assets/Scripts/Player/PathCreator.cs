@@ -46,7 +46,7 @@ public class PathCreator : MonoBehaviour
         }
     }
 
-    private void Awake()
+    public void Init()
     {
         _isActive = true;
 

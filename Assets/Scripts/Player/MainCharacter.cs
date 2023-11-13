@@ -26,15 +26,16 @@ public class MainCharacter : MonoBehaviour
     private PathCreator _pathCreator;
     private bool _isActive;
 
-    public void Init(){
+    public void Init()
+    {
         TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
-
         _objectMovement = new ObjectMovementState(
             GetComponent<Transform>(),
             GetComponent<Rigidbody2D>(),
             _speed
         );
         _pathCreator = GetComponent<PathCreator>();
+        _pathCreator.Init();
     }
 
     void FixedUpdate()
@@ -110,5 +111,10 @@ public class MainCharacter : MonoBehaviour
     {
         _objectMovement.StopMove();
         _onFinishEvent.Invoke();
+    }
+
+    public void SetHealth(int health)
+    {
+        _health = health;
     }
 }

@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 8018811742241601911}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.200135, y: -9.561056, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -133,21 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 3
-  _onDeathEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _onDamageEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _onBonusEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _onFinishEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _onCheckpointEvent:
-    m_PersistentCalls:
-      m_Calls: []
   _speed: 7
   _currentState: 0
 --- !u!120 &4481471410511970016
@@ -192,7 +177,8 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions: []
+  m_Positions:
+  - {x: 1.2001351, y: -9.561056, z: -2}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
