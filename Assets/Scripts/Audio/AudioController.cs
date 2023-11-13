@@ -17,9 +17,8 @@ public class AudioController : MonoBehaviour
     }
 
 
-    public void SetupListeners()
+    public void SetupListeners(LevelModel levelModel, MainCharacter mainCharacter)
     {
-        var mainCharacter = FindObjectOfType<MainCharacter>();
         if (mainCharacter != null) 
         {
             mainCharacter._onBonusEvent += PlayBonusPickupSound;
@@ -28,7 +27,6 @@ public class AudioController : MonoBehaviour
             mainCharacter._onDeathEvent += PlayPlayerDeathSound;
         }
 
-        var levelModel = FindObjectOfType<LevelModel>();
         if (levelModel != null) 
         {
             levelModel._onLevelWin += PlayLevelFinishedSound;

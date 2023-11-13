@@ -37,24 +37,24 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
-        // UI Listeners
-        MenuController.SetupListeners();
         _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
         _mainCharacter.Init();
-
-        var audioController = FindObjectOfType<AudioController>();
-        if (audioController != null)
-            audioController.SetupListeners();
 
         _levelModel.Init(_mainCharacter);
         _levelModel._onLevelLose += LoseLevel;
         _levelModel._onLevelWin += WinLevel;
 
+        var audioController = FindObjectOfType<AudioController>();
+        if (audioController != null)
+            audioController.SetupListeners(_levelModel, _mainCharacter);
+
+        // UI Listeners
+        MenuController.SetupListeners(_levelModel, _mainCharacter);
+
         Timer.SetTimerStatus(false);
 
         StartLevel();
-        
     }
 
     public void StartLevel()

@@ -2,27 +2,26 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
-    private static LevelModel levelModel;
+    private static LevelModel _levelModel;
 
-    private static MainCharacter mainCharacter;
+    private static MainCharacter _mainCharacter;
 
-    public static void SetupListeners()
+    public static void SetupListeners(LevelModel levelModel, MainCharacter mainCharacter)
     {
-        levelModel = FindObjectOfType<LevelModel>();
-        if (levelModel != null)
+        _levelModel = levelModel;
+        if (_levelModel != null)
         {
             levelModel._onLevelWin += ShowWinPanelAction;
             levelModel._onLevelLose += ShowLosePanelAction;
             levelModel._onPlayerGetBonus += UpdateGemsCountAction;
         }
 
-        mainCharacter = FindObjectOfType<MainCharacter>();
-        if (mainCharacter != null)
+        _mainCharacter = mainCharacter;
+        if (_mainCharacter != null)
         {
             mainCharacter._onDamageEvent += UpdateHealthCountAction;
         }
     }
-
     private static void ShowWinPanelAction()
     {
         Timer.SetTimerStatus(false);
@@ -50,7 +49,7 @@ public class MenuController : MonoBehaviour
         Health health = FindObjectOfType<Health>();
         if (health != null)
         {
-            health.SetHealth(mainCharacter.GetHealth());
+            health.SetHealth(_mainCharacter.GetHealth());
         }
     }
 
@@ -60,7 +59,7 @@ public class MenuController : MonoBehaviour
         Debug.Log("MENU CONTROLLER: UpdateGemsCountAction -> " + gems);
         if (gems != null)
         {
-            gems.SetGemsAmount(levelModel.GetMoneyAmount());
+            gems.SetGemsAmount(_levelModel.GetBonusAmount());
         }
     }
 }
