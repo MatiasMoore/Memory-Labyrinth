@@ -99,18 +99,18 @@ public class ResourceManager : MonoBehaviour
         Level1
     }
 
-    private static string _pathToLevels = "assets/Prefabs/Levels/";
+    private static string _pathToLevels = "Levels/";
 
     private static Dictionary<Level, string> _levels = new Dictionary<Level,string>()
     {
-        {Level.Level1, _pathToLevels + "Level1.prefab"}
+        {Level.Level1, _pathToLevels + "Level1"}
     };
 
     public static GameObject LoadLevel(Level levelToLoad)
     {
         if (_levels.ContainsKey(levelToLoad))
         {
-            return AssetDatabase.LoadAssetAtPath<GameObject>(_levels[levelToLoad]);
+            return Resources.Load<GameObject>(_levels[levelToLoad]);
         }
         else
         {
