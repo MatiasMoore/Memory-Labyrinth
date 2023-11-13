@@ -36,7 +36,6 @@ public class WinPanel : MonoBehaviour
         else
             ResourceManager.LoadLevel(LevelManager._currentLevel + 1);
 
-
         MenuManager.FireButtonClickAction();
     }
 
@@ -49,8 +48,9 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
+        // TODO: reload level prefab + timer reset + close win panel
 
+        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }

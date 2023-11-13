@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,6 +30,8 @@ public class LevelManager : MonoBehaviour
 
     private bool _isPathShown;
 
+    public static event UnityAction _levelLoad;
+
     public void SetCurrentLevel(ResourceManager.Level level)
     {
         _currentLevel = level;
@@ -52,6 +56,11 @@ public class LevelManager : MonoBehaviour
         MenuController.SetupListeners(_levelModel, _mainCharacter);
 
         StartLevel();
+    }
+
+    public static void FireLevelLoadAction()
+    {
+        _levelLoad?.Invoke();
     }
 
     public void StartLevel()
@@ -140,6 +149,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayLevelIntro()
     {
+        FogController.Instance.SetFogVisibile(false);
         StartShowPath();
         float timer = 0;
 
@@ -151,5 +161,8 @@ public class LevelManager : MonoBehaviour
         }
 
         StopShowPath();
+
+        FogController.Instance.SetFogVisibile(true);
+        FogController.Instance.FadeInToAllTargets();
     }
 }
