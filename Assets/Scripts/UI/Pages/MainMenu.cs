@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void onClickPlay()
+    public void OnClickPlay()
     {
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        LevelManager._currentLevel = ResourceManager.Level.Level1;
+        // TODO: open level selection menu
+
         MenuManager.FireButtonClickAction();
     }
 
-    public void onClickOptions()
+    public void OnClickOptions()
     {
         MenuManager.ClosePage(MenuManager.Page.MAIN);
         MenuManager.OpenPage(MenuManager.Page.OPTIONS);
@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
         MenuManager.FireButtonClickAction();
     }
 
-    public void onClickAchievements()
+    public void OnClickAchievements()
     {
         MenuManager.ClosePage(MenuManager.Page.MAIN);
         MenuManager.OpenPage(MenuManager.Page.ACHIEVEMENTS);
