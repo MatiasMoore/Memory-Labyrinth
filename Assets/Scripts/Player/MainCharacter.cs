@@ -73,7 +73,6 @@ public class MainCharacter : MonoBehaviour
         _objectMovement.FollowPath(path);
     }
 
-
     private void StopMovingOnTouch(InputAction.CallbackContext context)
     {
         if (_currentState != ObjectMovementState.State.Stay)
@@ -96,27 +95,27 @@ public class MainCharacter : MonoBehaviour
     public void getDamage(int damage)
     {
         _health -= damage;
-        _onDamageEvent.Invoke();
+        _onDamageEvent?.Invoke();
         if (_health <= 0)
         {
-            _onDeathEvent.Invoke();
+            _onDeathEvent?.Invoke();
         }
     }
 
     public void getBonus(int bonus)
     {
-        _onBonusEvent.Invoke(bonus);
+        _onBonusEvent?.Invoke(bonus);
     }
 
     public void getCheckpoint(Checkpoint checkpoint)
     {
-        _onCheckpointEvent.Invoke(checkpoint);
+        _onCheckpointEvent?.Invoke(checkpoint);
     }
 
     public void Finish()
     {
         _objectMovement.StopMove();
-        _onFinishEvent.Invoke();
+        _onFinishEvent?.Invoke();
     }
 
     public void SetHealth(int health)
