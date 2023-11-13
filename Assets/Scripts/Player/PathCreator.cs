@@ -17,6 +17,9 @@ public class PathCreator : MonoBehaviour
 
     private bool _isActive;
 
+    [SerializeField]
+    private float _maxDistanceToAddPoints = 50;
+
     //Property to check if the path is ready
     public bool isNewPathReady { get; private set; }
 
@@ -104,6 +107,14 @@ public class PathCreator : MonoBehaviour
 
     private void AddPositionToPath(Vector3 newPos)
     {
+        //Stop the player from drawing too far away from the starting point
+        if (_pathPoints.Count > 0)
+        {
+            float distToFirstPoint = ((Vector2)_pathPoints[0] - (Vector2)newPos).magnitude;
+            if (distToFirstPoint > _maxDistanceToAddPoints)
+                return;
+        }
+
         //Prevents loops
         if (_pathPoints.Contains(newPos))
         {
