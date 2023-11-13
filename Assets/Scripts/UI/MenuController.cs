@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuController : MonoBehaviour
@@ -18,11 +16,18 @@ public class MenuController : MonoBehaviour
     {
         Timer.SetTimerStatus(false);
         MenuManager.OpenPage(MenuManager.Page.WIN);
+
+        // Display data on level completion
+        WinPanel winPanel = FindObjectOfType<WinPanel>();
+        winPanel.SetLevelCompletionTime();
+        winPanel.SetLevelCompletionGemsCount();
     }
 
     private static void ShowLosePanelAction()
     {
         Timer.SetTimerStatus(false);
         MenuManager.OpenPage(MenuManager.Page.LOSE);
+
+        // TODO: Display data when losing (time and gems)
     }
 }
