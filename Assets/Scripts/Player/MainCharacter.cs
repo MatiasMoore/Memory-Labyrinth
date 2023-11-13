@@ -26,8 +26,7 @@ public class MainCharacter : MonoBehaviour
     private PathCreator _pathCreator;
     private bool _isActive;
 
-    void Start()
-    {
+    public void Init(){
         TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
 
         _objectMovement = new ObjectMovementState(
@@ -36,8 +35,6 @@ public class MainCharacter : MonoBehaviour
             _speed
         );
         _pathCreator = GetComponent<PathCreator>();
-
-        // added on death event to level manager
     }
 
     void FixedUpdate()
@@ -61,6 +58,7 @@ public class MainCharacter : MonoBehaviour
     public void SetActive(bool isActive)
     {
         _isActive = isActive;
+        _pathCreator.SetActive(isActive);
     }
 
     public void FollowPath(List<Vector3> path)

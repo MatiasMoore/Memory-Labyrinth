@@ -35,13 +35,11 @@ public class RightPathBuilder : MonoBehaviour
         if (_isActive){
             _objectMovement.Update(Time.fixedDeltaTime);
             _lineRenderer.positionCount++;
-            Debug.Log($"Linerenderer.count: {_lineRenderer.positionCount}, _lineRenderer.positionCount - 1: {_lineRenderer.positionCount - 1}");
             _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _transform.position);
 
-            if (_objectMovement.GetState() == ObjectMovementState.State.Stay)
-            {
-                _isActive = false;
-            }
+        } else {
+            _lineRenderer.positionCount = 1;
+            _lineRenderer.SetPosition(0, _transform.position);
         }
     }
 
@@ -60,5 +58,10 @@ public class RightPathBuilder : MonoBehaviour
         }
         _objectMovement.FollowPath(rightPathPoints);
         _isActive = true;
+    }
+
+    public void SetActive(bool isActive)
+    {
+        _isActive = isActive;
     }
 }

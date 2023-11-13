@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class LevelModel : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _player;
-
     private MainCharacter _mainCharacter;
 
     [SerializeField]
@@ -22,48 +19,21 @@ public class LevelModel : MonoBehaviour
     [SerializeField]
     int _bonusMoneyAmount;
 
-    [SerializeField]
-    private GameObject _rightPathBuilder;
+    private bool _isActive;
 
-    [SerializeField]
-    private float _startLevelTime;
-
-    private float _timer;
-
-    private bool _isLevelStarted = false;
-
-    public void Start()
+    public void Init(MainCharacter mainCharacter)
     {
-        _mainCharacter = _player.GetComponent<MainCharacter>();
-
+        _mainCharacter = mainCharacter;
         _mainCharacter._onDamageEvent += onPlayerDamage;
         _mainCharacter._onDeathEvent += onPlayerDeath;
         _mainCharacter._onBonusEvent += onPlayerGetBonus;
         _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
         _mainCharacter._onFinishEvent += onPlayerWin;
-
-        _rightPathBuilder.GetComponent<RightPathBuilder>().ShowRightPath(_startLevelTime * 0.9f);
-        _mainCharacter.SetActive(false);
-        _player.GetComponent<PathCreator>().SetActive(false);
     }
 
-    public void FixedUpdate()
+    public void SetActive(bool isActive)
     {
-        _timer += Time.fixedDeltaTime;
-
-        if (_timer > _startLevelTime && _timer != 0)
-        {
-            StartLevel();
-        }
-
-    }
-
-    private void StartLevel()
-    {
-        _rightPathBuilder.SetActive(false);
-        // TODO: Show fog
-        _player.GetComponent<PathCreator>().SetActive(true);
-        _mainCharacter.SetActive(true);
+        _isActive = isActive;
     }
 
     public void onPlayerDeath()

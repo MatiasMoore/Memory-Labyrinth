@@ -9,14 +9,22 @@ public class LevelManager : MonoBehaviour
     private GameObject _levelPrefab;
 
     [SerializeField]
-    private ResourceManager.Level _currentLevel;
+    static public ResourceManager.Level _currentLevel;
 
-    public void Start()
+    private MainCharacter _mainCharacter;
+
+    [SerializeField]
+    private float _startLevelTime;
+
+    private RightPathBuilder _rightPathBuilder;
+
+    private float _timer;
+    public void SetCurrentLevel(ResourceManager.Level level)
     {
-        StartLevel();
+        _currentLevel = level;
     }
 
-    public void StartLevel()
+    public void Start()
     {
         //place prefab on scene
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
@@ -24,5 +32,28 @@ public class LevelManager : MonoBehaviour
         var audioController = FindObjectOfType<AudioController>();
         if (audioController != null )
             audioController.SetupListeners();
+        
+        LevelModel levelModel = FindObjectOfType<LevelModel>();
+        _mainCharacter = FindObjectOfType<MainCharacter>();
+        levelModel.Init(_mainCharacter);
+        
+        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
+        _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
+        _mainCharacter.Init();
+        _mainCharacter.SetActive(false);
+        
+    }
+
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+
+        if (_timer > _startLevelTime && _timer != 0)
+        {
+            _mainCharacter.SetActive(true);
+            _rightPathBuilder.SetActive(false);
+            //TODO: show fog
+        }
+        
     }
 }
