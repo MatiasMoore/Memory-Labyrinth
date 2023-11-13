@@ -6,11 +6,11 @@ public class WinPanel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _time;
 
-    public void SetFinishTimeValue()
+    public void SetLevelCompletionTime()
     {
         Timer timer = FindObjectOfType<Timer>();
         if (timer == null)
-            Debug.LogError("WIN PANEL: SetTimeValue -> timer = null");
+            Debug.LogError("WIN PANEL: SetLevelCompletionTime -> timer = null");
         _time.text = timer.GetTimerValue();
     }
 
