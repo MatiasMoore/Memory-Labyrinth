@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using System;
+using System.Linq;
 
 public class ResourceManager : MonoBehaviour
 {
@@ -115,6 +117,11 @@ public class ResourceManager : MonoBehaviour
             Debug.LogError($"Level {levelToLoad} not found");
             return null;
         }
-    }    
+    }
+
+    public static int GetLastLevelIndex()
+    {
+        return Enum.GetValues(typeof(ResourceManager.Level)).Cast<int>().Max();
+    }
 
 }

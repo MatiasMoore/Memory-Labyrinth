@@ -30,7 +30,7 @@ public class WinPanel : MonoBehaviour
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
 
         // If level index is out of enum range, load Main Menu
-        if ((int)(LevelManager._currentLevel + 1) > LevelManager.GetLastLevelIndex())
+        if ((int)(LevelManager._currentLevel + 1) > ResourceManager.GetLastLevelIndex())
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         // Else load next level
         else
