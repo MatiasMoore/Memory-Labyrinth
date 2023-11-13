@@ -86,7 +86,7 @@ public class LevelModel : MonoBehaviour
         }
     }
 
-    public int GetBonusAmout()
+    public int GetBonusAmount()
     {
         return _bonusMoneyAmount;
     }
