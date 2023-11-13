@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     private static GameObject _pauseMenu;
     private static GameObject _winPanel;
     private static GameObject _losePanel;
+    private static GameObject _levelSelectionMenu;
 
     public static event UnityAction _buttonClick;
 
@@ -25,7 +26,8 @@ public class MenuManager : MonoBehaviour
         ACHIEVEMENTS,
         PAUSE,
         WIN,
-        LOSE
+        LOSE,
+        LEVEL_SELECTION
     }
 
     public static void OpenPage(Page page)
@@ -64,6 +66,9 @@ public class MenuManager : MonoBehaviour
             case Page.LOSE:
                 _losePanel = UI.transform.Find(GetPageName(Page.LOSE)).gameObject;
                 return _losePanel;
+            case Page.LEVEL_SELECTION:
+                _levelSelectionMenu = UI.transform.Find(GetPageName(Page.LEVEL_SELECTION)).gameObject;
+                return _levelSelectionMenu;
             default:
                 throw new System.Exception("MENU MANAGER: GetPageGameObject -> page is not defined in switch");
         }
@@ -85,6 +90,8 @@ public class MenuManager : MonoBehaviour
                 return new string("Win Panel");
             case Page.LOSE:
                 return new string("Lose Panel");
+            case Page.LEVEL_SELECTION:
+                return new string("Level Selection Menu");
             default:
                 throw new System.Exception("MENU MANAGER: GetPageName -> page is not defined in switch");
         }
