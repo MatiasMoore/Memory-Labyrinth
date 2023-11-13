@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -33,6 +35,11 @@ public class LevelManager : MonoBehaviour
     public void SetCurrentLevel(ResourceManager.Level level)
     {
         _currentLevel = level;
+    }
+
+    public static int GetLastLevelIndex()
+    {
+        return Enum.GetValues(typeof(ResourceManager.Level)).Cast<int>().Max();
     }
 
     public void Start()
