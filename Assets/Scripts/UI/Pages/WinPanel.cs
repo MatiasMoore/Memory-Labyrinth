@@ -6,12 +6,23 @@ public class WinPanel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _time;
 
+    [SerializeField]
+    private TextMeshProUGUI _gems;
+
     public void SetLevelCompletionTime()
     {
         Timer timer = FindObjectOfType<Timer>();
         if (timer == null)
-            Debug.LogError("WIN PANEL: SetLevelCompletionTime -> timer = null");
-        _time.text = timer.GetTimerValue();
+            throw new System.Exception("WIN PANEL: SetLevelCompletionTime -> timer = null");
+        _time.text = ": " + timer.GetTimerValue();
+    }
+
+    public void SetLevelCompletionGemsCount()
+    {
+        Gems gems = FindObjectOfType<Gems>();
+        if (gems == null)
+            throw new System.Exception("WIN PANEL: SetLevelCompletionGemsCount -> gems = null");
+        _gems.text = ": " + gems.GetGemsCount();
     }
 
     public void OnClickNextLevel()
