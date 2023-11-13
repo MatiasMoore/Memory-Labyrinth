@@ -23,7 +23,12 @@ public class Timer : MonoBehaviour
         return _timerStatus;
     }
 
-    private float elapsedTime;
+    private static float elapsedTime;
+
+    public static float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
 
     private void Start()
     {

@@ -40,6 +40,8 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         _saveLoadManager = GetComponent<SaveLoadManager>();
+        _saveLoadManager.LoadGame();
+        Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
         _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
         _mainCharacter.Init();
@@ -126,17 +128,41 @@ public class LevelManager : MonoBehaviour
 
     public void SaveCompleteLevel()
     {
+        LevelData levelData = new LevelData
+        {
+            _level = _currentLevel,
+            _livesAmount = _mainCharacter.GetHealth(),
+            _checkpointId = 0,
+            _time = Timer.GetElapsedTime(),
+            _isCompleted = true,
+            _collectedBonusesId = new List<int> { 123}
+
+        };
+
+        if (LevelProgressStorage.Instance != null)
+        {   
+            if (LevelProgressStorage.Instance.currentLevels.Exists(x => x._level == _currentLevel)) 
+            {
+                LevelProgressStorage.Instance.currentLevels.RemoveAll(x => x._level == _currentLevel);
+            }
+            LevelProgressStorage.Instance.currentLevels.Add(levelData);
+            Debug.Log("LEVELMANAGER: level progress saved");
+        } else
+        {
+            Debug.Log("LEVELMANAGER: level progress save failed!");
+        }
+
         int bonusAmount = _levelModel.GetBonusAmount();
         if (BonusStorage.Instance != null)
         {
             BonusStorage.Instance.EarnBonuses(bonusAmount);
-            _saveLoadManager.SaveGame();
-            Debug.Log("LEVELMANAGER: complete level saved");
+            Debug.Log("LEVELMANAGER: complete level bonuses saved");
         } else
         {
-            Debug.Log("LEVELMANAGER: save failed!");
+            Debug.Log("LEVELMANAGER: bonuses save failed!");
         }
-        
+
+        _saveLoadManager.SaveGame();
     }
 
     public void SaveUncompleteLevel()
