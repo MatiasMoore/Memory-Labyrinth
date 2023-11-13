@@ -61,6 +61,8 @@ public class LevelManager : MonoBehaviour
     {
         if (!_isLevelActive)
         {
+            Timer.SetTimerStatus(false);
+
             _player.SetActive(true);
 
             _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
