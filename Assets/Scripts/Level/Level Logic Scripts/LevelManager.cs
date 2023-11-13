@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private GameObject _levelPrefab;
 
+    private SaveLoadManager _saveLoadManager;
+
     [SerializeField]
     static public ResourceManager.Level _currentLevel;
 
@@ -44,6 +46,7 @@ public class LevelManager : MonoBehaviour
 
     public void Start()
     {
+        _saveLoadManager = GetComponent<SaveLoadManager>();
         _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
         _mainCharacter.Init();
@@ -133,10 +136,17 @@ public class LevelManager : MonoBehaviour
 
     public void SaveCompleteLevel()
     {
-        //BonusStorage.Instance.EarnBonuses(_levelModel.GetBonusAmout());
-        // SaveLoadManager.SaveGame();
-        // TODO
-        Debug.Log("LevelManager: complete level saved");
+        int bonusAmount = _levelModel.GetBonusAmount();
+        if (BonusStorage.Instance != null)
+        {
+            BonusStorage.Instance.EarnBonuses(bonusAmount);
+            _saveLoadManager.SaveGame();
+            Debug.Log("LEVELMANAGER: complete level saved");
+        } else
+        {
+            Debug.Log("LEVELMANAGER: save failed!");
+        }
+        
     }
 
     public void SaveUncompleteLevel()

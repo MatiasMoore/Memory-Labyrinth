@@ -12,6 +12,12 @@ public class Game : MonoBehaviour
 
         DontDestroyOnLoad(audioController.transform.parent.gameObject);
 
+        var BonusStorage = FindObjectOfType<BonusStorage>();
+        if (BonusStorage == null)
+            throw new System.Exception("No BonusStorage is found on startup");
+
+        DontDestroyOnLoad(BonusStorage.transform.parent.gameObject);
+
         ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
     }
 }
