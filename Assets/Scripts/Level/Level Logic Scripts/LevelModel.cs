@@ -28,7 +28,19 @@ public class LevelModel : MonoBehaviour
         _mainCharacter._onDeathEvent += onPlayerDeath;
         _mainCharacter._onBonusEvent += onPlayerGetBonus;
         _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
-        _mainCharacter._onFinishEvent += onPlayerWin;
+        _mainCharacter._onFinishEvent += onPlayerWin;  
+    }
+
+    public void StartNewLevel()
+    {
+        _currentCheckpoint = FindObjectOfType<StartPoint>();
+        _bonusMoneyAmount = 0;
+    }
+
+    public void LoadLevel(int bonusAmount, Checkpoint checkpoint)
+    {
+        _bonusMoneyAmount = bonusAmount;
+        _currentCheckpoint = checkpoint;
     }
 
     public void SetActive(bool isActive)
@@ -72,6 +84,24 @@ public class LevelModel : MonoBehaviour
         {
             _currentCheckpoint = checkpoint;
         }
+    }
+
+    public int GetBonusAmout()
+    {
+        return _bonusMoneyAmount;
+    }
+    public void SetBonusAmount(int bonusAmount)
+    {
+        _bonusMoneyAmount = bonusAmount;
+    }
+    public Checkpoint GetCheckPoint()
+    {
+        return _currentCheckpoint;
+    }
+
+    public void SetCheckPoint(Checkpoint checkpoint)
+    {
+        _currentCheckpoint = checkpoint;
     }
 
 }

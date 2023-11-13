@@ -112,4 +112,9 @@ public class MainCharacter : MonoBehaviour
         _objectMovement.StopMove();
         _onFinishEvent.Invoke();
     }
+
+    public void SetHealth(int health)
+    {
+        _health = health;
+    }
 }

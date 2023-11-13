@@ -49,22 +49,23 @@ public class LevelManager : MonoBehaviour
         _levelModel._onLevelWin += WinLevel;
 
         Timer.SetTimerStatus(false);
+
+        StartLevel();
         
     }
 
-    public void Start()
+    public void StartLevel()
     {
         if (!_isLevelActive)
         {
             _player.SetActive(true);
-            
-            //place prefab on scene
+
             _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
             Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-            StartPoint startPoint = FindObjectOfType<StartPoint>();
-            _player.GetComponent<Transform>().position = startPoint.GetPosition() + new Vector3(0,0,-1);
-            
+            _levelModel.StartNewLevel();
+            _player.GetComponent<Transform>().position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
+
 
             _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
             _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
@@ -78,13 +79,22 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
+    public void LoadLevel()
+    {
+        // LevelData levelData = SaveLoadManager.LoadGame();
+        // TODO
+        
+    }
+
+
     private void WinLevel()
     {
         _mainCharacter.SetActive(false);
         Timer.SetTimerStatus(false);
         _isLevelActive = false;
         Debug.Log("LevelManager: level win");
-        //TODO: save progress
+        SaveCompleteLevel();
 
     }
 
@@ -109,6 +119,21 @@ public class LevelManager : MonoBehaviour
         _isPathShown = false;
 
     }
+
+    public void SaveCompleteLevel()
+    {
+        //BonusStorage.Instance.EarnBonuses(_levelModel.GetBonusAmout());
+        // SaveLoadManager.SaveGame();
+        // TODO
+        Debug.Log("LevelManager: complete level saved");
+    }
+
+    public void SaveUncompleteLevel()
+    {
+        //TODO
+        Debug.Log("LevelManager: uncomplete level saved");
+    }
+
 
     private void Update()
     {
