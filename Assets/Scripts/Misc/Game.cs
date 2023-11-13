@@ -18,6 +18,12 @@ public class Game : MonoBehaviour
 
         DontDestroyOnLoad(BonusStorage.transform.parent.gameObject);
 
+        var levelProgressStorage = FindObjectOfType<LevelProgressStorage>();
+        if (levelProgressStorage == null)
+            throw new System.Exception("No LevelProgressStorage is found on startup");
+
+        DontDestroyOnLoad(levelProgressStorage.transform.parent.gameObject);
+
         ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
     }
 }
