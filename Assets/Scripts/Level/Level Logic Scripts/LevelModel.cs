@@ -31,18 +31,6 @@ public class LevelModel : MonoBehaviour
         _mainCharacter._onFinishEvent += onPlayerWin;  
     }
 
-    public void StartNewLevel()
-    {
-        _currentCheckpoint = FindObjectOfType<StartPoint>();
-        _bonusMoneyAmount = 0;
-    }
-
-    public void LoadLevel(int bonusAmount, Checkpoint checkpoint)
-    {
-        _bonusMoneyAmount = bonusAmount;
-        _currentCheckpoint = checkpoint;
-    }
-
     public void SetActive(bool isActive)
     {
         _isActive = isActive;

@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -39,11 +37,6 @@ public class LevelManager : MonoBehaviour
         _currentLevel = level;
     }
 
-    public static int GetLastLevelIndex()
-    {
-        return Enum.GetValues(typeof(ResourceManager.Level)).Cast<int>().Max();
-    }
-
     public void Start()
     {
         _saveLoadManager = GetComponent<SaveLoadManager>();
@@ -69,28 +62,23 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-        if (!_isLevelActive)
-        {
-            Timer.SetTimerStatus(false);
+        _player.SetActive(true);
 
-            _player.SetActive(true);
+        _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
+        Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-            _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
-            Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        _levelModel.SetBonusAmount(0);
+        _levelModel.SetCheckPoint(FindObjectOfType<StartPoint>());
+        _player.GetComponent<Transform>().position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
 
-            _levelModel.StartNewLevel();
-            _player.GetComponent<Transform>().position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
+        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
+        _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
 
+        _mainCharacter.SetActive(false);
 
-            _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
-            _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
-
-            _mainCharacter.SetActive(false);
-
-            _timer = 0;
-            _isLevelActive = true;
-            _isPathShown = true;
-        }
+        _timer = 0;
+        _isLevelActive = true;
+        _isPathShown = true;
     }
 
 
@@ -98,7 +86,6 @@ public class LevelManager : MonoBehaviour
     {
         // LevelData levelData = SaveLoadManager.LoadGame();
         // TODO
-        
     }
 
 
