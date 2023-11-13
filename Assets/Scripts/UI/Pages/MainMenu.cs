@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
     public void onClickPlay()
     {
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-
+        LevelManager._currentLevel = ResourceManager.Level.Level1;
         MenuManager.FireButtonClickAction();
     }
 
