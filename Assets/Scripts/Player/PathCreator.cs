@@ -106,15 +106,7 @@ public class PathCreator : MonoBehaviour
     }
 
     private void AddPositionToPath(Vector3 newPos)
-    {
-        //Stop the player from drawing too far away from the starting point
-        if (_pathPoints.Count > 0)
-        {
-            float distToFirstPoint = ((Vector2)_pathPoints[0] - (Vector2)newPos).magnitude;
-            if (distToFirstPoint > _maxDistanceToAddPoints)
-                return;
-        }
-
+    { 
         //Prevents loops
         if (_pathPoints.Contains(newPos))
         {
@@ -163,6 +155,14 @@ public class PathCreator : MonoBehaviour
                     {
                         Vector3 posToAdd = hitObj.transform.position;
                         posToAdd.z = _playerTransform.position.z;
+
+                        //Stop the player from drawing too far away from the starting point
+                        if (_pathPoints.Count > 0)
+                        {
+                            float distToFirstPoint = ((Vector2)_pathPoints[0] - (Vector2)posToAdd).magnitude;
+                            if (distToFirstPoint > _maxDistanceToAddPoints)
+                                break;
+                        }
 
                         AddPositionToPath(posToAdd);
                     }
