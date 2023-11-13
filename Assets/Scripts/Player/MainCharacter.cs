@@ -10,6 +10,12 @@ public class MainCharacter : MonoBehaviour
 {
     [SerializeField]
     private int _health;
+
+    public int GetHealth()
+    {
+        return _health;
+    }
+
     public event UnityAction _onDeathEvent;
     public event UnityAction _onDamageEvent;
     public event UnityAction<int> _onBonusEvent;
