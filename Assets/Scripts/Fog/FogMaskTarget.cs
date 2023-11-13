@@ -47,7 +47,7 @@ public class FogMaskTarget : MonoBehaviour
         float t = 0;
         while (t < 1)
         {
-            SetMaskRadius(Mathf.Lerp(from, to, t);
+            SetMaskRadius(Mathf.Lerp(from, to, t));
             t += Time.deltaTime / timeToBlend;
             yield return null;
         }
