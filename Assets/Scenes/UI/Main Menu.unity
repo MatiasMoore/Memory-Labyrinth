@@ -774,8 +774,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1256556679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 10, y: -2.6796298}
   m_SizeDelta: {x: 50, y: -5.3592596}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1026,7 +1026,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840014292}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: onClickOptions
+        m_MethodName: OnClickOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1197,7 +1197,7 @@ RectTransform:
   m_Father: {fileID: 1610272883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1277,7 +1277,7 @@ RectTransform:
   m_AnchorMin: {x: 0.025632385, y: 0.24944726}
   m_AnchorMax: {x: 0.97700006, y: 0.6963109}
   m_AnchoredPosition: {x: -5.7382812, y: 33.249023}
-  m_SizeDelta: {x: -46.52329, y: -178.89581}
+  m_SizeDelta: {x: -46.52329, y: 206.88988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &219419327
 MonoBehaviour:
@@ -1838,8 +1838,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 193.13965, y: -75.09092}
-  m_SizeDelta: {x: 155, y: 150.18184}
+  m_AnchoredPosition: {x: 193.13965, y: -79.597404}
+  m_SizeDelta: {x: 155, y: 159.19481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &336836341
 MonoBehaviour:
@@ -1907,7 +1907,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1401575588}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: OnClickBack
+        m_MethodName: OnClickAccept
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2436,7 +2436,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7286,7 +7286,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 729947527}
         m_TargetAssemblyTypeName: AchievementsMenu, Assembly-CSharp
-        m_MethodName: onClickBack
+        m_MethodName: OnClickBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8949,7 +8949,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840014292}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: onClickPlay
+        m_MethodName: OnClickPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9730,7 +9730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -409.23645, y: -287.66876}
+  m_AnchoredPosition: {x: -317.7531, y: -419.95215}
   m_SizeDelta: {x: 790.93994, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570664996
@@ -9793,8 +9793,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -409.23648, y: -21.334377}
-  m_SizeDelta: {x: 660.7187, y: 2.6687531}
+  m_AnchoredPosition: {x: -317.75308, y: -87.47608}
+  m_SizeDelta: {x: 660.7187, y: 134.95216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571150335
 MonoBehaviour:
@@ -9843,7 +9843,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 130.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11064,7 +11064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -409.23645, y: -127.668755}
+  m_AnchoredPosition: {x: -317.7531, y: -259.95215}
   m_SizeDelta: {x: 600, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716863871
@@ -11515,8 +11515,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -409.23645, y: -452.75967}
-  m_SizeDelta: {x: 641.2793, y: 150.18184}
+  m_AnchoredPosition: {x: -317.7531, y: -589.54956}
+  m_SizeDelta: {x: 641.2793, y: 159.19481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788380250
 MonoBehaviour:
@@ -11711,8 +11711,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 232727862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 10, y: -2.67963}
   m_SizeDelta: {x: 50, y: -5.35926}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12641,7 +12641,7 @@ RectTransform:
   m_Father: {fileID: 121135325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12719,8 +12719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 448.13965, y: -75.09092}
-  m_SizeDelta: {x: 155, y: 150.18184}
+  m_AnchoredPosition: {x: 448.13965, y: -79.597404}
+  m_SizeDelta: {x: 155, y: 159.19481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1926659861
 MonoBehaviour:
@@ -12788,7 +12788,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1401575588}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
-        m_MethodName: OnClickBack
+        m_MethodName: OnClickDecline
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13824,7 +13824,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1840014292}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: onClickAchievements
+        m_MethodName: OnClickAchievements
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
