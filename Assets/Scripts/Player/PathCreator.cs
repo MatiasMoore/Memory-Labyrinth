@@ -148,10 +148,10 @@ public class PathCreator : MonoBehaviour
             //Raycast from last path point to player touch position
             Vector2 lastPos = _pathPoints[_pathPoints.Count - 1];
             Vector2 dir = touchWorldPos - lastPos;
-            RaycastHit2D[] sphereCasts = Physics2D.RaycastAll(lastPos, dir, dir.magnitude);
+            RaycastHit2D[] castResults = Physics2D.RaycastAll(lastPos, dir, dir.magnitude);
 
             //Check every result
-            foreach (RaycastHit2D sphereCast in sphereCasts)
+            foreach (RaycastHit2D sphereCast in castResults)
             {
                 if (sphereCast)// hit happened
                 {
