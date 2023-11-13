@@ -26,10 +26,6 @@ public class LevelManager : MonoBehaviour
 
     private RightPathBuilder _rightPathBuilder;
 
-    private float _timer;
-
-    private bool _isLevelActive;
-
     private bool _isPathShown;
 
     public void SetCurrentLevel(ResourceManager.Level level)
@@ -55,13 +51,12 @@ public class LevelManager : MonoBehaviour
         // UI Listeners
         MenuController.SetupListeners(_levelModel, _mainCharacter);
 
-        Timer.SetTimerStatus(false);
-
         StartLevel();
     }
 
     public void StartLevel()
     {
+        Timer.SetTimerStatus(false);
         _player.SetActive(true);
 
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
@@ -71,14 +66,10 @@ public class LevelManager : MonoBehaviour
         _levelModel.SetCheckPoint(FindObjectOfType<StartPoint>());
         _player.GetComponent<Transform>().position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
 
-        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
-        _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
-
         _mainCharacter.SetActive(false);
 
-        _timer = 0;
-        _isLevelActive = true;
-        _isPathShown = true;
+        StopAllCoroutines();
+        StartCoroutine(PlayLevelIntro());
     }
 
 
@@ -93,7 +84,6 @@ public class LevelManager : MonoBehaviour
     {
         _mainCharacter.SetActive(false);
         Timer.SetTimerStatus(false);
-        _isLevelActive = false;
         Debug.Log("LevelManager: level win");
         SaveCompleteLevel();
 
@@ -103,9 +93,15 @@ public class LevelManager : MonoBehaviour
     {
         _mainCharacter.SetActive(false);
         Timer.SetTimerStatus(false);
-        _isLevelActive = false;
         Debug.Log("LevelManager: level lose");
 
+    }
+
+    private void StartShowPath()
+    {
+        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
+        _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
+        _isPathShown = true;
     }
 
     private void StopShowPath()
@@ -142,17 +138,18 @@ public class LevelManager : MonoBehaviour
         Debug.Log("LevelManager: uncomplete level saved");
     }
 
-
-    private void Update()
+    private IEnumerator PlayLevelIntro()
     {
-        if (_isLevelActive)
-        {
-            _timer += Time.deltaTime;
+        StartShowPath();
+        float timer = 0;
 
-            if (_timer > _startLevelTime && _timer != 0)
-            {
-                StopShowPath();
-            }
+        while (timer < _startLevelTime)
+        {
+
+            timer += Time.deltaTime;
+            yield return null;
         }
+
+        StopShowPath();
     }
 }
