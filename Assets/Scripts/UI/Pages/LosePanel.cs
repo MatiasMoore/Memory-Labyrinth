@@ -33,10 +33,9 @@ public class LosePanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // The same level must be loaded
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        ResourceManager.LoadLevel(ResourceManager.Level.Level1);
+        // TODO: reload level prefab + timer reset + close lose panel
 
+        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }

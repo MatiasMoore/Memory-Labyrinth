@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -31,9 +30,9 @@ public class PauseMenu : MonoBehaviour
     public void OnClickRestart()
     {
         Time.timeScale = 1f;
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        // TODO: The same level must be loaded
+        // TODO: reload level prefab + timer reset + close pause menu + SetPausedGame(false)
 
+        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }
