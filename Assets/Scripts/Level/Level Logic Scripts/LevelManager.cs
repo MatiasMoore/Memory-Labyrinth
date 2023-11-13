@@ -35,10 +35,11 @@ public class LevelManager : MonoBehaviour
         _currentLevel = level;
     }
 
-    public void Awake()
+    public void Start()
     {
         _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
+        _mainCharacter.Init();
 
         var audioController = FindObjectOfType<AudioController>();
         if (audioController != null)
@@ -70,7 +71,6 @@ public class LevelManager : MonoBehaviour
             _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
             _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
 
-            _mainCharacter.Init();
             _mainCharacter.SetActive(false);
 
             _timer = 0;
