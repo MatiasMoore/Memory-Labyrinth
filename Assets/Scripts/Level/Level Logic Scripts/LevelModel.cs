@@ -39,13 +39,13 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDeath()
     {
         Debug.Log("Player died");
-        _onLevelLose.Invoke();
+        _onLevelLose?.Invoke();
     }
 
     public void onPlayerWin()
     {
         Debug.Log("Player win");
-        _onLevelWin.Invoke();
+        _onLevelWin?.Invoke();
     }
 
     public void onPlayerDamage()
@@ -57,7 +57,7 @@ public class LevelModel : MonoBehaviour
     public void onPlayerGetBonus(int value)
     {
         _bonusMoneyAmount += value;
-        _onPlayerGetBonus.Invoke();
+        _onPlayerGetBonus?.Invoke();
         Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
     }
 
