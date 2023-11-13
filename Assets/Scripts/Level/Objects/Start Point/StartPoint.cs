@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartPoint : MonoBehaviour
 {
     private Transform _transform;
-    private void Start()
+    private void Awake()
     {
         _transform = GetComponent<Transform>();
     }
