@@ -56,7 +56,6 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-        Timer.SetTimerStatus(false);
         _player.SetActive(true);
 
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
@@ -105,11 +104,10 @@ public class LevelManager : MonoBehaviour
     }
 
     private void StopShowPath()
-    {   if (_isPathShown)
+    {   
+        if (_isPathShown)
         {
-            _mainCharacter.SetActive(true);
             _rightPathBuilder.SetActive(false);
-            Timer.SetTimerStatus(true);
             //TODO: show fog
         }
 
@@ -140,13 +138,13 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayLevelIntro()
     {
+        Timer.SetTimerStatus(false);
         FogController.Instance.SetFogVisibile(false);
         StartShowPath();
         float timer = 0;
 
         while (timer < _startLevelTime)
         {
-
             timer += Time.deltaTime;
             yield return null;
         }
@@ -154,6 +152,20 @@ public class LevelManager : MonoBehaviour
         StopShowPath();
 
         FogController.Instance.SetFogVisibile(true);
-        FogController.Instance.FadeInToAllTargets();
+
+        float timeToFadeIn = 2.4f;
+
+        FogController.Instance.FadeInToAllTargets(timeToFadeIn);
+
+        timer = 0;
+        while (timer < timeToFadeIn)
+        {
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        _mainCharacter.SetActive(true);
+        Timer.SetTimerStatus(true);
     }
 }
