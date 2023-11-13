@@ -32,6 +32,9 @@ public class LevelManager : MonoBehaviour
         var audioController = FindObjectOfType<AudioController>();
         if (audioController != null )
             audioController.SetupListeners();
+
+        // UI Listeners
+        MenuController.SetupListeners();
         
         LevelModel levelModel = FindObjectOfType<LevelModel>();
         _mainCharacter = FindObjectOfType<MainCharacter>();
@@ -41,7 +44,6 @@ public class LevelManager : MonoBehaviour
         _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
         _mainCharacter.Init();
         _mainCharacter.SetActive(false);
-        
     }
 
     private void Update()
@@ -54,6 +56,6 @@ public class LevelManager : MonoBehaviour
             _rightPathBuilder.SetActive(false);
             //TODO: show fog
         }
-        
+
     }
 }

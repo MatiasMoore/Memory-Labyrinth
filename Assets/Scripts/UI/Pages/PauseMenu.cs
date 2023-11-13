@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        // Надо чтоб подгружался префаб нужного уровня
+        // TODO: The same level must be loaded
 
         MenuManager.FireButtonClickAction();
     }

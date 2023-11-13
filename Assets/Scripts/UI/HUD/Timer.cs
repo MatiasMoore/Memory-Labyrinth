@@ -8,6 +8,11 @@ public class Timer : MonoBehaviour
 
     private static bool _timerStatus;
 
+    public string GetTimerValue()
+    {
+        return _textMesh.text;
+    }
+
     public static void SetTimerStatus(bool flag)
     {
         _timerStatus = flag;

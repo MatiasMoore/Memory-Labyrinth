@@ -1,11 +1,22 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class WinPanel : MonoBehaviour
 {
+    [SerializeField]
+    private TextMeshProUGUI _time;
+
+    public void SetFinishTimeValue()
+    {
+        Timer timer = FindObjectOfType<Timer>();
+        if (timer == null)
+            Debug.LogError("WIN PANEL: SetTimeValue -> timer = null");
+        _time.text = timer.GetTimerValue();
+    }
+
     public void OnClickNextLevel()
     {
-        // Здесь должен быть переход на следующий уровень (?перезапускаться сцена? и загружаться префаб нужного уровня)
+        // Should be transition to next level
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
         ResourceManager.LoadLevel(ResourceManager.Level.Level1);
 
@@ -21,7 +32,7 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // Здесь по идее должна ?перезагружаться сцена? и загружаться префаб нужного уровня
+        // The same level must be loaded
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
         ResourceManager.LoadLevel(ResourceManager.Level.Level1);
 
