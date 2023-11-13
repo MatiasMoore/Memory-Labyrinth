@@ -10,7 +10,6 @@ public class Game : MonoBehaviour
         if (audioController == null)
             throw new System.Exception("No audio controller is found on startup");
 
-        audioController.Init();
         DontDestroyOnLoad(audioController.transform.parent.gameObject);
 
         ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);

@@ -29,7 +29,6 @@ public class ResourceManager : MonoBehaviour
     public enum SoundEffect
     {
         MenuClick,
-        SliderClick,
         LevelStarted,
         LevelFinished,
         LevelFailed,
@@ -54,6 +53,7 @@ public class ResourceManager : MonoBehaviour
         { SoundEffect.LevelFailed, _audioFilesDirectoryPath + "LevelFailed" },
         { SoundEffect.LevelStarted, _audioFilesDirectoryPath + "LevelStarted" },
         { SoundEffect.NewPathPoint, _audioFilesDirectoryPath + "NewPathPoint" },
+        { SoundEffect.MenuClick, _audioFilesDirectoryPath + "MenuClick" },
     };
 
     //Music

@@ -12,12 +12,10 @@ public class AudioController : MonoBehaviour
         if (Instance != null) return;
 
         Instance = this;
+        ResourceManager.activeSceneChanged += SceneChanged;
+        MenuManager._buttonClick += PlayUIClickSound;
     }
 
-    public void Init()
-    {
-        ResourceManager.activeSceneChanged += SceneChanged;   
-    }
 
     public void SetupListeners()
     {
@@ -51,6 +49,11 @@ public class AudioController : MonoBehaviour
             MusicManager.Instance.PlayMusicWithBlending(ResourceManager.Music.LevelMusic);
     }
 
+    private void PlayUIClickSound()
+    {
+        SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.MenuClick);
+    }
+
     private void PlayBonusPickupSound(int bonusValue)
     {
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.BonusPickup);
@@ -79,11 +82,5 @@ public class AudioController : MonoBehaviour
     private void PlayLevelFailedSound()
     {
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.LevelFailed);
-    }
-
-    // UI Sounds
-    private void PlayClickSound()
-    {
-        SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.CheckpointActivated);
     }
 }
