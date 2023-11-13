@@ -28,6 +28,9 @@ public class MenuController : MonoBehaviour
         Timer.SetTimerStatus(false);
         MenuManager.OpenPage(MenuManager.Page.LOSE);
 
-        // TODO: Display data when losing (time and gems)
+        // Display data on lose
+        LosePanel losePanel = FindObjectOfType<LosePanel>();
+        losePanel.SetLevelTimeOnLose();
+        losePanel.SetLevelGemsCountOnLose();
     }
 }
