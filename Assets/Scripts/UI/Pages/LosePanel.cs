@@ -11,7 +11,7 @@ public class LosePanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // Здесь по идее должна ?перезагружаться сцена? и загружаться префаб нужного уровня
+        // The same level must be loaded
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
         ResourceManager.LoadLevel(ResourceManager.Level.Level1);
 
