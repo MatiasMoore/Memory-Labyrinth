@@ -27,8 +27,6 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        SetTimerStatus(true);
-
         _textMesh.text = "00:00";
     }
 
