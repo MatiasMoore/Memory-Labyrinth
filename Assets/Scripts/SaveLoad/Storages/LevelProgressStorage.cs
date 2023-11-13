@@ -8,7 +8,7 @@ public class LevelProgressStorage : MonoBehaviour
 
     public event Action<LevelData> OnLevelProgressChanged;
 
-    [SerializeField] public List<LevelData> currentLevels { get; set; }
+    [SerializeField] public List<LevelData> currentLevels { get; set; } = new List<LevelData>();
 
     private void Awake()
     {
