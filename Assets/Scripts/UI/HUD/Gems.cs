@@ -11,4 +11,9 @@ public class Gems : MonoBehaviour
         return _textMesh.text;
     }
 
+    public void SetGemsAmount(int amount)
+    {
+        Debug.Log("GEMS: SetGemsAmount -> " + amount);
+        _textMesh.text = amount.ToString();
+    }
 }
