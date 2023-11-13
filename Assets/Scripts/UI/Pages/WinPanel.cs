@@ -34,7 +34,8 @@ public class WinPanel : MonoBehaviour
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         // Else load next level
         else
-            ResourceManager.LoadLevel(LevelManager._currentLevel + 1);
+            // TODO: load next level
+            // ResourceManager.LoadLevel(LevelManager._currentLevel + 1);
 
         MenuManager.FireButtonClickAction();
     }
