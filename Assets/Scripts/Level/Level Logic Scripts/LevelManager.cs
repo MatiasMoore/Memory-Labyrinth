@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
     [SerializeField]
     private GameObject _levelPrefab;
 
@@ -44,6 +46,11 @@ public class LevelManager : MonoBehaviour
 
     public void Init()
     {
+        if (Instance != null)
+            return;
+
+        Instance = this;
+
         _saveLoadManager = GetComponent<SaveLoadManager>();
         //Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
         _mainCharacter = _player.GetComponent<MainCharacter>();
