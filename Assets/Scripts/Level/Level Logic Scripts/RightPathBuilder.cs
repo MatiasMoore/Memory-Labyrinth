@@ -43,9 +43,14 @@ public class RightPathBuilder : MonoBehaviour
         }
     }
 
-    public void ShowRightPath(float showableSeconds)
+    public bool IsFinished()
     {
-        _speed = _rightPath.Count / showableSeconds;
+        return _objectMovement.GetState() == ObjectMovementState.State.Stay && _speed != 0;
+    }
+
+    public void ShowRightPath(float speed)
+    {
+        _speed = speed;
         _objectMovement = new ObjectMovementState(
             GetComponent<Transform>(),
             GetComponent<Rigidbody2D>(),

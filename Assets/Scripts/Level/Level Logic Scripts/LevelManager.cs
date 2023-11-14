@@ -24,7 +24,10 @@ public class LevelManager : MonoBehaviour
     private LevelModel _levelModel;
 
     [SerializeField]
-    private float _startLevelTime;
+    private float _correctPathSpeed = 10f;
+
+    [SerializeField]
+    private float _fadeInFogTime = 2f;
 
     private RightPathBuilder _rightPathBuilder;
 
@@ -114,7 +117,7 @@ public class LevelManager : MonoBehaviour
     private void StartShowPath()
     {
         _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
-        _rightPathBuilder.ShowRightPath(_startLevelTime * 0.9f);
+        _rightPathBuilder.ShowRightPath(_correctPathSpeed);
         _isPathShown = true;
     }
 
@@ -182,7 +185,7 @@ public class LevelManager : MonoBehaviour
         StartShowPath();
         float timer = 0;
 
-        while (timer < _startLevelTime)
+        while (!_rightPathBuilder.IsFinished())
         {
             timer += Time.deltaTime;
             yield return null;
@@ -192,12 +195,10 @@ public class LevelManager : MonoBehaviour
 
         FogController.Instance.SetFogVisibile(true);
 
-        float timeToFadeIn = 2.4f;
-
-        FogController.Instance.FadeInToAllTargets(timeToFadeIn);
+        FogController.Instance.FadeInToAllTargets(_fadeInFogTime);
 
         timer = 0;
-        while (timer < timeToFadeIn)
+        while (timer < _fadeInFogTime)
         {
 
             timer += Time.deltaTime;
