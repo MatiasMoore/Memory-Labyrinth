@@ -63,7 +63,7 @@ public class LevelProgressStorage : MonoBehaviour
         int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
         if (levelIndex == -1)
         {
-            LevelData _newLevelData = currentLevels[levelIndex];
+            LevelData _newLevelData = new LevelData();
 
             _newLevelData._level = newLevelData._level;
             _newLevelData._checkpointId = newLevelData._checkpointId;
@@ -81,4 +81,6 @@ public class LevelProgressStorage : MonoBehaviour
             Debug.LogWarning($"AddNewLevelInfo: Level {newLevelData._level} already exists");
         }
     }
+
+
 }
