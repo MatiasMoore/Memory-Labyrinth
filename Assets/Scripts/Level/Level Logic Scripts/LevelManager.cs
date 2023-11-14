@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
     [SerializeField]
     private GameObject _levelPrefab;
 
@@ -29,7 +31,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float _fadeInFogTime = 2f;
 
-    private RightPathBuilder _rightPathBuilder;
+    private CorrectPathRenderer _rightPathBuilder;
 
     private bool _isPathShown;
 
@@ -44,6 +46,11 @@ public class LevelManager : MonoBehaviour
 
     public void Init()
     {
+        if (Instance != null)
+            return;
+
+        Instance = this;
+
         _saveLoadManager = GetComponent<SaveLoadManager>();
         //Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
         _mainCharacter = _player.GetComponent<MainCharacter>();
@@ -118,7 +125,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartShowPath()
     {
-        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
+        _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
         _rightPathBuilder.ShowRightPath(_correctPathSpeed);
         _isPathShown = true;
     }

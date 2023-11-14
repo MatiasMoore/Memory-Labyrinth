@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class RightPathBuilder : MonoBehaviour
+public class CorrectPathRenderer : MonoBehaviour
 {
     private ObjectMovementState _objectMovement;
 

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ResourceManager;
 
 public static class CurrentLevel
 {
     private static LevelData _currentLevel = new LevelData();
-    private static int _currentLevelIndex;
+    private static int _currentLevelIndex = -1;
 
     public static void Load(ResourceManager.Level level)
     {
@@ -36,6 +37,26 @@ public static class CurrentLevel
     public static void Save(LevelData newLevelData)
     {
         _currentLevel = newLevelData;
+
+        if (LevelProgressStorage.Instance == null)
+        {
+            Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
+            return;
+        }
+
+        _currentLevelIndex = LevelProgressStorage.Instance.currentLevels.FindIndex(item => item._level == newLevelData._level);
+        if (_currentLevelIndex < 0)
+        {
+            Debug.Log($"CURRENTLEVEL: new save for {newLevelData._level} ");
+            LevelProgressStorage.Instance.currentLevels.Add(newLevelData);
+        } else {
+            Debug.Log($"CURRENTLEVEL: {newLevelData._level} save is overriten");
+            LevelProgressStorage.Instance.currentLevels[_currentLevelIndex] = newLevelData;
+        }
+
+        SaveLoadManager saveLoadManager = new SaveLoadManager();
+        saveLoadManager.LoadGame();
+        
     }
 
     public static LevelData getCurrentLevel()
