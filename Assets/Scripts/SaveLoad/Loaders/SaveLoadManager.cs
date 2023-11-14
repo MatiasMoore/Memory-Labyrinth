@@ -37,6 +37,12 @@ public sealed class SaveLoadManager : MonoBehaviour
         Repository.SaveState();
     }
 
+    [ContextMenu("Delete")]
+    public void DeleteSave()
+    {
+        Repository.ClearSave();
+    }
+
     private void Awake()
     {
         //     if (Instance != null) return;

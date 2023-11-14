@@ -55,4 +55,11 @@ public static class Repository
             return default;
         }
     }
+
+    public static void ClearSave()
+    {
+        currentState.Remove(GAME_STATE_KEY);
+        PlayerPrefs.DeleteKey(GAME_STATE_KEY);
+        Debug.Log("ClearSave()");
+    }
 }
