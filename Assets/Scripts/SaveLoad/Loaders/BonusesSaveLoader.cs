@@ -18,6 +18,8 @@ public sealed class BonusesSaveLoader : ISaveLoader
 
     public void SaveData()
     {
+        if (BonusStorage.Instance == null)
+            return;
         int amount = BonusStorage.Instance.GetBonuses();
         var data = new BonusData
         {

@@ -86,7 +86,7 @@ public class ResourceManager : MonoBehaviour
         int sceneBuildIndex = (int)sceneToLoad;
         SceneManager.LoadScene(sceneBuildIndex);
 
-        activeSceneChanged.Invoke(currentScene, sceneToLoad);
+        activeSceneChanged?.Invoke(currentScene, sceneToLoad);
     }
 
     public static AvailableScene GetCurrentScene()

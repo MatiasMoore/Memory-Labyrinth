@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
 
     public static event UnityAction _levelLoad;
 
+    public GameObject _currentLevelObject;
+
     public void SetCurrentLevel(ResourceManager.Level level)
     {
         _currentLevel = level;
@@ -40,8 +42,7 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         _saveLoadManager = GetComponent<SaveLoadManager>();
-        _saveLoadManager.LoadGame();
-        Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
+        //Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
         _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
         _mainCharacter.Init();
@@ -67,10 +68,14 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
+        if(_currentLevelObject != null)
+        {
+            Destroy(_currentLevelObject);
+        }
         _player.SetActive(true);
 
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
-        Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        _currentLevelObject = Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
         _levelModel.SetBonusAmount(0);
         _levelModel.SetCheckPoint(FindObjectOfType<StartPoint>());
