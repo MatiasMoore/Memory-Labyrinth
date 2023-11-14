@@ -26,7 +26,7 @@ public class LosePanel : MonoBehaviour
     }
     public void OnClickToMainMenu()
     {
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
 
         MenuManager.FireButtonClickAction();
     }
