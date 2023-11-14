@@ -96,14 +96,16 @@ public static class ResourceManager
 
     public enum Level
     {
-        Level1
+        Level1,
+        Level2
     }
 
     private static string _pathToLevels = "Levels/";
 
     private static Dictionary<Level, string> _levels = new Dictionary<Level,string>()
     {
-        {Level.Level1, _pathToLevels + "Level1"}
+        {Level.Level1, _pathToLevels + "Level1"},
+        {Level.Level2, _pathToLevels + "Level2"}
     };
 
     public static GameObject LoadLevel(Level levelToLoad)

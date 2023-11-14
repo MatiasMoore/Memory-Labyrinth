@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     private SaveLoadManager _saveLoadManager;
 
     [SerializeField]
-    static public ResourceManager.Level _currentLevel;
+    public ResourceManager.Level _currentLevel;
 
     [SerializeField]
     private GameObject _player;
@@ -68,6 +68,8 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
+        _currentLevel = CurrentLevel.getCurrentLevel()._level;
+
         if(_currentLevelObject != null)
         {
             Destroy(_currentLevelObject);
@@ -146,18 +148,7 @@ public class LevelManager : MonoBehaviour
 
         };
 
-        if (LevelProgressStorage.Instance != null)
-        {   
-            if (LevelProgressStorage.Instance.currentLevels.Exists(x => x._level == _currentLevel)) 
-            {
-                LevelProgressStorage.Instance.currentLevels.RemoveAll(x => x._level == _currentLevel);
-            }
-            LevelProgressStorage.Instance.currentLevels.Add(levelData);
-            Debug.Log("LEVELMANAGER: level progress saved");
-        } else
-        {
-            Debug.Log("LEVELMANAGER: level progress save failed!");
-        }
+        CurrentLevel.Save(levelData);
 
         int bonusAmount = _levelModel.GetBonusAmount();
         if (BonusStorage.Instance != null)

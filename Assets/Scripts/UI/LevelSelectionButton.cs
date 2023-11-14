@@ -13,7 +13,7 @@ public class LevelSelectionButton : MonoBehaviour
     public void OnClick()
     {
         _levelSelector.LoadLevel(_level);
-
+        CurrentLevel.Load(_level);
         MenuManager.FireButtonClickAction();
     }
 }
