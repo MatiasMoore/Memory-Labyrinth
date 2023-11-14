@@ -7,12 +7,9 @@ public class LevelSelectionButton : MonoBehaviour
     [SerializeField]
     public ResourceManager.Level _level;
 
-    [SerializeField]
-    public LevelSelectionMenu _levelSelector;
-
     public void OnClick()
     {
-        _levelSelector.LoadLevel(_level);
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
         CurrentLevel.Load(_level);
         MenuManager.FireButtonClickAction();
     }
