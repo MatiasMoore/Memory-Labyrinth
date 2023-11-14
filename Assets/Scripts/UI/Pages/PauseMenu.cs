@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
         SetPausedGame(false);
-        Timer.SetTimerStatus(true);
+        Timer.Instance.SetTimerStatus(true);
 
         MenuManager.FireButtonClickAction();
     }
@@ -30,7 +30,10 @@ public class PauseMenu : MonoBehaviour
     public void OnClickRestart()
     {
         Time.timeScale = 1f;
-        // TODO: reload level prefab + timer reset + close pause menu + SetPausedGame(false)
+        // TODO: reload level prefab
+        MenuManager.ClosePage(MenuManager.Page.PAUSE);
+        SetPausedGame(false);
+        Timer.Instance.ResetTimer();
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();

@@ -24,7 +24,7 @@ public class MenuController : MonoBehaviour
     }
     private static void ShowWinPanelAction()
     {
-        Timer.SetTimerStatus(false);
+        Timer.Instance.SetTimerStatus(false);
         MenuManager.OpenPage(MenuManager.Page.WIN);
 
         // Display data on level completion
@@ -35,7 +35,7 @@ public class MenuController : MonoBehaviour
 
     private static void ShowLosePanelAction()
     {
-        Timer.SetTimerStatus(false);
+        Timer.Instance.SetTimerStatus(false);
         MenuManager.OpenPage(MenuManager.Page.LOSE);
 
         // Display data on lose

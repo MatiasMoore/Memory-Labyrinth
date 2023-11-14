@@ -33,7 +33,9 @@ public class LosePanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // TODO: reload level prefab + timer reset + close lose panel
+        // TODO: reload level prefab
+        Timer.Instance.ResetTimer();
+        MenuManager.ClosePage(MenuManager.Page.LOSE);
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();

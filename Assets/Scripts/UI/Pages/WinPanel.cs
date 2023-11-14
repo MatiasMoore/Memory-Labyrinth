@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WinPanel : MonoBehaviour
 {
@@ -49,7 +50,9 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // TODO: reload level prefab + timer reset + close win panel
+        // TODO: reload level prefab
+        Timer.Instance.ResetTimer();
+        MenuManager.ClosePage(MenuManager.Page.WIN);
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();

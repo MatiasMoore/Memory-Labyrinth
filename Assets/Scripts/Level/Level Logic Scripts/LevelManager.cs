@@ -93,7 +93,7 @@ public class LevelManager : MonoBehaviour
     private void WinLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.SetTimerStatus(false);
+        Timer.Instance.SetTimerStatus(false);
         Debug.Log("LevelManager: level win");
         SaveCompleteLevel();
 
@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
     private void LoseLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.SetTimerStatus(false);
+        Timer.Instance.SetTimerStatus(false);
         Debug.Log("LevelManager: level lose");
 
     }
@@ -133,7 +133,7 @@ public class LevelManager : MonoBehaviour
             _level = _currentLevel,
             _livesAmount = _mainCharacter.GetHealth(),
             _checkpointId = 0,
-            _time = Timer.GetElapsedTime(),
+            _time = Timer.Instance.GetElapsedTime(),
             _isCompleted = true,
             _collectedBonusesId = new List<int> { 123}
 
@@ -173,7 +173,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayLevelIntro()
     {
-        Timer.SetTimerStatus(false);
+        Timer.Instance.SetTimerStatus(false);
         FogController.Instance.SetFogVisibile(false);
         StartShowPath();
         float timer = 0;
@@ -201,6 +201,6 @@ public class LevelManager : MonoBehaviour
         }
 
         _mainCharacter.SetActive(true);
-        Timer.SetTimerStatus(true);
+        Timer.Instance.SetTimerStatus(true);
     }
 }
