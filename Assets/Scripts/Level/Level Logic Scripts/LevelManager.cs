@@ -57,7 +57,7 @@ public class LevelManager : MonoBehaviour
         _levelModel._onLevelWin += WinLevel;
 
         // UI Listeners
-        MenuController.SetupListeners(_levelModel, _mainCharacter);
+        HUDController.SetupListeners(_levelModel, _mainCharacter);
 
         StartCurrentLevel();
     }
