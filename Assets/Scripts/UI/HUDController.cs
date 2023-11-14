@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class HUDController : MonoBehaviour
 {
     private static LevelModel _levelModel;
 
