@@ -34,7 +34,6 @@ public class PauseMenu : MonoBehaviour
         LevelManager.Instance.StartLevel();
         SetPausedGame(false);
 
-        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }

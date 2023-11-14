@@ -41,8 +41,7 @@ public class WinPanel : MonoBehaviour
             CurrentLevel.Load(nextLevel);
             LevelManager.Instance.StartLevel();
         }
-            
-        LevelManager.FireLevelLoadAction();
+        
         MenuManager.FireButtonClickAction();
     }
 

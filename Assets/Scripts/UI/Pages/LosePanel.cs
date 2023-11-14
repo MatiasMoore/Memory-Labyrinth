@@ -36,7 +36,6 @@ public class LosePanel : MonoBehaviour
         MenuManager.ClosePage(MenuManager.Page.LOSE);
         LevelManager.Instance.StartLevel();
 
-        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }
