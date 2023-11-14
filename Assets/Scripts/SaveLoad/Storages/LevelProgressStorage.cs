@@ -60,7 +60,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
         }
         else 
         {           
-            var newLevelData = new LevelData { _level = CurrentLevel.GetCurrentLevelData()._level };
+            var newLevelData = new LevelData { _level = level };
             Debug.LogWarning($"GetLevelInfo(): {level} does not exist");
             return newLevelData;
         }
