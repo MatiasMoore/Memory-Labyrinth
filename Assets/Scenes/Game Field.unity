@@ -362,6 +362,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 579750398}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
+      propertyPath: _playerObj
+      value: 
+      objectReference: {fileID: 579750398}
+    - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _levelModel
       value: 
       objectReference: {fileID: 64363578}
@@ -660,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.09895
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.y

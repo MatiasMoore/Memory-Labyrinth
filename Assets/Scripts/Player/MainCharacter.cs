@@ -44,6 +44,7 @@ public class MainCharacter : MonoBehaviour
             GetComponent<Rigidbody2D>(),
             _speed
         );
+        _isActive = true;
         _pathCreator = GetComponent<PathCreator>();
         _pathCreator.Init();
     }
@@ -88,6 +89,13 @@ public class MainCharacter : MonoBehaviour
     public void StopMoving()
     {
         _objectMovement.StopMove();
+    }
+
+    public void SetPosition2d(Vector2 position)
+    {
+        Vector3 position3 = position;
+        position3.z = transform.position.z;
+        transform.position = position3;
     }
 
     public void TeleportTo(Vector3 position)

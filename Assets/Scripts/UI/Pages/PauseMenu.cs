@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
         SetPausedGame(false);
-        Timer.Instance.SetTimerStatus(true);
+        Timer.Instance.SetTimerActive(true);
 
         MenuManager.FireButtonClickAction();
     }

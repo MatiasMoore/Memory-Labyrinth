@@ -106,7 +106,7 @@ public static class ResourceManager
         {Level.Level2, _pathToLevels + "Level2"}
     };
 
-    public static GameObject LoadLevel(Level levelToLoad)
+    public static GameObject GetLevelObject(Level levelToLoad)
     {
         if (_levels.ContainsKey(levelToLoad))
         {

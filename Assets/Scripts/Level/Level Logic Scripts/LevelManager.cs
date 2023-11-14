@@ -8,20 +8,8 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager Instance;
-
     [SerializeField]
-    private GameObject _levelPrefab;
-
-    private SaveLoadManager _saveLoadManager;
-
-    [SerializeField]
-    public ResourceManager.Level _currentLevel;
-
-    [SerializeField]
-    private GameObject _player;
-
-    private MainCharacter _mainCharacter;
+    private GameObject _playerObj;
 
     [SerializeField]
     private LevelModel _levelModel;
@@ -32,17 +20,27 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float _fadeInFogTime = 2f;
 
-    private CorrectPathRenderer _rightPathBuilder;
+    public static event UnityAction _levelLoad;
+
+    private GameObject _levelPrefab;
+
+    private SaveLoadManager _saveLoadManager;
+
+    public ResourceManager.Level _currentLevelEnum;
+
+    private MainCharacter _mainCharacter;  
+
+    private CorrectPathRenderer _correctPathBuilder;
 
     private bool _isPathShown;
 
-    public static event UnityAction _levelLoad;
+    private GameObject _currentLevelObject;
 
-    public GameObject _currentLevelObject;
+    public static LevelManager Instance;
 
     public void SetCurrentLevel(ResourceManager.Level level)
     {
-        _currentLevel = level;
+        _currentLevelEnum = level;
     }
 
     public void Init()
@@ -53,15 +51,10 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         _saveLoadManager = GetComponent<SaveLoadManager>();
-        //Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
-        _mainCharacter = _player.GetComponent<MainCharacter>();
+        _mainCharacter = _playerObj.GetComponent<MainCharacter>();
        
         _levelModel._onLevelLose += LoseLevel;
         _levelModel._onLevelWin += WinLevel;
-
-        var audioController = FindObjectOfType<AudioController>();
-        if (audioController != null)
-            audioController.SetupListeners(_levelModel, _mainCharacter);
 
         // UI Listeners
         MenuController.SetupListeners(_levelModel, _mainCharacter);
@@ -71,91 +64,82 @@ public class LevelManager : MonoBehaviour
 
     public void StartLevel()
     {
-        LevelData levelData = CurrentLevel.getCurrentLevel();
-        _currentLevel = levelData._level;
-
-
+        //Destroy previous level if necessary
         if(_currentLevelObject != null)
-        {
             Destroy(_currentLevelObject);
-        }
-        _player.SetActive(true);
-        _mainCharacter.ResetHealth();
-        
-        Timer.Instance.ResetTimer();
 
-        _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
+        //Get level data
+        LevelData levelData = CurrentLevel.getCurrentLevel();
+        _currentLevelEnum = levelData._level;
+
+        _levelPrefab = ResourceManager.GetLevelObject(_currentLevelEnum);
         _currentLevelObject = Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        if (levelData._checkpointId != 0 )
+
+        //Reset all temporary parameters
+        _mainCharacter.ResetHealth();
+        Timer.Instance.ResetTimer();
+        _levelModel.SetBonusAmount(0);
+        _levelModel.SetCurrentCheckPoint(FindObjectOfType<StartPoint>());
+
+        bool startLevelFromSpawn = levelData._checkpointId == 0;
+
+        //Load parameters if they exist
+        if (!startLevelFromSpawn)
         {
-            LoadLevelData(levelData);
-        } else
-        {
-            _levelModel.SetBonusAmount(0);
-            _levelModel.SetCheckPoint(FindObjectOfType<StartPoint>());
+            _mainCharacter.SetHealth(levelData._livesAmount);
+            Timer.Instance.SetElapsedTime(levelData._time);
+            ActivateCheckPointWithQueue(levelData._checkpointId);
         }
+        
+        //Put the player on the checkpoint
+        _playerObj.transform.position = _levelModel.GetCurrentCheckPoint().transform.position + new Vector3(0, 0, -1);
 
-        SetPlayerToCheckpointPosition();
-
-        _mainCharacter.SetActive(false);
-
-        StopAllCoroutines();
-        if(levelData._checkpointId == 0)
+        if (startLevelFromSpawn)
         {
+            //Play level intro
+            StopAllCoroutines();
             StartCoroutine(PlayLevelIntro());
-        } else
+        } 
+        else
         {
-            Debug.Log("ELSE in StartLevel");
-            _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
-            _rightPathBuilder.SetActive(false);
-
+            //Instantly fade in
             FogController.Instance.SetFogVisibile(true);
-
             FogController.Instance.FadeInToAllTargets(0);
-
-            _mainCharacter.SetActive(true);
-            Timer.Instance.SetTimerStatus(true);
         }
 
     }
 
-
-    public void LoadLevelData(LevelData levelData)
+    private void ActivateCheckPointWithQueue(int targetQueue)
     {
-        _mainCharacter.SetHealth(levelData._livesAmount);
         Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
         foreach (Checkpoint checkpoint in checkpoints)
         {
-            if (checkpoint.GetQueue() == levelData._checkpointId)
-                _levelModel.SetCheckPoint(checkpoint);             
-            Debug.Log($"LEVELMANAGER: Can't find checkpoint with queue {levelData._checkpointId}");
-        }
-
-        Timer.Instance.SetElapsedTime(levelData._time);
+            if (checkpoint.GetQueue() == targetQueue)
+                _levelModel.SetCurrentCheckPoint(checkpoint);             
+            Debug.Log($"LEVELMANAGER: Can't find checkpoint with queue {targetQueue}");
+        } 
     }
 
 
     private void WinLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.Instance.SetTimerStatus(false);
+        Timer.Instance.SetTimerActive(false);
         Debug.Log("LevelManager: level win");
         SaveCompleteLevel();
-
     }
 
     private void LoseLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.Instance.SetTimerStatus(false);
+        Timer.Instance.SetTimerActive(false);
         Debug.Log("LevelManager: level lose");
-
     }
 
     private void StartShowPath()
     {
-        _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
-        _rightPathBuilder.ShowRightPath(_correctPathSpeed);
+        _correctPathBuilder.Init();
+        _correctPathBuilder.ShowRightPath(_correctPathSpeed);
         _isPathShown = true;
     }
 
@@ -163,18 +147,16 @@ public class LevelManager : MonoBehaviour
     {   
         if (_isPathShown)
         {
-            _rightPathBuilder.SetActive(false);
+            _correctPathBuilder.Hide();
         }
-
         _isPathShown = false;
-
     }
 
-    public void SaveCompleteLevel()
+    private void SaveCompleteLevel()
     {
         LevelData levelData = new LevelData
         {
-            _level = _currentLevel,
+            _level = _currentLevelEnum,
             _livesAmount = _mainCharacter.GetHealth(),
             _checkpointId = 0,
             _time = Timer.Instance.GetElapsedTime(),
@@ -202,9 +184,9 @@ public class LevelManager : MonoBehaviour
     {
         LevelData levelData = new LevelData
         {
-            _level = _currentLevel,
+            _level = _currentLevelEnum,
             _livesAmount = _mainCharacter.GetHealth(),
-            _checkpointId = _levelModel.GetCheckPoint().GetQueue(),
+            _checkpointId = _levelModel.GetCurrentCheckPoint().GetQueue(),
             _time = Timer.Instance.GetElapsedTime(),
             _isCompleted = false,
             _collectedBonusesId = new List<int> { 123 }
@@ -216,39 +198,39 @@ public class LevelManager : MonoBehaviour
         Debug.Log("LevelManager: uncomplete level saved");
     }
 
-    private void SetPlayerToCheckpointPosition()
-    {    
-        _player.GetComponent<Transform>().position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
-    }
-
     private IEnumerator PlayLevelIntro()
     {
-        Timer.Instance.SetTimerStatus(false);
+        //Pause player, timer, and disable fog
+        _mainCharacter.SetActive(false);
+        Timer.Instance.SetTimerActive(false);
         FogController.Instance.SetFogVisibile(false);
-        StartShowPath();
-        float timer = 0;
 
-        while (!_rightPathBuilder.IsFinished())
-        {
-            timer += Time.deltaTime;
+        //Show the correct path and wait for it to finish
+        _correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
+        StartShowPath();
+        while (!_correctPathBuilder.IsFinished())
+        { 
             yield return null;
         }
-
         StopShowPath();
 
+        //Fade in fog
         FogController.Instance.SetFogVisibile(true);
-
         FogController.Instance.FadeInToAllTargets(_fadeInFogTime);
 
-        timer = 0;
+        //Wait until it has faded in completely and enable player movement
+        float timer = 0;
         while (timer < _fadeInFogTime)
         {
-
             timer += Time.deltaTime;
             yield return null;
         }
+        StartTimerAndEnablePlayerControl();
+    }
 
+    private void StartTimerAndEnablePlayerControl()
+    {
         _mainCharacter.SetActive(true);
-        Timer.Instance.SetTimerStatus(true);
+        Timer.Instance.SetTimerActive(true);
     }
 }

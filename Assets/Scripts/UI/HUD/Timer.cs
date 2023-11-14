@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _textMesh;
 
-    private bool _timerStatus;
+    private bool _isActive;
 
     private float _elapsedTime = 0f;
 
@@ -19,11 +19,12 @@ public class Timer : MonoBehaviour
 
         Instance = this;
         _textMesh.text = "00:00";
+        _isActive = true;
     }
 
     private void Update()
     {
-        if (_timerStatus)
+        if (_isActive)
         {
             _elapsedTime += Time.deltaTime;
 
@@ -44,14 +45,14 @@ public class Timer : MonoBehaviour
         return _textMesh.text;
     }
 
-    public void SetTimerStatus(bool flag)
+    public void SetTimerActive(bool state)
     {
-        _timerStatus = flag;
+        _isActive = state;
     }
 
-    public bool GetTimerStatus()
+    public bool IsTimerActive()
     {
-        return _timerStatus;
+        return _isActive;
     }
 
     public float GetElapsedTime()

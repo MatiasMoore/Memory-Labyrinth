@@ -16,6 +16,8 @@ public class LevelModel : MonoBehaviour
 
     public event UnityAction _onPlayerGetBonus;
 
+    public event UnityAction<int> _onBonusAmountChange;
+
     [SerializeField]
     int _bonusMoneyAmount;
 
@@ -51,7 +53,7 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDamage()
     {
         Debug.Log($"Player damaged");
-        _mainCharacter.TeleportTo(_currentCheckpoint.transform.position);
+        _mainCharacter.SetPosition2d(_currentCheckpoint.transform.position);
     }
 
     public void onPlayerGetBonus(int value)
@@ -81,13 +83,14 @@ public class LevelModel : MonoBehaviour
     public void SetBonusAmount(int bonusAmount)
     {
         _bonusMoneyAmount = bonusAmount;
+        _onBonusAmountChange?.Invoke(bonusAmount);
     }
-    public Checkpoint GetCheckPoint()
+    public Checkpoint GetCurrentCheckPoint()
     {
         return _currentCheckpoint;
     }
 
-    public void SetCheckPoint(Checkpoint checkpoint)
+    public void SetCurrentCheckPoint(Checkpoint checkpoint)
     {
         _currentCheckpoint = checkpoint;
     }

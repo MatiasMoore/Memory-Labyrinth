@@ -34,5 +34,9 @@ public class LevelInitializer : MonoBehaviour
         _levelModel.Init(_mainCharacter);
         _levelManager.Init();
         _cameraScript.Init();
+
+        var audioController = FindObjectOfType<AudioController>();
+        if (audioController != null)
+            audioController.SetupListeners(_levelModel, _mainCharacter);
     }
 }
