@@ -51,7 +51,6 @@ public class WinPanel : MonoBehaviour
     public void OnClickRestart()
     {
         // TODO: reload level prefab
-        Timer.Instance.ResetTimer();
         MenuManager.ClosePage(MenuManager.Page.WIN);
 
         // TEMP SOLUTION

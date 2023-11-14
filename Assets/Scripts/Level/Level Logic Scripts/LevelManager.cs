@@ -73,6 +73,8 @@ public class LevelManager : MonoBehaviour
             Destroy(_currentLevelObject);
         }
         _player.SetActive(true);
+        
+        Timer.Instance.ResetTimer();
 
         _levelPrefab = ResourceManager.LoadLevel(_currentLevel);
         _currentLevelObject = Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
