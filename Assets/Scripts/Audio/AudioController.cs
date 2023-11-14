@@ -25,6 +25,7 @@ public class AudioController : MonoBehaviour
             mainCharacter._onCheckpointEvent += PlayCheckpointActivatedSound;
             mainCharacter._onDamageEvent += PlayPlayerDamageSound;
             mainCharacter._onDeathEvent += PlayPlayerDeathSound;
+            mainCharacter._onTeleportEvent += PlayPlayerTeleportSound;
         }
 
         if (levelModel != null) 
@@ -70,6 +71,11 @@ public class AudioController : MonoBehaviour
     private void PlayPlayerDeathSound()
     {
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.PlayerHit);
+    }
+
+    private void PlayPlayerTeleportSound()
+    {
+        SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.TeleportUsed);
     }
 
     private void PlayLevelFinishedSound()
