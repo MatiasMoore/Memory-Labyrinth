@@ -37,7 +37,7 @@ public class WinPanel : MonoBehaviour
         else
         {
             CurrentLevel.Load(nextLevel);
-            LevelManager.Instance.StartCurrentLevel();
+            LevelManager.Instance.StartCurrentLevelFromSpawn();
             MenuManager.ClosePage(MenuManager.Page.WIN);
         }
         
