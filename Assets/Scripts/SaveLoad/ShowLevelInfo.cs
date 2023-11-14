@@ -19,7 +19,8 @@ public class ShowLevelInfo : MonoBehaviour
             _level.Add(level._level);
             _checkpointId.Add(level._checkpointId);
             _time.Add(level._time);
-            _collectedBonusesId.Add(level._collectedBonusesId);
+            // TODO: fix collected bonuses list save
+            //   _collectedBonusesId.Add(level._collectedBonusesId);
             _livesAmount.Add(level._livesAmount);
             _isCompleted.Add(level._isCompleted);
         }
@@ -34,7 +35,8 @@ public class ShowLevelInfo : MonoBehaviour
             _level.Add(level._level);
             _checkpointId.Add(level._checkpointId);
             _time.Add(level._time);
-            _collectedBonusesId.Add(level._collectedBonusesId);
+            // TODO: fix collected bonuses list save
+            //  _collectedBonusesId.Add(level._collectedBonusesId);
             _livesAmount.Add(level._livesAmount);
             _isCompleted.Add(level._isCompleted);
         }
