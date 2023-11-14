@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
     public void OnClickToMainMenu()
     {
         Time.timeScale = 1f;
+        LevelManager.Instance.SaveUncompleteLevel();
         ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
 
         MenuManager.FireButtonClickAction();
