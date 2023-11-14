@@ -60,7 +60,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
         else throw new System.NullReferenceException($"GetLevelInfo(): {level} does not exist");
     }
 
-    private void AddNewLevelInfo(LevelData newLevelData)
+    private void CreateLevelInfo(LevelData newLevelData)
     {
         int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
         if (levelIndex == -1)
@@ -83,6 +83,5 @@ public sealed class LevelProgressStorage : MonoBehaviour
             Debug.LogWarning($"AddNewLevelInfo: Level {newLevelData._level} already exists");
         }
     }
-
 
 }
