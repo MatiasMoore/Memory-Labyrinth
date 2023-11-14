@@ -5,9 +5,7 @@ public class MainMenu : MonoBehaviour
     public void OnClickPlay()
     {
         MenuManager.ClosePage(MenuManager.Page.MAIN);
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-        // TODO: open level selection menu
-        //MenuManager.OpenPage(MenuManager.Page.LEVEL_SELECTION);
+        MenuManager.OpenPage(MenuManager.Page.LEVEL_SELECTION);
 
         MenuManager.FireButtonClickAction();
     }
