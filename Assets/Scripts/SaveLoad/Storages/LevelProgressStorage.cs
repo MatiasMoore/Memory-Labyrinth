@@ -10,8 +10,10 @@ public class LevelProgressStorage : MonoBehaviour
 
     [SerializeField] public List<LevelData> currentLevels { get; set; } = new List<LevelData>();
 
-    private void Awake()
+    public void Init()
     {
+        if (Instance != null)
+            return;
         Instance = this;
     }
 

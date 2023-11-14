@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
         var levelProgressStorage = FindObjectOfType<LevelProgressStorage>();
         if (levelProgressStorage == null)
             throw new System.Exception("No LevelProgressStorage is found on startup");
+        levelProgressStorage.Init();
 
         var saveLoadManager = FindObjectOfType<SaveLoadManager>();
         if (saveLoadManager == null)
