@@ -14,14 +14,15 @@ public sealed class LevelProgressStorage : MonoBehaviour
     {
         if (Instance != null)
             return;
+        this.currentLevels = new List<LevelData>();
         Instance = this;
     }
 
     private void UpdateLevelInfo(LevelData newLevelData)
     {
-        int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
-        if (levelIndex != -1)
+        if (this.IsLevelAlreadySaved(newLevelData._level))
         {
+            int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
             LevelData _newLevelData = currentLevels[levelIndex];
 
             _newLevelData._checkpointId = newLevelData._checkpointId;
@@ -41,10 +42,10 @@ public sealed class LevelProgressStorage : MonoBehaviour
     }
 
     public LevelData GetLevelInfo(ResourceManager.Level level)
-    {
-        int levelIndex = currentLevels.FindIndex(item => item._level == level);
-        if (levelIndex != -1)
+    {       
+        if (this.IsLevelAlreadySaved(level))
         {
+            int levelIndex = currentLevels.FindIndex(item => item._level == level);
             LevelData levelData = new LevelData
             {
                 _level = level,
@@ -62,8 +63,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
 
     private void CreateLevelInfo(LevelData newLevelData)
     {
-        int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
-        if (levelIndex == -1)
+        if (!this.IsLevelAlreadySaved(newLevelData._level))
         {
             LevelData _newLevelData = new LevelData();
 
@@ -74,7 +74,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
             _newLevelData._livesAmount = newLevelData._livesAmount;
             _newLevelData._isCompleted = newLevelData._isCompleted;
 
-            currentLevels.Add(_newLevelData);
+            this.currentLevels.Add(_newLevelData);
             this.OnLevelProgressChanged?.Invoke(newLevelData);
             Debug.Log($"AddNewLevelInfo: Level {newLevelData._level} info has been added");
         }
@@ -93,8 +93,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
     }
     public void AddLevelInfo(LevelData levelData)
     {
-        int levelIndex = currentLevels.FindIndex(item => item._level == levelData._level);
-        if (levelIndex == -1)
+        if (!this.IsLevelAlreadySaved(levelData._level))
         {
             CreateLevelInfo(levelData);
         }
@@ -111,6 +110,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
 
     public void SetLevelDataList(List<LevelData> levelDatas)
     {
-        this.currentLevels = levelDatas;
+        if (levelDatas != null)
+            this.currentLevels = levelDatas;
     }
 }
