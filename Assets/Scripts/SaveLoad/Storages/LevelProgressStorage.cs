@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelProgressStorage : MonoBehaviour
+public sealed class LevelProgressStorage : MonoBehaviour
 {
     public static LevelProgressStorage Instance;
 
