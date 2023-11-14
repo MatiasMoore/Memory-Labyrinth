@@ -84,4 +84,16 @@ public sealed class LevelProgressStorage : MonoBehaviour
         }
     }
 
+    public void AddLevelInfo(LevelData levelData)
+    {
+        int levelIndex = currentLevels.FindIndex(item => item._level == levelData._level);
+        if (levelIndex == -1)
+        {
+            CreateLevelInfo(levelData);
+        }
+        else
+        {
+            UpdateLevelInfo(levelData);
+        }
+    }
 }
