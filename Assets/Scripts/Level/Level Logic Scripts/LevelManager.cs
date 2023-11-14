@@ -59,17 +59,27 @@ public class LevelManager : MonoBehaviour
         // UI Listeners
         MenuController.SetupListeners(_levelModel, _mainCharacter);
 
-        StartLevel();
+        StartCurrentLevel();
     }
 
-    public void StartLevel()
+    public void StartCurrentLevelFromSpawn()
+    {
+        var newLevelData = new LevelData { _level = CurrentLevel.GetCurrentLevelData()._level };
+        StartLevel(newLevelData);
+    }
+
+    public void StartCurrentLevel()
+    {
+        StartLevel(CurrentLevel.GetCurrentLevelData());
+    }
+
+    private void StartLevel(LevelData levelData)
     {
         //Destroy previous level if necessary
         if(_currentLevelObject != null)
             Destroy(_currentLevelObject);
 
         //Get level data
-        LevelData levelData = CurrentLevel.getCurrentLevel();
         _currentLevelEnum = levelData._level;
 
         _levelPrefab = ResourceManager.GetLevelObject(_currentLevelEnum);

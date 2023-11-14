@@ -28,7 +28,7 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickNextLevel()
     {
-        var nextLevel = CurrentLevel.getCurrentLevel()._level + 1;
+        var nextLevel = CurrentLevel.GetCurrentLevelData()._level + 1;
 
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
 
@@ -39,7 +39,7 @@ public class WinPanel : MonoBehaviour
         else
         {
             CurrentLevel.Load(nextLevel);
-            LevelManager.Instance.StartLevel();
+            LevelManager.Instance.StartCurrentLevel();
         }
         
         MenuManager.FireButtonClickAction();
@@ -55,7 +55,7 @@ public class WinPanel : MonoBehaviour
     public void OnClickRestart()
     {
         MenuManager.ClosePage(MenuManager.Page.WIN);
-        LevelManager.Instance.StartLevel();
+        LevelManager.Instance.StartCurrentLevelFromSpawn();
 
         MenuManager.FireButtonClickAction();
     }

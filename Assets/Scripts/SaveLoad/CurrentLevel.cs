@@ -41,7 +41,7 @@ public static class CurrentLevel
         
     }
 
-    public static LevelData getCurrentLevel()
+    public static LevelData GetCurrentLevelData()
     {
         return _currentLevel;
     }

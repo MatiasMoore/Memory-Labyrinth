@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
-        LevelManager.Instance.StartLevel();
+        LevelManager.Instance.StartCurrentLevelFromSpawn();
         SetPausedGame(false);
 
         MenuManager.FireButtonClickAction();
