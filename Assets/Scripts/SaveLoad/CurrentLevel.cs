@@ -18,26 +18,9 @@ public static class CurrentLevel
             Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
             return;
         }
-        _currentLevel = new LevelData
-        {
-            _level = level
-        };
+        _currentLevel = new LevelData();
 
-        if (LevelProgressStorage.Instance.currentLevels == null)
-        {
-            _currentLevelIndex = -1;
-        } else
-        {
-            _currentLevelIndex = LevelProgressStorage.Instance.currentLevels.FindIndex(item => item._level == level);
-        }
-        
-
-        if (_currentLevelIndex >= 0)
-        {
-            _currentLevel = LevelProgressStorage.Instance.currentLevels[_currentLevelIndex];
-            Debug.Log($"CURRENTLEVEL:There is a save for {level}");
-        }
-
+        _currentLevel = LevelProgressStorage.Instance.GetLevelInfo(level);
         Debug.Log($"CURRENTLEVEL:{level} loaded");
     }
 
@@ -51,7 +34,11 @@ public static class CurrentLevel
             Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
             return;
         }
-        if (LevelProgressStorage.Instance.currentLevels == null)
+
+        LevelProgressStorage.Instance.AddLevelInfo(newLevelData);
+        Debug.Log($"CURRENTLEVEL: saved {newLevelData._level}");
+
+      /*  if (LevelProgressStorage.Instance.currentLevels == null)
         {
             LevelProgressStorage.Instance.currentLevels = new List<LevelData>();    
         }
@@ -63,7 +50,7 @@ public static class CurrentLevel
         } else {
             Debug.Log($"CURRENTLEVEL: {newLevelData._level} save is overriten");
             LevelProgressStorage.Instance.UpdateLevelInfo(newLevelData);
-        }
+        } */
 
         SaveLoadManager saveLoadManager = new SaveLoadManager();
         saveLoadManager.SaveGame();
