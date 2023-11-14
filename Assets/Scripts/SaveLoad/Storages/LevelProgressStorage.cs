@@ -8,7 +8,7 @@ public class LevelProgressStorage : MonoBehaviour
 
     public event Action<LevelData> OnLevelProgressChanged;
 
-    [SerializeField] public List<LevelData> currentLevels { get; set; } = new List<LevelData>();
+    [SerializeField] private List<LevelData> currentLevels { get; set; } = new List<LevelData>();
 
     public void Init()
     {
@@ -17,7 +17,7 @@ public class LevelProgressStorage : MonoBehaviour
         Instance = this;
     }
 
-    public void UpdateLevelInfo(LevelData newLevelData)
+    private void UpdateLevelInfo(LevelData newLevelData)
     {
         int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
         if (levelIndex != -1)
@@ -60,7 +60,7 @@ public class LevelProgressStorage : MonoBehaviour
         else throw new System.NullReferenceException($"GetLevelInfo(): {level} does not exist");
     }
 
-    public void AddNewLevelInfo(LevelData newLevelData)
+    private void AddNewLevelInfo(LevelData newLevelData)
     {
         int levelIndex = currentLevels.FindIndex(item => item._level == newLevelData._level);
         if (levelIndex == -1)
