@@ -23,7 +23,14 @@ public static class CurrentLevel
             _level = level
         };
 
-        _currentLevelIndex = LevelProgressStorage.Instance.currentLevels.FindIndex(item => item._level == level);
+        if (LevelProgressStorage.Instance.currentLevels == null)
+        {
+            _currentLevelIndex = -1;
+        } else
+        {
+            _currentLevelIndex = LevelProgressStorage.Instance.currentLevels.FindIndex(item => item._level == level);
+        }
+        
 
         if (_currentLevelIndex >= 0)
         {
