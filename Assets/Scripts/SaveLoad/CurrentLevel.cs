@@ -38,12 +38,16 @@ public static class CurrentLevel
     {
         _currentLevel = newLevelData;
 
+
         if (LevelProgressStorage.Instance == null)
         {
             Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
             return;
         }
-
+        if (LevelProgressStorage.Instance.currentLevels == null)
+        {
+            LevelProgressStorage.Instance.currentLevels = new List<LevelData>();    
+        }
         _currentLevelIndex = LevelProgressStorage.Instance.currentLevels.FindIndex(item => item._level == newLevelData._level);
         if (_currentLevelIndex < 0)
         {
@@ -55,7 +59,7 @@ public static class CurrentLevel
         }
 
         SaveLoadManager saveLoadManager = new SaveLoadManager();
-        saveLoadManager.LoadGame();
+        saveLoadManager.SaveGame();
         
     }
 
