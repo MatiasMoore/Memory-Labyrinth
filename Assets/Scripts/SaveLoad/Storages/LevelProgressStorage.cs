@@ -72,11 +72,11 @@ public class LevelProgressStorage : MonoBehaviour
             _newLevelData._isCompleted = newLevelData._isCompleted;
 
             currentLevels.Add(_newLevelData);
-            Debug.Log($"UpdateLevelInfo: Level {newLevelData._level} info has been added");
+            Debug.Log($"AddNewLevelInfo: Level {newLevelData._level} info has been added");
         }
         else
         {
-            Debug.LogWarning($"UpdateLevelInfo: Level {newLevelData._level} already exists");
+            Debug.LogWarning($"AddNewLevelInfo: Level {newLevelData._level} already exists");
         }
     }
 }
