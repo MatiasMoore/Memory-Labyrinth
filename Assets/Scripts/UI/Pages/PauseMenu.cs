@@ -30,13 +30,9 @@ public class PauseMenu : MonoBehaviour
     public void OnClickRestart()
     {
         Time.timeScale = 1f;
-        // TODO: reload level prefab
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
+        LevelManager.Instance.StartLevel();
         SetPausedGame(false);
-        
-        // TEMP SOLUTION
-        LevelManager levelManager = FindObjectOfType<LevelManager>();
-        levelManager.StartLevel();
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
