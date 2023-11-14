@@ -3483,6 +3483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 539938140}
+  - component: {fileID: 539938141}
   m_Layer: 5
   m_Name: Money
   m_TagString: UI
@@ -3510,6 +3511,19 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &539938141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539938139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 682261da9d06a7e4c8d096be0f93c081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMesh: {fileID: 485250075}
 --- !u!1 &567422499
 GameObject:
   m_ObjectHideFlags: 0
@@ -4096,7 +4110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &671440298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4391,7 +4404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &687162565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5092,7 +5104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &740198458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6257,7 +6268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &904281134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6591,7 +6601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &934440080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6754,7 +6763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &938245243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7346,7 +7354,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &1000298960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8320,7 +8327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &1057341973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11705,7 +11711,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &1487732132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16399,7 +16404,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &1977155597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18519,7 +18523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!222 &3662388248857238681
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18884,7 +18887,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &5806036944219340852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18898,7 +18900,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 1
-  _levelSelector: {fileID: 417083542}
 --- !u!114 &7253444250555382033
 MonoBehaviour:
   m_ObjectHideFlags: 0
