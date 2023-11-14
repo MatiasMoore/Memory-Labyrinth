@@ -96,4 +96,9 @@ public sealed class LevelProgressStorage : MonoBehaviour
             UpdateLevelInfo(levelData);
         }
     }
+
+    public List<LevelData> GetLevelDataList()
+    {
+        return this.currentLevels;
+    }
 }
