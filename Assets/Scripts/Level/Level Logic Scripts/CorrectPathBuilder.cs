@@ -37,10 +37,6 @@ public class CorrectPathRenderer : MonoBehaviour
             _objectMovement.Update(Time.fixedDeltaTime);
             _lineRenderer.positionCount++;
             _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _transform.position);
-
-        } else {
-            _lineRenderer.positionCount = 1;
-            _lineRenderer.SetPosition(0, _transform.position);
         }
     }
 
@@ -66,8 +62,10 @@ public class CorrectPathRenderer : MonoBehaviour
         _isActive = true;
     }
 
-    public void SetActive(bool isActive)
+    public void Hide()
     {
-        _isActive = isActive;
+        if (_isActive)
+            _lineRenderer.positionCount = 0;
+        _isActive = false;
     }
 }

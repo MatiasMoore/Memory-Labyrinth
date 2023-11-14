@@ -82,12 +82,12 @@ public class LevelModel : MonoBehaviour
     {
         _bonusMoneyAmount = bonusAmount;
     }
-    public Checkpoint GetCheckPoint()
+    public Checkpoint GetCurrentCheckPoint()
     {
         return _currentCheckpoint;
     }
 
-    public void SetCheckPoint(Checkpoint checkpoint)
+    public void SetCurrentCheckPoint(Checkpoint checkpoint)
     {
         _currentCheckpoint = checkpoint;
     }

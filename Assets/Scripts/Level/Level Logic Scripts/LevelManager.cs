@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
 
     private MainCharacter _mainCharacter;  
 
-    private CorrectPathRenderer _rightPathBuilder;
+    private CorrectPathRenderer _correctPathBuilder;
 
     private bool _isPathShown;
 
@@ -79,56 +79,52 @@ public class LevelManager : MonoBehaviour
         _mainCharacter.ResetHealth();
         Timer.Instance.ResetTimer();
         _levelModel.SetBonusAmount(0);
-        _levelModel.SetCheckPoint(FindObjectOfType<StartPoint>());
+        _levelModel.SetCurrentCheckPoint(FindObjectOfType<StartPoint>());
 
-        bool levelDataIsFound = levelData._checkpointId != 0;
+        bool startLevelFromSpawn = levelData._checkpointId == 0;
 
         //Load parameters if they exist
-        if (levelDataIsFound)
-            LoadLevelData(levelData);
+        if (!startLevelFromSpawn)
+        {
+            _mainCharacter.SetHealth(levelData._livesAmount);
+            Timer.Instance.SetElapsedTime(levelData._time);
+            ActivateCheckPointWithQueue(levelData._checkpointId);
+        }
         
         //Put the player on the checkpoint
-        _playerObj.transform.position = _levelModel.GetCheckPoint().transform.position + new Vector3(0, 0, -1);
+        _playerObj.transform.position = _levelModel.GetCurrentCheckPoint().transform.position + new Vector3(0, 0, -1);
 
-        if (!levelDataIsFound)
+        if (startLevelFromSpawn)
         {
             //Play level intro
             StopAllCoroutines();
             StartCoroutine(PlayLevelIntro());
-        } else
+        } 
+        else
         {
-            //Instantly load
-            _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
-            _rightPathBuilder.SetActive(false);
-
             //Instantly fade in
             FogController.Instance.SetFogVisibile(true);
             FogController.Instance.FadeInToAllTargets(0);
-
-            StartTimerAndEnablePlayerControl();
         }
 
     }
 
-    public void LoadLevelData(LevelData levelData)
+    private void ActivateCheckPointWithQueue(int targetQueue)
     {
-        _mainCharacter.SetHealth(levelData._livesAmount);
         Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
         foreach (Checkpoint checkpoint in checkpoints)
         {
-            if (checkpoint.GetQueue() == levelData._checkpointId)
-                _levelModel.SetCheckPoint(checkpoint);             
-            Debug.Log($"LEVELMANAGER: Can't find checkpoint with queue {levelData._checkpointId}");
-        }
-
-        Timer.Instance.SetElapsedTime(levelData._time);
+            if (checkpoint.GetQueue() == targetQueue)
+                _levelModel.SetCurrentCheckPoint(checkpoint);             
+            Debug.Log($"LEVELMANAGER: Can't find checkpoint with queue {targetQueue}");
+        } 
     }
 
 
     private void WinLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.Instance.SetTimerStatus(false);
+        Timer.Instance.SetTimerActive(false);
         Debug.Log("LevelManager: level win");
         SaveCompleteLevel();
     }
@@ -136,14 +132,14 @@ public class LevelManager : MonoBehaviour
     private void LoseLevel()
     {
         _mainCharacter.SetActive(false);
-        Timer.Instance.SetTimerStatus(false);
+        Timer.Instance.SetTimerActive(false);
         Debug.Log("LevelManager: level lose");
     }
 
     private void StartShowPath()
     {
-        _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
-        _rightPathBuilder.ShowRightPath(_correctPathSpeed);
+        _correctPathBuilder.Init();
+        _correctPathBuilder.ShowRightPath(_correctPathSpeed);
         _isPathShown = true;
     }
 
@@ -151,7 +147,7 @@ public class LevelManager : MonoBehaviour
     {   
         if (_isPathShown)
         {
-            _rightPathBuilder.SetActive(false);
+            _correctPathBuilder.Hide();
         }
         _isPathShown = false;
     }
@@ -190,7 +186,7 @@ public class LevelManager : MonoBehaviour
         {
             _level = _currentLevelEnum,
             _livesAmount = _mainCharacter.GetHealth(),
-            _checkpointId = _levelModel.GetCheckPoint().GetQueue(),
+            _checkpointId = _levelModel.GetCurrentCheckPoint().GetQueue(),
             _time = Timer.Instance.GetElapsedTime(),
             _isCompleted = false,
             _collectedBonusesId = new List<int> { 123 }
@@ -206,12 +202,13 @@ public class LevelManager : MonoBehaviour
     {
         //Pause player, timer, and disable fog
         _mainCharacter.SetActive(false);
-        Timer.Instance.SetTimerStatus(false);
+        Timer.Instance.SetTimerActive(false);
         FogController.Instance.SetFogVisibile(false);
 
         //Show the correct path and wait for it to finish
+        _correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
         StartShowPath();
-        while (!_rightPathBuilder.IsFinished())
+        while (!_correctPathBuilder.IsFinished())
         { 
             yield return null;
         }
@@ -234,6 +231,6 @@ public class LevelManager : MonoBehaviour
     private void StartTimerAndEnablePlayerControl()
     {
         _mainCharacter.SetActive(true);
-        Timer.Instance.SetTimerStatus(true);
+        Timer.Instance.SetTimerActive(true);
     }
 }
