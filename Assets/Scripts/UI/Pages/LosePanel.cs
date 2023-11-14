@@ -37,6 +37,10 @@ public class LosePanel : MonoBehaviour
         Timer.Instance.ResetTimer();
         MenuManager.ClosePage(MenuManager.Page.LOSE);
 
+        // TEMP SOLUTION
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        levelManager.StartLevel();
+
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }

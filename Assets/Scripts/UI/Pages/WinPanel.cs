@@ -54,6 +54,10 @@ public class WinPanel : MonoBehaviour
         Timer.Instance.ResetTimer();
         MenuManager.ClosePage(MenuManager.Page.WIN);
 
+        // TEMP SOLUTION
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        levelManager.StartLevel();
+
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }

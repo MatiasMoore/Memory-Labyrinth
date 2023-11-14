@@ -34,6 +34,10 @@ public class PauseMenu : MonoBehaviour
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
         SetPausedGame(false);
         Timer.Instance.ResetTimer();
+        
+        // TEMP SOLUTION
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        levelManager.StartLevel();
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
