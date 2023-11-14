@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour
         {
             levelModel._onLevelWin += ShowWinPanelAction;
             levelModel._onLevelLose += ShowLosePanelAction;
-            levelModel._onPlayerGetBonus += UpdateGemsCountAction;
+            levelModel._onBonusAmountChange += UpdateGemsCountAction;
         }
 
         _mainCharacter = mainCharacter;
@@ -53,12 +53,13 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    private static void UpdateGemsCountAction()
+    private static void UpdateGemsCountAction(int value)
     {
         Gems gems = FindObjectOfType<Gems>();
         Debug.Log("MENU CONTROLLER: UpdateGemsCountAction -> " + gems);
         if (gems != null)
         {
+            Debug.Log(_levelModel.GetBonusAmount());
             gems.SetGemsAmount(_levelModel.GetBonusAmount());
         }
     }

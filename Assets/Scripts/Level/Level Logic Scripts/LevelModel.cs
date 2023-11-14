@@ -58,7 +58,7 @@ public class LevelModel : MonoBehaviour
 
     public void onPlayerGetBonus(int value)
     {
-        _bonusMoneyAmount += value;
+        SetBonusAmount(_bonusMoneyAmount + value);
         _onPlayerGetBonus?.Invoke();
         Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
     }
@@ -80,11 +80,13 @@ public class LevelModel : MonoBehaviour
     {
         return _bonusMoneyAmount;
     }
+
     public void SetBonusAmount(int bonusAmount)
     {
         _bonusMoneyAmount = bonusAmount;
         _onBonusAmountChange?.Invoke(bonusAmount);
     }
+
     public Checkpoint GetCurrentCheckPoint()
     {
         return _currentCheckpoint;
