@@ -29,6 +29,7 @@ public class LevelProgressStorage : MonoBehaviour
             _newLevelData._isCompleted = newLevelData._isCompleted;
 
             currentLevels[levelIndex] = _newLevelData;
+            this.OnLevelProgressChanged?.Invoke(newLevelData);
             Debug.Log($"UpdateLevelInfo: Level {newLevelData._level} info has been updated");
         }
         else
@@ -72,6 +73,7 @@ public class LevelProgressStorage : MonoBehaviour
             _newLevelData._isCompleted = newLevelData._isCompleted;
 
             currentLevels.Add(_newLevelData);
+            this.OnLevelProgressChanged?.Invoke(newLevelData);
             Debug.Log($"AddNewLevelInfo: Level {newLevelData._level} info has been added");
         }
         else
