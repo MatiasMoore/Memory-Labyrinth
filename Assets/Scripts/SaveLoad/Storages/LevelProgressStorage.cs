@@ -31,10 +31,29 @@ public class LevelProgressStorage : MonoBehaviour
             currentLevels[levelIndex] = _newLevelData;
             Debug.Log($"UpdateLevelInfo: Level {newLevelData._level} info has been updated");
         }
-        else 
+        else
         {
             Debug.LogWarning($"UpdateLevelInfo: Level {newLevelData._level} does not exist");
         }
     }
 
+    public LevelData GetLevelInfo(ResourceManager.Level level)
+    {
+        int levelIndex = currentLevels.FindIndex(item => item._level == level);
+        if (levelIndex != -1)
+        {
+            LevelData levelData = new LevelData
+            {
+                _level = level,
+                _checkpointId = currentLevels[levelIndex]._checkpointId,
+                _collectedBonusesId = currentLevels[levelIndex]._collectedBonusesId,
+                _isCompleted = currentLevels[levelIndex]._isCompleted,
+                _livesAmount = currentLevels[levelIndex]._livesAmount,
+                _time = currentLevels[levelIndex]._time
+            };
+            Debug.Log($"GetLevelInfo(): {level}");
+            return levelData;
+        }
+        else throw new System.NullReferenceException($"GetLevelInfo(): {level} does not exist");
+    }
 }
