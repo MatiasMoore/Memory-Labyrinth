@@ -28,23 +28,20 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickNextLevel()
     {
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-
         var nextLevel = CurrentLevel.getCurrentLevel()._level + 1;
+
+        ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
 
         // If level index is out of enum range, load Main Menu
         if ((int)(nextLevel) > ResourceManager.GetLastLevelIndex())
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
-        // Else load next level
+        // Else, load next level
         else
         {
             CurrentLevel.Load(nextLevel);
-            LevelManager levelManager = FindObjectOfType<LevelManager>();
-            levelManager.StartLevel();
+            LevelManager.Instance.StartLevel();
         }
-            
-
-        LevelManager.FireLevelLoadAction();
+        
         MenuManager.FireButtonClickAction();
     }
 
@@ -57,14 +54,9 @@ public class WinPanel : MonoBehaviour
 
     public void OnClickRestart()
     {
-        // TODO: reload level prefab
         MenuManager.ClosePage(MenuManager.Page.WIN);
+        LevelManager.Instance.StartLevel();
 
-        // TEMP SOLUTION
-        LevelManager levelManager = FindObjectOfType<LevelManager>();
-        levelManager.StartLevel();
-
-        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }

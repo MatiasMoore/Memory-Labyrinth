@@ -68,11 +68,6 @@ public class LevelManager : MonoBehaviour
         StartLevel();
     }
 
-    public static void FireLevelLoadAction()
-    {
-        _levelLoad?.Invoke();
-    }
-
     public void StartLevel()
     {
         _currentLevel = CurrentLevel.getCurrentLevel()._level;
