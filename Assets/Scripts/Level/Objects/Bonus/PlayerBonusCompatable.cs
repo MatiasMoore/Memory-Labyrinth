@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerBonusCompatible : BonusCompatible
 {
-    public override void getBonus(int value)
+    public override void getBonus(Bonus bonus)
     {
         MainCharacter mainCharacter = GetComponent<MainCharacter>();
         if (mainCharacter != null)
         {
-            mainCharacter.getBonus(value);
+            mainCharacter.getBonus(bonus);
         }
         else
         {

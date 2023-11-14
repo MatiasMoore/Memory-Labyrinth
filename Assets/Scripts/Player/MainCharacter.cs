@@ -21,7 +21,7 @@ public class MainCharacter : MonoBehaviour
 
     public event UnityAction _onDeathEvent;
     public event UnityAction _onDamageEvent;
-    public event UnityAction<int> _onBonusEvent;
+    public event UnityAction<Bonus> _onBonusEvent;
     public event UnityAction _onFinishEvent;
     public event UnityAction _onTeleportEvent;
     public event UnityAction<Checkpoint> _onCheckpointEvent;
@@ -112,7 +112,7 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    public void getBonus(int bonus)
+    public void getBonus(Bonus bonus)
     {
         _onBonusEvent?.Invoke(bonus);
     }

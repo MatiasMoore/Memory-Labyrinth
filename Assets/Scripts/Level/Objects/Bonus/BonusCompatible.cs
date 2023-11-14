@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class BonusCompatible : MonoBehaviour
 {
-    public abstract void getBonus(int value);
+    public abstract void getBonus(Bonus bonus);
 }

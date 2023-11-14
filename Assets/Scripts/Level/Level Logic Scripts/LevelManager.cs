@@ -99,8 +99,25 @@ public class LevelManager : MonoBehaviour
             _mainCharacter.SetHealth(levelData._livesAmount);
             Timer.Instance.SetElapsedTime(levelData._time);
             ActivateCheckPointWithQueue(levelData._checkpointId);
+            _levelModel.SetCollectedBonusesIDBeforeCheckPoint(levelData._collectedBonusesId);
+
+            //Remove collected bonuses from map
+            int currentMoney = 0;
+            Bonus[] bonuses = FindObjectsOfType<Bonus>();
+            foreach(Bonus bonusOnMap in bonuses)
+            {
+                if (levelData._collectedBonusesId.Contains(bonusOnMap.GetID()))
+                {
+                    currentMoney += bonusOnMap.GetValue();
+                    bonusOnMap.DestroySelf();
+                }    
+            }
+            _levelModel.SetBonusAmount(currentMoney);
         }
-        
+
+        //Reset collected bonuses
+        _levelModel.SetCollectedBonusesIDBuffer(new List<int>());
+
         //Put the player on the checkpoint
         _playerObj.transform.position = _levelModel.GetCurrentCheckPoint().transform.position + new Vector3(0, 0, -1);
 
@@ -171,7 +188,7 @@ public class LevelManager : MonoBehaviour
             _checkpointId = 0,
             _time = Timer.Instance.GetElapsedTime(),
             _isCompleted = true,
-            _collectedBonusesId = new List<int> { 123}
+            _collectedBonusesId = _levelModel.GetCollectedBonusesIDBeforeCheckpoint()
 
         };
 
@@ -199,7 +216,7 @@ public class LevelManager : MonoBehaviour
             _checkpointId = _levelModel.GetCurrentCheckPoint().GetQueue(),
             _time = Timer.Instance.GetElapsedTime(),
             _isCompleted = false,
-            _collectedBonusesId = new List<int> { 123 }
+            _collectedBonusesId = _levelModel.GetCollectedBonusesIDBeforeCheckpoint()
 
         };
 

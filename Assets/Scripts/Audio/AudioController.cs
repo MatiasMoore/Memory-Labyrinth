@@ -53,7 +53,7 @@ public class AudioController : MonoBehaviour
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.MenuClick);
     }
 
-    private void PlayBonusPickupSound(int bonusValue)
+    private void PlayBonusPickupSound(Bonus bonus)
     {
         SoundEffectsManager.Instance.PlaySoundEffect(ResourceManager.SoundEffect.BonusPickup);
     }

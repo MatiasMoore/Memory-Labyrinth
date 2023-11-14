@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bonus : MonoBehaviour
 {
     int _value = 10;
+    int _id;
 
     public void Start()
     {
@@ -18,13 +19,28 @@ public class Bonus : MonoBehaviour
         if (bonusObject != null)
         {
             Debug.Log($"Bonus {other.gameObject.name} for {_value}");
-            bonusObject.getBonus(_value);
+            bonusObject.getBonus(this);
             //Удалить себя
-            Destroy(gameObject);
+            DestroySelf();
         }
         else
         {
             Debug.Log($"Bonus {other.gameObject.name} failed");
         }
+    }
+
+    public int GetID()
+    {
+        return _id;
+    }
+
+    public int GetValue()
+    {
+        return _value;
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

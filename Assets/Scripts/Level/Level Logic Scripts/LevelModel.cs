@@ -23,6 +23,10 @@ public class LevelModel : MonoBehaviour
 
     private bool _isActive;
 
+    private List<int> _collectedBonusesIDBeforeCheckpoint = new List<int>();
+
+    private List<int> _collectedBonusesBuffer = new List<int>();
+
     public void Init(MainCharacter mainCharacter)
     {
         _mainCharacter = mainCharacter;
@@ -56,9 +60,10 @@ public class LevelModel : MonoBehaviour
         _mainCharacter.SetPosition2d(_currentCheckpoint.transform.position);
     }
 
-    public void onPlayerGetBonus(int value)
+    public void onPlayerGetBonus(Bonus bonus)
     {
-        SetBonusAmount(_bonusMoneyAmount + value);
+        SetBonusAmount(_bonusMoneyAmount + bonus.GetValue());
+        _collectedBonusesBuffer.Add(bonus.GetID());
         _onPlayerGetBonus?.Invoke();
         Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
     }
@@ -74,6 +79,10 @@ public class LevelModel : MonoBehaviour
         {
             _currentCheckpoint = checkpoint;
         }
+
+        _collectedBonusesIDBeforeCheckpoint.AddRange(_collectedBonusesBuffer);
+        _collectedBonusesBuffer.Clear();
+
     }
 
     public int GetBonusAmount()
@@ -95,6 +104,22 @@ public class LevelModel : MonoBehaviour
     public void SetCurrentCheckPoint(Checkpoint checkpoint)
     {
         _currentCheckpoint = checkpoint;
+    }
+
+    public void SetCollectedBonusesIDBeforeCheckPoint(List<int> collectedBonusesID)
+    {
+        _collectedBonusesIDBeforeCheckpoint = new List<int>(collectedBonusesID);
+        
+    }
+
+    public void SetCollectedBonusesIDBuffer(List<int> collectedBonusesID)
+    {
+        _collectedBonusesBuffer = new List<int>(collectedBonusesID);
+    }
+
+    public List<int> GetCollectedBonusesIDBeforeCheckpoint()
+    {
+        return _collectedBonusesIDBeforeCheckpoint;
     }
 
 }
