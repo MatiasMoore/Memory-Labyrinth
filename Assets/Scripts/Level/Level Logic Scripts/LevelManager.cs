@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float _fadeInFogTime = 2f;
 
-    private RightPathBuilder _rightPathBuilder;
+    private CorrectPathRenderer _rightPathBuilder;
 
     private bool _isPathShown;
 
@@ -118,7 +118,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartShowPath()
     {
-        _rightPathBuilder = FindObjectOfType<RightPathBuilder>();
+        _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
         _rightPathBuilder.ShowRightPath(_correctPathSpeed);
         _isPathShown = true;
     }
