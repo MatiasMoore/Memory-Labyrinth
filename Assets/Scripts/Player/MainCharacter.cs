@@ -44,6 +44,7 @@ public class MainCharacter : MonoBehaviour
             GetComponent<Rigidbody2D>(),
             _speed
         );
+        _isActive = true;
         _pathCreator = GetComponent<PathCreator>();
         _pathCreator.Init();
     }
