@@ -18,16 +18,17 @@ public class CorrectPathRenderer : MonoBehaviour
     private LineRenderer _lineRenderer;
 
     [SerializeField]
-    private bool _isActive = false;
+    private bool _isActive;
 
     private Transform _transform;
 
-    void Start()
+    public void Init()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _transform = GetComponent<Transform>();
         _lineRenderer.positionCount = 1;
         _lineRenderer.SetPosition(0, _transform.position);
+        _isActive = false;
     }
   
     void FixedUpdate()
