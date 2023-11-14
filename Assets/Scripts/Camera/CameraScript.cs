@@ -19,8 +19,7 @@ public class CameraScript : MonoBehaviour
 
     private Camera _cam;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
         _cam = GetComponent<Camera>();
 

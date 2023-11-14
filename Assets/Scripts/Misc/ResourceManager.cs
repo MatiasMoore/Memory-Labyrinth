@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using System;
 using System.Linq;
 
-public class ResourceManager : MonoBehaviour
+public static class ResourceManager
 {
     public static event UnityAction<AvailableScene, AvailableScene> activeSceneChanged;
 

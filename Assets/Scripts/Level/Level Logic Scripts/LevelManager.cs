@@ -39,15 +39,12 @@ public class LevelManager : MonoBehaviour
         _currentLevel = level;
     }
 
-    public void Start()
+    public void Init()
     {
         _saveLoadManager = GetComponent<SaveLoadManager>();
         //Debug.Log($"LEVELMANAGER: {LevelProgressStorage.Instance.currentLevels}");
-        _player.SetActive(false);
         _mainCharacter = _player.GetComponent<MainCharacter>();
-        _mainCharacter.Init();
-
-        _levelModel.Init(_mainCharacter);
+       
         _levelModel._onLevelLose += LoseLevel;
         _levelModel._onLevelWin += WinLevel;
 

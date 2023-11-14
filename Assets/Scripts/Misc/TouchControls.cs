@@ -20,13 +20,13 @@ public class TouchControls : MonoBehaviour
 
     public static TouchControls Instance { get; private set; }
 
-    private void Awake()
+    public void Init()
     {
+        if (Instance != null) return;
+
         _playerInput = GetComponent<PlayerInput>();
         _touchPressAction = _playerInput.actions["TouchPress"];
         _touchPositionAction = _playerInput.actions["TouchPosition"];
-
-        if (Instance != null) return;
 
         Instance = this;
     }

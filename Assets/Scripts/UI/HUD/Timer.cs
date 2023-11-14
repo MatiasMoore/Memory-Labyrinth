@@ -12,18 +12,13 @@ public class Timer : MonoBehaviour
 
     private float _elapsedTime = 0f;
 
-    private void Start()
-    {
-        Init();
-        _textMesh.text = "00:00";
-    }
-
     public void Init()
     {
         if (Instance != null)
             return;
 
         Instance = this;
+        _textMesh.text = "00:00";
     }
 
     private void Update()
