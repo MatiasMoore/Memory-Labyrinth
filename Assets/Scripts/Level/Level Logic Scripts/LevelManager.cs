@@ -80,6 +80,7 @@ public class LevelManager : MonoBehaviour
             Destroy(_currentLevelObject);
         }
         _player.SetActive(true);
+        _mainCharacter.ResetHealth();
         
         Timer.Instance.ResetTimer();
 
@@ -104,6 +105,7 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(PlayLevelIntro());
         } else
         {
+            Debug.Log("ELSE in StartLevel");
             _rightPathBuilder = FindObjectOfType<CorrectPathRenderer>();
             _rightPathBuilder.SetActive(false);
 

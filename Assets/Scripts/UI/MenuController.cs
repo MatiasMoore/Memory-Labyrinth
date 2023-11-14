@@ -19,7 +19,7 @@ public class MenuController : MonoBehaviour
         _mainCharacter = mainCharacter;
         if (_mainCharacter != null)
         {
-            mainCharacter._onDamageEvent += UpdateHealthCountAction;
+            mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
         }
     }
     private static void ShowWinPanelAction()
@@ -44,7 +44,7 @@ public class MenuController : MonoBehaviour
         losePanel.SetLevelGemsCountOnLose();
     }
 
-    private static void UpdateHealthCountAction()
+    private static void UpdateHealthCountAction(int value)
     {
         Health health = FindObjectOfType<Health>();
         if (health != null)
