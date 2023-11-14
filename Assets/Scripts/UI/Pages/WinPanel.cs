@@ -57,7 +57,6 @@ public class WinPanel : MonoBehaviour
         MenuManager.ClosePage(MenuManager.Page.WIN);
         LevelManager.Instance.StartLevel();
 
-        LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
     }
 }
