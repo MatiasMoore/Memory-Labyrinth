@@ -42,9 +42,17 @@ public static class Repository
 
     public static T GetData<T>()
     {
-        var serializedData = currentState[typeof(T).Name];
-        Debug.Log($"GetData()");
-        return JsonConvert.DeserializeObject<T>(serializedData);
-
+        string typeName = typeof(T).Name;
+        if (currentState.ContainsKey(typeName))
+        {
+            var serializedData = currentState[typeof(T).Name];
+            Debug.Log($"GetData() for {typeName}");
+            return JsonConvert.DeserializeObject<T>(serializedData);
+        }
+        else
+        {
+            Debug.LogWarning($"GetData(): Key {typeName} not found");
+            return default;
+        }
     }
 }
