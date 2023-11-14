@@ -13,6 +13,9 @@ public class Money : MonoBehaviour
 
     private void UpdateMoneyAmount()
     {
-        _textMesh.text = BonusStorage.Instance.GetBonuses().ToString();
+        if (BonusStorage.Instance != null)
+            _textMesh.text = BonusStorage.Instance.GetBonuses().ToString();
+        else
+            throw new System.Exception("MONEY: UpdateMoneyAmount -> BonusStorage.Instance == null");
     }
 }
