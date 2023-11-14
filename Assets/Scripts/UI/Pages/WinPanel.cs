@@ -30,15 +30,19 @@ public class WinPanel : MonoBehaviour
     {
         ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
 
+        var nextLevel = CurrentLevel.getCurrentLevel()._level + 1;
+
         // If level index is out of enum range, load Main Menu
-        if ((int)(CurrentLevel.getCurrentLevel()._level + 1) > ResourceManager.GetLastLevelIndex())
+        if ((int)(nextLevel) > ResourceManager.GetLastLevelIndex())
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         // Else load next level
         else
-            // TEMP SOLUTION
-            ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-            // TODO: load next level
-            // ResourceManager.LoadLevel(LevelManager._currentLevel + 1);
+        {
+            CurrentLevel.Load(nextLevel);
+            LevelManager levelManager = FindObjectOfType<LevelManager>();
+            levelManager.StartLevel();
+        }
+            
 
         LevelManager.FireLevelLoadAction();
         MenuManager.FireButtonClickAction();
