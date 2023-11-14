@@ -91,6 +91,13 @@ public class MainCharacter : MonoBehaviour
         _objectMovement.StopMove();
     }
 
+    public void SetPosition2d(Vector2 position)
+    {
+        Vector3 position3 = position;
+        position3.z = transform.position.z;
+        transform.position = position3;
+    }
+
     public void TeleportTo(Vector3 position)
     {
         _objectMovement.TeleportTo((Vector2)position);

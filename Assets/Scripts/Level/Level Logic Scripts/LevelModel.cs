@@ -53,7 +53,7 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDamage()
     {
         Debug.Log($"Player damaged");
-        _mainCharacter.TeleportTo(_currentCheckpoint.transform.position);
+        _mainCharacter.SetPosition2d(_currentCheckpoint.transform.position);
     }
 
     public void onPlayerGetBonus(int value)
