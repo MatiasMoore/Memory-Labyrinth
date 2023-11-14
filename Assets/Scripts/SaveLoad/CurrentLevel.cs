@@ -52,10 +52,10 @@ public static class CurrentLevel
         if (_currentLevelIndex < 0)
         {
             Debug.Log($"CURRENTLEVEL: new save for {newLevelData._level} ");
-            LevelProgressStorage.Instance.currentLevels.Add(newLevelData);
+            LevelProgressStorage.Instance.AddNewLevelInfo(newLevelData);
         } else {
             Debug.Log($"CURRENTLEVEL: {newLevelData._level} save is overriten");
-            LevelProgressStorage.Instance.currentLevels[_currentLevelIndex] = newLevelData;
+            LevelProgressStorage.Instance.UpdateLevelInfo(newLevelData);
         }
 
         SaveLoadManager saveLoadManager = new SaveLoadManager();
