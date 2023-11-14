@@ -11,8 +11,11 @@ public sealed class BonusStorage : MonoBehaviour
     [SerializeField]
     private int currentBonuses;
 
-    private void Awake()
+    public void Init()
     {
+        if (Instance != null)
+            return;
+
         Instance = this;
     }
 
