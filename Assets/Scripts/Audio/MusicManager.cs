@@ -74,7 +74,7 @@ public class MusicManager : MonoBehaviour
             if (hasPrevClip)
                 _previousTrack.volume = Mathf.Lerp(currentVolume, 0, t);
             _currentTrack.volume = Mathf.Lerp(0, 1, t);
-            t += Time.deltaTime / timeToFinishBlend;
+            t += Time.unscaledDeltaTime / timeToFinishBlend;
             yield return null;
         }
 
