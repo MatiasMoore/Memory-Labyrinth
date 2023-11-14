@@ -14,11 +14,9 @@ public class CorrectPathRenderer : MonoBehaviour
     [SerializeField]
     private List<GameObject> _rightPath;
 
-    [SerializeField]
     private LineRenderer _lineRenderer;
 
-    [SerializeField]
-    private bool _isActive;
+    private bool _isActive = false;
 
     private Transform _transform;
 
@@ -28,12 +26,12 @@ public class CorrectPathRenderer : MonoBehaviour
         _transform = GetComponent<Transform>();
         _lineRenderer.positionCount = 1;
         _lineRenderer.SetPosition(0, _transform.position);
-        _isActive = false;
     }
   
     void FixedUpdate()
     {
-        if (_isActive){
+        if (_isActive)
+        {
             _objectMovement.Update(Time.fixedDeltaTime);
             _lineRenderer.positionCount++;
             _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _transform.position);
