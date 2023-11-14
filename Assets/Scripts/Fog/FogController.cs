@@ -9,7 +9,7 @@ public class FogController : MonoBehaviour
 
     public static FogController Instance { get; private set; }
 
-    private void Awake()
+    public void Init()
     {
         if (Instance != null) return;
 
