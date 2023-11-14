@@ -13,7 +13,8 @@ public sealed class SaveLoadManager : MonoBehaviour
     // public static SaveLoadManager Instance;
 
     private readonly ISaveLoader[] saveLoaders = {
-        new BonusesSaveLoader()
+        new BonusesSaveLoader(),
+        new LevelsSaveLoader()
     };
 
 
