@@ -37,8 +37,7 @@ public static class ResourceManager
         PlayerHit,
         BonusPickup,
         CheckpointActivated,
-        TeleportStarted,
-        TeleportFinished,
+        TeleportUsed,
         NewPathPoint
     }
 
@@ -49,8 +48,7 @@ public static class ResourceManager
         { SoundEffect.PlayerHit, _audioFilesDirectoryPath + "PlayerHit" },
         { SoundEffect.BonusPickup, _audioFilesDirectoryPath + "BonusPickup" },
         { SoundEffect.CheckpointActivated, _audioFilesDirectoryPath + "CheckpointActivated" },
-        { SoundEffect.TeleportStarted, _audioFilesDirectoryPath + "TeleportStarted" },
-        { SoundEffect.TeleportFinished, _audioFilesDirectoryPath + "TeleportFinished" },
+        { SoundEffect.TeleportUsed, _audioFilesDirectoryPath + "TeleportUsed" },
         { SoundEffect.LevelFinished, _audioFilesDirectoryPath + "LevelFinished" },
         { SoundEffect.LevelFailed, _audioFilesDirectoryPath + "LevelFailed" },
         { SoundEffect.LevelStarted, _audioFilesDirectoryPath + "LevelStarted" },
