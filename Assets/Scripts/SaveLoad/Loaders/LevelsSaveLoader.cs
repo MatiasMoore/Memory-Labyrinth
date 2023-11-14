@@ -17,13 +17,13 @@ public class LevelsSaveLoader : ISaveLoader
     public void LoadData()
     {
         List<LevelData> data = Repository.GetData<List<LevelData>>();
-        LevelProgressStorage.Instance.currentLevels = data;
+        LevelProgressStorage.Instance.SetLevelDataList(data);
     }
 
     public void SaveData()
     {
         int amount = BonusStorage.Instance.GetBonuses();
-        List<LevelData> levels = LevelProgressStorage.Instance.currentLevels;
+        List<LevelData> levels = LevelProgressStorage.Instance.GetLevelDataList();
 
         var data = new List<LevelData>(levels);
 
