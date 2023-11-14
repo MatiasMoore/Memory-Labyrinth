@@ -9,6 +9,9 @@ using UnityEngine.InputSystem;
 public class MainCharacter : MonoBehaviour
 {
     [SerializeField]
+    private int _maxHealth = 3;
+
+    [SerializeField]
     private int _health;
 
     public int GetHealth()
@@ -22,6 +25,7 @@ public class MainCharacter : MonoBehaviour
     public event UnityAction _onFinishEvent;
     public event UnityAction _onTeleportEvent;
     public event UnityAction<Checkpoint> _onCheckpointEvent;
+    public event UnityAction<int> _onPlayerHealthChangedEvent;
 
     [SerializeField]
     private float _speed;
@@ -94,7 +98,7 @@ public class MainCharacter : MonoBehaviour
 
     public void getDamage(int damage)
     {
-        _health -= damage;
+        SetHealth(_health - damage);
         _onDamageEvent?.Invoke();
         if (_health <= 0)
         {
@@ -121,5 +125,10 @@ public class MainCharacter : MonoBehaviour
     public void SetHealth(int health)
     {
         _health = health;
+        _onPlayerHealthChangedEvent?.Invoke(_health);
+    }
+    public void ResetHealth()
+    {
+        SetHealth(_maxHealth);
     }
 }
