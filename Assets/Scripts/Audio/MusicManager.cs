@@ -15,6 +15,7 @@ public class MusicManager : MonoBehaviour
     private void Awake()
     {
         _currentTrack = GetComponent<AudioSource>();
+        _currentTrack.loop = true;
 
         if (Instance != null) return;
 
@@ -28,7 +29,6 @@ public class MusicManager : MonoBehaviour
             throw new System.Exception("Audio file for music " + music.ToString() + " couldn't be found");
 
         _currentTrack.clip = musicClip;
-        _currentTrack.loop = true;
         _currentTrack.Play();
     }
 
