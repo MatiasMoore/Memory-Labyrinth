@@ -118,5 +118,7 @@ public sealed class LevelProgressStorage : MonoBehaviour
     {
         if (levelDatas != null)
             this.currentLevels = levelDatas;
+        else
+            this.currentLevels = new List<LevelData>();
     }
 }
