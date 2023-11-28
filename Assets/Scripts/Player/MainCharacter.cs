@@ -130,6 +130,16 @@ public class MainCharacter : MonoBehaviour
 
     public void SetHealth(int health)
     {
+        if (health > _maxHealth)
+        {
+            health = _maxHealth;
+        }
+
+        if (health <= 0)
+        {
+            health = 0;
+        }
+
         _health = health;
         _onPlayerHealthChangedEvent?.Invoke(_health);
     }
@@ -137,4 +147,11 @@ public class MainCharacter : MonoBehaviour
     {
         SetHealth(_maxHealth);
     }
+
+    public void SetMaxHealth(int maxHealth)
+    {
+        _maxHealth = maxHealth;
+    }
+
+
 }

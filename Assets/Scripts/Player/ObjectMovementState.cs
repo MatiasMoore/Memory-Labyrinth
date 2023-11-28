@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -146,7 +147,7 @@ public class ObjectMovementState
         StopMove();
         _path.Add(position);
         SwitchStateTo(State.Teleport);
-        Debug.Log($"PLAYER: Teleporting to {_path[1]}");
+        Debug.Log($"PLAYER: Teleporting to {_path.Last()}");
     }
 
     public State GetState()
@@ -238,20 +239,28 @@ public class ObjectMovementState
 
     private void Teleport(float deltaTime)
     {
-        if (_timer == 0)
-            _currentPosition = (Vector2)_transform.position;
-
-        UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime), false);
-
-        if (_timer > _timeToPassPoint)
+        if (_path.Count > 1)
         {
-            RemoveReachedPointFromPath(_path[0]);
-            _transform.position = new Vector3(_path[0].x, _path[0].y, _transform.position.z);
-            RemoveReachedPointFromPath(_path[0]);
-            SwitchStateTo(State.Stay);
-        }
-    }
+            if (_timer == 0)
+                _currentPosition = (Vector2)_transform.position;
 
+            UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime), false);
+            UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime), false);
+
+                UpdatePosition(InterpolateByState(State.Deceleration, _timeToPassPoint, deltaTime), false);
+
+            if (_timer > _timeToPassPoint)
+            {
+                if (_timer > _timeToPassPoint)
+                    RemoveReachedPointFromPath(_path[0]);
+            }
+            return;
+        } 
+        
+        _transform.position = new Vector3(_path[0].x, _path[0].y, _transform.position.z);
+        RemoveReachedPointFromPath(_path[0]);
+        SwitchStateTo(State.Stay);
+    }
     private void Turn(float deltaTime)
     {
         if (_timer == 0)
