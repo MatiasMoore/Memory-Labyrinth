@@ -16,6 +16,27 @@ public class BonusesSaveLoaderTests
     }
     // A Test behaves as an ordinary method
     [Test]
+    public void BonusesSaveLoader_BonusStorageOnFirstLoad()
+    {
+        GameObject storage = new GameObject("Bonuses Storage");
+        BonusStorage bonusStorage = storage.AddComponent<BonusStorage>();
+        bonusStorage.Init();
+
+        GameObject dummyStorage = new GameObject("Levels Progress Storage");
+        LevelProgressStorage dummyLevelStorage = dummyStorage.AddComponent<LevelProgressStorage>();
+        dummyLevelStorage.Init();
+
+        GameObject manager = new GameObject("SaveLoadManager");
+        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
+
+        saveLoadManager.DeleteSave();
+        saveLoadManager.LoadGame();
+
+        int expectedRes = 0;
+        Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
+    }
+
+    [Test]
     public void BonusesSaveLoader_BonusStorageSetupBonuses()
     {
         GameObject storage = new GameObject("Bonuses Storage");
