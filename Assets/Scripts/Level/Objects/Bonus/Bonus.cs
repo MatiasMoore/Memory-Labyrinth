@@ -29,6 +29,19 @@ public class Bonus : MonoBehaviour
         }
     }
 
+    public void SetValue(int value)
+    {
+        if(value < 0)
+            value = 0;
+
+        _value = value;
+    }
+
+    public void SetID(int id)
+    {
+        _id = id;
+    }
+
     public int GetID()
     {
         return _id;
