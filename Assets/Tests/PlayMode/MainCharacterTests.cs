@@ -9,7 +9,6 @@ using UnityEditor;
 public class MainCharacterTests
 {
     private MainCharacter _mainCharacter;
-    GameObject _touchControlObject;
 
     [SetUp]
     public void Setup()
@@ -17,13 +16,9 @@ public class MainCharacterTests
         Time.timeScale = 100;
 
         string playerPrefabPath = "Assets/Prefabs/Player.prefab";
-        string touchControlsPrefabPath = "Assets/Tests/TestsPrefabs/TouchControls.prefab";
         GameObject playerPrefab = AssetDatabase.LoadAssetAtPath(playerPrefabPath, typeof(Object)) as GameObject;
         _mainCharacter = Object.Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<MainCharacter>();
         // create touchControls on scene
-        GameObject touchControlObject = AssetDatabase.LoadAssetAtPath(touchControlsPrefabPath, typeof(Object)) as GameObject;
-        _touchControlObject = Object.Instantiate(touchControlObject, new Vector3(0, 0, 0), Quaternion.identity);
-        _touchControlObject.GetComponent<TouchControls>().Init();
         _mainCharacter.Init();
 
         Debug.Log("Setup");
@@ -243,8 +238,6 @@ public class MainCharacterTests
     public void Teardown()
     {
         //timescale 
-        Time.timeScale = 1;
-        Object.DestroyImmediate(_touchControlObject);
         Time.timeScale = 1;
         Object.DestroyImmediate(_mainCharacter.gameObject);
     }
