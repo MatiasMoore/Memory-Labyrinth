@@ -35,6 +35,7 @@ public class MainCharacterTests
         
         int initialHealth = 100;
         int damage = 20;
+        _mainCharacter.SetMaxHealth(initialHealth);
         _mainCharacter.SetHealth(initialHealth);
 
         _mainCharacter.getDamage(damage);
@@ -48,6 +49,7 @@ public class MainCharacterTests
         
         int initialHealth = 50;
         int damage = 50;
+        _mainCharacter.SetMaxHealth(initialHealth);
         _mainCharacter.SetHealth(initialHealth);
         bool onDeathEventInvoked = false;
         _mainCharacter._onDeathEvent += () => onDeathEventInvoked = true;
@@ -64,6 +66,7 @@ public class MainCharacterTests
         
         int initialHealth = 30;
         int damage = 50;
+        _mainCharacter.SetMaxHealth(initialHealth);
         _mainCharacter.SetHealth(initialHealth);
         bool onDeathEventInvoked = false;
         _mainCharacter._onDeathEvent += () => onDeathEventInvoked = true;
@@ -99,6 +102,7 @@ public class MainCharacterTests
     {
         int maxHealth = 3;
         int newHealth = 2;
+        _mainCharacter.SetMaxHealth(maxHealth);
         _mainCharacter.SetHealth(newHealth);
 
         _mainCharacter.ResetHealth();
@@ -113,6 +117,7 @@ public class MainCharacterTests
     {
         int maxHealth = 3;
         int newHealth = 5;
+        _mainCharacter.SetMaxHealth(maxHealth);
         _mainCharacter.SetHealth(newHealth);
 
         int actualHealth = _mainCharacter.GetHealth();
