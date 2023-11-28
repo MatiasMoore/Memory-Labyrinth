@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +21,10 @@ public class Checkpoint : MonoBehaviour
         return _queue;
     }
 
+    public void SetQueue(int queue)
+    {
+        _queue = queue;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {   if (!_isReached)
         {
