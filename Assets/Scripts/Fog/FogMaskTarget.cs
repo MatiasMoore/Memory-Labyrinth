@@ -55,9 +55,10 @@ public class FogMaskTarget : MonoBehaviour
         SetMaskRadius(to);
     }
 
-
     private void SetMaskRadius(float radius)
     {
+        if (_maskObj == null)
+            return;
         var bounds = _mask.sprite.bounds;
         var xSize = bounds.size.x;
         var ySize = bounds.size.y;
