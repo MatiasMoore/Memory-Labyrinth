@@ -11,26 +11,24 @@ public class BonusesSaveLoaderTests
     [SetUp]
     public void SetUp()
     {
-         SceneManager.LoadScene("Bootstrap");
-         _saveLoadManager = MonoBehaviour.FindObjectOfType<SaveLoadManager>();
+        GameObject dummyStorage = new GameObject("Bonuses Storage");
+        BonusStorage bonusStorage = dummyStorage.AddComponent<BonusStorage>();
+        bonusStorage.Init();
+
+        GameObject storage = new GameObject("Levels Progress Storage");
+        LevelProgressStorage dummyLevelStorage = storage.AddComponent<LevelProgressStorage>();
+        dummyLevelStorage.Init();
+
+        GameObject manager = new GameObject("SaveLoadManager");
+        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
+        _saveLoadManager = saveLoadManager;
     }
     // A Test behaves as an ordinary method
     [Test]
     public void BonusesSaveLoader_BonusStorageOnFirstLoad()
     {
-        GameObject storage = new GameObject("Bonuses Storage");
-        BonusStorage bonusStorage = storage.AddComponent<BonusStorage>();
-        bonusStorage.Init();
-
-        GameObject dummyStorage = new GameObject("Levels Progress Storage");
-        LevelProgressStorage dummyLevelStorage = dummyStorage.AddComponent<LevelProgressStorage>();
-        dummyLevelStorage.Init();
-
-        GameObject manager = new GameObject("SaveLoadManager");
-        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
-
-        saveLoadManager.DeleteSave();
-        saveLoadManager.LoadGame();
+        _saveLoadManager.DeleteSave();
+        _saveLoadManager.LoadGame();
 
         int expectedRes = 0;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -39,22 +37,11 @@ public class BonusesSaveLoaderTests
     [Test]
     public void BonusesSaveLoader_BonusStorageSetupBonuses()
     {
-        GameObject storage = new GameObject("Bonuses Storage");
-        BonusStorage bonusStorage = storage.AddComponent<BonusStorage>();
-        bonusStorage.Init();
-
-        GameObject dummyStorage = new GameObject("Levels Progress Storage");
-        LevelProgressStorage dummyLevelStorage = dummyStorage.AddComponent<LevelProgressStorage>();
-        dummyLevelStorage.Init();
-
-        GameObject manager = new GameObject("SaveLoadManager");
-        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
-
         BonusStorage.Instance.SetupBonuses(10);
         
-        saveLoadManager.SaveGame();
+        _saveLoadManager.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        saveLoadManager.LoadGame();
+        _saveLoadManager.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -63,22 +50,11 @@ public class BonusesSaveLoaderTests
     [Test]
     public void BonusesSaveLoader_BonusStorageEarnBonuses()
     {
-        GameObject storage = new GameObject("Bonuses Storage");
-        BonusStorage bonusStorage = storage.AddComponent<BonusStorage>();
-        bonusStorage.Init();
-
-        GameObject dummyStorage = new GameObject("Levels Progress Storage");
-        LevelProgressStorage dummyLevelStorage = dummyStorage.AddComponent<LevelProgressStorage>();
-        dummyLevelStorage.Init();
-
-        GameObject manager = new GameObject("SaveLoadManager");
-        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
-
         BonusStorage.Instance.EarnBonuses(10);
 
-        saveLoadManager.SaveGame();
+        _saveLoadManager.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        saveLoadManager.LoadGame();
+        _saveLoadManager.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -87,23 +63,12 @@ public class BonusesSaveLoaderTests
     [Test]
     public void BonusesSaveLoader_BonusStorageSpendBonuses()
     {
-        GameObject storage = new GameObject("Bonuses Storage");
-        BonusStorage bonusStorage = storage.AddComponent<BonusStorage>();
-        bonusStorage.Init();
-
-        GameObject dummyStorage = new GameObject("Levels Progress Storage");
-        LevelProgressStorage dummyLevelStorage = dummyStorage.AddComponent<LevelProgressStorage>();
-        dummyLevelStorage.Init();
-
-        GameObject manager = new GameObject("SaveLoadManager");
-        SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
-
         BonusStorage.Instance.SetupBonuses(20);
         BonusStorage.Instance.SpendBonuses(10);
 
-        saveLoadManager.SaveGame();
+        _saveLoadManager.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        saveLoadManager.LoadGame();
+        _saveLoadManager.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -117,5 +82,12 @@ public class BonusesSaveLoaderTests
         // Use the Assert class to test conditions.
         // Use yield to skip a frame.
         yield return null;
+    }
+
+    [TearDown]
+    public void AfterTest()
+    {
+        Debug.Log("Teardown");
+        _saveLoadManager.DeleteSave();
     }
 }
