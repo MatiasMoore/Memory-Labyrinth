@@ -53,9 +53,16 @@ public class PathCreator : MonoBehaviour
     {
         _isActive = true;
 
-        //Functions need to be called on up/down touch events
-        TouchControls.Instance.addCallbackToTouchDown(StartDrawing);
-        TouchControls.Instance.addCallbackToTouchUp(StopDrawing);
+        if (TouchControls.Instance == null)
+        {
+            Debug.Log("TouchControls is not initialized");
+        }
+        else
+        {
+            //Functions need to be called on up/down touch events
+            TouchControls.Instance.addCallbackToTouchDown(StartDrawing);
+            TouchControls.Instance.addCallbackToTouchUp(StopDrawing);
+        }
 
         _line = GetComponent<LineRenderer>();
         _playerTransform = GetComponent<Transform>();

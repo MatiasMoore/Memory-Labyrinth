@@ -38,7 +38,13 @@ public class MainCharacter : MonoBehaviour
 
     public void Init()
     {
-        TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+        if (TouchControls.Instance == null)
+        {
+            Debug.Log("TouchControls is not initialized");
+        } else 
+        {
+            TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+        }
         _objectMovement = new ObjectMovementState(
             GetComponent<Transform>(),
             GetComponent<Rigidbody2D>(),
