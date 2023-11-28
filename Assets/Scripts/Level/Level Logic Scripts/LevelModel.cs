@@ -57,6 +57,12 @@ public class LevelModel : MonoBehaviour
     public void onPlayerDamage()
     {
         Debug.Log($"Player damaged");
+        if (_currentCheckpoint == null)
+        {
+            Debug.Log("Can't find checkpoint");
+            return;
+        }
+
         _mainCharacter.SetPosition2d(_currentCheckpoint.transform.position);
     }
 
