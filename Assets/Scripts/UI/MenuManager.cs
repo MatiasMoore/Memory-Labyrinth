@@ -85,7 +85,7 @@ public class MenuManager : MonoBehaviour
             case Page.ACHIEVEMENTS:
                 return new string("Achievements Menu");
             case Page.PAUSE:
-                return new string("Pause Menu");
+                return new string("Pause Panel");
             case Page.WIN:
                 return new string("Win Panel");
             case Page.LOSE:

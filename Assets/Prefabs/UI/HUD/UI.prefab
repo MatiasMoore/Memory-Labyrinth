@@ -340,8 +340,9 @@ GameObject:
   - component: {fileID: 9093636652160737712}
   - component: {fileID: 6878013862979180683}
   - component: {fileID: 2445815191750065306}
+  - component: {fileID: 9075078570986559991}
   m_Layer: 0
-  m_Name: Restart (Button)
+  m_Name: Restart
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,9 +449,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7798654012886553922}
-        m_TargetAssemblyTypeName: LosePanel, Assembly-CSharp
-        m_MethodName: OnClickRestart
+      - m_Target: {fileID: 9075078570986559991}
+        m_TargetAssemblyTypeName: LosePanelRestartButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -474,6 +475,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &9075078570986559991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666133698086930503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92648dcf88d5d5348bf4ede08b780243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &772277207658423835
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +498,7 @@ GameObject:
   - component: {fileID: 7240234776576345862}
   - component: {fileID: 807007584114053852}
   m_Layer: 0
-  m_Name: Buttons (Horizontal Layout)
+  m_Name: Buttons
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,7 +787,7 @@ GameObject:
   - component: {fileID: 4614809393413387413}
   - component: {fileID: 528180342510184392}
   m_Layer: 0
-  m_Name: Background Lose Panel List
+  m_Name: Available Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -849,8 +862,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990060320153255409}
+  - component: {fileID: 6713724904852623463}
   m_Layer: 0
-  m_Name: Lose Panel
+  m_Name: Safe Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -876,6 +890,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6713724904852623463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991085400873817528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b77045008d28344bac236db2f87de3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1153590525084895046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,8 +1054,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be59c9d87b941014f8dceb90e704c4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: {fileID: 8027889635116777903}
-  _gems: {fileID: 4236203653435128901}
+  _timeTMP: {fileID: 0}
+  _gemsTMP: {fileID: 0}
+  _timer: {fileID: 0}
+  _gems: {fileID: 0}
 --- !u!1 &1710093223383238207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,8 +1091,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3346497371880676342}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 10, y: -2.6796265}
   m_SizeDelta: {x: 50, y: -6.082588}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1133,8 +1161,9 @@ GameObject:
   - component: {fileID: 5632200771264968811}
   - component: {fileID: 5663509372682272474}
   - component: {fileID: 1639040930105034518}
+  - component: {fileID: 7370499651741716199}
   m_Layer: 0
-  m_Name: Main Menu (Button)
+  m_Name: Exit
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,9 +1270,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7798654012886553922}
-        m_TargetAssemblyTypeName: LosePanel, Assembly-CSharp
-        m_MethodName: OnClickToMainMenu
+      - m_Target: {fileID: 7370499651741716199}
+        m_TargetAssemblyTypeName: LosePanelExitButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1267,6 +1296,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &7370499651741716199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827722772033892813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71d472bd3e97c442838de1a96d29fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1879348021600131475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,9 +1342,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3340967450856082686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48.09895, y: -48.09895}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 96.1979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4990512900238890928
@@ -1384,7 +1425,7 @@ GameObject:
   - component: {fileID: 7725414302754096384}
   - component: {fileID: 8496345681958070432}
   m_Layer: 0
-  m_Name: Background Lose Panel
+  m_Name: Background
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1459,7 +1500,7 @@ GameObject:
   - component: {fileID: 3499802651385937841}
   - component: {fileID: 3594315822380623242}
   m_Layer: 0
-  m_Name: Buttons (Horizontal Layout)
+  m_Name: Buttons
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1547,7 +1588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.68417, y: -38.958706}
+  m_AnchoredPosition: {x: 428.72665, y: -38.958706}
   m_SizeDelta: {x: 496.95, y: 77.91741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1117005398858444443
@@ -1659,7 +1700,7 @@ GameObject:
   - component: {fileID: 6333272116254000991}
   - component: {fileID: 6617544380764222175}
   m_Layer: 0
-  m_Name: Background Pause Menu List
+  m_Name: Available Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1739,8 +1780,9 @@ GameObject:
   - component: {fileID: 1217905589592087683}
   - component: {fileID: 8770476564086740433}
   - component: {fileID: 3995531767465432528}
+  - component: {fileID: 498107241469615708}
   m_Layer: 0
-  m_Name: Next Level (Button)
+  m_Name: Next Level
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,9 +1889,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3314245921921081703}
-        m_TargetAssemblyTypeName: WinPanel, Assembly-CSharp
-        m_MethodName: OnClickNextLevel
+      - m_Target: {fileID: 498107241469615708}
+        m_TargetAssemblyTypeName: WinPanelNextLevelButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1873,6 +1915,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &498107241469615708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623234783455888322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cfec1f4b6a910488d1e9bc0c186329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2771693143660148109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,7 +1960,7 @@ RectTransform:
   m_Father: {fileID: 7651790539273826771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1985,8 +2039,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.68274, y: -103.26192}
-  m_SizeDelta: {x: 519.3655, y: 64.55215}
+  m_AnchoredPosition: {x: 428.72522, y: -107.17486}
+  m_SizeDelta: {x: 600, y: 56.726284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7354818270440588229
 MonoBehaviour:
@@ -2216,7 +2270,7 @@ GameObject:
   - component: {fileID: 6285696274913445555}
   - component: {fileID: 8216139079208300692}
   m_Layer: 0
-  m_Name: Buttons (Horizontal Layout)
+  m_Name: Buttons
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2347,8 +2401,9 @@ GameObject:
   - component: {fileID: 2391872787948038560}
   - component: {fileID: 3871364169919178292}
   - component: {fileID: 3185655935476340990}
+  - component: {fileID: 2754991028062569311}
   m_Layer: 0
-  m_Name: Main Menu (Button)
+  m_Name: Exit
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2370,8 +2425,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 396.28558, y: -101.14805}
-  m_SizeDelta: {x: 142.77988, y: 142.77988}
+  m_AnchoredPosition: {x: 637.38025, y: -101.14805}
+  m_SizeDelta: {x: 215, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5654081678184431728
 CanvasRenderer:
@@ -2455,9 +2510,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8659032242316314049}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnClickToMainMenu
+      - m_Target: {fileID: 2754991028062569311}
+        m_TargetAssemblyTypeName: PausePanelExitButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2481,6 +2536,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &2754991028062569311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3435240974419290258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffff1c616dc74a340a36a2ad6b6cc7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3518853453725682260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,7 +2744,7 @@ GameObject:
   - component: {fileID: 5520860928430113682}
   - component: {fileID: 8659032242316314049}
   m_Layer: 0
-  m_Name: Pause Menu
+  m_Name: Pause Panel
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3922,7 +3989,7 @@ GameObject:
   - component: {fileID: 3707904306597314414}
   - component: {fileID: 1389190098710298673}
   m_Layer: 0
-  m_Name: Background Shading (Panel)
+  m_Name: Background Shading Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4128,8 +4195,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6258787224379400371}
+  - component: {fileID: 4774479658448341438}
   m_Layer: 0
-  m_Name: Win Panel
+  m_Name: Safe Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4155,6 +4223,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4774479658448341438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479220552648161327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b77045008d28344bac236db2f87de3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5793951858484488677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4246,8 +4326,9 @@ GameObject:
   - component: {fileID: 2242778225265074190}
   - component: {fileID: 2246511929487360638}
   - component: {fileID: 7218602477417384878}
+  - component: {fileID: 7501247073442113152}
   m_Layer: 0
-  m_Name: Resume (Button)
+  m_Name: Continue
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4269,8 +4350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.05789, y: -101.14805}
-  m_SizeDelta: {x: 142.11578, y: 142.11578}
+  m_AnchoredPosition: {x: 167.88025, y: -101.14805}
+  m_SizeDelta: {x: 214, y: 214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &655996922142702717
 CanvasRenderer:
@@ -4354,9 +4435,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8659032242316314049}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnClickResume
+      - m_Target: {fileID: 7501247073442113152}
+        m_TargetAssemblyTypeName: PausePanelContinueButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4380,6 +4461,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &7501247073442113152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188110250224325062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70840d32ae559d4781e33e4cd556fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6234568102160638360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4450,8 +4543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.68274, y: -35.492924}
-  m_SizeDelta: {x: 519.3655, y: 70.98585}
+  m_AnchoredPosition: {x: 428.72522, y: -39.405857}
+  m_SizeDelta: {x: 656.01, y: 78.811714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5172032691096629048
 CanvasRenderer:
@@ -4508,7 +4601,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 75.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4562,7 +4655,7 @@ GameObject:
   - component: {fileID: 1652352736845423232}
   - component: {fileID: 1201178192574520100}
   m_Layer: 0
-  m_Name: Background Shading (Panel)
+  m_Name: Background Shading Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4748,10 +4841,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5753002568965731725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 10, y: -2.6796265}
-  m_SizeDelta: {x: 50, y: -14.552147}
+  m_SizeDelta: {x: 50, y: -6.726284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3382871333006834037
 CanvasRenderer:
@@ -4814,8 +4907,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6019774648898468040}
+  - component: {fileID: 7570768478361044550}
   m_Layer: 0
-  m_Name: Pause Menu
+  m_Name: Safe Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4841,6 +4935,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7570768478361044550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6693470610819076592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b77045008d28344bac236db2f87de3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6741438586612554567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,7 +4980,7 @@ RectTransform:
   m_Father: {fileID: 1014025512137785944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5148,7 +5254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07, y: 0.73419964}
   m_AnchorMax: {x: 0.9105333, y: 0.9043494}
-  m_AnchoredPosition: {x: -0.285614, y: -1.5346985}
+  m_AnchoredPosition: {x: -0.2855835, y: -1.5346985}
   m_SizeDelta: {x: 4.9545975, y: 0.38290405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5658926442207365937
@@ -5259,7 +5365,7 @@ GameObject:
   - component: {fileID: 799518762841026754}
   - component: {fileID: 7239773479663506089}
   m_Layer: 0
-  m_Name: Info Panel (SafeArea)
+  m_Name: Safe Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5309,7 +5415,7 @@ GameObject:
   - component: {fileID: 2794631546528516181}
   - component: {fileID: 151630119212156485}
   m_Layer: 0
-  m_Name: Background Pause Menu Panel
+  m_Name: Background
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5449,7 +5555,7 @@ GameObject:
   - component: {fileID: 7978261608540582917}
   - component: {fileID: 4177873321119892051}
   - component: {fileID: 6354178258269341417}
-  - component: {fileID: 3206510994297742148}
+  - component: {fileID: 2643961932966776541}
   m_Layer: 0
   m_Name: Pause Button
   m_TagString: UI
@@ -5558,9 +5664,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3206510994297742148}
-        m_TargetAssemblyTypeName: PauseGame, Assembly-CSharp
-        m_MethodName: OnClickPause
+      - m_Target: {fileID: 2643961932966776541}
+        m_TargetAssemblyTypeName: PauseGameButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5570,7 +5676,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3206510994297742148
+--- !u!114 &2643961932966776541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5579,7 +5685,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7268925113106708946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec2e5b539d7e8fc41ac688739141a377, type: 3}
+  m_Script: {fileID: 11500000, guid: b6de3c2cede3d3a40a6c5ec4894cf453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7332821029053052293
@@ -5594,7 +5700,7 @@ GameObject:
   - component: {fileID: 1670334014331890706}
   - component: {fileID: 179785138473248274}
   m_Layer: 0
-  m_Name: Info Panel
+  m_Name: Background
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5674,8 +5780,9 @@ GameObject:
   - component: {fileID: 1699774682227697933}
   - component: {fileID: 3355576142746555865}
   - component: {fileID: 331119257137276074}
+  - component: {fileID: 8292767484870859378}
   m_Layer: 0
-  m_Name: Restart (Button)
+  m_Name: Restart
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5782,9 +5889,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3314245921921081703}
-        m_TargetAssemblyTypeName: WinPanel, Assembly-CSharp
-        m_MethodName: OnClickRestart
+      - m_Target: {fileID: 8292767484870859378}
+        m_TargetAssemblyTypeName: WinPanelRestartButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5808,6 +5915,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &8292767484870859378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352069699410453692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca1dad8fe757b54b814deb3876fef0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7418685067069236761
 GameObject:
   m_ObjectHideFlags: 0
@@ -5821,8 +5940,9 @@ GameObject:
   - component: {fileID: 3089608810639944785}
   - component: {fileID: 6263217124357179322}
   - component: {fileID: 4741062056224170078}
+  - component: {fileID: 7462025372767565913}
   m_Layer: 0
-  m_Name: Main Menu (Button)
+  m_Name: Exit
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5929,9 +6049,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3314245921921081703}
-        m_TargetAssemblyTypeName: WinPanel, Assembly-CSharp
-        m_MethodName: OnClickToMainMenu
+      - m_Target: {fileID: 7462025372767565913}
+        m_TargetAssemblyTypeName: WinPanelExitButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5955,6 +6075,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &7462025372767565913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418685067069236761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4fabd1a298ffc4cbed588a1b76af9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7864840633593186025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5967,7 +6099,7 @@ GameObject:
   - component: {fileID: 6197533557069073864}
   - component: {fileID: 2968033837175639498}
   m_Layer: 0
-  m_Name: Background Win Panel
+  m_Name: Background
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6044,8 +6176,9 @@ GameObject:
   - component: {fileID: 5324755979435634453}
   - component: {fileID: 491672551175615885}
   - component: {fileID: 7857996975977980270}
+  - component: {fileID: 4586316997381845958}
   m_Layer: 0
-  m_Name: Restart (Button)
+  m_Name: Restart
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6067,8 +6200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 233.50572, y: -101.14805}
-  m_SizeDelta: {x: 142.77988, y: 142.77988}
+  m_AnchoredPosition: {x: 402.38025, y: -101.14805}
+  m_SizeDelta: {x: 215, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5298020161124015000
 CanvasRenderer:
@@ -6152,9 +6285,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8659032242316314049}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnClickRestart
+      - m_Target: {fileID: 4586316997381845958}
+        m_TargetAssemblyTypeName: PausePanelRestartButton, Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6178,6 +6311,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &4586316997381845958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023715362206338939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c798f353b3381946adfd9e8df8db01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8041165850565782714
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,7 +6461,7 @@ GameObject:
   - component: {fileID: 4427806472932982079}
   - component: {fileID: 4188886041089324095}
   m_Layer: 0
-  m_Name: Background Win Panel List
+  m_Name: Available Area
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6394,7 +6539,7 @@ GameObject:
   - component: {fileID: 2388284422346577692}
   - component: {fileID: 1507166554792645448}
   m_Layer: 0
-  m_Name: Background Shading (Panel)
+  m_Name: Background Shading Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6569,8 +6714,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 259.68417, y: -105.95871}
-  m_SizeDelta: {x: 519.36835, y: 56.08259}
+  m_AnchoredPosition: {x: 428.72665, y: -105.95871}
+  m_SizeDelta: {x: 600, y: 56.08259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5207262639309767919
 MonoBehaviour:

@@ -30,9 +30,9 @@ public class HUDController : MonoBehaviour
         MenuManager.OpenPage(MenuManager.Page.WIN);
 
         // Display data on level completion
-        WinPanel winPanel = FindObjectOfType<WinPanel>();
-        winPanel.SetLevelCompletionTime();
-        winPanel.SetLevelCompletionGemsCount();
+        WinPanelInfoController infoController = FindObjectOfType<WinPanelInfoController>();
+        infoController.SetLevelCompletionTime();
+        infoController.SetLevelCompletionGemsCount();
     }
 
     private static void ShowLosePanelAction()
@@ -41,9 +41,9 @@ public class HUDController : MonoBehaviour
         MenuManager.OpenPage(MenuManager.Page.LOSE);
 
         // Display data on lose
-        LosePanel losePanel = FindObjectOfType<LosePanel>();
-        losePanel.SetLevelTimeOnLose();
-        losePanel.SetLevelGemsCountOnLose();
+        LosePanelInfoController infoController = FindObjectOfType<LosePanelInfoController>();
+        infoController.SetLevelTimeOnLose();
+        infoController.SetLevelGemsCountOnLose();
     }
 
     private static void UpdateHealthCountAction(int value)
