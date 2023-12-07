@@ -1,9 +1,7 @@
-using MemoryLabyrinth.Level.Logic;
-using MemoryLabyrinth.Resources;
 using TMPro;
 using UnityEngine;
 
-public class LosePanel : MonoBehaviour
+public class LosePanelInfoController : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _time;
@@ -25,19 +23,5 @@ public class LosePanel : MonoBehaviour
         if (gems == null)
             throw new System.Exception("LOSE PANEL: SetLevelGemsCountOnLose -> gems = null");
         _gems.text = ": " + gems.GetGemsCount();
-    }
-    public void OnClickToMainMenu()
-    {
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
-
-        MenuManager.FireButtonClickAction();
-    }
-
-    public void OnClickRestart()
-    {
-        MenuManager.ClosePage(MenuManager.Page.LOSE);
-        LevelManager.Instance.StartCurrentLevelFromSpawn();
-
-        MenuManager.FireButtonClickAction();
     }
 }
