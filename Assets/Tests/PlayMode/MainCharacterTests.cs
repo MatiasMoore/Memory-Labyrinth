@@ -4,6 +4,8 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor;
+using MemoryLabyrinth.Player;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
 
 [TestFixture]
 public class MainCharacterTests

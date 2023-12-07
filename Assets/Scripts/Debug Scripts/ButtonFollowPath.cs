@@ -1,4 +1,4 @@
-using System.Collections;
+using MemoryLabyrinth.Player;
 using System.Collections.Generic;
 using UnityEngine;
 

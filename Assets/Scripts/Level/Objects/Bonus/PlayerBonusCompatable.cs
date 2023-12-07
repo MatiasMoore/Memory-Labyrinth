@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Level.Objects.BonusLib;
 using UnityEngine;
 
-public class PlayerBonusCompatible : BonusCompatible
+namespace MemoryLabyrinth.Player
 {
-    public override void getBonus(Bonus bonus)
+    public class PlayerBonusCompatible : BonusCompatible
     {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        if (mainCharacter != null)
+        public override void getBonus(Bonus bonus)
         {
-            mainCharacter.getBonus(bonus);
-        }
-        else
-        {
-            Debug.Log($"Bonus {gameObject.name} failed");
+            MainCharacter mainCharacter = GetComponent<MainCharacter>();
+            if (mainCharacter != null)
+            {
+                mainCharacter.getBonus(bonus);
+            }
+            else
+            {
+                Debug.Log($"Bonus {gameObject.name} failed");
+            }
         }
     }
 }

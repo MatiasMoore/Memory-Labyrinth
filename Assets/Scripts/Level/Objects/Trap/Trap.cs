@@ -1,30 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Trap : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.Trap
 {
-    [SerializeField]
-    private int _damage = 1; 
-
-    public void Start()
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class Trap : MonoBehaviour
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-    }
+        [SerializeField]
+        private int _damage = 1;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        DamagableObject damagableObject = other.gameObject.GetComponent<DamagableObject>();
-        if (damagableObject != null)
+        public void Start()
         {
-            Debug.Log($"Damaging {other.gameObject.name} for {_damage} damage");
-            damagableObject.Damage(_damage);
+            GetComponent<BoxCollider2D>().isTrigger = true;
         }
-        else
-        {
-            Debug.Log($"Damaging {other.gameObject.name} failed");
-        }
-    }
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            DamagableObject damagableObject = other.gameObject.GetComponent<DamagableObject>();
+            if (damagableObject != null)
+            {
+                Debug.Log($"Damaging {other.gameObject.name} for {_damage} damage");
+                damagableObject.Damage(_damage);
+            }
+            else
+            {
+                Debug.Log($"Damaging {other.gameObject.name} failed");
+            }
+        }
+
+    }
 }

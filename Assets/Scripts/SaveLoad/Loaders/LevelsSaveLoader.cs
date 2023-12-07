@@ -1,32 +1,35 @@
+using MemoryLabyrinth.Resources;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-[Serializable]
-public struct LevelData
+namespace MemoryLabyrinth.SaveLoad
 {
-    public ResourceManager.Level _level;
-    public int _checkpointId;
-    public float _time;
-    public List<int> _collectedBonusesId;
-    public int _livesAmount;
-    public bool _isCompleted;
-}
-public class LevelsSaveLoader : ISaveLoader
-{
-    public void LoadData()
+    [Serializable]
+    public struct LevelData
     {
-        List<LevelData> data = Repository.GetData<List<LevelData>>();
-        LevelProgressStorage.Instance.SetLevelDataList(data);
+        public ResourceManager.Level _level;
+        public int _checkpointId;
+        public float _time;
+        public List<int> _collectedBonusesId;
+        public int _livesAmount;
+        public bool _isCompleted;
     }
-
-    public void SaveData()
+    public class LevelsSaveLoader : ISaveLoader
     {
-        int amount = BonusStorage.Instance.GetBonuses();
-        List<LevelData> levels = LevelProgressStorage.Instance.GetLevelDataList();
+        public void LoadData()
+        {
+            List<LevelData> data = Repository.GetData<List<LevelData>>();
+            LevelProgressStorage.Instance.SetLevelDataList(data);
+        }
 
-        var data = new List<LevelData>(levels);
+        public void SaveData()
+        {
+            int amount = BonusStorage.Instance.GetBonuses();
+            List<LevelData> levels = LevelProgressStorage.Instance.GetLevelDataList();
 
-        Repository.SetData(data);
+            var data = new List<LevelData>(levels);
+
+            Repository.SetData(data);
+        }
     }
 }

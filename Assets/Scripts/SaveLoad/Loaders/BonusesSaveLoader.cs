@@ -1,30 +1,31 @@
 using System;
-using UnityEngine;
 
-
-[Serializable]
-public struct BonusData
+namespace MemoryLabyrinth.SaveLoad
 {
-    public int _amount;
-}
-
-public sealed class BonusesSaveLoader : ISaveLoader
-{
-    public void LoadData()
+    [Serializable]
+    public struct BonusData
     {
-        BonusData data = Repository.GetData<BonusData>();
-        BonusStorage.Instance.SetupBonuses(data._amount);
+        public int _amount;
     }
 
-    public void SaveData()
+    public sealed class BonusesSaveLoader : ISaveLoader
     {
-        if (BonusStorage.Instance == null)
-            return;
-        int amount = BonusStorage.Instance.GetBonuses();
-        var data = new BonusData
+        public void LoadData()
         {
-            _amount = amount
-        };
-        Repository.SetData(data);
+            BonusData data = Repository.GetData<BonusData>();
+            BonusStorage.Instance.SetupBonuses(data._amount);
+        }
+
+        public void SaveData()
+        {
+            if (BonusStorage.Instance == null)
+                return;
+            int amount = BonusStorage.Instance.GetBonuses();
+            var data = new BonusData
+            {
+                _amount = amount
+            };
+            Repository.SetData(data);
+        }
     }
 }

@@ -1,34 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Teleport : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.TeleportLib
 {
-    [SerializeField]
-    private Transform _target;
-
-    public void Start()
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class Teleport : MonoBehaviour
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-    }
+        [SerializeField]
+        private Transform _target;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        TeleportableObject teleportableObject = other.gameObject.GetComponent<TeleportableObject>();
-        if (teleportableObject != null)
+        public void Start()
         {
-            Debug.Log($"Teleporting {other.gameObject.name} to {_target.position}");
-            teleportableObject.Teleport(_target.position);
+            GetComponent<BoxCollider2D>().isTrigger = true;
         }
-        else
-        {
-            Debug.Log($"Teleporting {other.gameObject.name} failed");
-        }
-    }
 
-    public void DisableTeleportPath()
-    {
-        GetComponent<LineRenderer>().enabled = false;
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            TeleportableObject teleportableObject = other.gameObject.GetComponent<TeleportableObject>();
+            if (teleportableObject != null)
+            {
+                Debug.Log($"Teleporting {other.gameObject.name} to {_target.position}");
+                teleportableObject.Teleport(_target.position);
+            }
+            else
+            {
+                Debug.Log($"Teleporting {other.gameObject.name} failed");
+            }
+        }
+
+        public void DisableTeleportPath()
+        {
+            GetComponent<LineRenderer>().enabled = false;
+        }
     }
 }

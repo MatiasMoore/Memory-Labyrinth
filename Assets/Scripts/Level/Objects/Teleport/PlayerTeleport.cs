@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Level.Objects.TeleportLib;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerTeleport : TeleportableObject
+namespace MemoryLabyrinth.Player
 {
-    public event UnityAction _teleportEvent;
-    public override bool Teleport(Vector3 position)
+    public class PlayerTeleport : TeleportableObject
     {
-        GetComponent<MainCharacter>().TeleportTo(position);
-        _teleportEvent?.Invoke();
-        return true;
+        public event UnityAction _teleportEvent;
+        public override bool Teleport(Vector3 position)
+        {
+            GetComponent<MainCharacter>().TeleportTo(position);
+            _teleportEvent?.Invoke();
+            return true;
+        }
     }
 }

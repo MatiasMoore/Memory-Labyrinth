@@ -1,163 +1,172 @@
-using System.Collections;
+using MemoryLabyrinth.Controls;
+using MemoryLabyrinth.Level.Objects.BonusLib;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.ObjectMovement;
+using MemoryLabyrinth.Path;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class MainCharacter : MonoBehaviour
+namespace MemoryLabyrinth.Player
 {
-    [SerializeField]
-    private int _maxHealth = 3;
-
-    [SerializeField]
-    private int _health;
-
-    public int GetHealth()
+    public class MainCharacter : MonoBehaviour
     {
-        return _health;
-    }
+        [SerializeField]
+        private int _maxHealth = 3;
 
-    public event UnityAction _onDeathEvent;
-    public event UnityAction _onDamageEvent;
-    public event UnityAction<Bonus> _onBonusEvent;
-    public event UnityAction _onFinishEvent;
-    public event UnityAction _onTeleportEvent;
-    public event UnityAction<Checkpoint> _onCheckpointEvent;
-    public event UnityAction<int> _onPlayerHealthChangedEvent;
+        [SerializeField]
+        private int _health;
 
-    [SerializeField]
-    private float _speed;
-
-    [SerializeField]
-    public ObjectMovementState.State _currentState;
-    private ObjectMovementState _objectMovement;
-    private PathCreator _pathCreator;
-    private bool _isActive;
-
-    public void Init()
-    {
-        if (TouchControls.Instance == null)
+        public int GetHealth()
         {
-            Debug.Log("TouchControls is not initialized");
-        } else 
-        {
-            TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+            return _health;
         }
-        _objectMovement = new ObjectMovementState(
-            GetComponent<Transform>(),
-            GetComponent<Rigidbody2D>(),
-            _speed
-        );
-        _isActive = true;
-        _pathCreator = GetComponent<PathCreator>();
-        _pathCreator.Init();
-    }
 
-    void FixedUpdate()
-    {
-        _objectMovement.Update(Time.fixedDeltaTime);
-        _currentState = _objectMovement.GetState();
-    }
+        public event UnityAction _onDeathEvent;
+        public event UnityAction _onDamageEvent;
+        public event UnityAction<Bonus> _onBonusEvent;
+        public event UnityAction _onFinishEvent;
+        public event UnityAction _onTeleportEvent;
+        public event UnityAction<Checkpoint> _onCheckpointEvent;
+        public event UnityAction<int> _onPlayerHealthChangedEvent;
 
-    private void Update()
-    {   
-        if (_isActive)
+        [SerializeField]
+        private float _speed;
+
+        [SerializeField]
+        public ObjectMovementState.State _currentState;
+        private ObjectMovementState _objectMovement;
+        private PathCreator _pathCreator;
+        private bool _isActive;
+
+        public void Init()
         {
-            if (_pathCreator.isNewPathReady)
+            if (TouchControls.Instance == null)
             {
-                FollowPath(_pathCreator.GetNewPath());
+                Debug.Log("TouchControls is not initialized");
             }
-            _pathCreator.SetActive(_currentState == ObjectMovementState.State.Stay);
+            else
+            {
+                TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+            }
+            _objectMovement = new ObjectMovementState(
+                GetComponent<Transform>(),
+                GetComponent<Rigidbody2D>(),
+                _speed
+            );
+            _isActive = true;
+            _pathCreator = GetComponent<PathCreator>();
+            _pathCreator.Init();
         }
-    }
 
-    public void SetActive(bool isActive)
-    {
-        _isActive = isActive;
-        _pathCreator.SetActive(isActive);
-    }
+        void FixedUpdate()
+        {
+            _objectMovement.Update(Time.fixedDeltaTime);
+            _currentState = _objectMovement.GetState();
+        }
 
-    public void FollowPath(List<Vector3> path)
-    {
-        _objectMovement.FollowPath(path);
-    }
+        private void Update()
+        {
+            if (_isActive)
+            {
+                if (_pathCreator.isNewPathReady)
+                {
+                    FollowPath(_pathCreator.GetNewPath());
+                }
+                _pathCreator.SetActive(_currentState == ObjectMovementState.State.Stay);
+            }
+        }
 
-    private void StopMovingOnTouch(InputAction.CallbackContext context)
-    {
-        if (_currentState != ObjectMovementState.State.Stay)
+        public void SetActive(bool isActive)
+        {
+            _isActive = isActive;
+            _pathCreator.SetActive(isActive);
+        }
+
+        public void FollowPath(List<Vector3> path)
+        {
+            _objectMovement.FollowPath(path);
+        }
+
+        private void StopMovingOnTouch(InputAction.CallbackContext context)
+        {
+            if (_currentState != ObjectMovementState.State.Stay)
+            {
+                _objectMovement.StopMove();
+            }
+        }
+
+        public void StopMoving()
         {
             _objectMovement.StopMove();
         }
-    }
 
-    public void StopMoving()
-    {
-        _objectMovement.StopMove();
-    }
-
-    public void SetPosition2d(Vector2 position)
-    {
-        _objectMovement.TeleportTo(position);
-    }
-
-    public void TeleportTo(Vector3 position)
-    {
-        _objectMovement.TeleportTo((Vector2)position);
-        _onTeleportEvent?.Invoke();
-    }
-
-    public void getDamage(int damage)
-    {
-        SetHealth(_health - damage);
-        _onDamageEvent?.Invoke();
-        if (_health <= 0)
+        public void SetPosition2d(Vector2 position)
         {
-            _onDeathEvent?.Invoke();
-        }
-    }
-
-    public void getBonus(Bonus bonus)
-    {
-        _onBonusEvent?.Invoke(bonus);
-    }
-
-    public void getCheckpoint(Checkpoint checkpoint)
-    {
-        _onCheckpointEvent?.Invoke(checkpoint);
-    }
-
-    public void Finish()
-    {
-        _objectMovement.StopMove();
-        _onFinishEvent?.Invoke();
-    }
-
-    public void SetHealth(int health)
-    {
-        if (health > _maxHealth)
-        {
-            health = _maxHealth;
+            _objectMovement.TeleportTo(position);
         }
 
-        if (health <= 0)
+        public void TeleportTo(Vector3 position)
         {
-            health = 0;
+            _objectMovement.TeleportTo((Vector2)position);
+            _onTeleportEvent?.Invoke();
         }
 
-        _health = health;
-        _onPlayerHealthChangedEvent?.Invoke(_health);
-    }
-    public void ResetHealth()
-    {
-        SetHealth(_maxHealth);
-    }
+        public void getDamage(int damage)
+        {
+            SetHealth(_health - damage);
+            _onDamageEvent?.Invoke();
+            if (_health <= 0)
+            {
+                _onDeathEvent?.Invoke();
+            }
+        }
 
-    public void SetMaxHealth(int maxHealth)
-    {
-        _maxHealth = maxHealth;
+        public void getBonus(Bonus bonus)
+        {
+            _onBonusEvent?.Invoke(bonus);
+        }
+
+        public void getCheckpoint(Checkpoint checkpoint)
+        {
+            _onCheckpointEvent?.Invoke(checkpoint);
+        }
+
+        public void Finish()
+        {
+            _objectMovement.StopMove();
+            _onFinishEvent?.Invoke();
+        }
+
+        public void SetHealth(int health)
+        {
+            if (health > _maxHealth)
+            {
+                health = _maxHealth;
+            }
+
+            if (health <= 0)
+            {
+                health = 0;
+            }
+
+            _health = health;
+            _onPlayerHealthChangedEvent?.Invoke(_health);
+        }
+        public void ResetHealth()
+        {
+            SetHealth(_maxHealth);
+        }
+
+        public void SetMaxHealth(int maxHealth)
+        {
+            _maxHealth = maxHealth;
+        }
+
+
     }
-
-
 }
+
+
+

@@ -1,35 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Audio;
+using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 
-public class Game : MonoBehaviour
+namespace MemoryLabyrinth.Bootstrap
 {
-    private void Start()
+    public class Game : MonoBehaviour
     {
-        var audioController = FindObjectOfType<AudioController>();
-        if (audioController == null)
-            throw new System.Exception("No audio controller is found on startup");
+        private void Start()
+        {
+            var audioController = FindObjectOfType<AudioController>();
+            if (audioController == null)
+                throw new System.Exception("No audio controller is found on startup");
 
-        DontDestroyOnLoad(audioController.transform.parent.gameObject);
+            DontDestroyOnLoad(audioController.transform.parent.gameObject);
 
-        var bonusStorage = FindObjectOfType<BonusStorage>();
-        if (bonusStorage == null)
-            throw new System.Exception("No BonusStorage is found on startup");
-        bonusStorage.Init();
+            var bonusStorage = FindObjectOfType<BonusStorage>();
+            if (bonusStorage == null)
+                throw new System.Exception("No BonusStorage is found on startup");
+            bonusStorage.Init();
 
-        var levelProgressStorage = FindObjectOfType<LevelProgressStorage>();
-        if (levelProgressStorage == null)
-            throw new System.Exception("No LevelProgressStorage is found on startup");
-        levelProgressStorage.Init();
+            var levelProgressStorage = FindObjectOfType<LevelProgressStorage>();
+            if (levelProgressStorage == null)
+                throw new System.Exception("No LevelProgressStorage is found on startup");
+            levelProgressStorage.Init();
 
-        var saveLoadManager = FindObjectOfType<SaveLoadManager>();
-        if (saveLoadManager == null)
-            throw new System.Exception("No SaveLoadManager is found on startup");
+            var saveLoadManager = FindObjectOfType<SaveLoadManager>();
+            if (saveLoadManager == null)
+                throw new System.Exception("No SaveLoadManager is found on startup");
 
-        DontDestroyOnLoad(saveLoadManager.transform.gameObject);
+            DontDestroyOnLoad(saveLoadManager.transform.gameObject);
 
-        saveLoadManager.LoadGame();
+            saveLoadManager.LoadGame();
 
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+            ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+        }
     }
 }

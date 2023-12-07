@@ -4,6 +4,10 @@ using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 using UnityEditor;
+using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.Player;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.Level.Objects.BonusLib;
 
 [TestFixture]
 public class LevelModelTests

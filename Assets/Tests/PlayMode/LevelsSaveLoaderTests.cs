@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.SaveLoad;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
 public class LevelsSaveLoaderTests

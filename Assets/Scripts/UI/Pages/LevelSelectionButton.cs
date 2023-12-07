@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 
 public class LevelSelectionButton : MonoBehaviour

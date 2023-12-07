@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Level.Objects.FinishLib;
 using UnityEngine;
 
-public class PlayerFinishCompatible : FinishCompatible
+namespace MemoryLabyrinth.Player
 {
-    public override void OnFinish(Collider2D collider)
+    public class PlayerFinishCompatible : FinishCompatible
     {
-        MainCharacter mainCharacter = collider.gameObject.GetComponent<MainCharacter>();
-        if (mainCharacter != null)
+        public override void OnFinish(Collider2D collider)
         {
-            mainCharacter.Finish();
-        }
-        else
-        {
-            Debug.Log($"{collider.gameObject.name} not a main character");
+            MainCharacter mainCharacter = collider.gameObject.GetComponent<MainCharacter>();
+            if (mainCharacter != null)
+            {
+                mainCharacter.Finish();
+            }
+            else
+            {
+                Debug.Log($"{collider.gameObject.name} not a main character");
+            }
         }
     }
 }

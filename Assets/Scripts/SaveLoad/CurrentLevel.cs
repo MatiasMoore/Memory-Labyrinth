@@ -1,49 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static ResourceManager;
+using MemoryLabyrinth.Resources;
 
-public static class CurrentLevel
+namespace MemoryLabyrinth.SaveLoad
 {
-    private static LevelData _currentLevel = new LevelData();
-
-    public static void Load(ResourceManager.Level level)
+    public static class CurrentLevel
     {
-        SaveLoadManager saveLoadManager = new SaveLoadManager();
-        saveLoadManager.LoadGame();
+        private static LevelData _currentLevel = new LevelData();
 
-        if (LevelProgressStorage.Instance == null)
+        public static void Load(ResourceManager.Level level)
         {
-            Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
-            return;
-        }
-        _currentLevel = new LevelData();
+            SaveLoadManager saveLoadManager = new SaveLoadManager();
+            saveLoadManager.LoadGame();
 
-        _currentLevel = LevelProgressStorage.Instance.GetLevelInfo(level);
-        Debug.Log($"CURRENTLEVEL:{level} loaded");
-    }
+            if (LevelProgressStorage.Instance == null)
+            {
+                Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
+                return;
+            }
+            _currentLevel = new LevelData();
 
-    public static void Save(LevelData newLevelData)
-    {
-        _currentLevel = newLevelData;
-
-        if (LevelProgressStorage.Instance == null)
-        {
-            Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
-            return;
+            _currentLevel = LevelProgressStorage.Instance.GetLevelInfo(level);
+            Debug.Log($"CURRENTLEVEL:{level} loaded");
         }
 
-        LevelProgressStorage.Instance.AddLevelInfo(newLevelData);
-        Debug.Log($"CURRENTLEVEL: saved {newLevelData._level}");
+        public static void Save(LevelData newLevelData)
+        {
+            _currentLevel = newLevelData;
 
-        SaveLoadManager saveLoadManager = new SaveLoadManager();
-        saveLoadManager.SaveGame();
-        
+            if (LevelProgressStorage.Instance == null)
+            {
+                Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
+                return;
+            }
+
+            LevelProgressStorage.Instance.AddLevelInfo(newLevelData);
+            Debug.Log($"CURRENTLEVEL: saved {newLevelData._level}");
+
+            SaveLoadManager saveLoadManager = new SaveLoadManager();
+            saveLoadManager.SaveGame();
+
+        }
+
+        public static LevelData GetCurrentLevelData()
+        {
+            return _currentLevel;
+        }
+
     }
-
-    public static LevelData GetCurrentLevelData()
-    {
-        return _currentLevel;
-    }
-
 }

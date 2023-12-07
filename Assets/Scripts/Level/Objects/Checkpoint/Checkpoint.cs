@@ -1,47 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
-public class Checkpoint : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
-    [SerializeField]
-    private int _queue;
-
-    private bool _isReached = false;
-
-    public void Start()
+    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class Checkpoint : MonoBehaviour
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-    }
+        [SerializeField]
+        private int _queue;
 
-    public int GetQueue()
-    {
-        return _queue;
-    }
+        private bool _isReached = false;
 
-    public void SetQueue(int queue)
-    {
-        _queue = queue;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {   if (!_isReached)
+        public void Start()
         {
-            CheckpointCompatable checkpointObject =
-                other.gameObject.GetComponent<CheckpointCompatable>();
-            if (checkpointObject != null)
+            GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+
+        public int GetQueue()
+        {
+            return _queue;
+        }
+
+        public void SetQueue(int queue)
+        {
+            _queue = queue;
+        }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!_isReached)
             {
-                Debug.Log($"Checkpoint {other.gameObject.name} for {_queue}");
-                checkpointObject.getCheckpoint(this);
-                _isReached = true;
-                // Change color to yellow
-                GetComponent<SpriteRenderer>().color = Color.yellow;
-            }
-            else
-            {
-                Debug.Log($"Checkpoint {other.gameObject.name} failed");
+                CheckpointCompatable checkpointObject =
+                    other.gameObject.GetComponent<CheckpointCompatable>();
+                if (checkpointObject != null)
+                {
+                    Debug.Log($"Checkpoint {other.gameObject.name} for {_queue}");
+                    checkpointObject.getCheckpoint(this);
+                    _isReached = true;
+                    // Change color to yellow
+                    GetComponent<SpriteRenderer>().color = Color.yellow;
+                }
+                else
+                {
+                    Debug.Log($"Checkpoint {other.gameObject.name} failed");
+                }
             }
         }
     }
 }
+

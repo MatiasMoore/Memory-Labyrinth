@@ -1,59 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Bonus : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
-    int _value = 10;
-    int _id;
-
-    public void Start()
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class Bonus : MonoBehaviour
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
-    }
+        int _value = 10;
+        int _id;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        BonusCompatible bonusObject = other.gameObject.GetComponent<BonusCompatible>();
-        if (bonusObject != null)
+        public void Start()
         {
-            Debug.Log($"Bonus {other.gameObject.name} for {_value}");
-            bonusObject.getBonus(this);
-            //Удалить себя
-            DestroySelf();
+            GetComponent<BoxCollider2D>().isTrigger = true;
         }
-        else
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"Bonus {other.gameObject.name} failed");
+            BonusCompatible bonusObject = other.gameObject.GetComponent<BonusCompatible>();
+            if (bonusObject != null)
+            {
+                Debug.Log($"Bonus {other.gameObject.name} for {_value}");
+                bonusObject.getBonus(this);
+                //Удалить себя
+                DestroySelf();
+            }
+            else
+            {
+                Debug.Log($"Bonus {other.gameObject.name} failed");
+            }
         }
-    }
 
-    public void SetValue(int value)
-    {
-        if(value < 0)
-            value = 0;
+        public void SetValue(int value)
+        {
+            if (value < 0)
+                value = 0;
 
-        _value = value;
-    }
+            _value = value;
+        }
 
-    public void SetID(int id)
-    {
-        _id = id;
-    }
+        public void SetID(int id)
+        {
+            _id = id;
+        }
 
-    public int GetID()
-    {
-        return _id;
-    }
+        public int GetID()
+        {
+            return _id;
+        }
 
-    public int GetValue()
-    {
-        return _value;
-    }
+        public int GetValue()
+        {
+            return _value;
+        }
 
-    public void DestroySelf()
-    {
-        Destroy(gameObject);
+        public void DestroySelf()
+        {
+            Destroy(gameObject);
+        }
     }
 }

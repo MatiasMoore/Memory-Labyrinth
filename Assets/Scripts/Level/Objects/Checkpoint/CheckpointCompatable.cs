@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CheckpointCompatable : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
-    public abstract void getCheckpoint(Checkpoint checkpoint);
+    public abstract class CheckpointCompatable : MonoBehaviour
+    {
+        public abstract void getCheckpoint(Checkpoint checkpoint);
+    }
 }

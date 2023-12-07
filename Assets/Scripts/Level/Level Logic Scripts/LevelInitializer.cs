@@ -1,42 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Audio;
+using MemoryLabyrinth.Cam;
+using MemoryLabyrinth.Controls;
+using MemoryLabyrinth.Fog;
+using MemoryLabyrinth.Player;
 using UnityEngine;
 
-public class LevelInitializer : MonoBehaviour
+namespace MemoryLabyrinth.Level.Logic
 {
-    [SerializeField]
-    private TouchControls _touchControls;
-
-    [SerializeField]
-    private MainCharacter _mainCharacter;
-
-    [SerializeField]
-    private Timer _timer;
-
-    [SerializeField]
-    private FogController _fogController;
-
-    [SerializeField]
-    private LevelModel _levelModel;
-
-    [SerializeField]
-    private LevelManager _levelManager;
-
-    [SerializeField]
-    private CameraScript _cameraScript;
-
-    void Start()
+    public class LevelInitializer : MonoBehaviour
     {
-        _touchControls.Init();
-        _mainCharacter.Init();
-        _timer.Init();
-        _fogController.Init();
-        _levelModel.Init(_mainCharacter);
-        _levelManager.Init();
-        _cameraScript.Init();
+        [SerializeField]
+        private TouchControls _touchControls;
 
-        var audioController = FindObjectOfType<AudioController>();
-        if (audioController != null)
-            audioController.SetupListeners(_levelModel, _mainCharacter);
+        [SerializeField]
+        private MainCharacter _mainCharacter;
+
+        [SerializeField]
+        private Timer _timer;
+
+        [SerializeField]
+        private FogController _fogController;
+
+        [SerializeField]
+        private LevelModel _levelModel;
+
+        [SerializeField]
+        private LevelManager _levelManager;
+
+        [SerializeField]
+        private CameraScript _cameraScript;
+
+        void Start()
+        {
+            _touchControls.Init();
+            _mainCharacter.Init();
+            _timer.Init();
+            _fogController.Init();
+            _levelModel.Init(_mainCharacter);
+            _levelManager.Init();
+            _cameraScript.Init();
+
+            var audioController = FindObjectOfType<AudioController>();
+            if (audioController != null)
+                audioController.SetupListeners(_levelModel, _mainCharacter);
+        }
     }
 }
+

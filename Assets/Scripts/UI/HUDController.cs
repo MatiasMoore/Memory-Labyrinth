@@ -1,3 +1,5 @@
+using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.Player;
 using UnityEngine;
 
 public class HUDController : MonoBehaviour

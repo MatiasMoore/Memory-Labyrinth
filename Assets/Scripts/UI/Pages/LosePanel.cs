@@ -1,3 +1,5 @@
+using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.Resources;
 using TMPro;
 using UnityEngine;
 

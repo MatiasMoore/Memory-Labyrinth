@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using UnityEngine;
 
-public class StartPoint : Checkpoint
+namespace MemoryLabyrinth.Level.Objects.StartpointLib
 {
-    private Transform _transform;
-    private void Awake()
+    public class StartPoint : Checkpoint
     {
-        _transform = GetComponent<Transform>();
-    }
+        private Transform _transform;
+        private void Awake()
+        {
+            _transform = GetComponent<Transform>();
+        }
 
-    public Vector3 GetPosition()
-    {
-        return _transform.position;
+        public Vector3 GetPosition()
+        {
+            return _transform.position;
+        }
     }
 }

@@ -1,3 +1,6 @@
+using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.SaveLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;

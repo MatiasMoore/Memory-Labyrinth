@@ -1,70 +1,72 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FogMaskTarget : MonoBehaviour
+namespace MemoryLabyrinth.Fog
 {
-    [SerializeField]
-    private float _preferredRadius = 3f;
-
-    private GameObject _maskObj;
-    private SpriteMask _mask;
-
-    public float GetPreferredRadius()
+    public class FogMaskTarget : MonoBehaviour
     {
-        return _preferredRadius;
-    }
+        [SerializeField]
+        private float _preferredRadius = 3f;
 
-    public Vector2 GetPos()
-    {
-        return (Vector2)transform.position;
-    }
+        private GameObject _maskObj;
+        private SpriteMask _mask;
 
-    public void CreateMask()
-    {
-        _maskObj = Instantiate(Resources.Load("FogMask"), this.transform) as GameObject;
-        _mask = _maskObj.GetComponent<SpriteMask>();
-        SetMaskRadius(_preferredRadius);
-    }
-
-    public void DeleteMask()
-    {
-        if ( _maskObj != null ) 
-            Destroy(_maskObj);
-    }
-
-    public void FadeMaskRadius(float from, float to, float timeToBlend)
-    {
-        if (_maskObj == null)
-            throw new System.Exception("Can not fade before the mask object is created. Please use CreateMask to do so");
-
-        StopAllCoroutines();
-        StartCoroutine(BlendRadius(from, to, timeToBlend));
-    }
-
-    private IEnumerator BlendRadius(float from, float to, float timeToBlend)
-    {
-        float t = 0;
-        while (t < 1)
+        public float GetPreferredRadius()
         {
-            SetMaskRadius(Mathf.Lerp(from, to, t));
-            t += Time.deltaTime / timeToBlend;
-            yield return null;
+            return _preferredRadius;
         }
 
-        SetMaskRadius(to);
-    }
+        public Vector2 GetPos()
+        {
+            return (Vector2)transform.position;
+        }
 
-    private void SetMaskRadius(float radius)
-    {
-        if (_maskObj == null)
-            return;
-        var bounds = _mask.sprite.bounds;
-        var xSize = bounds.size.x;
-        var ySize = bounds.size.y;
+        public void CreateMask()
+        {
+            _maskObj = Instantiate(UnityEngine.Resources.Load("FogMask"), this.transform) as GameObject;
+            _mask = _maskObj.GetComponent<SpriteMask>();
+            SetMaskRadius(_preferredRadius);
+        }
 
-        var diameter = radius * 2;
+        public void DeleteMask()
+        {
+            if (_maskObj != null)
+                Destroy(_maskObj);
+        }
 
-        _maskObj.transform.localScale = new Vector3(diameter / xSize, diameter / ySize, diameter);
+        public void FadeMaskRadius(float from, float to, float timeToBlend)
+        {
+            if (_maskObj == null)
+                throw new System.Exception("Can not fade before the mask object is created. Please use CreateMask to do so");
+
+            StopAllCoroutines();
+            StartCoroutine(BlendRadius(from, to, timeToBlend));
+        }
+
+        private IEnumerator BlendRadius(float from, float to, float timeToBlend)
+        {
+            float t = 0;
+            while (t < 1)
+            {
+                SetMaskRadius(Mathf.Lerp(from, to, t));
+                t += Time.deltaTime / timeToBlend;
+                yield return null;
+            }
+
+            SetMaskRadius(to);
+        }
+
+        private void SetMaskRadius(float radius)
+        {
+            if (_maskObj == null)
+                return;
+            var bounds = _mask.sprite.bounds;
+            var xSize = bounds.size.x;
+            var ySize = bounds.size.y;
+
+            var diameter = radius * 2;
+
+            _maskObj.transform.localScale = new Vector3(diameter / xSize, diameter / ySize, diameter);
+        }
     }
 }

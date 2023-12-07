@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.Player;
 using UnityEngine;
 
-public class PlayerDamage : DamagableObject
+namespace MemoryLabyrinth.Level.Objects.Trap
 {
-    public override void Damage(int damage)
+    public class PlayerDamage : DamagableObject
     {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        if (mainCharacter != null)
+        public override void Damage(int damage)
         {
-            mainCharacter.getDamage(damage);
-        }
-        else
-        {
-            Debug.Log($"Damaging {gameObject.name} failed");
+            MainCharacter mainCharacter = GetComponent<MainCharacter>();
+            if (mainCharacter != null)
+            {
+                mainCharacter.getDamage(damage);
+            }
+            else
+            {
+                Debug.Log($"Damaging {gameObject.name} failed");
+            }
         }
     }
 }

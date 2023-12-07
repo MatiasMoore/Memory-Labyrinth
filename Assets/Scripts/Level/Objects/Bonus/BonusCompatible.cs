@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BonusCompatible : MonoBehaviour
+namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
-    public abstract void getBonus(Bonus bonus);
+    public abstract class BonusCompatible : MonoBehaviour
+    {
+        public abstract void getBonus(Bonus bonus);
+    }
 }

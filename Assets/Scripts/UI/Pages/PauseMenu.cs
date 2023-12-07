@@ -1,3 +1,5 @@
+using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.Resources;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour

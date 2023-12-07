@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor;
+using MemoryLabyrinth.Player;
+using MemoryLabyrinth.Level.Objects.BonusLib;
 
 [TestFixture]
 public class BonusTests

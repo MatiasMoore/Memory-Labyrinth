@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
 
-public class PlayerChecpointCompability : CheckpointCompatable
+namespace MemoryLabyrinth.Player
 {
-    public override void getCheckpoint(Checkpoint chekpoint)
+    public class PlayerChecpointCompability : CheckpointCompatable
     {
-        MainCharacter mainCharacter = GetComponent<MainCharacter>();
-        if (mainCharacter != null)
+        public override void getCheckpoint(Checkpoint chekpoint)
         {
-            mainCharacter.getCheckpoint(chekpoint);
+            MainCharacter mainCharacter = GetComponent<MainCharacter>();
+            if (mainCharacter != null)
+            {
+                mainCharacter.getCheckpoint(chekpoint);
+            }
         }
     }
 }
