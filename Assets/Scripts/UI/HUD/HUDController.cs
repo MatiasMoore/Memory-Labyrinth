@@ -18,12 +18,18 @@ public class HUDController : MonoBehaviour
     public void SetupListeners()
     {
         // LevelModel listeners
-        _levelModel._onLevelWin += ShowWinPanelAction;
-        _levelModel._onLevelLose += ShowLosePanelAction;
-        _levelModel._onBonusAmountChange += UpdateGemsCountAction;
+        if (_levelModel != null)
+        {
+            _levelModel._onLevelWin += ShowWinPanelAction;
+            _levelModel._onLevelLose += ShowLosePanelAction;
+            _levelModel._onBonusAmountChange += UpdateGemsCountAction;
+        }
 
         // MainCharacter listeners
-        _mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
+        if (_mainCharacter != null)
+        {
+            _mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
+        }
     }
     private void ShowWinPanelAction()
     {
