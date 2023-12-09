@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollAreaController : MonoBehaviour
+namespace MemoryLabyrinth.UI
 {
-    [SerializeField]
-    ScrollRect scrollRectObject;
-
-    private void OnEnable()
+    public class ScrollAreaController : MonoBehaviour
     {
-        scrollRectObject.verticalNormalizedPosition = 1;
+        [SerializeField]
+        ScrollRect scrollRectObject;
+
+        private void OnEnable()
+        {
+            scrollRectObject.verticalNormalizedPosition = 1;
+        }
     }
 }

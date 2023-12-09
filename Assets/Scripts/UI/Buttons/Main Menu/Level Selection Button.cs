@@ -1,22 +1,25 @@
 using UnityEngine.Events;
 
-public class LevelSelectionButton : Button
+namespace MemoryLabyrinth.UI.Button
 {
-    public override event UnityAction _buttonClick;
-
-    public override void FireButtonClickAction()
+    public class LevelSelectionButton : Button
     {
-        _buttonClick?.Invoke();
-    }
+        public override event UnityAction _buttonClick;
 
-    public override void OnClick()
-    {
-        // Main logic
-        MenuManager.ClosePage(MenuManager.Page.MAIN);
-        MenuManager.OpenPage(MenuManager.Page.LEVEL_SELECTION);
+        public override void FireButtonClickAction()
+        {
+            _buttonClick?.Invoke();
+        }
 
-        // Fire events
-        FireButtonClickSoundAction();
-        FireButtonClickAction();
+        public override void OnClick()
+        {
+            // Main logic
+            MenuManager.ClosePage(MenuManager.Page.MAIN);
+            MenuManager.OpenPage(MenuManager.Page.LEVEL_SELECTION);
+
+            // Fire events
+            FireButtonClickSoundAction();
+            FireButtonClickAction();
+        }
     }
 }

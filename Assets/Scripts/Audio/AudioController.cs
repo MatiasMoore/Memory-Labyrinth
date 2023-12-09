@@ -4,6 +4,7 @@ using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.UI.Button;
 
 namespace MemoryLabyrinth.Audio
 {

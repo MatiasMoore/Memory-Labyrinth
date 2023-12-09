@@ -3,32 +3,35 @@ using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
 using UnityEngine.Events;
 
-public class WinPanelNextLevelButton : Button
+namespace MemoryLabyrinth.UI.Button
 {
-    public override event UnityAction _buttonClick;
-
-    public override void FireButtonClickAction()
+    public class WinPanelNextLevelButton : Button
     {
-        _buttonClick?.Invoke();
-    }
+        public override event UnityAction _buttonClick;
 
-    public override void OnClick()
-    {
-        /* Main logic */
-        var nextLevel = CurrentLevel.GetCurrentLevelData()._level + 1;
-        // If level index is out of enum range, load Main Menu
-        if ((int)(nextLevel) > ResourceManager.GetLastLevelIndex())
-            ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
-        // Else, load next level
-        else
+        public override void FireButtonClickAction()
         {
-            CurrentLevel.Load(nextLevel);
-            LevelManager.Instance.StartCurrentLevelFromSpawn();
-            MenuManager.ClosePage(MenuManager.Page.WIN);
+            _buttonClick?.Invoke();
         }
 
-        /* Fire events */
-        FireButtonClickSoundAction();
-        FireButtonClickAction();
+        public override void OnClick()
+        {
+            /* Main logic */
+            var nextLevel = CurrentLevel.GetCurrentLevelData()._level + 1;
+            // If level index is out of enum range, load Main Menu
+            if ((int)(nextLevel) > ResourceManager.GetLastLevelIndex())
+                ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+            // Else, load next level
+            else
+            {
+                CurrentLevel.Load(nextLevel);
+                LevelManager.Instance.StartCurrentLevelFromSpawn();
+                MenuManager.ClosePage(MenuManager.Page.WIN);
+            }
+
+            /* Fire events */
+            FireButtonClickSoundAction();
+            FireButtonClickAction();
+        }
     }
 }

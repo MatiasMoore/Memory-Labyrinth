@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Button : MonoBehaviour
+namespace MemoryLabyrinth.UI.Button
 {
-    public static event UnityAction _buttonClickSound;
-
-    public static void FireButtonClickSoundAction()
+    public abstract class Button : MonoBehaviour
     {
-        _buttonClickSound?.Invoke();
+        public static event UnityAction _buttonClickSound;
+
+        public static void FireButtonClickSoundAction()
+        {
+            _buttonClickSound?.Invoke();
+        }
+
+        public abstract event UnityAction _buttonClick;
+
+        public abstract void FireButtonClickAction();
+
+        public abstract void OnClick();
     }
-
-    public abstract event UnityAction _buttonClick;
-
-    public abstract void FireButtonClickAction();
-
-    public abstract void OnClick();
 }

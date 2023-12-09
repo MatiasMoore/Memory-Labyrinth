@@ -6,6 +6,7 @@ using MemoryLabyrinth.Path;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
+using MemoryLabyrinth.UI.HUD;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

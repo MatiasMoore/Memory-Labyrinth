@@ -3,6 +3,7 @@ using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.Fog;
 using MemoryLabyrinth.Player;
+using MemoryLabyrinth.UI.HUD;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Logic

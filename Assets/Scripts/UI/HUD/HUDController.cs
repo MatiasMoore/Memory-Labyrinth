@@ -3,61 +3,64 @@ using MemoryLabyrinth.Player;
 using TMPro;
 using UnityEngine;
 
-public class HUDController : MonoBehaviour
+namespace MemoryLabyrinth.UI.HUD
 {
-    [SerializeField] private LevelModel _levelModel;
-    [SerializeField] private MainCharacter _mainCharacter;
-    [SerializeField] private Gems _gems;
-    [SerializeField] private Timer _timer;
-    [SerializeField] private Health _health;
-    [SerializeField] private TextMeshProUGUI _winPanelTimeTMP;
-    [SerializeField] private TextMeshProUGUI _winPanelGemsTMP;
-    [SerializeField] private TextMeshProUGUI _losePanelTimeTMP;
-    [SerializeField] private TextMeshProUGUI _losePanelGemsTMP;
-
-    public void SetupListeners()
+    public class HUDController : MonoBehaviour
     {
-        // LevelModel listeners
-        if (_levelModel != null)
+        [SerializeField] private LevelModel _levelModel;
+        [SerializeField] private MainCharacter _mainCharacter;
+        [SerializeField] private Gems _gems;
+        [SerializeField] private Timer _timer;
+        [SerializeField] private Health _health;
+        [SerializeField] private TextMeshProUGUI _winPanelTimeTMP;
+        [SerializeField] private TextMeshProUGUI _winPanelGemsTMP;
+        [SerializeField] private TextMeshProUGUI _losePanelTimeTMP;
+        [SerializeField] private TextMeshProUGUI _losePanelGemsTMP;
+
+        public void SetupListeners()
         {
-            _levelModel._onLevelWin += ShowWinPanelAction;
-            _levelModel._onLevelLose += ShowLosePanelAction;
-            _levelModel._onBonusAmountChange += UpdateGemsCountAction;
+            // LevelModel listeners
+            if (_levelModel != null)
+            {
+                _levelModel._onLevelWin += ShowWinPanelAction;
+                _levelModel._onLevelLose += ShowLosePanelAction;
+                _levelModel._onBonusAmountChange += UpdateGemsCountAction;
+            }
+
+            // MainCharacter listeners
+            if (_mainCharacter != null)
+            {
+                _mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
+            }
+        }
+        private void ShowWinPanelAction()
+        {
+            _timer.SetTimerActive(false);
+            MenuManager.OpenPage(MenuManager.Page.WIN);
+
+            // Display data on level completion
+            LevelResultInfoManager.SetLevelTime(_timer, _winPanelTimeTMP);
+            LevelResultInfoManager.SetLevelGemsCount(_gems, _winPanelGemsTMP);
         }
 
-        // MainCharacter listeners
-        if (_mainCharacter != null)
+        private void ShowLosePanelAction()
         {
-            _mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
+            _timer.SetTimerActive(false);
+            MenuManager.OpenPage(MenuManager.Page.LOSE);
+
+            // Display data on lose
+            LevelResultInfoManager.SetLevelTime(_timer, _losePanelTimeTMP);
+            LevelResultInfoManager.SetLevelGemsCount(_gems, _losePanelGemsTMP);
         }
-    }
-    private void ShowWinPanelAction()
-    {
-        _timer.SetTimerActive(false);
-        MenuManager.OpenPage(MenuManager.Page.WIN);
 
-        // Display data on level completion
-        LevelResultInfoManager.SetLevelTime(_timer, _winPanelTimeTMP);
-        LevelResultInfoManager.SetLevelGemsCount(_gems, _winPanelGemsTMP);
-    }
+        private void UpdateHealthCountAction(int value)
+        {
+            _health.SetHealth(_mainCharacter.GetHealth());
+        }
 
-    private void ShowLosePanelAction()
-    {
-        _timer.SetTimerActive(false);
-        MenuManager.OpenPage(MenuManager.Page.LOSE);
-
-        // Display data on lose
-        LevelResultInfoManager.SetLevelTime(_timer, _losePanelTimeTMP);
-        LevelResultInfoManager.SetLevelGemsCount(_gems, _losePanelGemsTMP);
-    }
-
-    private void UpdateHealthCountAction(int value)
-    {
-        _health.SetHealth(_mainCharacter.GetHealth());
-    }
-
-    private void UpdateGemsCountAction(int value)
-    {
-        _gems.SetGemsAmount(_levelModel.GetBonusAmount());
+        private void UpdateGemsCountAction(int value)
+        {
+            _gems.SetGemsAmount(_levelModel.GetBonusAmount());
+        }
     }
 }

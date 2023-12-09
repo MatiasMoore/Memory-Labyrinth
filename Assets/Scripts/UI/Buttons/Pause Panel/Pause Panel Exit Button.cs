@@ -3,24 +3,27 @@ using MemoryLabyrinth.Resources;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PausePanelExitButton : Button
+namespace MemoryLabyrinth.UI.Button
 {
-    public override event UnityAction _buttonClick;
-
-    public override void FireButtonClickAction()
+    public class PausePanelExitButton : Button
     {
-        _buttonClick?.Invoke();
-    }
+        public override event UnityAction _buttonClick;
 
-    public override void OnClick()
-    {
-        // Main logic
-        Time.timeScale = 1f;
-        LevelManager.Instance.SaveUncompleteLevel();
-        ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+        public override void FireButtonClickAction()
+        {
+            _buttonClick?.Invoke();
+        }
 
-        // Fire events
-        FireButtonClickSoundAction();
-        FireButtonClickAction();
+        public override void OnClick()
+        {
+            // Main logic
+            Time.timeScale = 1f;
+            LevelManager.Instance.SaveUncompleteLevel();
+            ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+
+            // Fire events
+            FireButtonClickSoundAction();
+            FireButtonClickAction();
+        }
     }
 }

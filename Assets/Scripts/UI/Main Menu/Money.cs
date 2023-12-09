@@ -2,21 +2,24 @@ using MemoryLabyrinth.SaveLoad;
 using TMPro;
 using UnityEngine;
 
-public class Money : MonoBehaviour
+namespace MemoryLabyrinth.UI.MainMenuElements
 {
-    [SerializeField]
-    private TextMeshProUGUI _textMesh;
-
-    private void Start()
+    public class Money : MonoBehaviour
     {
-        UpdateMoneyAmount();
-    }
+        [SerializeField]
+        private TextMeshProUGUI _textMesh;
 
-    private void UpdateMoneyAmount()
-    {
-        if (BonusStorage.Instance != null)
-            _textMesh.text = BonusStorage.Instance.GetBonuses().ToString();
-        else
-            throw new System.Exception("MONEY: UpdateMoneyAmount -> BonusStorage.Instance == null");
+        private void Start()
+        {
+            UpdateMoneyAmount();
+        }
+
+        private void UpdateMoneyAmount()
+        {
+            if (BonusStorage.Instance != null)
+                _textMesh.text = BonusStorage.Instance.GetBonuses().ToString();
+            else
+                throw new System.Exception("MONEY: UpdateMoneyAmount -> BonusStorage.Instance == null");
+        }
     }
 }

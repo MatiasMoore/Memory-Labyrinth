@@ -1,29 +1,32 @@
 using UnityEngine;
 
-public class SafeAreaScript : MonoBehaviour
+namespace MemoryLabyrinth.UI
 {
-    private RectTransform _safeAreaRectTransform;
-
-    private void Awake()
+    public class SafeAreaScript : MonoBehaviour
     {
-        _safeAreaRectTransform = GetComponent<RectTransform>();
-        UpdateSafeArea();
-    }
+        private RectTransform _safeAreaRectTransform;
 
-    private void UpdateSafeArea()
-    {
-        Rect safeArea = Screen.safeArea;
+        private void Awake()
+        {
+            _safeAreaRectTransform = GetComponent<RectTransform>();
+            UpdateSafeArea();
+        }
 
-        Vector2 bottomLeftAnchor = safeArea.position;
-        Vector2 topRightAnchor = safeArea.position + safeArea.size;
+        private void UpdateSafeArea()
+        {
+            Rect safeArea = Screen.safeArea;
 
-        // Transition from pixels to float in the range [0;1]
-        bottomLeftAnchor.x /= Screen.width;
-        bottomLeftAnchor.y /= Screen.height;
-        topRightAnchor.x /= Screen.width;
-        topRightAnchor.y /= Screen.height;
+            Vector2 bottomLeftAnchor = safeArea.position;
+            Vector2 topRightAnchor = safeArea.position + safeArea.size;
 
-        _safeAreaRectTransform.anchorMin = bottomLeftAnchor;
-        _safeAreaRectTransform.anchorMax = topRightAnchor;
+            // Transition from pixels to float in the range [0;1]
+            bottomLeftAnchor.x /= Screen.width;
+            bottomLeftAnchor.y /= Screen.height;
+            topRightAnchor.x /= Screen.width;
+            topRightAnchor.y /= Screen.height;
+
+            _safeAreaRectTransform.anchorMin = bottomLeftAnchor;
+            _safeAreaRectTransform.anchorMax = topRightAnchor;
+        }
     }
 }

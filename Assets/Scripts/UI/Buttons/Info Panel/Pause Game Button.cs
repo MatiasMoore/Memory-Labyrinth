@@ -1,24 +1,28 @@
+using MemoryLabyrinth.UI.HUD;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PauseGameButton : Button
+namespace MemoryLabyrinth.UI.Button
 {
-    public override event UnityAction _buttonClick;
-
-    public override void FireButtonClickAction()
+    public class PauseGameButton : Button
     {
-        _buttonClick?.Invoke();
-    }
+        public override event UnityAction _buttonClick;
 
-    public override void OnClick()
-    {
-        // Main logic
-        Time.timeScale = 0f;
-        MenuManager.OpenPage(MenuManager.Page.PAUSE);
-        Timer.Instance.SetTimerActive(false);
+        public override void FireButtonClickAction()
+        {
+            _buttonClick?.Invoke();
+        }
 
-        // Fire events
-        FireButtonClickSoundAction();
-        FireButtonClickAction();
+        public override void OnClick()
+        {
+            // Main logic
+            Time.timeScale = 0f;
+            MenuManager.OpenPage(MenuManager.Page.PAUSE);
+            Timer.Instance.SetTimerActive(false);
+
+            // Fire events
+            FireButtonClickSoundAction();
+            FireButtonClickAction();
+        }
     }
 }

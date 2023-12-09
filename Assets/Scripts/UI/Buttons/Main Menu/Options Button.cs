@@ -1,22 +1,25 @@
 using UnityEngine.Events;
 
-public class OptionsButton : Button
+namespace MemoryLabyrinth.UI.Button
 {
-    public override event UnityAction _buttonClick;
-
-    public override void FireButtonClickAction()
+    public class OptionsButton : Button
     {
-        _buttonClick?.Invoke();
-    }
+        public override event UnityAction _buttonClick;
 
-    public override void OnClick()
-    {
-        // Main logic
-        MenuManager.ClosePage(MenuManager.Page.MAIN);
-        MenuManager.OpenPage(MenuManager.Page.OPTIONS);
+        public override void FireButtonClickAction()
+        {
+            _buttonClick?.Invoke();
+        }
 
-        // Fire events
-        FireButtonClickSoundAction();
-        FireButtonClickAction();
+        public override void OnClick()
+        {
+            // Main logic
+            MenuManager.ClosePage(MenuManager.Page.MAIN);
+            MenuManager.OpenPage(MenuManager.Page.OPTIONS);
+
+            // Fire events
+            FireButtonClickSoundAction();
+            FireButtonClickAction();
+        }
     }
 }
