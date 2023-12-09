@@ -22,6 +22,9 @@ namespace MemoryLabyrinth.Level.Logic
         private LevelModel _levelModel;
 
         [SerializeField]
+        private HUDController _HUDController;
+
+        [SerializeField]
         private float _correctPathSpeed = 10f;
 
         [SerializeField]
@@ -63,8 +66,8 @@ namespace MemoryLabyrinth.Level.Logic
             _levelModel._onLevelLose += LoseLevel;
             _levelModel._onLevelWin += WinLevel;
 
-            // UI Listeners
-            HUDController.SetupListeners(_levelModel, _mainCharacter);
+            // HUD Listeners
+            _HUDController.SetupListeners();
 
             StartCurrentLevel();
         }

@@ -950,7 +950,6 @@ GameObject:
   - component: {fileID: 1998775404221884119}
   - component: {fileID: 8430583861142515947}
   - component: {fileID: 4024322311826199456}
-  - component: {fileID: 3314245921921081703}
   m_Layer: 0
   m_Name: Win Panel
   m_TagString: UI
@@ -1042,22 +1041,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3314245921921081703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235592517824033871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be59c9d87b941014f8dceb90e704c4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeTMP: {fileID: 8027889635116777903}
-  _gemsTMP: {fileID: 4236203653435128901}
-  _timer: {fileID: 5002771354898514661}
-  _gems: {fileID: 625217771323224565}
 --- !u!1 &1710093223383238207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2607,6 @@ GameObject:
   - component: {fileID: 5562982787668933651}
   - component: {fileID: 1231129375418599259}
   - component: {fileID: 3911030584450566567}
-  - component: {fileID: 7798654012886553922}
   m_Layer: 0
   m_Name: Lose Panel
   m_TagString: UI
@@ -2716,20 +2698,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7798654012886553922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3563256938438593622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a253a3e19c20746b37579bc2724373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _time: {fileID: 3346412389342644991}
-  _gems: {fileID: 6083400456680947251}
 --- !u!1 &3713609372054756425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,6 +3340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3812627034111136726}
+  - component: {fileID: 5104454827045118266}
   m_Layer: 0
   m_Name: UI
   m_TagString: UI
@@ -3400,6 +3369,27 @@ Transform:
   - {fileID: 1266307335109890540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5104454827045118266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199311666441895691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d53c1713d7806478050573c936e04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelModel: {fileID: 0}
+  _mainCharacter: {fileID: 0}
+  _gems: {fileID: 625217771323224565}
+  _timer: {fileID: 5002771354898514661}
+  _health: {fileID: 8328312656809239871}
+  _winPanelTimeTMP: {fileID: 8027889635116777903}
+  _winPanelGemsTMP: {fileID: 4236203653435128901}
+  _losePanelTimeTMP: {fileID: 3346412389342644991}
+  _losePanelGemsTMP: {fileID: 6083400456680947251}
 --- !u!1 &4199948368655772002
 GameObject:
   m_ObjectHideFlags: 0
