@@ -8,7 +8,7 @@ namespace MemoryLabyrinth.Cam
         public bool fitOnStartup = true;
 
         [SerializeField]
-        public bool fitOnUpdate = true;
+        public bool fitOnUpdate = false;
 
         [SerializeField]
         private Vector3 _padding = Vector3.zero;
