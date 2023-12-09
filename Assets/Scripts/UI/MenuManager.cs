@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,13 +9,6 @@ public class MenuManager : MonoBehaviour
     private static GameObject _winPanel;
     private static GameObject _losePanel;
     private static GameObject _levelSelectionMenu;
-
-    public static event UnityAction _buttonClick;
-
-    public static void FireButtonClickAction()
-    {
-        _buttonClick?.Invoke();
-    }
 
     public enum Page
     {
