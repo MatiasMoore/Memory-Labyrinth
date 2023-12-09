@@ -15,7 +15,6 @@ public class PausePanelContinueButton : Button
         // Main logic
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
-        GamePauseStatus.SetPausedGame(false);
         Timer.Instance.SetTimerActive(true);
 
         // Fire events

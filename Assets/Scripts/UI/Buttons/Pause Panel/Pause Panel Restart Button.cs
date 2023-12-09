@@ -17,7 +17,6 @@ public class PausePanelRestartButton : Button
         Time.timeScale = 1f;
         MenuManager.ClosePage(MenuManager.Page.PAUSE);
         LevelManager.Instance.StartCurrentLevelFromSpawn();
-        GamePauseStatus.SetPausedGame(false);
 
         // Fire events
         FireButtonClickSoundAction();

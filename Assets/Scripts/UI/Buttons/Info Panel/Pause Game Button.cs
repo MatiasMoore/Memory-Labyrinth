@@ -15,7 +15,6 @@ public class PauseGameButton : Button
         // Main logic
         Time.timeScale = 0f;
         MenuManager.OpenPage(MenuManager.Page.PAUSE);
-        GamePauseStatus.SetPausedGame(true);
         Timer.Instance.SetTimerActive(false);
 
         // Fire events
