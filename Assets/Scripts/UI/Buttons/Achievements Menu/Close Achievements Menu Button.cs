@@ -16,6 +16,7 @@ public class CloseAchievementsMenuButton : Button
         MenuManager.OpenPage(MenuManager.Page.MAIN);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

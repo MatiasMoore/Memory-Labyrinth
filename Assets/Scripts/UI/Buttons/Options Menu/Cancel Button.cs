@@ -16,6 +16,7 @@ public class CancelButton : Button
         MenuManager.OpenPage(MenuManager.Page.MAIN);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

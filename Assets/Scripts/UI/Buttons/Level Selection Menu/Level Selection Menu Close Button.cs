@@ -16,6 +16,7 @@ public class LevelSelectionMenuCloseButton : Button
         MenuManager.OpenPage(MenuManager.Page.MAIN);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

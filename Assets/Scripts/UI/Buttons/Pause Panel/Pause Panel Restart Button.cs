@@ -20,6 +20,7 @@ public class PausePanelRestartButton : Button
         GamePauseStatus.SetPausedGame(false);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

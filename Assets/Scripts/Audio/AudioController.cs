@@ -17,7 +17,7 @@ namespace MemoryLabyrinth.Audio
 
             Instance = this;
             ResourceManager.activeSceneChanged += SceneChanged;
-            MenuManager._buttonClick += PlayUIClickSound;
+            Button._buttonClickSound += PlayUIClickSound;
         }
 
 

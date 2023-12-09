@@ -17,6 +17,7 @@ public class LosePanelRestartButton : Button
         LevelManager.Instance.StartCurrentLevelFromSpawn();
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

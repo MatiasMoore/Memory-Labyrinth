@@ -17,6 +17,7 @@ public class AcceptButton : Button
         // TODO: save audio and music settings
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

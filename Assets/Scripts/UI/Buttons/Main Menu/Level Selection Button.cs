@@ -16,6 +16,7 @@ public class LevelSelectionButton : Button
         MenuManager.OpenPage(MenuManager.Page.LEVEL_SELECTION);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

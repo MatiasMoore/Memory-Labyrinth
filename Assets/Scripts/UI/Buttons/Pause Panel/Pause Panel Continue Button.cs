@@ -19,6 +19,7 @@ public class PausePanelContinueButton : Button
         Timer.Instance.SetTimerActive(true);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

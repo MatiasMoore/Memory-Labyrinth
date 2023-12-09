@@ -16,6 +16,7 @@ public class OptionsButton : Button
         MenuManager.OpenPage(MenuManager.Page.OPTIONS);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

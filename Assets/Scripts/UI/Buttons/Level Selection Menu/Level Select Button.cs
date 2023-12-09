@@ -22,6 +22,7 @@ public class LevelSelectButton : Button
         CurrentLevel.Load(_level);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }
