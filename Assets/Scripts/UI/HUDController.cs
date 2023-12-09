@@ -1,68 +1,57 @@
 using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Player;
+using TMPro;
 using UnityEngine;
 
 public class HUDController : MonoBehaviour
 {
-    private static LevelModel _levelModel;
+    [SerializeField] private LevelModel _levelModel;
+    [SerializeField] private MainCharacter _mainCharacter;
+    [SerializeField] private Gems _gems;
+    [SerializeField] private Timer _timer;
+    [SerializeField] private Health _health;
+    [SerializeField] private TextMeshProUGUI _winPanelTimeTMP;
+    [SerializeField] private TextMeshProUGUI _winPanelGemsTMP;
+    [SerializeField] private TextMeshProUGUI _losePanelTimeTMP;
+    [SerializeField] private TextMeshProUGUI _losePanelGemsTMP;
 
-    private static MainCharacter _mainCharacter;
-
-    public static void SetupListeners(LevelModel levelModel, MainCharacter mainCharacter)
+    public void SetupListeners()
     {
-        _levelModel = levelModel;
-        if (_levelModel != null)
-        {
-            levelModel._onLevelWin += ShowWinPanelAction;
-            levelModel._onLevelLose += ShowLosePanelAction;
-            levelModel._onBonusAmountChange += UpdateGemsCountAction;
-        }
+        // LevelModel listeners
+        _levelModel._onLevelWin += ShowWinPanelAction;
+        _levelModel._onLevelLose += ShowLosePanelAction;
+        _levelModel._onBonusAmountChange += UpdateGemsCountAction;
 
-        _mainCharacter = mainCharacter;
-        if (_mainCharacter != null)
-        {
-            mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
-        }
+        // MainCharacter listeners
+        _mainCharacter._onPlayerHealthChangedEvent += UpdateHealthCountAction;
     }
-    private static void ShowWinPanelAction()
+    private void ShowWinPanelAction()
     {
-        Timer.Instance.SetTimerActive(false);
+        _timer.SetTimerActive(false);
         MenuManager.OpenPage(MenuManager.Page.WIN);
 
         // Display data on level completion
-        WinPanelInfoController infoController = FindObjectOfType<WinPanelInfoController>();
-        infoController.SetLevelCompletionTime();
-        infoController.SetLevelCompletionGemsCount();
+        LevelResultInfoManager.SetLevelTime(_timer, _winPanelTimeTMP);
+        LevelResultInfoManager.SetLevelGemsCount(_gems, _winPanelGemsTMP);
     }
 
-    private static void ShowLosePanelAction()
+    private void ShowLosePanelAction()
     {
-        Timer.Instance.SetTimerActive(false);
+        _timer.SetTimerActive(false);
         MenuManager.OpenPage(MenuManager.Page.LOSE);
 
         // Display data on lose
-        LosePanelInfoController infoController = FindObjectOfType<LosePanelInfoController>();
-        infoController.SetLevelTimeOnLose();
-        infoController.SetLevelGemsCountOnLose();
+        LevelResultInfoManager.SetLevelTime(_timer, _losePanelTimeTMP);
+        LevelResultInfoManager.SetLevelGemsCount(_gems, _losePanelGemsTMP);
     }
 
-    private static void UpdateHealthCountAction(int value)
+    private void UpdateHealthCountAction(int value)
     {
-        Health health = FindObjectOfType<Health>();
-        if (health != null)
-        {
-            health.SetHealth(_mainCharacter.GetHealth());
-        }
+        _health.SetHealth(_mainCharacter.GetHealth());
     }
 
-    private static void UpdateGemsCountAction(int value)
+    private void UpdateGemsCountAction(int value)
     {
-        Gems gems = FindObjectOfType<Gems>();
-        Debug.Log("MENU CONTROLLER: UpdateGemsCountAction -> " + gems);
-        if (gems != null)
-        {
-            Debug.Log(_levelModel.GetBonusAmount());
-            gems.SetGemsAmount(_levelModel.GetBonusAmount());
-        }
+        _gems.SetGemsAmount(_levelModel.GetBonusAmount());
     }
 }
