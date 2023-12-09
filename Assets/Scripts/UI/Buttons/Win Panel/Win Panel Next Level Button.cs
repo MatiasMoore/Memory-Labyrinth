@@ -28,6 +28,7 @@ public class WinPanelNextLevelButton : Button
         }
 
         /* Fire events */
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

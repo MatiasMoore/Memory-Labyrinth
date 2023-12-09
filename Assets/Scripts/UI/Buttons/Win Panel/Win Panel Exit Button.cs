@@ -16,6 +16,7 @@ public class WinPanelExitButton : Button
         ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }

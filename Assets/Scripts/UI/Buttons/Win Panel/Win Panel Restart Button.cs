@@ -17,6 +17,7 @@ public class WinPanelRestartButton : Button
         LevelManager.Instance.StartCurrentLevelFromSpawn();
 
         // Fire events
+        FireButtonClickSoundAction();
         FireButtonClickAction();
     }
 }
