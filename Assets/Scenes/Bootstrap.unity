@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1040057383823777744, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
       propertyPath: m_Name
-      value: Audio
+      value: AudioController
       objectReference: {fileID: 0}
     - target: {fileID: 7879476932475115174, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -273,6 +273,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516216260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3115227998687391746, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
+  m_PrefabInstance: {fileID: 214878410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf6ae230196fb942b66f5ba8541825a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &591621065
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +328,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b72920f2b0b5a940a7dd1a4a0c4993c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioController: {fileID: 516216260}
+  _soundEffectsManager: {fileID: 2034832828}
+  _musicManager: {fileID: 2117018517}
+  _bonusStorage: {fileID: 1012515368}
+  _levelProgressStorage: {fileID: 1179560458}
+  _saveLoadManager: {fileID: 1610983810}
 --- !u!1 &1012515366
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,11 +469,33 @@ Transform:
   - {fileID: 1179560456}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2034832828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 219356615083264699, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
+  m_PrefabInstance: {fileID: 214878410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363b8ce3fcaeb89498b34ca29664dfe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2117018517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6470065889025695697, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
+  m_PrefabInstance: {fileID: 214878410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d79c05adef0dc4495b1760b41edf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 430061496}
-  - {fileID: 214878410}
   - {fileID: 591621066}
+  - {fileID: 214878410}
   - {fileID: 1610983811}

@@ -7,31 +7,49 @@ namespace MemoryLabyrinth.Bootstrap
 {
     public class Game : MonoBehaviour
     {
+        [SerializeField]
+        private AudioController _audioController;
+        [SerializeField]
+        private SoundEffectsManager _soundEffectsManager;
+        [SerializeField]
+        private MusicManager _musicManager;
+        [SerializeField]
+        private BonusStorage _bonusStorage;
+        [SerializeField]
+        private LevelProgressStorage _levelProgressStorage;
+        [SerializeField]
+        private SaveLoadManager _saveLoadManager;
+
         private void Start()
         {
-            var audioController = FindObjectOfType<AudioController>();
-            if (audioController == null)
+            
+            if (_audioController == null)
                 throw new System.Exception("No audio controller is found on startup");
+            DontDestroyOnLoad(_audioController.gameObject);
 
-            DontDestroyOnLoad(audioController.transform.parent.gameObject);
+            if (_soundEffectsManager == null)
+                throw new System.Exception("No sound effect manager is found on startup");
+            DontDestroyOnLoad(_soundEffectsManager.gameObject);
 
-            var bonusStorage = FindObjectOfType<BonusStorage>();
-            if (bonusStorage == null)
+            if (_musicManager == null)
+                throw new System.Exception("No music manager is found on startup");
+            DontDestroyOnLoad(_musicManager.gameObject);
+
+            if (_bonusStorage == null)
                 throw new System.Exception("No BonusStorage is found on startup");
-            bonusStorage.Init();
+            _bonusStorage.Init();
+            DontDestroyOnLoad(_bonusStorage.gameObject);
 
-            var levelProgressStorage = FindObjectOfType<LevelProgressStorage>();
-            if (levelProgressStorage == null)
+            if (_levelProgressStorage == null)
                 throw new System.Exception("No LevelProgressStorage is found on startup");
-            levelProgressStorage.Init();
+            _levelProgressStorage.Init();
+            DontDestroyOnLoad(_levelProgressStorage.gameObject);
 
-            var saveLoadManager = FindObjectOfType<SaveLoadManager>();
-            if (saveLoadManager == null)
+            if (_saveLoadManager == null)
                 throw new System.Exception("No SaveLoadManager is found on startup");
+            DontDestroyOnLoad(_saveLoadManager.gameObject);
 
-            DontDestroyOnLoad(saveLoadManager.transform.gameObject);
-
-            saveLoadManager.LoadGame();
+            _saveLoadManager.LoadGame();
 
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         }
