@@ -1,6 +1,6 @@
 using UnityEngine.Events;
 
-public class AcceptButton : Button
+public class OptionsMenuCancelButton : Button
 {
     public override event UnityAction _buttonClick;
 
@@ -14,7 +14,6 @@ public class AcceptButton : Button
         // Main logic
         MenuManager.ClosePage(MenuManager.Page.OPTIONS);
         MenuManager.OpenPage(MenuManager.Page.MAIN);
-        // TODO: save audio and music settings
 
         // Fire events
         FireButtonClickSoundAction();
