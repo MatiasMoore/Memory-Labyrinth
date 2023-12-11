@@ -21,6 +21,12 @@ namespace MemoryLabyrinth.Path
 
         private Transform _transform;
 
+        public CorrectPathRenderer(float speed, List<GameObject> rightPath)
+        {
+            _speed = speed;
+            _rightPath = rightPath;
+        }
+        
         public void Init()
         {
             _lineRenderer = GetComponent<LineRenderer>();
