@@ -24,7 +24,6 @@ namespace MemoryLabyrinth.SaveLoad
 
         public void SaveData()
         {
-            int amount = BonusStorage.Instance.GetBonuses();
             List<LevelData> levels = LevelProgressStorage.Instance.GetLevelDataList();
 
             var data = new List<LevelData>(levels);
