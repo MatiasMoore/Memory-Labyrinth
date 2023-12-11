@@ -21,13 +21,14 @@ public class BonusesSaveLoaderTests
         GameObject manager = new GameObject("SaveLoadManager");
         SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
         _saveLoadManager = saveLoadManager;
+        _saveLoadManager.Init();
     }
     // A Test behaves as an ordinary method
     [Test]
     public void BonusesSaveLoader_BonusStorageOnFirstLoad()
     {
-        _saveLoadManager.DeleteSave();
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.DeleteSave();
+        SaveLoadManager.Instance.LoadGame();
 
         int expectedRes = 0;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -37,10 +38,10 @@ public class BonusesSaveLoaderTests
     public void BonusesSaveLoader_BonusStorageSetupBonuses()
     {
         BonusStorage.Instance.SetupBonuses(10);
-        
-        _saveLoadManager.SaveGame();
+
+        SaveLoadManager.Instance.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -51,9 +52,9 @@ public class BonusesSaveLoaderTests
     {
         BonusStorage.Instance.EarnBonuses(10);
 
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -65,9 +66,9 @@ public class BonusesSaveLoaderTests
         BonusStorage.Instance.SetupBonuses(20);
         BonusStorage.Instance.SpendBonuses(10);
 
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         BonusStorage.Instance.SetupBonuses(0);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         int expectedRes = 10;
         Assert.AreEqual(expectedRes, BonusStorage.Instance.GetBonuses());
@@ -87,6 +88,6 @@ public class BonusesSaveLoaderTests
     public void AfterTest()
     {
         Debug.Log("Teardown");
-        _saveLoadManager.DeleteSave();
+        SaveLoadManager.Instance.DeleteSave();
     }
 }

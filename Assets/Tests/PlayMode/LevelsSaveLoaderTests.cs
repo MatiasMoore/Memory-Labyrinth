@@ -8,7 +8,7 @@ using UnityEngine.TestTools;
 
 public class LevelsSaveLoaderTests
 {
-    private SaveLoadManager _saveLoadManager = new SaveLoadManager();
+    private SaveLoadManager _saveLoadManager;
 
     [SetUp]
     public void SetUp()
@@ -24,13 +24,14 @@ public class LevelsSaveLoaderTests
         GameObject manager = new GameObject("SaveLoadManager");
         SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
         _saveLoadManager = saveLoadManager;
+        _saveLoadManager.Init();
     }
 
     [Test]
     public void LevelsSaveLoader_LevelProgressStorageOnFirstLoad()
     {
-        _saveLoadManager.DeleteSave();
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.DeleteSave();
+        SaveLoadManager.Instance.LoadGame();
 
         List<LevelData> realLevels = LevelProgressStorage.Instance.GetLevelDataList();
 
@@ -53,9 +54,9 @@ public class LevelsSaveLoaderTests
 
         List<LevelData> dummyList = LevelProgressStorage.Instance.GetLevelDataList();
         LevelProgressStorage.Instance.AddLevelInfo(testData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         List<LevelData> realLevels = LevelProgressStorage.Instance.GetLevelDataList();
         List<LevelData> expList = new List<LevelData>();
@@ -82,13 +83,13 @@ public class LevelsSaveLoaderTests
 
         List<LevelData> dummyList = LevelProgressStorage.Instance.GetLevelDataList();
         LevelProgressStorage.Instance.AddLevelInfo(testData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
         LevelProgressStorage.Instance.AddLevelInfo(newTestData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         List<LevelData> realLevels = LevelProgressStorage.Instance.GetLevelDataList();
         List<LevelData> expList = new List<LevelData>();
@@ -114,13 +115,13 @@ public class LevelsSaveLoaderTests
 
         List<LevelData> dummyList = LevelProgressStorage.Instance.GetLevelDataList();
         LevelProgressStorage.Instance.AddLevelInfo(testData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
         LevelProgressStorage.Instance.AddLevelInfo(secondTestData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         List<LevelData> realLevels = LevelProgressStorage.Instance.GetLevelDataList();
         List<LevelData> expList = new List<LevelData>();
@@ -147,13 +148,13 @@ public class LevelsSaveLoaderTests
 
         List<LevelData> dummyList = LevelProgressStorage.Instance.GetLevelDataList();
         LevelProgressStorage.Instance.AddLevelInfo(testData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
         LevelProgressStorage.Instance.AddLevelInfo(secondTestData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
 
         LevelData updatedSecondTestData = secondTestData;
@@ -162,9 +163,9 @@ public class LevelsSaveLoaderTests
         updatedSecondTestData._time = 4f;
 
         LevelProgressStorage.Instance.AddLevelInfo(updatedSecondTestData);
-        _saveLoadManager.SaveGame();
+        SaveLoadManager.Instance.SaveGame();
         LevelProgressStorage.Instance.SetLevelDataList(dummyList);
-        _saveLoadManager.LoadGame();
+        SaveLoadManager.Instance.LoadGame();
 
         List<LevelData> realLevels = LevelProgressStorage.Instance.GetLevelDataList();
         List<LevelData> expList = new List<LevelData>();
@@ -188,7 +189,7 @@ public class LevelsSaveLoaderTests
     public void AfterTest()
     {
         Debug.Log("Teardown");
-        _saveLoadManager.DeleteSave();
+        SaveLoadManager.Instance.DeleteSave();
     }
 
     private void AssertAllFields(LevelData exp, LevelData real)
