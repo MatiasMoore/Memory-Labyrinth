@@ -40,6 +40,13 @@ namespace MemoryLabyrinth.Player
         private PathCreator _pathCreator;
         private bool _isActive;
 
+        public MainCharacter(float speed, int maxHealth, int health)
+        {
+            _speed = speed;
+            _maxHealth = maxHealth;
+            _health = health;
+        }
+
         public void Init()
         {
             if (TouchControls.Instance == null)
