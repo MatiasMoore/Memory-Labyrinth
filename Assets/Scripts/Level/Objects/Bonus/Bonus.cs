@@ -7,6 +7,16 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
     {
         int _value = 10;
         int _id;
+        
+        public Bonus(int value, int id)
+        {
+            _value = value;
+            _id = id;
+        }
+
+        public Bonus()
+        {
+        }
 
         public void Start()
         {
