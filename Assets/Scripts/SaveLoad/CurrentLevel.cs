@@ -9,8 +9,7 @@ namespace MemoryLabyrinth.SaveLoad
 
         public static void Load(ResourceManager.Level level)
         {
-            SaveLoadManager saveLoadManager = new SaveLoadManager();
-            saveLoadManager.LoadGame();
+            SaveLoadManager.Instance.LoadGame();
 
             if (LevelProgressStorage.Instance == null)
             {
@@ -36,8 +35,7 @@ namespace MemoryLabyrinth.SaveLoad
             LevelProgressStorage.Instance.AddLevelInfo(newLevelData);
             Debug.Log($"CURRENTLEVEL: saved {newLevelData._level}");
 
-            SaveLoadManager saveLoadManager = new SaveLoadManager();
-            saveLoadManager.SaveGame();
+            SaveLoadManager.Instance.SaveGame();
 
         }
 

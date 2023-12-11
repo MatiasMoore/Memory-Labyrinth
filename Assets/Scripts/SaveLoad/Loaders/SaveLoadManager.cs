@@ -16,6 +16,15 @@ namespace MemoryLabyrinth.SaveLoad
         new LevelsSaveLoader()
     };
 
+        public static SaveLoadManager Instance;
+
+        public void Init()
+        {
+            if (Instance != null)
+                return;
+            Instance = this;
+        }
+
 
         [ContextMenu("Load")]
         public void LoadGame()

@@ -47,9 +47,10 @@ namespace MemoryLabyrinth.Bootstrap
 
             if (_saveLoadManager == null)
                 throw new System.Exception("No SaveLoadManager is found on startup");
+            _saveLoadManager.Init();
             DontDestroyOnLoad(_saveLoadManager.gameObject);
 
-            _saveLoadManager.LoadGame();
+            SaveLoadManager.Instance.LoadGame();
 
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         }
