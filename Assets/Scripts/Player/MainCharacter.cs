@@ -18,11 +18,6 @@ namespace MemoryLabyrinth.Player
         [SerializeField]
         private int _health;
 
-        public int GetHealth()
-        {
-            return _health;
-        }
-
         public event UnityAction _onDeathEvent;
         public event UnityAction _onDamageEvent;
         public event UnityAction<Bonus> _onBonusEvent;
@@ -169,6 +164,11 @@ namespace MemoryLabyrinth.Player
         public void SetMaxHealth(int maxHealth)
         {
             _maxHealth = maxHealth;
+        }
+
+        public int GetHealth()
+        {
+            return _health;
         }
 
 
