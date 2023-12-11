@@ -162,7 +162,7 @@ public class MainCharacterTests
         bool onCheckpointEventInvoked = false;
         _mainCharacter._onCheckpointEvent += (checkpoint) => onCheckpointEventInvoked = true;
 
-        _mainCharacter.getCheckpoint(new Checkpoint());
+        _mainCharacter.getCheckpoint(new Checkpoint(1));
         yield return new WaitForSeconds(0.1f);
 
         Assert.IsTrue(onCheckpointEventInvoked);
