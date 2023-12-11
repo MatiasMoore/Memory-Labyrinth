@@ -49,6 +49,13 @@ namespace MemoryLabyrinth.Level.Logic
 
         public static LevelManager Instance;
 
+        public LevelManager(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
+        {
+            _playerObj = playerObj;
+            _levelModel = levelModel;
+            _HUDController = HUDController;
+        }
+
         public void SetCurrentLevel(ResourceManager.Level level)
         {
             _currentLevelEnum = level;
