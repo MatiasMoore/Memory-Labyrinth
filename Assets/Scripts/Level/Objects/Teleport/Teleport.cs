@@ -8,6 +8,11 @@ namespace MemoryLabyrinth.Level.Objects.TeleportLib
         [SerializeField]
         private Transform _target;
 
+        public Teleport(Transform target)
+        {
+            _target = target;
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
