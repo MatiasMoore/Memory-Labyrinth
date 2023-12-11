@@ -31,6 +31,11 @@ namespace MemoryLabyrinth.Level.Logic
 
         private List<int> _collectedBonusesBuffer = new List<int>();
 
+        public LevelModel(MainCharacter mainCharacter)
+        {
+            _mainCharacter = mainCharacter;
+        }
+        
         public void Init(MainCharacter mainCharacter)
         {
             _mainCharacter = mainCharacter;
