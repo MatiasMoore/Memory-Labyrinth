@@ -1,3 +1,4 @@
+using MemoryLabyrinth.Achievemnts;
 using MemoryLabyrinth.Audio;
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
@@ -5,6 +6,7 @@ using MemoryLabyrinth.Fog;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.UI.HUD;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Logic
@@ -35,8 +37,9 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private HUDController _hudController;
 
+        private List<AchievementTracker> _achievementTrackers = new List<AchievementTracker>();
 
-        void Start()
+        private void Start()
         {
             _touchControls.Init();
             _mainCharacter.Init();
@@ -50,6 +53,23 @@ namespace MemoryLabyrinth.Level.Logic
             var audioController = FindObjectOfType<AudioController>();
             if (audioController != null)
                 audioController.SetupListeners(_levelModel, _mainCharacter);
+
+            SetupAchievementTrackers();
+        }
+
+        private void SetupAchievementTrackers()
+        {
+            Achievement a = new Achievement(Achievement.AchievmentName.collectAllBonusses, 0, 1);
+            AchievementTracker tracker = new CollectAllBonussesTracker(a, _levelModel, _levelManager);
+            _achievementTrackers.Add(tracker);
+
+            a = new Achievement(Achievement.AchievmentName.finishLevelIn10Seconds, 0, 10);
+            tracker = new FinishLevelInSecondsTracker(a, _levelModel, _timer);
+            _achievementTrackers.Add(tracker);
+
+            a = new Achievement(Achievement.AchievmentName.finishLevelIn20Seconds, 0, 20);
+            tracker = new FinishLevelInSecondsTracker(a, _levelModel, _timer);
+            _achievementTrackers.Add(tracker);
         }
     }
 }
