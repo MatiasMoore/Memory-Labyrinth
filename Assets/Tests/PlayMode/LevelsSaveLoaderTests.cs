@@ -47,7 +47,9 @@ public class LevelsSaveLoaderTests
 
         testData._level = ResourceManager.Level.Level1;
         testData._checkpointId = 1;
-        testData._collectedBonusesId = new List<int> { 1, 2 };
+        testData._collectedBonuses = new List<BonusInfo>();
+        testData._collectedBonuses.Add(new BonusInfo { _id = 1, _value = 10 });
+        testData._collectedBonuses.Add(new BonusInfo { _id = 2, _value = 20 });
         testData._isCompleted = false;
         testData._livesAmount = 2;
         testData._time = 10f;
@@ -72,7 +74,9 @@ public class LevelsSaveLoaderTests
 
         testData._level = ResourceManager.Level.Level1;
         testData._checkpointId = 1;
-        testData._collectedBonusesId = new List<int> { 1, 2 };
+        testData._collectedBonuses = new List<BonusInfo>();
+        testData._collectedBonuses.Add(new BonusInfo { _id = 1, _value = 10 });
+        testData._collectedBonuses.Add(new BonusInfo { _id = 2, _value = 20 });
         testData._isCompleted = false;
         testData._livesAmount = 2;
         testData._time = 10f;
@@ -105,7 +109,9 @@ public class LevelsSaveLoaderTests
 
         testData._level = ResourceManager.Level.Level1;
         testData._checkpointId = 1;
-        testData._collectedBonusesId = new List<int> { 1, 2 };
+        testData._collectedBonuses = new List<BonusInfo>();
+        testData._collectedBonuses.Add(new BonusInfo { _id = 1, _value = 10 });
+        testData._collectedBonuses.Add(new BonusInfo { _id = 2, _value = 20 });
         testData._isCompleted = false;
         testData._livesAmount = 2;
         testData._time = 10f;
@@ -138,7 +144,9 @@ public class LevelsSaveLoaderTests
 
         testData._level = ResourceManager.Level.Level1;
         testData._checkpointId = 1;
-        testData._collectedBonusesId = new List<int> { 1, 2 };
+        testData._collectedBonuses = new List<BonusInfo>();
+        testData._collectedBonuses.Add(new BonusInfo { _id = 1, _value = 10 });
+        testData._collectedBonuses.Add(new BonusInfo { _id = 2, _value = 20 });
         testData._isCompleted = false;
         testData._livesAmount = 2;
         testData._time = 10f;
@@ -197,7 +205,7 @@ public class LevelsSaveLoaderTests
         Assert.AreEqual(exp._level, real._level, "Level mismatch");
         Assert.AreEqual(exp._checkpointId, real._checkpointId, "Checkpoint ID mismatch");
         Assert.AreEqual(exp._time, real._time, 0.001f, "Time mismatch"); 
-        CollectionAssert.AreEqual(exp._collectedBonusesId, real._collectedBonusesId, "Collected Bonuses ID mismatch");
+        CollectionAssert.AreEqual(exp._collectedBonuses, real._collectedBonuses, "Collected Bonuses ID mismatch");
         Assert.AreEqual(exp._livesAmount, real._livesAmount, "Lives Amount mismatch");
         Assert.AreEqual(exp._isCompleted, real._isCompleted, "Is Completed flag mismatch");
     }

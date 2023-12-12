@@ -4,6 +4,7 @@ using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 using UnityEditor;
+using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
@@ -121,21 +122,21 @@ public class LevelModelTests
     [Test]
     public void onPlayerGetCheckpoint_ShouldAddCollectedBonusesToCollection()
     {
-        List<int> expectedBonuses = new List<int>();
+        List<BonusInfo> expectedBonuses = new List<BonusInfo>();
         PlayerGetBonus(1,1);
         PlayerGetBonus(2,2);
         PlayerGetBonus(3,3);
-        expectedBonuses.Add(1);
-        expectedBonuses.Add(2);
-        expectedBonuses.Add(3);
+        expectedBonuses.Add(new BonusInfo { _id = 1, _value = 1});
+        expectedBonuses.Add(new BonusInfo { _id = 2, _value = 2 });
+        expectedBonuses.Add(new BonusInfo { _id = 3, _value = 3 });
 
         Checkpoint _checkpoint = PlayerGetCheckpoint(1, new Vector3(0, 0, 0)); 
 
-        List<int> actualBonuses = _levelModel.GetCollectedBonusesIDBeforeCheckpoint();
+        List<BonusInfo> actualBonuses = _levelModel.GetCollectedBonusesIDBeforeCheckpoint();
 
-        foreach (int bonusId in expectedBonuses)
+        foreach (BonusInfo bonusInfo in expectedBonuses)
         {
-            Assert.IsTrue(actualBonuses.Contains(bonusId));
+            Assert.IsTrue(actualBonuses.Contains(bonusInfo));
         }
     }
 
