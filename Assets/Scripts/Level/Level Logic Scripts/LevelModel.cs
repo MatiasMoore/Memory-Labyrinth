@@ -32,8 +32,10 @@ namespace MemoryLabyrinth.Level.Logic
         private List<BonusInfo> _collectedBonuses = new List<BonusInfo>();
 
         private bool _isLevelFinish = false;
+
+        private Timer _timer;
         
-        public void Init(MainCharacter mainCharacter)
+        public void Init(MainCharacter mainCharacter, Timer timer)
         {
             _mainCharacter = mainCharacter;
             _mainCharacter._onDamageEvent += OnPlayerDamage;
@@ -41,21 +43,22 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter._onBonusEvent += OnPlayerGetBonus;
             _mainCharacter._onCheckpointEvent += OnPlayerGetCheckpoint;
             _mainCharacter._onFinishEvent += OnPlayerWin;
-
+            
+            _timer = timer;
             _isLevelFinish = false;
         }
 
         public LevelData GetLevelData()
         {
-            LevelData levelData = new LevelData
-            {
-                _level = CurrentLevel.GetCurrentLevelData()._level,
-                _livesAmount = _mainCharacter.GetHealth(),
-                _checkpointId = _isLevelFinish ? 0 : _currentCheckpoint.GetQueue(),
-                _time = Timer.Instance.GetElapsedTime(),
-                _isCompleted = _isLevelFinish,
-                _collectedBonuses = GetCollectedBonuses()
-            };
+            LevelData levelData = new LevelData();
+
+            levelData._level = CurrentLevel.GetCurrentLevelData()._level;
+            levelData._livesAmount = _mainCharacter.GetHealth();
+            levelData._checkpointId = _isLevelFinish || _currentCheckpoint == null ? 0 : _currentCheckpoint.GetQueue();
+            levelData._time = _timer == null ? 0 : _timer.GetElapsedTime();
+            levelData._isCompleted = _isLevelFinish;
+            levelData._collectedBonuses = GetCollectedBonuses();
+           
             return levelData;
         }
 

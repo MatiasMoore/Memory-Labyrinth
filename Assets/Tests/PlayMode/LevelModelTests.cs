@@ -9,6 +9,7 @@ using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.BonusLib;
+using MemoryLabyrinth.UI.HUD;
 
 [TestFixture]
 public class LevelModelTests
@@ -25,6 +26,7 @@ public class LevelModelTests
     public void Setup()
     {   //timescale 
         Time.timeScale = 100;
+        Timer _timer = new Timer();
 
         string playerPrefabPath = "Assets/Prefabs/Player.prefab";
         GameObject playerPrefab = AssetDatabase.LoadAssetAtPath(playerPrefabPath, typeof(Object)) as GameObject;
@@ -37,7 +39,7 @@ public class LevelModelTests
         levelModelGameObject.AddComponent<LevelModel>();
         levelModelGameObject = Object.Instantiate(levelModelGameObject, new Vector3(0, 0, 0), Quaternion.identity);
         _levelModel = levelModelGameObject.GetComponent<LevelModel>();
-        _levelModel.Init(_mainCharacter);
+        _levelModel.Init(_mainCharacter, Timer.Instance);
 
         Debug.Log("Setup");
     }
