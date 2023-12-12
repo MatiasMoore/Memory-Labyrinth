@@ -10,6 +10,17 @@ namespace MemoryLabyrinth.Achievemnts
     {
         [SerializeField]
         public List<AchievementEnumToStr> dict;
+
+        public string GetNameFromEnum(AchievmentName name)
+        {
+            foreach (AchievementEnumToStr achievementString in dict)
+            {
+                if (achievementString.enumName == name)
+                    return achievementString.enumString;
+            }
+
+            throw new System.Exception("Couldn't find string for achievement enum!");
+        }
     }
 
     [Serializable]
