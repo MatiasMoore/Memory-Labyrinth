@@ -2,9 +2,9 @@ using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MemoryLabyrinth.UI.SliderLib
+namespace MemoryLabyrinth.UI.SlidersLib
 {
-    public class SFXSlider: MonoBehaviour
+    public class SFXSlider: AbstractSlider
     {
         [SerializeField]
         private Slider slider;
@@ -15,12 +15,12 @@ namespace MemoryLabyrinth.UI.SliderLib
             SetSliderValue(volume);
         }
 
-        public void SetSliderValue(float volume)
+        public override void SetSliderValue(float volume)
         {
             slider.value = volume;
         }
 
-        public float GetSliderValue()
+        public override float GetSliderValue()
         {
             return slider.value;
         }
