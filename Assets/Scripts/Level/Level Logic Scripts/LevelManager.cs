@@ -28,7 +28,7 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private float _fadeInFogTime = 2f;
 
-        public static event UnityAction _levelLoad;
+        public event UnityAction _levelStarted;
 
         private MainCharacter _mainCharacter;
 
@@ -132,6 +132,7 @@ namespace MemoryLabyrinth.Level.Logic
                 FogController.Instance.FadeInToAllTargets(0);
             }
 
+            _levelStarted?.Invoke();
         }
 
         private void ActivateCheckPointWithQueue(int targetQueue)
