@@ -3,6 +3,7 @@ using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.Fog;
 using MemoryLabyrinth.Player;
+using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.UI.HUD;
 using UnityEngine;
 
@@ -42,7 +43,8 @@ namespace MemoryLabyrinth.Level.Logic
             _timer.Init();
             _fogController.Init();
             _levelModel.Init(_mainCharacter);
-            _levelManager.Init(_mainCharacter.gameObject,_levelModel, _hudController);
+            CurrentLevel.SetupListeners(_levelModel);
+            _levelManager.Init(_mainCharacter.gameObject, _levelModel, _hudController);
             _cameraScript.Init();
 
             var audioController = FindObjectOfType<AudioController>();
