@@ -19,7 +19,6 @@ namespace MemoryLabyrinth.UI.Button
         {
             // Main logic
             Time.timeScale = 1f;
-            // LevelManager.Instance.SaveUncompleteLevel();
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
 
             // Fire events
