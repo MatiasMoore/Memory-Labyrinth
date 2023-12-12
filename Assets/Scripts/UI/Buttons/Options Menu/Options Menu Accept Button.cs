@@ -16,7 +16,6 @@ namespace MemoryLabyrinth.UI.Button
             // Main logic
             MenuManager.ClosePage(MenuManager.Page.OPTIONS);
             MenuManager.OpenPage(MenuManager.Page.MAIN);
-            // TODO: save audio and music settings
 
             // Fire events
             FireButtonClickSoundAction();
