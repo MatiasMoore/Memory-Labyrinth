@@ -23,7 +23,7 @@ namespace MemoryLabyrinth.SaveLoad
             Debug.Log($"CURRENTLEVEL:{level} loaded");
         }
 
-        public static void Save(LevelData newLevelData)
+        public static void SaveUnfinishedlevel(LevelData newLevelData)
         {
             _currentLevel = newLevelData;
 
@@ -40,6 +40,24 @@ namespace MemoryLabyrinth.SaveLoad
 
         }
 
+        public static void SaveFinishedLevel(LevelData newLevelData)
+        {
+            if (BonusStorage.Instance == null)
+            {
+                Debug.Log("CURRENTLEVEL: BonusStorage = null");
+                return;
+            }
+
+            //TODO: save bonus amount
+
+            Debug.Log($"CURRENTLEVEL: saved collected bonuses {0}");
+
+            SaveUnfinishedlevel(newLevelData);
+
+            SaveLoadManager.Instance.SaveGame();
+
+        }
+
         public static LevelData GetCurrentLevelData()
         {
             return _currentLevel;
@@ -47,7 +65,8 @@ namespace MemoryLabyrinth.SaveLoad
 
        public static void SetupListeners(LevelModel levelModel)
        {
-            levelModel._onLevelWin += Save;
+            levelModel._onLevelWin += SaveFinishedLevel;
+            levelModel._onPlayerGetCheckpoint += SaveUnfinishedlevel;
        }
 
     }

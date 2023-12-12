@@ -20,6 +20,8 @@ namespace MemoryLabyrinth.Level.Logic
 
         public event UnityAction<LevelData> _onLevelWin;
 
+        public event UnityAction<LevelData> _onPlayerGetCheckpoint;
+
         public event UnityAction _onPlayerGetBonus;
 
         public event UnityAction<int> _onBonusAmountChange;
@@ -106,6 +108,8 @@ namespace MemoryLabyrinth.Level.Logic
 
             _collectedBonusesIDBeforeCheckpoint.AddRange(_collectedBonusesBuffer);
             _collectedBonusesBuffer.Clear();
+
+            _onPlayerGetCheckpoint?.Invoke(GetLevelData());
 
         }
 
