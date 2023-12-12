@@ -18,6 +18,10 @@ public class BonusesSaveLoaderTests
         LevelProgressStorage dummyLevelStorage = storage.AddComponent<LevelProgressStorage>();
         dummyLevelStorage.Init();
 
+        GameObject secondDummyStorage = new GameObject("Settings Storage");
+        SettingsStorage settingsStorage = secondDummyStorage.AddComponent<SettingsStorage>();
+        settingsStorage.Init();
+
         GameObject manager = new GameObject("SaveLoadManager");
         SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
         _saveLoadManager = saveLoadManager;
