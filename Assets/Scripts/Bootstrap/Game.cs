@@ -19,6 +19,8 @@ namespace MemoryLabyrinth.Bootstrap
         private LevelProgressStorage _levelProgressStorage;
         [SerializeField]
         private SaveLoadManager _saveLoadManager;
+        [SerializeField]
+        private SettingsStorage _settingsStorage;
 
         private void Start()
         {
@@ -49,6 +51,11 @@ namespace MemoryLabyrinth.Bootstrap
                 throw new System.Exception("No SaveLoadManager is found on startup");
             _saveLoadManager.Init();
             DontDestroyOnLoad(_saveLoadManager.gameObject);
+
+            if (_settingsStorage == null)
+                throw new System.Exception("No SettingsStorage is found on startup");
+            _settingsStorage.Init();
+            DontDestroyOnLoad(_settingsStorage.gameObject);
 
             SaveLoadManager.Instance.LoadGame();
 
