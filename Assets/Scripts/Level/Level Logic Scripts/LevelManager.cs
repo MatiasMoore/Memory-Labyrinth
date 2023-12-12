@@ -165,7 +165,6 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter.SetActive(false);
             Timer.Instance.SetTimerActive(false);
             Debug.Log("LevelManager: level win");
-            SaveCompleteLevel();
         }
 
         private void LoseLevel()
@@ -190,7 +189,7 @@ namespace MemoryLabyrinth.Level.Logic
             }
             _isPathShown = false;
         }
-
+        /*
         private void SaveCompleteLevel()
         {
             LevelData levelData = new LevelData
@@ -219,6 +218,7 @@ namespace MemoryLabyrinth.Level.Logic
 
             _saveLoadManager.SaveGame();
         }
+        
 
         public void SaveUncompleteLevel()
         {
@@ -237,6 +237,7 @@ namespace MemoryLabyrinth.Level.Logic
 
             Debug.Log("LevelManager: uncomplete level saved");
         }
+        */
 
         private IEnumerator PlayLevelIntro()
         {
