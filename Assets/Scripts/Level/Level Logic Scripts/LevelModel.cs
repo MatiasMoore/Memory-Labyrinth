@@ -1,6 +1,8 @@
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Player;
+using MemoryLabyrinth.SaveLoad;
+using MemoryLabyrinth.UI.HUD;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,9 +16,9 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private Checkpoint _currentCheckpoint;
 
-        public event UnityAction _onLevelLose;
+        public event UnityAction<LevelData> _onLevelLose;
 
-        public event UnityAction _onLevelWin;
+        public event UnityAction<LevelData> _onLevelWin;
 
         public event UnityAction _onPlayerGetBonus;
 
@@ -30,6 +32,8 @@ namespace MemoryLabyrinth.Level.Logic
         private List<int> _collectedBonusesIDBeforeCheckpoint = new List<int>();
 
         private List<int> _collectedBonusesBuffer = new List<int>();
+
+        private bool _isLevelFinish = false;
         
         public void Init(MainCharacter mainCharacter)
         {
@@ -39,6 +43,8 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter._onBonusEvent += onPlayerGetBonus;
             _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
             _mainCharacter._onFinishEvent += onPlayerWin;
+
+            _isLevelFinish = false;
         }
 
         public void SetActive(bool isActive)
@@ -46,16 +52,31 @@ namespace MemoryLabyrinth.Level.Logic
             _isActive = isActive;
         }
 
+        public LevelData GetLevelData()
+        {
+            LevelData levelData = new LevelData
+            {
+                _level = CurrentLevel.GetCurrentLevelData()._level,
+                _livesAmount = _mainCharacter.GetHealth(),
+                _checkpointId = _isLevelFinish ? 0 : _currentCheckpoint.GetQueue(),
+                _time = Timer.Instance.GetElapsedTime(),
+                _isCompleted = _isLevelFinish,
+                _collectedBonusesId = GetCollectedBonusesIDBeforeCheckpoint()
+            };
+            return levelData;
+        }
+
         public void onPlayerDeath()
         {
             Debug.Log("Player died");
-            _onLevelLose?.Invoke();
+            _onLevelLose?.Invoke(GetLevelData());
         }
 
         public void onPlayerWin()
         {
             Debug.Log("Player win");
-            _onLevelWin?.Invoke();
+            _isLevelFinish = true;
+            _onLevelWin?.Invoke(GetLevelData());
         }
 
         public void onPlayerDamage()

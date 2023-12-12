@@ -22,8 +22,8 @@ namespace MemoryLabyrinth.UI.HUD
             // LevelModel listeners
             if (_levelModel != null)
             {
-                _levelModel._onLevelWin += ShowWinPanelAction;
-                _levelModel._onLevelLose += ShowLosePanelAction;
+                _levelModel._onLevelWin += (levelData) => ShowWinPanelAction();
+                _levelModel._onLevelLose += (levelData) => ShowLosePanelAction();
                 _levelModel._onBonusAmountChange += UpdateGemsCountAction;
             }
 

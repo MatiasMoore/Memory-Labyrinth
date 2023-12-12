@@ -65,8 +65,8 @@ namespace MemoryLabyrinth.Level.Logic
             _saveLoadManager = GetComponent<SaveLoadManager>();
             _mainCharacter = _playerObj.GetComponent<MainCharacter>();
 
-            _levelModel._onLevelLose += LoseLevel;
-            _levelModel._onLevelWin += WinLevel;
+            _levelModel._onLevelLose += (levelData) => LoseLevel();
+            _levelModel._onLevelWin += (levelData) => WinLevel();
 
             // HUD Listeners
             _HUDController.SetupListeners();
