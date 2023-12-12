@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Achievemnts
 {
+    [Serializable]
     public class Achievement
     {
+        [SerializeField]
         public enum AchievmentName
         {
             collectAllBonusses,
@@ -11,10 +14,14 @@ namespace MemoryLabyrinth.Achievemnts
             finishLevelIn20Seconds,
         }
 
-        private readonly AchievmentName _name;
+        [SerializeField]
+        private AchievmentName _name;
 
+        [SerializeField]
         private int _currentValue;
-        private readonly int _targetValue;
+
+        [SerializeField]
+        private int _targetValue;
 
         public Achievement(AchievmentName name, int currentValue, int targetValue)
         {
