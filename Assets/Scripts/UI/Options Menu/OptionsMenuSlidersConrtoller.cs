@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.UI.OptionsLib
 {
-    public class OptionsMenuController : MonoBehaviour
+    public class OptionsMenuSlidersController : MonoBehaviour
     {
         [SerializeField]
         private OptionsMenuAcceptButton _acceptButton;
