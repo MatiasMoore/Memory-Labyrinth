@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 48.09895
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -492,6 +492,22 @@ PrefabInstance:
     - target: {fileID: 4199311666441895691, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418360706064474919, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418360706064474919, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418360706064474919, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4418360706064474919, guid: 59397a5840843a74186427538eaad3be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5104454827045118266, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: _levelModel
@@ -564,6 +580,7 @@ MonoBehaviour:
   _levelModel: {fileID: 64363578}
   _levelManager: {fileID: 537089243}
   _cameraScript: {fileID: 380258516}
+  _hudController: {fileID: 1063733378}
 --- !u!4 &1361016565
 Transform:
   m_ObjectHideFlags: 0

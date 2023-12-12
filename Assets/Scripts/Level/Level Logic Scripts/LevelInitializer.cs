@@ -31,6 +31,10 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private CameraScript _cameraScript;
 
+        [SerializeField]
+        private HUDController _hudController;
+
+
         void Start()
         {
             _touchControls.Init();
@@ -38,7 +42,7 @@ namespace MemoryLabyrinth.Level.Logic
             _timer.Init();
             _fogController.Init();
             _levelModel.Init(_mainCharacter);
-            _levelManager.Init();
+            _levelManager.Init(_mainCharacter.gameObject,_levelModel, _hudController);
             _cameraScript.Init();
 
             var audioController = FindObjectOfType<AudioController>();

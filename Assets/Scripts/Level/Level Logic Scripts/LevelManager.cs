@@ -16,13 +16,10 @@ namespace MemoryLabyrinth.Level.Logic
 {
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField]
         private GameObject _playerObj;
 
-        [SerializeField]
         private LevelModel _levelModel;
 
-        [SerializeField]
         private HUDController _HUDController;
 
         [SerializeField]
@@ -49,24 +46,21 @@ namespace MemoryLabyrinth.Level.Logic
 
         public static LevelManager Instance;
 
-        public LevelManager(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
-        {
-            _playerObj = playerObj;
-            _levelModel = levelModel;
-            _HUDController = HUDController;
-        }
-
         public void SetCurrentLevel(ResourceManager.Level level)
         {
             _currentLevelEnum = level;
         }
 
-        public void Init()
+        public void Init(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
         {
             if (Instance != null)
                 return;
 
             Instance = this;
+            
+            _playerObj = playerObj;
+            _levelModel = levelModel;
+            _HUDController = HUDController;
 
             _saveLoadManager = GetComponent<SaveLoadManager>();
             _mainCharacter = _playerObj.GetComponent<MainCharacter>();
