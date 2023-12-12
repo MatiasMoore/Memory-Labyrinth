@@ -27,8 +27,6 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         int _bonusMoneyAmount;
 
-        private bool _isActive;
-
         private List<int> _collectedBonusesIDBeforeCheckpoint = new List<int>();
 
         private List<int> _collectedBonusesBuffer = new List<int>();
@@ -45,11 +43,6 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter._onFinishEvent += OnPlayerWin;
 
             _isLevelFinish = false;
-        }
-
-        public void SetActive(bool isActive)
-        {
-            _isActive = isActive;
         }
 
         public LevelData GetLevelData()
