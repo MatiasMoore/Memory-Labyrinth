@@ -21,21 +21,29 @@ namespace MemoryLabyrinth.SaveLoad
         public int _livesAmount;
         public bool _isCompleted;
     }
+
+    [Serializable]
+    public struct Levels
+    {
+        public List<LevelData> _currentLevels;
+    }
     public class LevelsSaveLoader : ISaveLoader
     {
         public void LoadData()
         {
-            List<LevelData> data = Repository.GetData<List<LevelData>>();
-            LevelProgressStorage.Instance.SetLevelDataList(data);
+            Levels data = Repository.GetData<Levels>();
+            LevelProgressStorage.Instance.SetLevelDataList(data._currentLevels);
         }
 
         public void SaveData()
         {
-            List<LevelData> levels = LevelProgressStorage.Instance.GetLevelDataList();
+            List<LevelData> levelsList = LevelProgressStorage.Instance.GetLevelDataList();
 
-            var data = new List<LevelData>(levels);
+            var data = new List<LevelData>(levelsList);
+            Levels levels = new Levels();
+            levels._currentLevels = data;
 
-            Repository.SetData(data);
+            Repository.SetData(levels);
         }
     }
 }
