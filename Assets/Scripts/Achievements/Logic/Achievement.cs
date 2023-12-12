@@ -1,8 +1,23 @@
 using System;
 using UnityEngine;
+using static MemoryLabyrinth.Achievements.Achievement;
 
-namespace MemoryLabyrinth.Achievemnts
+namespace MemoryLabyrinth.Achievements
 {
+    [Serializable]
+    public struct AchievementStruct
+    {
+        [SerializeField]
+        public AchievmentName name;
+
+        [SerializeField]
+        public int currentValue;
+
+        [SerializeField]
+        public int targetValue;
+    }
+
+
     [Serializable]
     public class Achievement
     {
@@ -28,6 +43,25 @@ namespace MemoryLabyrinth.Achievemnts
             _name = name;
             _currentValue = currentValue;
             _targetValue = targetValue;
+        }
+
+        public Achievement(Achievement achievement) 
+        {
+            _name = achievement._name;
+            _currentValue = achievement._currentValue;
+            _targetValue = achievement._targetValue;
+        }
+
+        public Achievement(AchievementStruct achievementStruct)
+        {
+            _name = achievementStruct.name;
+            _currentValue = achievementStruct.currentValue;
+            _targetValue = achievementStruct.targetValue;
+        }
+
+        public AchievementStruct ToStruct()
+        {
+            return new AchievementStruct { name = _name, currentValue=_currentValue, targetValue=_targetValue };
         }
 
         public AchievmentName GetName()

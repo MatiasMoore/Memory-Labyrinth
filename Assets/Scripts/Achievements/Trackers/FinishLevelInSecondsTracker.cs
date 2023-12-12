@@ -1,25 +1,31 @@
 using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.UI.HUD;
 
-namespace MemoryLabyrinth.Achievemnts
+namespace MemoryLabyrinth.Achievements
 {
     public class FinishLevelInSecondsTracker : AchievementTracker
     {
-        private Timer _timer;
+        private LevelModel _levelModel;
 
-        public FinishLevelInSecondsTracker(Achievement achievement, LevelModel levelModel, Timer timer) : base(achievement)
+        public FinishLevelInSecondsTracker(Achievement achievement, LevelModel levelModel) : base(achievement)
         {
             if (achievement.IsComplete())
                 return;
 
-            _timer = timer;
-            levelModel._onLevelWin += (LevelData) => LevelFinished();
+            _levelModel = levelModel;
+            levelModel._onLevelWin += LevelFinished;
         }
 
-        private void LevelFinished()
+        private void LevelFinished(LevelData levelData)
         {
-            if (_timer.GetElapsedTime() <= _achievement.GetTargetValue())
+            if (levelData._time <= _achievement.GetTargetValue())
+            {
                 _achievement.SetComplete();
+                AchievementsStorage.Instance.UpdateAchievementStruct(_achievement.ToStruct());
+                SaveLoadManager.Instance.SaveGame();
+                _levelModel._onLevelWin -= LevelFinished;
+            }
         }
     }
 }

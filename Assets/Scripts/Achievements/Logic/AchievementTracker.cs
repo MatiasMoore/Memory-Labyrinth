@@ -1,4 +1,4 @@
-namespace MemoryLabyrinth.Achievemnts
+namespace MemoryLabyrinth.Achievements
 {
     public abstract class AchievementTracker
     {

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MemoryLabyrinth.Achievemnts;
+using MemoryLabyrinth.Achievements;
 
 namespace MemoryLabyrinth.SaveLoad
 {
@@ -13,35 +13,39 @@ namespace MemoryLabyrinth.SaveLoad
         public static AchievementsStorage Instance;
 
         [SerializeField]
-        private Achievments _achievements = new Achievments();
+        private Achievements _achievements = new Achievements();
 
         public void Init()
         {
             if (Instance != null)
                 return;
-            _achievements._achievementsList = new List<Achievement>();
+            _achievements._achievementsList = new List<AchievementStruct>();
             Instance = this;
         }
 
-        public void SetupAchievementsList(List<Achievement> achievements)
+        public void SetupAchievementStructList(List<AchievementStruct> achievements)
         {
             if (achievements != null)
             {
-                foreach (Achievement achievement in achievements)
+                foreach (AchievementStruct achievement in achievements)
                 {
-                    AchievementsStorage.Instance.UpdateAchievement(achievement);
+                    UpdateAchievementStruct(achievement);
                 }
             }
             else
             {
-                _achievements._achievementsList = _defaultAchievements.GetAllAchievements();
+                List<AchievementStruct> defaultStructs = new List<AchievementStruct>();
+                foreach (Achievement achievement in _defaultAchievements.GetAllAchievements())
+                {
+                    defaultStructs.Add(achievement.ToStruct());
+                }
+                _achievements._achievementsList = defaultStructs;
             }
         }
 
-        public void UpdateAchievement(Achievement achievement)
+        public void UpdateAchievementStruct(AchievementStruct achievement)
         {
-
-            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.GetName() == achievement.GetName());
+            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.name == achievement.name);
 
             if (achievementIndex != -1)
             {
@@ -53,22 +57,22 @@ namespace MemoryLabyrinth.SaveLoad
             }
         }
 
-        public void AddAchievement(Achievement achievement)
+        public void AddAchievementStruct(AchievementStruct achievement)
         {
-            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.GetName() == achievement.GetName());
+            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.name == achievement.name);
             if (achievementIndex != -1) _achievements._achievementsList[achievementIndex] = achievement;
             else _achievements._achievementsList.Add(achievement);
 
         }
 
-        public List<Achievement> GetAchievementsList()
+        public List<AchievementStruct> GetAchievementStructList()
         {
-            return this._achievements._achievementsList;
+            return new List<AchievementStruct>(_achievements._achievementsList);
         }
 
-        public Achievement GetAchievement(Achievement.AchievmentName achievmentName)
+        public AchievementStruct GetAchievementStruct(Achievement.AchievmentName achievmentName)
         {
-            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.GetName() == achievmentName);
+            int achievementIndex = _achievements._achievementsList.FindIndex(item => item.name == achievmentName);
             if (achievementIndex != -1) return _achievements._achievementsList[achievementIndex];
             else
             {
@@ -76,7 +80,7 @@ namespace MemoryLabyrinth.SaveLoad
                 Debug.LogWarning($"AchievementsStorage: achievement {achievmentName} not found");
                 if (achievement == null) throw new System.Exception($"AchievementsStorage: no default value for achievement {achievmentName}");
 
-                return achievement;
+                return achievement.ToStruct();
             }
         }
     }

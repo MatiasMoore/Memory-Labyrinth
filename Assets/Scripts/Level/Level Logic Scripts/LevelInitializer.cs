@@ -1,4 +1,4 @@
-using MemoryLabyrinth.Achievemnts;
+using MemoryLabyrinth.Achievements;
 using MemoryLabyrinth.Audio;
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
@@ -59,16 +59,16 @@ namespace MemoryLabyrinth.Level.Logic
 
         private void SetupAchievementTrackers()
         {
-            Achievement a = new Achievement(Achievement.AchievmentName.collectAllBonusses, 0, 1);
-            AchievementTracker tracker = new CollectAllBonussesTracker(a, _levelModel, _levelManager);
+            Achievement achievement = new Achievement(AchievementsStorage.Instance.GetAchievementStruct(Achievement.AchievmentName.collectAllBonusses));
+            AchievementTracker tracker = new CollectAllBonussesTracker(achievement, _levelModel, _levelManager);
             _achievementTrackers.Add(tracker);
 
-            a = new Achievement(Achievement.AchievmentName.finishLevelIn10Seconds, 0, 10);
-            tracker = new FinishLevelInSecondsTracker(a, _levelModel, _timer);
+            achievement = new Achievement(AchievementsStorage.Instance.GetAchievementStruct(Achievement.AchievmentName.finishLevelIn10Seconds));
+            tracker = new FinishLevelInSecondsTracker(achievement, _levelModel);
             _achievementTrackers.Add(tracker);
 
-            a = new Achievement(Achievement.AchievmentName.finishLevelIn20Seconds, 0, 20);
-            tracker = new FinishLevelInSecondsTracker(a, _levelModel, _timer);
+            achievement = new Achievement(AchievementsStorage.Instance.GetAchievementStruct(Achievement.AchievmentName.finishLevelIn20Seconds));
+            tracker = new FinishLevelInSecondsTracker(achievement, _levelModel);
             _achievementTrackers.Add(tracker);
         }
     }

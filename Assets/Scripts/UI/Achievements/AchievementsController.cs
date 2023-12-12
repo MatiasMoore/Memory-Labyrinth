@@ -1,4 +1,4 @@
-using MemoryLabyrinth.Achievemnts;
+using MemoryLabyrinth.Achievements;
 using MemoryLabyrinth.SaveLoad;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +21,12 @@ namespace MemoryLabyrinth.UI.Achievements
 
         private List<Achievement> GetAchievementsData()
         {
-            return AchievementsStorage.Instance.GetAchievementsList();
+            List<Achievement> result = new List<Achievement>();
+            foreach (AchievementStruct achievementStruct in AchievementsStorage.Instance.GetAchievementStructList())
+            {
+                result.Add(new Achievement(achievementStruct));
+            }
+            return result;
         }
 
         private void SetAchievementData(GameObject achievementObject, Achievement achievement)

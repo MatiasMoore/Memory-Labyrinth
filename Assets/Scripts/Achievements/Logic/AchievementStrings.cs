@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static MemoryLabyrinth.Achievemnts.Achievement;
+using static MemoryLabyrinth.Achievements.Achievement;
 
-namespace MemoryLabyrinth.Achievemnts
+namespace MemoryLabyrinth.Achievements
 {
     [CreateAssetMenu]
     public class AchievementStrings : ScriptableObject

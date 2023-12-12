@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static MemoryLabyrinth.Achievemnts.Achievement;
+using static MemoryLabyrinth.Achievements.Achievement;
 
-namespace MemoryLabyrinth.Achievemnts
+namespace MemoryLabyrinth.Achievements
 {
     [CreateAssetMenu]
     public class AchievementList : ScriptableObject
@@ -16,7 +16,7 @@ namespace MemoryLabyrinth.Achievemnts
             foreach (Achievement achievement in _list)
             {
                 if (achievement.GetName().Equals(name))
-                    return achievement;
+                    return new Achievement(achievement);
             }
 
             return null;
@@ -24,7 +24,12 @@ namespace MemoryLabyrinth.Achievemnts
 
         public List<Achievement> GetAllAchievements() 
         {
-            return this._list;
+            List<Achievement> newList = new List<Achievement>();
+            foreach (Achievement achievement in _list)
+            {
+                newList.Add(new Achievement(achievement));
+            }
+            return newList;
         }
     }
 }
