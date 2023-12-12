@@ -21,6 +21,8 @@ namespace MemoryLabyrinth.Bootstrap
         private SaveLoadManager _saveLoadManager;
         [SerializeField]
         private SettingsStorage _settingsStorage;
+        [SerializeField]
+        private MixerControl _mixerControl;
 
         private void Start()
         {
@@ -58,6 +60,9 @@ namespace MemoryLabyrinth.Bootstrap
             DontDestroyOnLoad(_settingsStorage.gameObject);
 
             SaveLoadManager.Instance.LoadGame();
+
+            _mixerControl.SetMusicVolume(SettingsStorage.Instance.GetSettingsData(AudioSetting.Music)._volume);
+            _mixerControl.SetSfxVolume(SettingsStorage.Instance.GetSettingsData(AudioSetting.SFX)._volume);
 
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
         }

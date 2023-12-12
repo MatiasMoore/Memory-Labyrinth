@@ -58,5 +58,11 @@ namespace MemoryLabyrinth.SaveLoad
             return _settingsData;
         }
 
+        public SettingsData GetSettingsData(AudioSetting audioSetting) 
+        {
+            int settingIndex = _settingsData.FindIndex(item => item._audioSetting == audioSetting);
+            if (settingIndex != -1) return _settingsData[settingIndex];
+            else return new SettingsData { _audioSetting = audioSetting, _volume = DEFAULT_VALUE };
+        }
     }
 }
