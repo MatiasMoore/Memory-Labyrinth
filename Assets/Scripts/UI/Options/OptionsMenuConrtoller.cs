@@ -29,6 +29,8 @@ namespace MemoryLabyrinth.UI.OptionsLib
 
             SettingsData musicSetting = new SettingsData { _audioSetting = AudioSetting.Music, _volume = _musicSlider.GetSliderValue() };
             SettingsStorage.Instance.SetupSetting(musicSetting);
+
+            SaveLoadManager.Instance.SaveGame();
         }
     }
 }
