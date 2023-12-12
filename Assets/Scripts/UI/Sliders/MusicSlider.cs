@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 namespace MemoryLabyrinth.UI.SliderLib
 {
-    public class SFXSlider: MonoBehaviour
+    public class MusicSlider : MonoBehaviour
     {
         [SerializeField]
         private Slider slider;
 
         private void OnEnable()
         {
-            float volume = SettingsStorage.Instance.GetSettingsData(AudioSetting.SFX)._volume;
+            float volume = SettingsStorage.Instance.GetSettingsData(AudioSetting.Music)._volume;
             SetSliderValue(volume);
         }
 
-        private void SetSliderValue(float volume)
+        public void SetSliderValue(float volume)
         {
             slider.value = volume;
         }
