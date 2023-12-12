@@ -1,10 +1,9 @@
 using MemoryLabyrinth.SaveLoad;
-using MemoryLabyrinth.UI.SliderLib;
 using UnityEngine;
 
-namespace MemoryLabyrinth.UI.OptionsLib
+namespace MemoryLabyrinth.UI.SlidersLib
 {
-    public class PausePanelSlidersController : MonoBehaviour
+    public class PausePanelSlidersController : SlidersController
     {
         [SerializeField]
         private SFXSlider _sfxSlider;
@@ -16,7 +15,7 @@ namespace MemoryLabyrinth.UI.OptionsLib
             SaveAudioSettings();
         }
 
-        private void SaveAudioSettings()
+        public override void SaveAudioSettings()
         {
             SettingsData sfxSetting = new SettingsData { _audioSetting = AudioSetting.SFX, _volume = _sfxSlider.GetSliderValue() };
             SettingsStorage.Instance.SetupSetting(sfxSetting);

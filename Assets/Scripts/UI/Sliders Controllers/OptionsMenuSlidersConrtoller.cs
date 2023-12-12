@@ -1,16 +1,13 @@
 using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.UI.Button;
-using MemoryLabyrinth.UI.SliderLib;
 using UnityEngine;
 
-namespace MemoryLabyrinth.UI.OptionsLib
+namespace MemoryLabyrinth.UI.SlidersLib
 {
-    public class OptionsMenuSlidersController : MonoBehaviour
+    public class OptionsMenuSlidersController : SlidersController
     {
         [SerializeField]
         private OptionsMenuAcceptButton _acceptButton;
-        [SerializeField]
-        private OptionsMenuCancelButton _cancelButton;
         
         [SerializeField]
         private SFXSlider _sfxSlider;
@@ -22,7 +19,7 @@ namespace MemoryLabyrinth.UI.OptionsLib
             _acceptButton._buttonClick += SaveAudioSettings;
         }
 
-        private void SaveAudioSettings()
+        public override void SaveAudioSettings()
         {
             SettingsData sfxSetting = new SettingsData { _audioSetting = AudioSetting.SFX, _volume = _sfxSlider.GetSliderValue() };
             SettingsStorage.Instance.SetupSetting(sfxSetting);
