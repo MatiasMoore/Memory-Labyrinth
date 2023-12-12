@@ -62,7 +62,7 @@ namespace MemoryLabyrinth.Player
             _pathCreator.Init();
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             _objectMovement.Update(Time.fixedDeltaTime);
             _currentState = _objectMovement.GetState();
