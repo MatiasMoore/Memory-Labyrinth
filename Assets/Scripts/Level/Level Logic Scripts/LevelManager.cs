@@ -97,24 +97,29 @@ namespace MemoryLabyrinth.Level.Logic
                 _mainCharacter.SetHealth(levelData._livesAmount);
                 Timer.Instance.SetElapsedTime(levelData._time);
                 ActivateCheckPointWithQueue(levelData._checkpointId);
-                _levelModel.SetCollectedBonusesIDBeforeCheckPoint(levelData._collectedBonusesId);
+                _levelModel.SetCollectedBonusesIDBeforeCheckPoint(levelData._collectedBonuses);
 
                 //Remove collected bonuses from map
                 int currentMoney = 0;
+                List<int> bonusesIdToRemove = new List<int>();
+                foreach (BonusInfo bonusInfo in levelData._collectedBonuses) 
+                {
+                    currentMoney += bonusInfo._value;
+                    bonusesIdToRemove.Add(bonusInfo._id);
+                }
+                
                 Bonus[] bonuses = FindObjectsOfType<Bonus>();
                 foreach (Bonus bonusOnMap in bonuses)
                 {
-                    if (levelData._collectedBonusesId.Contains(bonusOnMap.GetID()))
-                    {
-                        currentMoney += bonusOnMap.GetValue();
+                    if (bonusesIdToRemove.Contains(bonusOnMap.GetID()))
                         bonusOnMap.DestroySelf();
-                    }
                 }
+
                 _levelModel.SetBonusAmount(currentMoney);
             }
 
             //Reset collected bonuses
-            _levelModel.SetCollectedBonusesIDBuffer(new List<int>());
+            _levelModel.SetCollectedBonusesIDBuffer(new List<BonusInfo>());
 
             //Put the player on the checkpoint
             _playerObj.transform.position = _levelModel.GetCurrentCheckPoint().transform.position + new Vector3(0, 0, -1);

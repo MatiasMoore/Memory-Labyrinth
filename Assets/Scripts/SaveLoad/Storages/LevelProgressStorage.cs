@@ -30,7 +30,7 @@ namespace MemoryLabyrinth.SaveLoad
 
                 _newLevelData._checkpointId = newLevelData._checkpointId;
                 _newLevelData._time = newLevelData._time;
-                _newLevelData._collectedBonusesId = newLevelData._collectedBonusesId;
+                _newLevelData._collectedBonuses = newLevelData._collectedBonuses;
                 _newLevelData._livesAmount = newLevelData._livesAmount;
                 _newLevelData._isCompleted = newLevelData._isCompleted;
 
@@ -53,7 +53,7 @@ namespace MemoryLabyrinth.SaveLoad
                 {
                     _level = level,
                     _checkpointId = currentLevels[levelIndex]._checkpointId,
-                    _collectedBonusesId = currentLevels[levelIndex]._collectedBonusesId,
+                    _collectedBonuses = currentLevels[levelIndex]._collectedBonuses,
                     _isCompleted = currentLevels[levelIndex]._isCompleted,
                     _livesAmount = currentLevels[levelIndex]._livesAmount,
                     _time = currentLevels[levelIndex]._time
@@ -79,7 +79,7 @@ namespace MemoryLabyrinth.SaveLoad
                 _newLevelData._level = newLevelData._level;
                 _newLevelData._checkpointId = newLevelData._checkpointId;
                 _newLevelData._time = newLevelData._time;
-                _newLevelData._collectedBonusesId = newLevelData._collectedBonusesId;
+                _newLevelData._collectedBonuses = newLevelData._collectedBonuses;
                 _newLevelData._livesAmount = newLevelData._livesAmount;
                 _newLevelData._isCompleted = newLevelData._isCompleted;
 

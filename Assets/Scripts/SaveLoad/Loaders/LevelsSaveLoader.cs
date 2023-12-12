@@ -4,13 +4,20 @@ using System.Collections.Generic;
 
 namespace MemoryLabyrinth.SaveLoad
 {
+
+    [Serializable]
+    public struct BonusInfo 
+    {
+        public int _id;
+        public int _value;
+    }
     [Serializable]
     public struct LevelData
     {
         public ResourceManager.Level _level;
         public int _checkpointId;
         public float _time;
-        public List<int> _collectedBonusesId;
+        public List<BonusInfo> _collectedBonuses;
         public int _livesAmount;
         public bool _isCompleted;
     }

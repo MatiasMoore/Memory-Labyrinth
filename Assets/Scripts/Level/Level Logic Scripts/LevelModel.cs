@@ -29,9 +29,9 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         int _bonusMoneyAmount;
 
-        private List<int> _collectedBonusesIDBeforeCheckpoint = new List<int>();
+        private List<BonusInfo> _collectedBonusesIDBeforeCheckpoint = new List<BonusInfo>();
 
-        private List<int> _collectedBonusesBuffer = new List<int>();
+        private List<BonusInfo> _collectedBonusesBuffer = new List<BonusInfo>();
 
         private bool _isLevelFinish = false;
         
@@ -56,7 +56,7 @@ namespace MemoryLabyrinth.Level.Logic
                 _checkpointId = _isLevelFinish ? 0 : _currentCheckpoint.GetQueue(),
                 _time = Timer.Instance.GetElapsedTime(),
                 _isCompleted = _isLevelFinish,
-                _collectedBonusesId = GetCollectedBonusesIDBeforeCheckpoint()
+                _collectedBonuses = GetCollectedBonusesIDBeforeCheckpoint()
             };
             return levelData;
         }
@@ -89,7 +89,8 @@ namespace MemoryLabyrinth.Level.Logic
         public void OnPlayerGetBonus(Bonus bonus)
         {
             SetBonusAmount(_bonusMoneyAmount + bonus.GetValue());
-            _collectedBonusesBuffer.Add(bonus.GetID());
+            BonusInfo bonusInfo = new BonusInfo{_id = bonus.GetID(), _value = bonus.GetValue() };
+            _collectedBonusesBuffer.Add(bonusInfo);
             _onPlayerGetBonus?.Invoke();
             Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
         }
@@ -134,18 +135,18 @@ namespace MemoryLabyrinth.Level.Logic
             _currentCheckpoint = checkpoint;
         }
 
-        public void SetCollectedBonusesIDBeforeCheckPoint(List<int> collectedBonusesID)
+        public void SetCollectedBonusesIDBeforeCheckPoint(List<BonusInfo> collectedBonusesID)
         {
-            _collectedBonusesIDBeforeCheckpoint = new List<int>(collectedBonusesID);
+            _collectedBonusesIDBeforeCheckpoint = new List<BonusInfo>(collectedBonusesID);
 
         }
 
-        public void SetCollectedBonusesIDBuffer(List<int> collectedBonusesID)
+        public void SetCollectedBonusesIDBuffer(List<BonusInfo> collectedBonusesID)
         {
-            _collectedBonusesBuffer = new List<int>(collectedBonusesID);
+            _collectedBonusesBuffer = new List<BonusInfo>(collectedBonusesID);
         }
 
-        public List<int> GetCollectedBonusesIDBeforeCheckpoint()
+        public List<BonusInfo> GetCollectedBonusesIDBeforeCheckpoint()
         {
             return _collectedBonusesIDBeforeCheckpoint;
         }
