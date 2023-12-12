@@ -48,9 +48,15 @@ namespace MemoryLabyrinth.SaveLoad
                 return;
             }
 
-            //TODO: save bonus amount
+            int bonusSum = 0;
+            foreach(BonusInfo bonusInfo in newLevelData._collectedBonuses)
+            {
+                bonusSum += bonusInfo._value;
+            }
 
-            Debug.Log($"CURRENTLEVEL: saved collected bonuses {0}");
+            BonusStorage.Instance.EarnBonuses(bonusSum);
+
+            Debug.Log($"CURRENTLEVEL: saved collected bonuses {bonusSum}");
 
             SaveUnfinishedlevel(newLevelData);
 

@@ -132,7 +132,7 @@ public class LevelModelTests
 
         Checkpoint _checkpoint = PlayerGetCheckpoint(1, new Vector3(0, 0, 0)); 
 
-        List<BonusInfo> actualBonuses = _levelModel.GetCollectedBonusesIDBeforeCheckpoint();
+        List<BonusInfo> actualBonuses = _levelModel.GetCollectedBonuses();
 
         foreach (BonusInfo bonusInfo in expectedBonuses)
         {
