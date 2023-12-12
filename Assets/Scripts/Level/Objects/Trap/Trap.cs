@@ -8,6 +8,16 @@ namespace MemoryLabyrinth.Level.Objects.Trap
         [SerializeField]
         private int _damage = 1;
 
+        public Trap(int damage)
+        {
+            _damage = damage;
+        }
+
+        public Trap()
+        {
+            //TODO: get damage from config
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

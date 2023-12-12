@@ -11,6 +11,11 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 
         private bool _isReached = false;
 
+        public Checkpoint(int queue)
+        {
+            _queue = queue;
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.Level.Logic;
 
 namespace MemoryLabyrinth.SaveLoad
 {
@@ -43,6 +44,11 @@ namespace MemoryLabyrinth.SaveLoad
         {
             return _currentLevel;
         }
+
+       public static void SetupListeners(LevelModel levelModel)
+       {
+            levelModel._onLevelWin += Save;
+       }
 
     }
 }

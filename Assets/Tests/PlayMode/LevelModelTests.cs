@@ -56,7 +56,7 @@ public class LevelModelTests
     public void onPlayerDeath_ShouldInvokeLevelLoseEvent()
     {
         bool eventInvoked = false;
-        _levelModel._onLevelLose += () => eventInvoked = true;
+        _levelModel._onLevelLose += (levelData) => eventInvoked = true;
 
         _mainCharacter.SetMaxHealth(100);
         _mainCharacter.SetHealth(100);
@@ -69,7 +69,7 @@ public class LevelModelTests
     public void onPlayerWin_ShouldInvokeLevelWinEvent()
     {
         bool eventInvoked = false;
-        _levelModel._onLevelWin += () => eventInvoked = true;
+        _levelModel._onLevelWin += (levelData) => eventInvoked = true;
 
         _mainCharacter.Finish();
 

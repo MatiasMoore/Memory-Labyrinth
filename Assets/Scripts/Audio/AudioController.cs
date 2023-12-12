@@ -35,8 +35,8 @@ namespace MemoryLabyrinth.Audio
 
             if (levelModel != null)
             {
-                levelModel._onLevelWin += PlayLevelFinishedSound;
-                levelModel._onLevelLose += PlayLevelFailedSound;
+                levelModel._onLevelWin += (levelData) => PlayLevelFinishedSound();
+                levelModel._onLevelLose += (levelData) => PlayLevelFailedSound();
             }
         }
 

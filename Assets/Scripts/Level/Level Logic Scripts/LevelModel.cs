@@ -1,6 +1,8 @@
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Player;
+using MemoryLabyrinth.SaveLoad;
+using MemoryLabyrinth.UI.HUD;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,9 +16,9 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private Checkpoint _currentCheckpoint;
 
-        public event UnityAction _onLevelLose;
+        public event UnityAction<LevelData> _onLevelLose;
 
-        public event UnityAction _onLevelWin;
+        public event UnityAction<LevelData> _onLevelWin;
 
         public event UnityAction _onPlayerGetBonus;
 
@@ -31,14 +33,18 @@ namespace MemoryLabyrinth.Level.Logic
 
         private List<int> _collectedBonusesBuffer = new List<int>();
 
+        private bool _isLevelFinish = false;
+        
         public void Init(MainCharacter mainCharacter)
         {
             _mainCharacter = mainCharacter;
-            _mainCharacter._onDamageEvent += onPlayerDamage;
-            _mainCharacter._onDeathEvent += onPlayerDeath;
-            _mainCharacter._onBonusEvent += onPlayerGetBonus;
-            _mainCharacter._onCheckpointEvent += onPlayerGetCheckpoint;
-            _mainCharacter._onFinishEvent += onPlayerWin;
+            _mainCharacter._onDamageEvent += OnPlayerDamage;
+            _mainCharacter._onDeathEvent += OnPlayerDeath;
+            _mainCharacter._onBonusEvent += OnPlayerGetBonus;
+            _mainCharacter._onCheckpointEvent += OnPlayerGetCheckpoint;
+            _mainCharacter._onFinishEvent += OnPlayerWin;
+
+            _isLevelFinish = false;
         }
 
         public void SetActive(bool isActive)
@@ -46,19 +52,34 @@ namespace MemoryLabyrinth.Level.Logic
             _isActive = isActive;
         }
 
-        public void onPlayerDeath()
+        public LevelData GetLevelData()
+        {
+            LevelData levelData = new LevelData
+            {
+                _level = CurrentLevel.GetCurrentLevelData()._level,
+                _livesAmount = _mainCharacter.GetHealth(),
+                _checkpointId = _isLevelFinish ? 0 : _currentCheckpoint.GetQueue(),
+                _time = Timer.Instance.GetElapsedTime(),
+                _isCompleted = _isLevelFinish,
+                _collectedBonusesId = GetCollectedBonusesIDBeforeCheckpoint()
+            };
+            return levelData;
+        }
+
+        public void OnPlayerDeath()
         {
             Debug.Log("Player died");
-            _onLevelLose?.Invoke();
+            _onLevelLose?.Invoke(GetLevelData());
         }
 
-        public void onPlayerWin()
+        public void OnPlayerWin()
         {
             Debug.Log("Player win");
-            _onLevelWin?.Invoke();
+            _isLevelFinish = true;
+            _onLevelWin?.Invoke(GetLevelData());
         }
 
-        public void onPlayerDamage()
+        public void OnPlayerDamage()
         {
             Debug.Log($"Player damaged");
             if (_currentCheckpoint == null)
@@ -70,7 +91,7 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter.SetPosition2d(_currentCheckpoint.transform.position);
         }
 
-        public void onPlayerGetBonus(Bonus bonus)
+        public void OnPlayerGetBonus(Bonus bonus)
         {
             SetBonusAmount(_bonusMoneyAmount + bonus.GetValue());
             _collectedBonusesBuffer.Add(bonus.GetID());
@@ -78,7 +99,7 @@ namespace MemoryLabyrinth.Level.Logic
             Debug.Log($"Player get bonus, now he has {_bonusMoneyAmount} money");
         }
 
-        public void onPlayerGetCheckpoint(Checkpoint checkpoint)
+        public void OnPlayerGetCheckpoint(Checkpoint checkpoint)
         {
             Debug.Log($"Player get checkpoint {checkpoint}");
             if (_currentCheckpoint == null)

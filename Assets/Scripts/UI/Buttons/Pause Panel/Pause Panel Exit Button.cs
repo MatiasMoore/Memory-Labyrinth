@@ -1,5 +1,6 @@
 using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Resources;
+using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ namespace MemoryLabyrinth.UI.Button
         {
             // Main logic
             Time.timeScale = 1f;
-            LevelManager.Instance.SaveUncompleteLevel();
+            // LevelManager.Instance.SaveUncompleteLevel();
             ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
 
             // Fire events
