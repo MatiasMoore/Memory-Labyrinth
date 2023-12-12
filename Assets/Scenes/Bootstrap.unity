@@ -347,6 +347,7 @@ MonoBehaviour:
   _saveLoadManager: {fileID: 1610983810}
   _settingsStorage: {fileID: 858154162}
   _mixerControl: {fileID: 423832223}
+  _achievementsStorage: {fileID: 1706998325}
 --- !u!1 &858154160
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d809fb640b0a7554bbfea7a1a4a44331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settingsData: []
+  _settings:
+    _settingsData: []
 --- !u!1 &1012515366
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19c9705dcdd9bf42b599ce325746ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levels:
+    _currentLevels: []
 --- !u!1 &1610983809
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,8 +530,54 @@ Transform:
   - {fileID: 1012515367}
   - {fileID: 1179560456}
   - {fileID: 858154161}
+  - {fileID: 1706998324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1706998323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706998324}
+  - component: {fileID: 1706998325}
+  m_Layer: 0
+  m_Name: Achievements Storage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706998324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706998323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1610983811}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706998325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706998323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17c6d896a0f1a44f89a281649773159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultAchievements: {fileID: 11400000, guid: 56343fd03e2d0604eadcef029d5f6662, type: 2}
 --- !u!1001 &1971317665
 PrefabInstance:
   m_ObjectHideFlags: 0

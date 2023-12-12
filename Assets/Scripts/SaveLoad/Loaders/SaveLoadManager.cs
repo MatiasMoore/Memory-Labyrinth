@@ -14,7 +14,8 @@ namespace MemoryLabyrinth.SaveLoad
         private readonly ISaveLoader[] saveLoaders = {
         new BonusesSaveLoader(),
         new LevelsSaveLoader(),
-        new SettingsSaveLoader() 
+        new SettingsSaveLoader(),
+        new AchievementsSaveLoader()
     };
 
         public static SaveLoadManager Instance;

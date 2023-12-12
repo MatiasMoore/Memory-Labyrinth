@@ -12,6 +12,7 @@ namespace MemoryLabyrinth.SaveLoad
 
         public static AchievementsStorage Instance;
 
+        [SerializeField]
         private Achievments _achievements = new Achievments();
 
         public void Init()
@@ -71,8 +72,11 @@ namespace MemoryLabyrinth.SaveLoad
             if (achievementIndex != -1) return _achievements._achievementsList[achievementIndex];
             else
             {
+                Achievement achievement = _defaultAchievements.GetAchievementByEnum(achievmentName);
                 Debug.LogWarning($"AchievementsStorage: achievement {achievmentName} not found");
-                return _defaultAchievements.GetAchievementByEnum(achievmentName);
+                if (achievement == null) throw new System.Exception($"AchievementsStorage: no default value for achievement {achievmentName}");
+
+                return achievement;
             }
         }
     }

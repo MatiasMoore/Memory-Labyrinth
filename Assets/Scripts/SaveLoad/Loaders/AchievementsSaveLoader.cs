@@ -1,11 +1,11 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using MemoryLabyrinth.Achievemnts;
 
 
 namespace MemoryLabyrinth.SaveLoad
 {
+    [Serializable]
     public struct Achievments 
     { 
         public List<Achievement> _achievementsList;

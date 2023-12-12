@@ -23,6 +23,8 @@ namespace MemoryLabyrinth.Bootstrap
         private SettingsStorage _settingsStorage;
         [SerializeField]
         private MixerControl _mixerControl;
+        [SerializeField]
+        private AchievementsStorage _achievementsStorage;
 
         private void Start()
         {
@@ -58,6 +60,11 @@ namespace MemoryLabyrinth.Bootstrap
                 throw new System.Exception("No SettingsStorage is found on startup");
             _settingsStorage.Init();
             DontDestroyOnLoad(_settingsStorage.gameObject);
+
+            if (_achievementsStorage == null)
+                throw new System.Exception("No AchievementsStorage is found on startup");
+            _achievementsStorage.Init();
+            DontDestroyOnLoad(_achievementsStorage.gameObject);
 
             SaveLoadManager.Instance.LoadGame();
 
