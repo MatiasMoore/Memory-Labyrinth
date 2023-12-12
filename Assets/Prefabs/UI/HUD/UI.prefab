@@ -1325,9 +1325,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3340967450856082686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 48.09895, y: -48.09895}
   m_SizeDelta: {x: 0, y: 96.1979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4990512900238890928
@@ -1571,7 +1571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 428.72665, y: -38.958706}
+  m_AnchoredPosition: {x: 450.5187, y: -38.958706}
   m_SizeDelta: {x: 496.95, y: 77.91741}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1117005398858444443
@@ -1996,6 +1996,7 @@ GameObject:
   - component: {fileID: 4215504644481235727}
   - component: {fileID: 7354818270440588229}
   - component: {fileID: 7226626076509795813}
+  - component: {fileID: 4898283477774835490}
   m_Layer: 5
   m_Name: Music Slider
   m_TagString: UI
@@ -2022,7 +2023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 428.72522, y: -107.17486}
+  m_AnchoredPosition: {x: 450.51727, y: -107.17486}
   m_SizeDelta: {x: 600, y: 56.726284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7354818270440588229
@@ -2108,6 +2109,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4898283477774835490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2891224595199239975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dad5d7eb2d81f41a418114d6598734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 7354818270440588229}
 --- !u!1 &2916037168929573778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 637.38025, y: -101.14805}
+  m_AnchoredPosition: {x: 659.1723, y: -101.14805}
   m_SizeDelta: {x: 215, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5654081678184431728
@@ -2710,6 +2724,7 @@ GameObject:
   - component: {fileID: 965221908711668999}
   - component: {fileID: 4154443153310398590}
   - component: {fileID: 5520860928430113682}
+  - component: {fileID: 263371306195051807}
   m_Layer: 0
   m_Name: Pause Panel
   m_TagString: UI
@@ -2801,6 +2816,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &263371306195051807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713609372054756425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53e8e16889ab654985bfed7a4ffdbf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxSlider: {fileID: 3317023705427407311}
+  _musicSlider: {fileID: 4898283477774835490}
 --- !u!1 &3725151193992915268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3652,7 +3681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035156, y: 134.77}
+  m_AnchoredPosition: {x: -3, y: -37}
   m_SizeDelta: {x: -162.40715, y: 134}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8866401525961130598
@@ -4327,7 +4356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 167.88025, y: -101.14805}
+  m_AnchoredPosition: {x: 189.6723, y: -101.14805}
   m_SizeDelta: {x: 214, y: 214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &655996922142702717
@@ -4520,7 +4549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 428.72522, y: -39.405857}
+  m_AnchoredPosition: {x: 450.51727, y: -39.405857}
   m_SizeDelta: {x: 656.01, y: 78.811714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5172032691096629048
@@ -5034,7 +5063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.8267212, y: -561}
+  m_AnchoredPosition: {x: 0, y: -415.03}
   m_SizeDelta: {x: -162.41, y: 135.538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4885376752193349964
@@ -6177,7 +6206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 402.38025, y: -101.14805}
+  m_AnchoredPosition: {x: 424.1723, y: -101.14805}
   m_SizeDelta: {x: 215, y: 215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5298020161124015000
@@ -6665,6 +6694,7 @@ GameObject:
   - component: {fileID: 4439711167754731778}
   - component: {fileID: 5207262639309767919}
   - component: {fileID: 2980870465507453661}
+  - component: {fileID: 3317023705427407311}
   m_Layer: 5
   m_Name: Sound Slider
   m_TagString: UI
@@ -6691,7 +6721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 428.72665, y: -105.95871}
+  m_AnchoredPosition: {x: 450.5187, y: -105.95871}
   m_SizeDelta: {x: 600, y: 56.08259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5207262639309767919
@@ -6777,6 +6807,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3317023705427407311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632707652571476939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26685870a488c94094923b6868f44f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 5207262639309767919}
 --- !u!1 &8721202207899449982
 GameObject:
   m_ObjectHideFlags: 0
