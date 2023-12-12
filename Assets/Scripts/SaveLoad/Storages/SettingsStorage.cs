@@ -9,7 +9,9 @@ namespace MemoryLabyrinth.SaveLoad
         public static SettingsStorage Instance;
 
         [SerializeField]
-        private List<SettingsData> _settingsData;
+        private Settings _settings = new Settings();
+
+
 
         public const float DEFAULT_VALUE = 0.5f;
 
@@ -17,22 +19,22 @@ namespace MemoryLabyrinth.SaveLoad
         {
             if (Instance != null)
                 return;
-          
+            _settings._settingsData = new List<SettingsData>();
             Instance = this;
         }
 
         public void SetupSetting(SettingsData setting) 
         {
 
-            int settingIndex = _settingsData.FindIndex(item => item._audioSetting == setting._audioSetting);
+            int settingIndex = _settings._settingsData.FindIndex(item => item._audioSetting == setting._audioSetting);
 
             if (settingIndex != -1)
             {
-                _settingsData[settingIndex] = setting;
+                _settings._settingsData[settingIndex] = setting;
             }
             else
             {
-                _settingsData.Add(setting);
+                _settings._settingsData.Add(setting);
             }
         }
 
@@ -47,21 +49,21 @@ namespace MemoryLabyrinth.SaveLoad
             }
             else
             {
-                _settingsData = new List<SettingsData>();
-                _settingsData.Add(new SettingsData { _audioSetting = AudioSetting.SFX, _volume = DEFAULT_VALUE });
-                _settingsData.Add(new SettingsData { _audioSetting = AudioSetting.Music, _volume = DEFAULT_VALUE });
+                _settings._settingsData = new List<SettingsData>();
+                _settings._settingsData.Add(new SettingsData { _audioSetting = AudioSetting.SFX, _volume = DEFAULT_VALUE });
+                _settings._settingsData.Add(new SettingsData { _audioSetting = AudioSetting.Music, _volume = DEFAULT_VALUE });
             }
         }
 
         public List<SettingsData> GetSettingsList()
         {
-            return _settingsData;
+            return _settings._settingsData;
         }
 
         public SettingsData GetSettingsData(AudioSetting audioSetting) 
         {
-            int settingIndex = _settingsData.FindIndex(item => item._audioSetting == audioSetting);
-            if (settingIndex != -1) return _settingsData[settingIndex];
+            int settingIndex = _settings._settingsData.FindIndex(item => item._audioSetting == audioSetting);
+            if (settingIndex != -1) return _settings._settingsData[settingIndex];
             else return new SettingsData { _audioSetting = audioSetting, _volume = DEFAULT_VALUE };
         }
     }

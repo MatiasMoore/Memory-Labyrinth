@@ -10,6 +10,12 @@ namespace MemoryLabyrinth.SaveLoad
         public float _volume;
     }
 
+    [Serializable]
+    public struct Settings
+    {
+        public List<SettingsData> _settingsData;
+    }
+
     public enum AudioSetting 
     { 
         SFX,
@@ -20,8 +26,8 @@ namespace MemoryLabyrinth.SaveLoad
     {
         public void LoadData()
         {
-            List<SettingsData> data = Repository.GetData<List<SettingsData>>();
-            SettingsStorage.Instance.SetupSettings(data);
+            Settings data = Repository.GetData<Settings>();
+            SettingsStorage.Instance.SetupSettings(data._settingsData);
         }
 
         public void SaveData()
@@ -29,8 +35,9 @@ namespace MemoryLabyrinth.SaveLoad
             if (SettingsStorage.Instance == null)
                 return;
             List<SettingsData> data = SettingsStorage.Instance.GetSettingsList();
-
-            Repository.SetData(data);
+            Settings settings = new Settings();
+            settings._settingsData = data;
+            Repository.SetData(settings);
         }
 
     }
