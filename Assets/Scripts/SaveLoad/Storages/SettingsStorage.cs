@@ -9,7 +9,9 @@ namespace MemoryLabyrinth.SaveLoad
         public static SettingsStorage Instance;
 
         [SerializeField]
-        private SettingsData _settingsData;
+        private List<SettingsData> _settingsData;
+
+        public const float DEFAULT_VALUE = 0.5f;
 
         public void Init()
         {
@@ -19,30 +21,42 @@ namespace MemoryLabyrinth.SaveLoad
             Instance = this;
         }
 
-        public void SetupSfxVolume(float sfxVol)
+        public void SetupSetting(SettingsData setting) 
         {
-            this._settingsData._sfxVol = sfxVol;
+
+            int settingIndex = _settingsData.FindIndex(item => item._audioSetting == setting._audioSetting);
+
+            if (settingIndex != -1)
+            {
+                _settingsData[settingIndex] = setting;
+            }
+            else
+            {
+                _settingsData.Add(setting);
+            }
         }
 
-        public void SetupMusicVolume(float musicVol)
+        public void SetupSettings(List<SettingsData> settingsDatas) 
         {
-            this._settingsData._musicVol = musicVol;
+            if (settingsDatas != null)
+            {
+                foreach (SettingsData data in settingsDatas)
+                {
+                    SettingsStorage.Instance.SetupSetting(data);
+                }
+            }
+            else
+            {
+                _settingsData = new List<SettingsData>();
+                _settingsData.Add(new SettingsData { _audioSetting = AudioSetting.SFX, _volume = DEFAULT_VALUE });
+                _settingsData.Add(new SettingsData { _audioSetting = AudioSetting.Music, _volume = DEFAULT_VALUE });
+            }
         }
 
-        public void SetupSettings(SettingsData settingsData) 
+        public List<SettingsData> GetSettingsList()
         {
-            SetupMusicVolume(settingsData._musicVol);
-            SetupSfxVolume(settingsData._sfxVol);
+            return _settingsData;
         }
 
-        public float GetSfxVolume()
-        {
-            return this._settingsData._sfxVol;
-        }
-
-        public float GetMusicVolume()
-        {
-            return this._settingsData._musicVol;
-        }
     }
 }

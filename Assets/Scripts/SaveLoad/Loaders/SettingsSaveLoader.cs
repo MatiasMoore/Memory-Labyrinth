@@ -1,19 +1,26 @@
 using System;
+using System.Collections.Generic;
 
 namespace MemoryLabyrinth.SaveLoad
 {
     [Serializable]
     public struct SettingsData
     {
-        public float _sfxVol;
-        public float _musicVol;
+        public AudioSetting _audioSetting;
+        public float _volume;
+    }
+
+    public enum AudioSetting 
+    { 
+        SFX,
+        Music
     }
 
     public class SettingsSaveLoader : ISaveLoader
     {
         public void LoadData()
         {
-            SettingsData data = Repository.GetData<SettingsData>();
+            List<SettingsData> data = Repository.GetData<List<SettingsData>>();
             SettingsStorage.Instance.SetupSettings(data);
         }
 
@@ -21,13 +28,8 @@ namespace MemoryLabyrinth.SaveLoad
         {
             if (SettingsStorage.Instance == null)
                 return;
-            float sfxVol = SettingsStorage.Instance.GetSfxVolume();
-            float musicVol = SettingsStorage.Instance.GetMusicVolume();
-            var data = new SettingsData
-            {
-                _sfxVol = sfxVol,
-                _musicVol = musicVol
-            };
+            List<SettingsData> data = SettingsStorage.Instance.GetSettingsList();
+
             Repository.SetData(data);
         }
 
