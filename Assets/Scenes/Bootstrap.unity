@@ -181,6 +181,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8264c98fb6923a74f895414e994849e1, type: 3}
+--- !u!114 &423832223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7760123546965819413, guid: 32b5254a79f39614bbe758bbdcafc086, type: 3}
+  m_PrefabInstance: {fileID: 1971317665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51498203ded7f0b46af542b7cab8ea5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &430061493
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +346,7 @@ MonoBehaviour:
   _levelProgressStorage: {fileID: 1179560458}
   _saveLoadManager: {fileID: 1610983810}
   _settingsStorage: {fileID: 858154162}
-  _mixerControl: {fileID: 0}
+  _mixerControl: {fileID: 423832223}
 --- !u!1 &858154160
 GameObject:
   m_ObjectHideFlags: 0
