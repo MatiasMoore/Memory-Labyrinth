@@ -7,6 +7,9 @@ namespace MemoryLabyrinth.SaveLoad
 {
     public class AchievementsStorage : MonoBehaviour
     {
+        [SerializeField]
+        public AchievementList _defaultAchievements;
+
         public static AchievementsStorage Instance;
 
         private Achievments _achievements = new Achievments();
@@ -15,7 +18,7 @@ namespace MemoryLabyrinth.SaveLoad
         {
             if (Instance != null)
                 return;
-
+            _achievements._achievementsList = new List<Achievement>();
             Instance = this;
         }
 
@@ -25,16 +28,16 @@ namespace MemoryLabyrinth.SaveLoad
             {
                 foreach (Achievement achievement in achievements)
                 {
-                    AchievementsStorage.Instance.SetupAchievement(achievement);
+                    AchievementsStorage.Instance.UpdateAchievement(achievement);
                 }
             }
             else
             {
-                _achievements._achievementsList = new List<Achievement>();
+                _achievements._achievementsList = _defaultAchievements.GetAllAchievements();
             }
         }
 
-        public void SetupAchievement(Achievement achievement)
+        public void UpdateAchievement(Achievement achievement)
         {
 
             int achievementIndex = _achievements._achievementsList.FindIndex(item => item.GetName() == achievement.GetName());
@@ -68,8 +71,8 @@ namespace MemoryLabyrinth.SaveLoad
             if (achievementIndex != -1) return _achievements._achievementsList[achievementIndex];
             else
             {
-                Debug.LogError($"AchievementsStorage: achievement {achievmentName} not found");
-                return default;
+                Debug.LogWarning($"AchievementsStorage: achievement {achievmentName} not found");
+                return _defaultAchievements.GetAchievementByEnum(achievmentName);
             }
         }
     }
