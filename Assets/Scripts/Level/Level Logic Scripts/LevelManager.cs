@@ -30,26 +30,13 @@ namespace MemoryLabyrinth.Level.Logic
 
         public static event UnityAction _levelLoad;
 
-        private GameObject _levelPrefab;
-
-        private SaveLoadManager _saveLoadManager;
-
-        public ResourceManager.Level _currentLevelEnum;
-
         private MainCharacter _mainCharacter;
 
         private CorrectPathRenderer _correctPathBuilder;
 
-        private bool _isPathShown;
-
         private GameObject _currentLevelObject;
 
         public static LevelManager Instance;
-
-        public void SetCurrentLevel(ResourceManager.Level level)
-        {
-            _currentLevelEnum = level;
-        }
 
         public void Init(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
         {
@@ -62,7 +49,6 @@ namespace MemoryLabyrinth.Level.Logic
             _levelModel = levelModel;
             _HUDController = HUDController;
 
-            _saveLoadManager = GetComponent<SaveLoadManager>();
             _mainCharacter = _playerObj.GetComponent<MainCharacter>();
 
             _levelModel._onLevelLose += (levelData) => LoseLevel();
@@ -92,10 +78,10 @@ namespace MemoryLabyrinth.Level.Logic
                 Destroy(_currentLevelObject);
 
             //Get level data
-            _currentLevelEnum = levelData._level;
+            ResourceManager.Level currentLevelEnum = levelData._level;
 
-            _levelPrefab = ResourceManager.GetLevelObject(_currentLevelEnum);
-            _currentLevelObject = Instantiate(_levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject levelPrefab = ResourceManager.GetLevelObject(currentLevelEnum);
+            _currentLevelObject = Instantiate(levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
             //Reset all temporary parameters
             _mainCharacter.ResetHealth();
@@ -178,16 +164,11 @@ namespace MemoryLabyrinth.Level.Logic
         {
             _correctPathBuilder.Init();
             _correctPathBuilder.ShowRightPath(_correctPathSpeed);
-            _isPathShown = true;
         }
 
         private void StopShowPath()
         {
-            if (_isPathShown)
-            {
-                _correctPathBuilder.Hide();
-            }
-            _isPathShown = false;
+            _correctPathBuilder.Hide();
         }
 
         private IEnumerator PlayLevelIntro()
@@ -199,6 +180,7 @@ namespace MemoryLabyrinth.Level.Logic
 
             //Show the correct path and wait for it to finish
             _correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
+
             StartShowPath();
             while (!_correctPathBuilder.IsFinished())
             {
