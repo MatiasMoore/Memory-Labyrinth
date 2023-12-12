@@ -189,55 +189,6 @@ namespace MemoryLabyrinth.Level.Logic
             }
             _isPathShown = false;
         }
-        /*
-        private void SaveCompleteLevel()
-        {
-            LevelData levelData = new LevelData
-            {
-                _level = _currentLevelEnum,
-                _livesAmount = _mainCharacter.GetHealth(),
-                _checkpointId = 0,
-                _time = Timer.Instance.GetElapsedTime(),
-                _isCompleted = true,
-                _collectedBonusesId = _levelModel.GetCollectedBonusesIDBeforeCheckpoint()
-
-            };
-
-            CurrentLevel.Save(levelData);
-
-            int bonusAmount = _levelModel.GetBonusAmount();
-            if (BonusStorage.Instance != null)
-            {
-                BonusStorage.Instance.EarnBonuses(bonusAmount);
-                Debug.Log("LEVELMANAGER: complete level bonuses saved");
-            }
-            else
-            {
-                Debug.Log("LEVELMANAGER: bonuses save failed!");
-            }
-
-            _saveLoadManager.SaveGame();
-        }
-        
-
-        public void SaveUncompleteLevel()
-        {
-            LevelData levelData = new LevelData
-            {
-                _level = _currentLevelEnum,
-                _livesAmount = _mainCharacter.GetHealth(),
-                _checkpointId = _levelModel.GetCurrentCheckPoint().GetQueue(),
-                _time = Timer.Instance.GetElapsedTime(),
-                _isCompleted = false,
-                _collectedBonusesId = _levelModel.GetCollectedBonusesIDBeforeCheckpoint()
-
-            };
-
-            CurrentLevel.Save(levelData);
-
-            Debug.Log("LevelManager: uncomplete level saved");
-        }
-        */
 
         private IEnumerator PlayLevelIntro()
         {
