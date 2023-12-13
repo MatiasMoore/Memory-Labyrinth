@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using MemoryLabyrinth.Achievements;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -24,6 +26,14 @@ public class LevelsSaveLoaderTests
         GameObject secondDummyStorage = new GameObject("Settings Storage");
         SettingsStorage settingsStorage = secondDummyStorage.AddComponent<SettingsStorage>();
         settingsStorage.Init();
+
+        GameObject achievementDummyStorage = new GameObject("Achievement Storage");
+        AchievementsStorage achievementStorage = achievementDummyStorage.AddComponent<AchievementsStorage>();
+        string achievementsPath = "Assets/Config/Achievements.asset";
+        AchievementList achievements = AssetDatabase.LoadAssetAtPath(achievementsPath, typeof(AchievementList)) as AchievementList;
+        AchievementList achList = Object.Instantiate(achievements);
+        achievementStorage._defaultAchievements = achList;
+        achievementStorage.Init();
 
         GameObject manager = new GameObject("SaveLoadManager");
         SaveLoadManager saveLoadManager = manager.AddComponent<SaveLoadManager>();
