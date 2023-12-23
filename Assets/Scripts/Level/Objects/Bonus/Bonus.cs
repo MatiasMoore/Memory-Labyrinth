@@ -2,6 +2,12 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
+    public struct BonusStruct 
+    {
+        Vector3 coords;
+        int id;
+        int bonusAmount;
+    }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Bonus : MonoBehaviour
     {
