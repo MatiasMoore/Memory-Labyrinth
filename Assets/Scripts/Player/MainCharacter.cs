@@ -50,7 +50,7 @@ namespace MemoryLabyrinth.Player
             }
             else
             {
-                TouchControls.Instance.addCallbackToTouchDown(StopMovingOnTouch);
+                TouchControls.Instance.touchDown += StopMovingOnTouch;
             }
             _objectMovement = new ObjectMovementState(
                 GetComponent<Transform>(),
@@ -91,7 +91,7 @@ namespace MemoryLabyrinth.Player
             _objectMovement.FollowPath(path);
         }
 
-        private void StopMovingOnTouch(InputAction.CallbackContext context)
+        private void StopMovingOnTouch()
         {
             if (_currentState != ObjectMovementState.State.Stay)
             {

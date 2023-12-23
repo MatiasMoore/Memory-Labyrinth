@@ -62,8 +62,8 @@ namespace MemoryLabyrinth.Path
             else
             {
                 //Functions need to be called on up/down touch events
-                TouchControls.Instance.addCallbackToTouchDown(StartDrawing);
-                TouchControls.Instance.addCallbackToTouchUp(StopDrawing);
+                TouchControls.Instance.touchDown += StartDrawing;
+                TouchControls.Instance.touchUp += StopDrawing;
             }
 
             _line = GetComponent<LineRenderer>();
@@ -75,7 +75,7 @@ namespace MemoryLabyrinth.Path
             Instance = this;
         }
 
-        private void StartDrawing(InputAction.CallbackContext context)
+        private void StartDrawing()
         {
             if (!_isActive || _drawingPath != null)
                 return;
@@ -103,7 +103,7 @@ namespace MemoryLabyrinth.Path
         }
 
 
-        private void StopDrawing(InputAction.CallbackContext context)
+        private void StopDrawing()
         {
             if (!_isActive || _drawingPath == null)
                 return;

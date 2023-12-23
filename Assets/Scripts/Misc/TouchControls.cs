@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace MemoryLabyrinth.Controls
@@ -14,9 +15,8 @@ namespace MemoryLabyrinth.Controls
         private InputAction _touchPositionAction;
         private InputAction _touchPressAction;
 
-        //Lists of callback functions
-        private List<System.Action<InputAction.CallbackContext>> _touchDownCallbacks = new List<System.Action<InputAction.CallbackContext>>();
-        private List<System.Action<InputAction.CallbackContext>> _touchUpCallbacks = new List<System.Action<InputAction.CallbackContext>>();
+        public event UnityAction touchDown;
+        public event UnityAction touchUp;
 
         public static TouchControls Instance { get; private set; }
 
@@ -28,32 +28,20 @@ namespace MemoryLabyrinth.Controls
             _touchPressAction = _playerInput.actions["TouchPress"];
             _touchPositionAction = _playerInput.actions["TouchPosition"];
 
+            _touchPressAction.performed += FireTouchDownEvent;
+            _touchPressAction.canceled += FireTouchUpEvent;
+
             Instance = this;
         }
 
-        private void OnDisable()
+        private void FireTouchDownEvent(InputAction.CallbackContext context)
         {
-            //Stop all callbacks
-            foreach (System.Action<InputAction.CallbackContext> func in _touchDownCallbacks)
-            {
-                _touchPressAction.performed -= func;
-            }
-            foreach (System.Action<InputAction.CallbackContext> func in _touchDownCallbacks)
-            {
-                _touchPressAction.canceled -= func;
-            }
+            touchDown?.Invoke();
         }
 
-        public void addCallbackToTouchDown(System.Action<InputAction.CallbackContext> func)
+        private void FireTouchUpEvent(InputAction.CallbackContext context)
         {
-            _touchPressAction.performed += func;
-            _touchDownCallbacks.Add(func);
-        }
-
-        public void addCallbackToTouchUp(System.Action<InputAction.CallbackContext> func)
-        {
-            _touchPressAction.canceled += func;
-            _touchUpCallbacks.Add(func);
+            touchUp?.Invoke();
         }
 
         public Vector2 getTouchScreenPosition()
