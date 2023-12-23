@@ -26,7 +26,7 @@ namespace MemoryLabyrinth.SaveLoad
     [Serializable]
     public struct PathListStruct
     {
-        public List<BonusStruct> bonuses;
+        public List<PathStruct> paths;
     }
     [Serializable]
     public struct TeleportListStruct
