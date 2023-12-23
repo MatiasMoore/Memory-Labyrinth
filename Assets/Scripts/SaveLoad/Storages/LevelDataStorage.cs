@@ -93,5 +93,13 @@ namespace MemoryLabyrinth.SaveLoad
                 UpdateLevelInfo(levelData);
             }
         }
+
+        public void SetLevelDataList(List<LevelData> levelDatas)
+        {
+            if (levelDatas != null)
+                this._levels.levelDatas = levelDatas;
+            else
+                this._levels.levelDatas = new List<LevelData>(); // TODO: load Scriptable object instead of new list
+        }
     }
 }
