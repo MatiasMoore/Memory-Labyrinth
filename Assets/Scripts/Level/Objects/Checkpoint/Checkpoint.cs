@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
+   public struct CheckpointStruct
+    {
+        Vector3 coords;
+        int queue;
+    }
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     public class Checkpoint : MonoBehaviour

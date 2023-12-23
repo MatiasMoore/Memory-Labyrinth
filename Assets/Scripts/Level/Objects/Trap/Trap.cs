@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.Trap
 {
+    public struct TrapStruct
+    {
+        Vector3 coords;
+        int damage;
+    }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Trap : MonoBehaviour
     {
