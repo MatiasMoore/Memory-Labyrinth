@@ -93,5 +93,45 @@ namespace MemoryLabyrinth.SaveLoad
                 UpdateLevelInfo(levelData);
             }
         }
+        public List<LevelData> GetLevelDataList()
+        {
+            return this._levels.levelDatas;
+        }
+
+        public LevelData GetLevelInfo(string name)
+        {
+            if (this.IsLevelAlreadySaved(name))
+            {
+                int levelIndex = _levels.levelDatas.FindIndex(item => item.name == name);
+                LevelData levelData = new LevelData
+                {
+                    name = name,
+                    bonuses = _levels.levelDatas[levelIndex].bonuses,
+                    checkPoints = _levels.levelDatas[levelIndex].checkPoints,
+                    finishPoints = _levels.levelDatas[levelIndex].finishPoints,
+                    paths = _levels.levelDatas[levelIndex].paths,
+                    startPoints = _levels.levelDatas[levelIndex].startPoints,
+                    teleports = _levels.levelDatas[levelIndex].teleports,
+                    traps = _levels.levelDatas[levelIndex].traps,
+                    walls = _levels.levelDatas[levelIndex].walls
+                };
+                Debug.Log($"GetLevelInfo(): {name}");
+                return levelData;
+            }
+            else
+            {
+                var newLevelData = new LevelData { name = name };
+                Debug.LogWarning($"LevelDataStorage: GetLevelInfo(): {name} does not exist");
+                return newLevelData;
+            }
+
+        }
+        public void SetLevelDataList(List<LevelData> levelDatas)
+        {
+            if (levelDatas != null)
+                this._levels.levelDatas = levelDatas;
+            else
+                this._levels.levelDatas = new List<LevelData>(); // TODO: load Scriptable object instead of new list
+        }
     }
 }
