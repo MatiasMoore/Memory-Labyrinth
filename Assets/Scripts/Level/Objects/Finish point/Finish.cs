@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.FinishLib
 {
+    public struct FinishPointStruct
+    {
+        Vector3 coords;
+    }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Finish : MonoBehaviour
     {
