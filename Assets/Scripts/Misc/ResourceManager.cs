@@ -75,7 +75,8 @@ namespace MemoryLabyrinth.Resources
         {
             Bootstrap = 0,
             MainMenu = 1,
-            GameField = 2
+            GameField = 2,
+            LevelEditor = 3
         }
 
         public static void LoadScene(AvailableScene sceneToLoad)
