@@ -17,7 +17,7 @@ namespace MemoryLabyrinth.Achievements
             levelModel._onLevelWin += LevelFinished;
         }
 
-        private void LevelFinished(LevelData levelData)
+        private void LevelFinished(LevelProgress levelData)
         {
             if (levelData._time <= _achievement.GetTargetValue())
             {

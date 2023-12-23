@@ -16,11 +16,11 @@ namespace MemoryLabyrinth.Level.Logic
         [SerializeField]
         private Checkpoint _currentCheckpoint;
 
-        public event UnityAction<LevelData> _onLevelLose;
+        public event UnityAction<LevelProgress> _onLevelLose;
 
-        public event UnityAction<LevelData> _onLevelWin;
+        public event UnityAction<LevelProgress> _onLevelWin;
 
-        public event UnityAction<LevelData> _onPlayerGetCheckpoint;
+        public event UnityAction<LevelProgress> _onPlayerGetCheckpoint;
 
         public event UnityAction _onPlayerGetBonus;
 
@@ -48,9 +48,9 @@ namespace MemoryLabyrinth.Level.Logic
             _isLevelFinish = false;
         }
 
-        public LevelData GetLevelData()
+        public LevelProgress GetLevelData()
         {
-            LevelData levelData = new LevelData();
+            LevelProgress levelData = new LevelProgress();
 
             levelData._level = CurrentLevel.GetCurrentLevelData()._level;
             levelData._livesAmount = _mainCharacter.GetHealth();

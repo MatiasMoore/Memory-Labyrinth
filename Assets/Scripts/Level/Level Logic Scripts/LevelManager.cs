@@ -62,7 +62,7 @@ namespace MemoryLabyrinth.Level.Logic
 
         public void StartCurrentLevelFromSpawn()
         {
-            var newLevelData = new LevelData { _level = CurrentLevel.GetCurrentLevelData()._level };
+            var newLevelData = new LevelProgress { _level = CurrentLevel.GetCurrentLevelData()._level };
             StartLevel(newLevelData);
         }
 
@@ -71,7 +71,7 @@ namespace MemoryLabyrinth.Level.Logic
             StartLevel(CurrentLevel.GetCurrentLevelData());
         }
 
-        private void StartLevel(LevelData levelData)
+        private void StartLevel(LevelProgress levelData)
         {
             //Destroy previous level if necessary
             if (_currentLevelObject != null)

@@ -12,7 +12,7 @@ namespace MemoryLabyrinth.SaveLoad
         public int _value;
     }
     [Serializable]
-    public struct LevelData
+    public struct LevelProgress
     {
         public ResourceManager.Level _level;
         public int _checkpointId;
@@ -25,7 +25,7 @@ namespace MemoryLabyrinth.SaveLoad
     [Serializable]
     public struct Levels
     {
-        public List<LevelData> _currentLevels;
+        public List<LevelProgress> _currentLevels;
     }
     public class LevelsSaveLoader : ISaveLoader
     {
@@ -37,9 +37,9 @@ namespace MemoryLabyrinth.SaveLoad
 
         public void SaveData()
         {
-            List<LevelData> levelsList = LevelProgressStorage.Instance.GetLevelDataList();
+            List<LevelProgress> levelsList = LevelProgressStorage.Instance.GetLevelDataList();
 
-            var data = new List<LevelData>(levelsList);
+            var data = new List<LevelProgress>(levelsList);
             Levels levels = new Levels();
             levels._currentLevels = data;
 

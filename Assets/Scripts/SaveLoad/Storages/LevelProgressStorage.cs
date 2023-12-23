@@ -9,7 +9,7 @@ namespace MemoryLabyrinth.SaveLoad
     {
         public static LevelProgressStorage Instance;
 
-        public event Action<LevelData> OnLevelProgressChanged;
+        public event Action<LevelProgress> OnLevelProgressChanged;
 
         [SerializeField] private Levels _levels = new Levels();
 
@@ -17,16 +17,16 @@ namespace MemoryLabyrinth.SaveLoad
         {
             if (Instance != null)
                 return;
-            _levels._currentLevels = new List<LevelData>();
+            _levels._currentLevels = new List<LevelProgress>();
             Instance = this;
         }
 
-        private void UpdateLevelInfo(LevelData newLevelData)
+        private void UpdateLevelInfo(LevelProgress newLevelData)
         {
             if (this.IsLevelAlreadySaved(newLevelData._level))
             {
                 int levelIndex = _levels._currentLevels.FindIndex(item => item._level == newLevelData._level);
-                LevelData _newLevelData = _levels._currentLevels[levelIndex];
+                LevelProgress _newLevelData = _levels._currentLevels[levelIndex];
 
                 _newLevelData._checkpointId = newLevelData._checkpointId;
                 _newLevelData._time = newLevelData._time;
@@ -44,12 +44,12 @@ namespace MemoryLabyrinth.SaveLoad
             }
         }
 
-        public LevelData GetLevelInfo(ResourceManager.Level level)
+        public LevelProgress GetLevelInfo(ResourceManager.Level level)
         {
             if (this.IsLevelAlreadySaved(level))
             {
                 int levelIndex = _levels._currentLevels.FindIndex(item => item._level == level);
-                LevelData levelData = new LevelData
+                LevelProgress levelData = new LevelProgress
                 {
                     _level = level,
                     _checkpointId = _levels._currentLevels[levelIndex]._checkpointId,
@@ -63,18 +63,18 @@ namespace MemoryLabyrinth.SaveLoad
             }
             else
             {
-                var newLevelData = new LevelData { _level = level };
+                var newLevelData = new LevelProgress { _level = level };
                 Debug.LogWarning($"GetLevelInfo(): {level} does not exist");
                 return newLevelData;
             }
 
         }
 
-        private void CreateLevelInfo(LevelData newLevelData)
+        private void CreateLevelInfo(LevelProgress newLevelData)
         {
             if (!this.IsLevelAlreadySaved(newLevelData._level))
             {
-                LevelData _newLevelData = new LevelData();
+                LevelProgress _newLevelData = new LevelProgress();
 
                 _newLevelData._level = newLevelData._level;
                 _newLevelData._checkpointId = newLevelData._checkpointId;
@@ -100,7 +100,7 @@ namespace MemoryLabyrinth.SaveLoad
             int levelIndex = _levels._currentLevels.FindIndex(item => item._level == level);
             return levelIndex != -1;
         }
-        public void AddLevelInfo(LevelData levelData)
+        public void AddLevelInfo(LevelProgress levelData)
         {
             if (!this.IsLevelAlreadySaved(levelData._level))
             {
@@ -112,17 +112,17 @@ namespace MemoryLabyrinth.SaveLoad
             }
         }
 
-        public List<LevelData> GetLevelDataList()
+        public List<LevelProgress> GetLevelDataList()
         {
             return this._levels._currentLevels;
         }
 
-        public void SetLevelDataList(List<LevelData> levelDatas)
+        public void SetLevelDataList(List<LevelProgress> levelDatas)
         {
             if (levelDatas != null)
                 this._levels._currentLevels = levelDatas;
             else
-                this._levels._currentLevels = new List<LevelData>();
+                this._levels._currentLevels = new List<LevelProgress>();
         }
     }
 }

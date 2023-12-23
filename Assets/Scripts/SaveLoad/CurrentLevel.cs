@@ -6,7 +6,7 @@ namespace MemoryLabyrinth.SaveLoad
 {
     public static class CurrentLevel
     {
-        private static LevelData _currentLevel = new LevelData();
+        private static LevelProgress _currentLevel = new LevelProgress();
 
         public static void Load(ResourceManager.Level level)
         {
@@ -17,13 +17,13 @@ namespace MemoryLabyrinth.SaveLoad
                 Debug.Log("CURRENTLEVEL: LevelProgressStorage = null");
                 return;
             }
-            _currentLevel = new LevelData();
+            _currentLevel = new LevelProgress();
 
             _currentLevel = LevelProgressStorage.Instance.GetLevelInfo(level);
             Debug.Log($"CURRENTLEVEL:{level} loaded");
         }
 
-        public static void SaveUnfinishedlevel(LevelData newLevelData)
+        public static void SaveUnfinishedlevel(LevelProgress newLevelData)
         {
             _currentLevel = newLevelData;
 
@@ -40,7 +40,7 @@ namespace MemoryLabyrinth.SaveLoad
 
         }
 
-        public static void SaveFinishedLevel(LevelData newLevelData)
+        public static void SaveFinishedLevel(LevelProgress newLevelData)
         {
             if (BonusStorage.Instance == null)
             {
@@ -64,7 +64,7 @@ namespace MemoryLabyrinth.SaveLoad
 
         }
 
-        public static LevelData GetCurrentLevelData()
+        public static LevelProgress GetCurrentLevelData()
         {
             return _currentLevel;
         }
