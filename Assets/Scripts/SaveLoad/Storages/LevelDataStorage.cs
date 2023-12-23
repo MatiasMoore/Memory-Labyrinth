@@ -93,6 +93,10 @@ namespace MemoryLabyrinth.SaveLoad
                 UpdateLevelInfo(levelData);
             }
         }
+        public List<LevelData> GetLevelDataList()
+        {
+            return this._levels.levelDatas;
+        }
 
         public void SetLevelDataList(List<LevelData> levelDatas)
         {
