@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.TeleportLib
 {
+    public struct TeleportStruct
+    {
+        Vector3 coords;
+        Vector3 targetCoords;
+    }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Teleport : MonoBehaviour
     {
