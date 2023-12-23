@@ -83,15 +83,13 @@ namespace MemoryLabyrinth.SaveLoad
 
         public void SaveData()
         {
-            //    from levelssaveloader
-            //    TODO: implement as LevelDataSaveLoader
-            //    List<LevelProgress> levelsList = LevelProgressStorage.Instance.GetLevelDataList();
+            List<LevelData> levelsList = LevelDataStorage.Instance.GetLevelDataList();
 
-            //    var data = new List<LevelProgress>(levelsList);
-            //    Levels levels = new Levels();
-            //    levels._currentLevels = data;
+            var data = new List<LevelData>(levelsList);
+            LevelDataListStruct levels = new LevelDataListStruct();
+            levels.levelDatas = data;
 
-            //    Repository.SetData(levels);
+            Repository.SetData(levels);
         }
     }
 }
