@@ -12,18 +12,59 @@ using MemoryLabyrinth.Level.Objects.Wall;
 
 namespace MemoryLabyrinth.SaveLoad
 {
+    // спасибо я поел
+    [Serializable]
+    public struct BonusListStruct
+    {
+        public List<BonusStruct> bonuses;
+    }
+    [Serializable]
+    public struct WallListStruct
+    {
+        public List<WallStruct> walls;
+    }
+    [Serializable]
+    public struct PathListStruct
+    {
+        public List<BonusStruct> bonuses;
+    }
+    [Serializable]
+    public struct TeleportListStruct
+    {
+        public List<TeleportStruct> teleports;
+    }
+    [Serializable]
+    public struct TrapListStruct
+    {
+        public List<TrapStruct> traps;
+    }
+    [Serializable]
+    public struct CheckpointListStruct
+    {
+        public List<CheckpointStruct> checkPoints;
+    }
+    [Serializable]
+    public struct StartPointListStruct
+    {
+        public List<StartPointStruct> startPoints;
+    }
+    [Serializable]
+    public struct FinishPointListStruct
+    {
+        public List<FinishPointStruct> finishPoints;
+    }
     [Serializable]
     public struct LevelData
     {
         public string name;
-        public List<PathStruct> paths;
-        public List<WallStruct> walls;
-        public List<BonusStruct> bonuses;
-        public List<TeleportStruct> teleports;
-        public List<TrapStruct> traps;
-        public List<CheckpointStruct> checkPoints;
-        public List<StartPointStruct> startPoints;
-        public List<FinishPointStruct> finishPoints;
+        public PathListStruct paths;
+        public WallListStruct walls;
+        public BonusListStruct bonuses;
+        public TeleportListStruct teleports;
+        public TrapListStruct traps;
+        public CheckpointListStruct checkPoints;
+        public StartPointListStruct startPoints;
+        public FinishPointListStruct finishPoints;
     }
 
     [Serializable]
