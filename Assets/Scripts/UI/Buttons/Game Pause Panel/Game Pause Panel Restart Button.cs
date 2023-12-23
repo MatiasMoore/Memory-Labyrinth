@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class PausePanelRestartButton : Button
+    public class GamePausePanelRestartButton : Button
     {
         public override event UnityAction _buttonClick;
 
