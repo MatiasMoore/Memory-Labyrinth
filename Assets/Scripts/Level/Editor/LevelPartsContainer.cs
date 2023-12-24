@@ -8,7 +8,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace Level.Editor
+namespace MemoryLabyrinth.Level.Editor
 {
     public class LevelPartsContainer
     {
