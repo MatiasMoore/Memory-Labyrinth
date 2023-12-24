@@ -13,6 +13,11 @@ namespace MemoryLabyrinth.Level.Objects.PathLib
         {
             return new PathStruct() { coords = new Vec3(transform.position) };
         }
+
+        public void FromStruct(PathStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+        }
     }
    
 }

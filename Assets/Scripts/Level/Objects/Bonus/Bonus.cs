@@ -83,5 +83,12 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
             bonusStruct.bonusAmount = _value;
             return bonusStruct;
         }
+
+        public void FromStruct(BonusStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+            _value = str.bonusAmount;
+            _id = str.id;
+        }
     }
 }

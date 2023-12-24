@@ -23,6 +23,11 @@ namespace MemoryLabyrinth.Level.Objects.TeleportLib
             return new TeleportStruct { coords = new Vec3(transform.position), targetCoords = new Vec3(_target.position) };
         }
 
+        public void FromStruct(TeleportStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

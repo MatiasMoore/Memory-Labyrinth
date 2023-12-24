@@ -23,6 +23,12 @@ namespace MemoryLabyrinth.Level.Objects.Trap
             return new TrapStruct { coords = new Vec3(transform.position), damage = _damage };
         }
 
+        public void FromStruct(TrapStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+            _damage = str.damage;
+        }
+
         public Trap()
         {
             //TODO: get damage from config

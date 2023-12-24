@@ -20,6 +20,11 @@ namespace MemoryLabyrinth.Level.Objects.StartpointLib
             return new StartPointStruct { coords = new Vec3(_transform.position) };
         }
 
+        public void FromStruct(StartPointStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+        }
+
         private void Awake()
         {
             _transform = GetComponent<Transform>();

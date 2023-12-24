@@ -26,6 +26,12 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
             return new CheckpointStruct { coords = new Vec3(transform.position), queue = GetQueue() };
         }
 
+        public void FromStruct(CheckpointStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+            _queue = str.queue;
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

@@ -18,6 +18,11 @@ namespace MemoryLabyrinth.Level.Objects.FinishLib
             return new FinishPointStruct { coords = new Vec3(transform.position) };
         }
 
+        public void FromStruct(FinishPointStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

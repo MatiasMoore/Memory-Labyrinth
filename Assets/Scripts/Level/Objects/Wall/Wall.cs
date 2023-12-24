@@ -8,6 +8,11 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
         {
             return new WallStruct() { coords = new Vec3(transform.position) };
         }
+
+        public void FromStruct(WallStruct str)
+        {
+            transform.position = str.coords.ToVector3();
+        }
     }
 
     public struct WallStruct
