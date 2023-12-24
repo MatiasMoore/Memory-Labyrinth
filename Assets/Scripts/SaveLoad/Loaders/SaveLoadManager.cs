@@ -15,7 +15,8 @@ namespace MemoryLabyrinth.SaveLoad
         new BonusesSaveLoader(),
         new LevelsSaveLoader(),
         new SettingsSaveLoader(),
-        new AchievementsSaveLoader()
+        new AchievementsSaveLoader(),
+        new LevelDataSaveLoader()
     };
 
         public static SaveLoadManager Instance;
