@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MemoryLabyrinth.Path
+namespace MemoryLabyrinth.Pathing
 {
     [RequireComponent(typeof(LineRenderer))]
     public class PathCreator : MonoBehaviour

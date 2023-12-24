@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections.Generic;
-using MemoryLabyrinth.Level.Objects.Path;
+using MemoryLabyrinth.Level.Objects.PathLib;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;

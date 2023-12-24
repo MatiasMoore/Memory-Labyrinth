@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.Path
+namespace MemoryLabyrinth.Level.Objects.PathLib
 {
     public struct PathStruct
     {

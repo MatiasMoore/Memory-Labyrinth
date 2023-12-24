@@ -2,7 +2,7 @@ using MemoryLabyrinth.ObjectMovement;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MemoryLabyrinth.Path
+namespace MemoryLabyrinth.Pathing
 {
     [RequireComponent(typeof(LineRenderer))]
     public class CorrectPathRenderer : MonoBehaviour

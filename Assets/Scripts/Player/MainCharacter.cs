@@ -2,7 +2,7 @@ using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.ObjectMovement;
-using MemoryLabyrinth.Path;
+using MemoryLabyrinth.Pathing;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;

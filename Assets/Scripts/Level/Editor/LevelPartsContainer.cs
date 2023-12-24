@@ -2,7 +2,7 @@ using MemoryLabyrinth.Level.Objects;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
-using MemoryLabyrinth.Level.Objects.Path;
+using MemoryLabyrinth.Level.Objects.PathLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;

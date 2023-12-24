@@ -2,7 +2,7 @@ using MemoryLabyrinth.Fog;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
-using MemoryLabyrinth.Path;
+using MemoryLabyrinth.Pathing;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
