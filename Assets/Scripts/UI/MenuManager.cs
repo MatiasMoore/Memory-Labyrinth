@@ -7,10 +7,13 @@ namespace MemoryLabyrinth.UI
         private static GameObject _mainMenu;
         private static GameObject _optionsMenu;
         private static GameObject _achievementsMenu;
-        private static GameObject _pauseMenu;
+        private static GameObject _pausePanel;
         private static GameObject _winPanel;
         private static GameObject _losePanel;
         private static GameObject _levelSelectionMenu;
+        private static GameObject _levelEditorUpperPanel;
+        private static GameObject _levelEditorObjectsPanel;
+        private static GameObject _levelEditorSavePanel;
 
         public enum Page
         {
@@ -20,7 +23,10 @@ namespace MemoryLabyrinth.UI
             PAUSE,
             WIN,
             LOSE,
-            LEVEL_SELECTION
+            LEVEL_SELECTION,
+            LEVEL_EDITOR_UPPER,
+            LEVEL_EDITOR_SAVE,
+            LEVEL_EDITOR_OBJECTS
         }
 
         public static void OpenPage(Page page)
@@ -51,8 +57,8 @@ namespace MemoryLabyrinth.UI
                     _achievementsMenu = UI.transform.Find(GetPageName(Page.ACHIEVEMENTS)).gameObject;
                     return _achievementsMenu;
                 case Page.PAUSE:
-                    _pauseMenu = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
-                    return _pauseMenu;
+                    _pausePanel = UI.transform.Find(GetPageName(Page.PAUSE)).gameObject;
+                    return _pausePanel;
                 case Page.WIN:
                     _winPanel = UI.transform.Find(GetPageName(Page.WIN)).gameObject;
                     return _winPanel;
@@ -62,6 +68,15 @@ namespace MemoryLabyrinth.UI
                 case Page.LEVEL_SELECTION:
                     _levelSelectionMenu = UI.transform.Find(GetPageName(Page.LEVEL_SELECTION)).gameObject;
                     return _levelSelectionMenu;
+                case Page.LEVEL_EDITOR_UPPER:
+                    _levelEditorUpperPanel = UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_UPPER)).gameObject;
+                    return _levelEditorUpperPanel;
+                case Page.LEVEL_EDITOR_OBJECTS:
+                    _levelEditorObjectsPanel = UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_OBJECTS)).gameObject;
+                    return _levelEditorObjectsPanel;
+                case Page.LEVEL_EDITOR_SAVE:
+                    _levelEditorSavePanel = UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_SAVE)).gameObject;
+                    return _levelEditorSavePanel;
                 default:
                     throw new System.Exception("MENU MANAGER: GetPageGameObject -> page is not defined in switch");
             }
@@ -85,6 +100,12 @@ namespace MemoryLabyrinth.UI
                     return new string("Lose Panel");
                 case Page.LEVEL_SELECTION:
                     return new string("Level Selection Menu");
+                case Page.LEVEL_EDITOR_UPPER:
+                    return new string("Upper Panel");
+                case Page.LEVEL_EDITOR_OBJECTS:
+                    return new string("Upper Panel/Safe Area/Available Objects List");
+                case Page.LEVEL_EDITOR_SAVE:
+                    return new string("Save Level Panel");
                 default:
                     throw new System.Exception("MENU MANAGER: GetPageName -> page is not defined in switch");
             }
