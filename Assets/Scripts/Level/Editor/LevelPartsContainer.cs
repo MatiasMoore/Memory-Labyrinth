@@ -61,6 +61,7 @@ namespace Level.Editor
         public LevelData ToLevelData()
         {
             LevelData levelData = new LevelData();
+            levelData.bonuses = GetBonusListStruct();
             levelData.walls = GetWallListStruct();
        /*   TODO:
             public string name;
@@ -87,6 +88,18 @@ namespace Level.Editor
             }
 
             return new WallListStruct() { walls = wallList };
+        }
+        public BonusListStruct GetBonusListStruct()
+        {
+            List<BonusStruct> bonusList = new();
+            List<Bonus> bonuses = GetPartsOfType<Bonus>();
+
+            foreach (var bonus in bonuses)
+            {
+                bonusList.Add(bonus.ToStruct());
+            }
+
+            return new BonusListStruct() { bonuses = bonusList };
         }
     }
 }
