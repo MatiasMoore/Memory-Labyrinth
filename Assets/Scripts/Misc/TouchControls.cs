@@ -34,6 +34,12 @@ namespace MemoryLabyrinth.Controls
             Instance = this;
         }
 
+        private void OnDisable()
+        {
+            _touchPressAction.performed -= FireTouchDownEvent;
+            _touchPressAction.canceled -= FireTouchUpEvent;
+        }
+
         private void FireTouchDownEvent(InputAction.CallbackContext context)
         {
             touchDown?.Invoke();
