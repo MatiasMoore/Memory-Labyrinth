@@ -3,21 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementCreatorPrimitive : InteractorPrimitive
+public abstract class ElementCreatorPrimitive : InteractorPrimitive
 {
     private LevelPartConfig _config;
 
+    private LevelPartsContainer _container;
+
+    public ElementCreatorPrimitive(LevelPartsContainer container, LevelPartConfig config)
+    {
+        _container = container;
+        _config = config;
+    }
     public override void InteractAtPos(Vector2 position)
     {
-        
+        if (CanBePlacedAtPos(position))
+        {
+            GameObject newPart = CreateAsGameObjectAtPos(position);
+            _container.AddPart(_config.type, newPart);
+        } else
+        {
+            Debug.Log($"ElementCreatorPrimitive: can't create {_config.type} at {position}");
+        }
     }
 
-    public void CreateAsGameObjectAtPos(Vector2 position)
+    public GameObject CreateAsGameObjectAtPos(Vector2 position)
     {
         Vector3 posWithDepth = position;
         posWithDepth.z = _config.zDepth;
 
-        Object.Instantiate(_config.prefab, posWithDepth + _config.offset, Quaternion.identity);
+        return Object.Instantiate(_config.prefab, posWithDepth + _config.offset, Quaternion.identity);
     }
 
     public List<GameObject> GetAllObjectsAtPos(Vector2 position)
@@ -31,8 +45,6 @@ public class ElementCreatorPrimitive : InteractorPrimitive
         return objects;
     }
 
-    public bool CanBePlacedAtPos(Vector2 position)
-    {
-        return Physics2D.OverlapPoint(position) == null;
-    }
+    public abstract bool CanBePlacedAtPos(Vector2 position);
+   
 }
