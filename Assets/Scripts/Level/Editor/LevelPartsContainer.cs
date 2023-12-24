@@ -87,6 +87,35 @@ namespace MemoryLabyrinth.Level.Editor
             }
             return structList;
         }
+
+        public List<GameObject> GetObjectsAtPos(Vector2 position)
+        {
+            List<GameObject> objectsAtPos = new();
+            foreach (var obj in GetAllParts())
+            {
+                if((Vector2)obj.transform.position == position)
+                {
+                    objectsAtPos.Add(obj);
+                }
+            }
+
+            objectsAtPos.Sort((x, y) => x.transform.position.z.CompareTo(y.transform.position.z));
+            return objectsAtPos;
+        }
+
+        public bool ContainsPartAtPos<T>(Vector2 pos)
+        {
+            List<GameObject> objectsAtPos = GetObjectsAtPos(pos);
+            List<T> objectsOfType = GetPartsOfType<T>();
+            foreach (var obj in objectsAtPos)
+            {
+                if (objectsOfType.Contains(obj.GetComponent<T>()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+using MemoryLabyrinth.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,11 @@ namespace MemoryLabyrinth.Level.Editor
 
         public override bool CanBePlacedAtPos(Vector2 position)
         {
-            return true;
+            var objsAtPos = _container.GetObjectsAtPos(position);
+
+            bool noObjects = objsAtPos.Count == 0;
+            
+            return noObjects;
         }
     }
 }
