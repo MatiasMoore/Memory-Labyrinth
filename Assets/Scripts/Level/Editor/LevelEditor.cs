@@ -27,6 +27,12 @@ public class LevelEditor : MonoBehaviour
 
     }
 
+    [ContextMenu("Start Creating Wall")]
+    public void StartCreatingWall()
+    {
+        StartCreatingLevelPart(LevelPartType.Wall);
+    }
+
     public void StartCreatingLevelPart(LevelPartType type)
     {
         LevelPartConfig config = _levelPartsDataBase.GetConfigByType(type);
