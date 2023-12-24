@@ -15,5 +15,33 @@ MonoBehaviour:
   _partsList:
   - type: 0
     prefab: {fileID: 4016104633805996424, guid: d771b7319b4c4a24b9c0dc337c1eedc8, type: 3}
-    zDepth: 0
+    zDepth: 4
+    offset: {x: 0, y: 0, z: 0}
+  - type: 1
+    prefab: {fileID: 4016104633805996424, guid: 502c4543f9f2ca84fae9f03874eadace, type: 3}
+    zDepth: 5
+    offset: {x: 0, y: 0, z: 0}
+  - type: 2
+    prefab: {fileID: 3233759780491762338, guid: 5c79a461f55709846bff864a0853a4a0, type: 3}
+    zDepth: 2
+    offset: {x: 0, y: 0, z: 0}
+  - type: 3
+    prefab: {fileID: 8216190029180605600, guid: 0c3dc5f1f162ced4f982332780f89e21, type: 3}
+    zDepth: 3
+    offset: {x: 0, y: 0, z: 0}
+  - type: 4
+    prefab: {fileID: 1579726837898245395, guid: 842faa24da653914c9fcbaaa826b9b64, type: 3}
+    zDepth: 3
+    offset: {x: 0, y: 0, z: 0}
+  - type: 5
+    prefab: {fileID: 2938282033239356441, guid: e4478b7436f8d5643b359f1ddffeaefd, type: 3}
+    zDepth: 3
+    offset: {x: 0, y: 0, z: 0}
+  - type: 6
+    prefab: {fileID: 3775396785115953317, guid: 7d249f1c151781c42a001bbff9d86d20, type: 3}
+    zDepth: 2
+    offset: {x: 0, y: 0, z: 0}
+  - type: 7
+    prefab: {fileID: 8666493941363157885, guid: ceaed21923370e3428a7c32fd0e6c36c, type: 3}
+    zDepth: 2
     offset: {x: 0, y: 0, z: 0}
