@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Level.Editor
+namespace MemoryLabyrinth.Level.Editor
 {
     public class EditorInitializer : MonoBehaviour
     {

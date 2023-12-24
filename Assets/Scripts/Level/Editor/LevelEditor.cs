@@ -1,4 +1,4 @@
-using Level.Editor;
+using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.SaveLoad;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Level.Editor
+namespace MemoryLabyrinth.Level.Editor
 {
     public class LevelEditor : MonoBehaviour
     {
