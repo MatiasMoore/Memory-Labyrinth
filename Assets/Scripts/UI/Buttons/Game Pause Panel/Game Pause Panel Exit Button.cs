@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class PausePanelExitButton : Button
+    public class GamePausePanelExitButton : Button
     {
         public override event UnityAction _buttonClick;
 
