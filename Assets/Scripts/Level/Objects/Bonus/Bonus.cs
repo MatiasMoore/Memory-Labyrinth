@@ -1,12 +1,13 @@
 using UnityEngine;
+using static log4net.Appender.ColoredConsoleAppender;
 
 namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
     public struct BonusStruct 
     {
-        Vector3 coords;
-        int id;
-        int bonusAmount;
+        public Vector3 coords;
+        public int id;
+        public int bonusAmount;
     }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Bonus : MonoBehaviour
@@ -71,6 +72,15 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
         public void DestroySelf()
         {
             Destroy(gameObject);
+        }
+
+        public BonusStruct ToStruct()
+        {
+            BonusStruct bonusStruct = new BonusStruct();
+            bonusStruct.coords = transform.position;
+            bonusStruct.id = _id;
+            bonusStruct.bonusAmount = _value;
+            return bonusStruct;
         }
     }
 }
