@@ -29,13 +29,13 @@ namespace MemoryLabyrinth.Level.Editor
 
         public override bool CanBePlacedAtPos(Vector2 position)
         {
-            var objsAtPos = LevelUtils.GetAllObjectsAtPos(position);
+            var objsAtPos = _container.GetObjectsAtPos(position);
 
             bool noObjects = objsAtPos.Count == 0;
             bool onlyOneObject = objsAtPos.Count == 1;
-            bool isFirstObjPath = !noObjects && objsAtPos[0].GetComponent<Path>() != null;
+            bool isPathPresent = _container.ContainsPartAtPos<Path>(position);
 
-            return noObjects || (onlyOneObject && isFirstObjPath);
+            return noObjects || (onlyOneObject && isPathPresent);
         }
     }
 }
