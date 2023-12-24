@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,8 @@ namespace MemoryLabyrinth.Controls
     [RequireComponent(typeof(PlayerInput))]
     public class TouchControls : MonoBehaviour
     {
+        private const float timeToRegisterTouchHold = 0.2f;
+
         //Class with the control map
         private PlayerInput _playerInput;
 
@@ -17,6 +20,9 @@ namespace MemoryLabyrinth.Controls
 
         public event UnityAction touchDown;
         public event UnityAction touchUp;
+        private Coroutine _touchHoldCoroutine;
+        private float _touchHoldTime;
+        public event UnityAction touchHold;
 
         public static TouchControls Instance { get; private set; }
 
@@ -38,16 +44,36 @@ namespace MemoryLabyrinth.Controls
         {
             _touchPressAction.performed -= FireTouchDownEvent;
             _touchPressAction.canceled -= FireTouchUpEvent;
+            StopAllCoroutines();
         }
 
         private void FireTouchDownEvent(InputAction.CallbackContext context)
         {
             touchDown?.Invoke();
+            _touchHoldCoroutine = StartCoroutine(FireTouchHoldEvent());
         }
 
         private void FireTouchUpEvent(InputAction.CallbackContext context)
         {
             touchUp?.Invoke();
+            if (_touchHoldCoroutine != null)
+            {
+                StopCoroutine(_touchHoldCoroutine);
+                _touchHoldCoroutine = null;
+            }
+        }
+
+        private IEnumerator FireTouchHoldEvent()
+        {
+            _touchHoldTime = 0;
+            while (true)
+            {
+                if (_touchHoldTime >= timeToRegisterTouchHold)
+                    touchHold?.Invoke();
+
+                _touchHoldTime += Time.deltaTime;
+                yield return null;
+            }
         }
 
         public Vector2 getTouchScreenPosition()
