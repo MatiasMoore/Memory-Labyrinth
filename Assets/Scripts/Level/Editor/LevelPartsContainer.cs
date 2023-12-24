@@ -1,12 +1,15 @@
+using MemoryLabyrinth.Level.Objects;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
-using MemoryLabyrinth.Level.Objects.Wall;
+using MemoryLabyrinth.Level.Objects.FinishLib;
+using MemoryLabyrinth.Level.Objects.Path;
+using MemoryLabyrinth.Level.Objects.StartpointLib;
+using MemoryLabyrinth.Level.Objects.TeleportLib;
+using MemoryLabyrinth.Level.Objects.Trap;
+using MemoryLabyrinth.Level.Objects.WallLib;
 using MemoryLabyrinth.SaveLoad;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -61,45 +64,28 @@ namespace MemoryLabyrinth.Level.Editor
         public LevelData ToLevelData()
         {
             LevelData levelData = new LevelData();
-            levelData.bonuses = GetBonusListStruct();
-            levelData.walls = GetWallListStruct();
-       /*   TODO:
-            public string name;
-            public PathListStruct paths;
-            public TeleportListStruct teleports;
-            public TrapListStruct traps;
-            public CheckpointListStruct checkPoints;
-            public StartPointListStruct startPoints;
-            public FinishPointListStruct finishPoints;
-        } 
-       */
+            levelData.bonuses.bonuses = GetStructList<Bonus, BonusStruct>();
+            levelData.walls.walls = GetStructList<Wall, WallStruct>();
+            levelData.paths.paths = GetStructList<Path, PathStruct>();
+            levelData.teleports.teleports = GetStructList<Teleport, TeleportStruct>();
+            levelData.traps.traps = GetStructList<Trap, TrapStruct>();
+            levelData.checkPoints.checkPoints = GetStructList<Checkpoint, CheckpointStruct>();
+            levelData.startPoints.startPoints = GetStructList<StartPoint, StartPointStruct>();
+            levelData.finishPoints.finishPoints = GetStructList<FinishPoint, FinishPointStruct>();
             return levelData;
             
         }
 
-        public WallListStruct GetWallListStruct()
+        public List<Struct> GetStructList<ClassName, Struct>()
         {
-            List<WallStruct> wallList = new();
-            List<Wall> walls = GetPartsOfType<Wall>();
-
-            foreach (var wall in walls)
+            var objList = GetPartsOfType<ClassName>();
+            List<Struct> structList = new List<Struct>();
+            foreach (var obj in objList)
             {
-                wallList.Add(wall.ToStruct());
+                IStructable<Struct> structable = (IStructable<Struct>)obj;
+                structList.Add(structable.ToStruct());
             }
-
-            return new WallListStruct() { walls = wallList };
-        }
-        public BonusListStruct GetBonusListStruct()
-        {
-            List<BonusStruct> bonusList = new();
-            List<Bonus> bonuses = GetPartsOfType<Bonus>();
-
-            foreach (var bonus in bonuses)
-            {
-                bonusList.Add(bonus.ToStruct());
-            }
-
-            return new BonusListStruct() { bonuses = bonusList };
+            return structList;
         }
     }
 }

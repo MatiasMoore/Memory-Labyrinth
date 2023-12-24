@@ -4,12 +4,12 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
    public struct CheckpointStruct
     {
-        Vector3 coords;
-        int queue;
+        public Vector3 coords;
+        public int queue;
     }
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(SpriteRenderer))]
-    public class Checkpoint : MonoBehaviour
+    public class Checkpoint : MonoBehaviour, IStructable<CheckpointStruct>
     {
         [SerializeField]
         private int _queue;
@@ -19,6 +19,11 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
         public Checkpoint(int queue)
         {
             _queue = queue;
+        }
+
+        public CheckpointStruct ToStruct()
+        {
+            return new CheckpointStruct { coords = transform.position, queue = GetQueue() };
         }
 
         public void Start()

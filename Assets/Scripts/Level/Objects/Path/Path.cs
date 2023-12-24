@@ -4,7 +4,16 @@ namespace MemoryLabyrinth.Level.Objects.Path
 {
     public struct PathStruct
     {
-        Vector3 coords;
+        public Vector3 coords;
     }
+
+    public class Path : MonoBehaviour, IStructable<PathStruct>
+    {
+        public PathStruct ToStruct()
+        {
+            return new PathStruct() { coords = transform.position };
+        }
+    }
+   
 }
 
