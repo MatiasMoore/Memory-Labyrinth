@@ -1,3 +1,7 @@
+using MemoryLabyrinth.Level.Objects.BonusLib;
+using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.Level.Objects.Wall;
+using MemoryLabyrinth.SaveLoad;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -8,43 +12,32 @@ namespace Level.Editor
 {
     public class LevelPartsContainer
     {
-        private Dictionary<LevelPartType, List<GameObject>> _parts;
+        private List<GameObject> _parts;
 
-        public List<GameObject> GetPartsByType(LevelPartType type) => _parts[type];
+        public List<GameObject> GetAllParts() => _parts;
 
         public LevelPartsContainer()
         {
-            _parts = new Dictionary<LevelPartType, List<GameObject>>();
-            foreach (LevelPartType type in LevelPartType.GetValues(typeof(LevelPartType)))
-            {
-                _parts[type] = new List<GameObject>();
-            }
+            _parts = new List<GameObject>();
         }
 
-        public void AddPart(LevelPartType type, GameObject newPart)
+        public void AddPart(GameObject newPart)
         {
-            if (_parts[type].Contains(newPart))
+            if (_parts.Contains(newPart))
             {
                 throw new System.Exception($"LevelPartsContainer: {newPart} already exist");
             }
 
-            _parts[type].Add(newPart);
+            _parts.Add(newPart);
         }
 
         public void DeletePart(GameObject part)
         {
-            bool isRemoved = false;
 
-            foreach (List<GameObject> partList in _parts.Values)
+            if (_parts.Contains(part))
             {
-                if (partList.Contains(part))
-                {
-                    partList.Remove(part);
-                    isRemoved = true;
-                }
-            }
-
-            if (!isRemoved)
+                _parts.Remove(part);
+            } else
             {
                 throw new System.Exception($"LevelPartsContainer: {part} does not exist");
             }

@@ -19,7 +19,7 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
         if (CanBePlacedAtPos(position))
         {
             GameObject newPart = CreateAsGameObjectAtPos(position);
-            _container.AddPart(_config.type, newPart);
+            _container.AddPart(newPart);
         } else
         {
             Debug.Log($"ElementCreatorPrimitive: can't create {_config.type} at {position}");
