@@ -2,6 +2,7 @@ using Level.Editor;
 using MemoryLabyrinth.Controls;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class LevelEditor : MonoBehaviour
@@ -53,5 +54,10 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+    [ContextMenu("Start Destroy")]
+    public void StartDestroy()
+    {
+        _interactor = new DestroyFirstElement(_container);
+    }
 
 }
