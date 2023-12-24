@@ -12,6 +12,10 @@ namespace MemoryLabyrinth.Level.Editor
     {
         private LevelPartsContainer _container;
         private InteractorPrimitive _interactor;
+
+        [SerializeField]
+        private Grid _grid;
+
         [SerializeField]
         private LevelParts _levelPartsDataBase;
 
@@ -20,14 +24,14 @@ namespace MemoryLabyrinth.Level.Editor
             touchControls.touchDown += OnPlayerTouch;
             _container = new LevelPartsContainer();
             StartCreatingLevelPart(LevelPartType.Wall);
-
         }
 
         private void OnPlayerTouch()
         {
             Vector2 pos = TouchControls.Instance.getTouchWorldPosition2d();
-            _interactor.InteractAtPos(pos);
-
+            var cellPos = _grid.WorldToCell(pos);
+            var worldFromCell = _grid.GetCellCenterWorld(cellPos);
+            _interactor.InteractAtPos(worldFromCell);
         }
 
         [ContextMenu("Start Creating Wall")]

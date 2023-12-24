@@ -1,6 +1,7 @@
 using MemoryLabyrinth.Level.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using MemoryLabyrinth.Utils;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Editor
@@ -16,7 +17,7 @@ namespace MemoryLabyrinth.Level.Editor
         }
 
         public void DestroyAtPos(Vector2 pos) {
-            List<GameObject> posObjects = GetAllObjectsAtPos(pos);
+            List<GameObject> posObjects = LevelUtils.GetAllObjectsAtPos(pos);
             if (posObjects.Count > 0)
             {
                 GameObject destroyableObject = posObjects[0];
@@ -24,18 +25,6 @@ namespace MemoryLabyrinth.Level.Editor
                 Object.Destroy(destroyableObject);
             }
         }
-
-        public List<GameObject> GetAllObjectsAtPos(Vector2 position)
-        {
-            var colls = Physics2D.OverlapPointAll(position);
-            List<GameObject> objects = new List<GameObject>();
-            foreach (var coll in colls)
-            {
-                objects.Add(coll.gameObject);
-            }
-            return objects;
-        }
-
     }
 }
 
