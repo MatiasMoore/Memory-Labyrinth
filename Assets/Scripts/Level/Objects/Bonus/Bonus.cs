@@ -5,7 +5,7 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
     public struct BonusStruct 
     {
-        public Vector3 coords;
+        public Vec3 coords;
         public int id;
         public int bonusAmount;
     }
@@ -78,7 +78,7 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
         public BonusStruct ToStruct()
         {
             BonusStruct bonusStruct = new BonusStruct();
-            bonusStruct.coords = transform.position;
+            bonusStruct.coords = new Vec3(transform.position);
             bonusStruct.id = _id;
             bonusStruct.bonusAmount = _value;
             return bonusStruct;

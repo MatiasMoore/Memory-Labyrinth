@@ -6,12 +6,12 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
     {
         public WallStruct ToStruct()
         {
-            return new WallStruct() { coords = transform.position };
+            return new WallStruct() { coords = new Vec3(transform.position) };
         }
     }
 
     public struct WallStruct
     {
-        public Vector3 coords;
+        public Vec3 coords;
     }
 }

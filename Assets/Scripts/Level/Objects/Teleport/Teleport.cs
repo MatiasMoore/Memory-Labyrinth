@@ -4,8 +4,8 @@ namespace MemoryLabyrinth.Level.Objects.TeleportLib
 {
     public struct TeleportStruct
     {
-        public Vector3 coords;
-        public Vector3 targetCoords;
+        public Vec3 coords;
+        public Vec3 targetCoords;
     }
     [RequireComponent(typeof(BoxCollider2D))]
     public class Teleport : MonoBehaviour, IStructable<TeleportStruct>
@@ -20,7 +20,7 @@ namespace MemoryLabyrinth.Level.Objects.TeleportLib
 
         public TeleportStruct ToStruct()
         {
-            return new TeleportStruct { coords = transform.position, targetCoords = _target.position };
+            return new TeleportStruct { coords = new Vec3(transform.position), targetCoords = new Vec3(_target.position) };
         }
 
         public void Start()

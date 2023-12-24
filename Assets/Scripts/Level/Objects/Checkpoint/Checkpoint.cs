@@ -4,7 +4,7 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
    public struct CheckpointStruct
     {
-        public Vector3 coords;
+        public Vec3 coords;
         public int queue;
     }
     [RequireComponent(typeof(BoxCollider2D))]
@@ -23,7 +23,7 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 
         public CheckpointStruct ToStruct()
         {
-            return new CheckpointStruct { coords = transform.position, queue = GetQueue() };
+            return new CheckpointStruct { coords = new Vec3(transform.position), queue = GetQueue() };
         }
 
         public void Start()

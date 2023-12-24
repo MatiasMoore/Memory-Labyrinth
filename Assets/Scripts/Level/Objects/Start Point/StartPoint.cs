@@ -5,7 +5,7 @@ namespace MemoryLabyrinth.Level.Objects.StartpointLib
 {
     public struct StartPointStruct
     {
-        public Vector3 coords;
+        public Vec3 coords;
     }
     public class StartPoint : Checkpoint, IStructable<StartPointStruct>
     {
@@ -17,7 +17,7 @@ namespace MemoryLabyrinth.Level.Objects.StartpointLib
 
         public StartPointStruct ToStruct()
         {
-            return new StartPointStruct { coords = _transform.position };
+            return new StartPointStruct { coords = new Vec3(_transform.position) };
         }
 
         private void Awake()

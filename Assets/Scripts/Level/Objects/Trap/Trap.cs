@@ -4,7 +4,7 @@ namespace MemoryLabyrinth.Level.Objects.Trap
 {
     public struct TrapStruct
     {
-        public Vector3 coords;
+        public Vec3 coords;
         public int damage;
     }
     [RequireComponent(typeof(BoxCollider2D))]
@@ -20,7 +20,7 @@ namespace MemoryLabyrinth.Level.Objects.Trap
 
         public TrapStruct ToStruct()
         {
-            return new TrapStruct { coords = transform.position, damage = _damage };
+            return new TrapStruct { coords = new Vec3(transform.position), damage = _damage };
         }
 
         public Trap()
