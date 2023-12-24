@@ -25,6 +25,8 @@ namespace MemoryLabyrinth.Bootstrap
         private MixerControl _mixerControl;
         [SerializeField]
         private AchievementsStorage _achievementsStorage;
+        [SerializeField]
+        private LevelDataStorage _levelDataStorage;
 
         private void Start()
         {
@@ -65,6 +67,11 @@ namespace MemoryLabyrinth.Bootstrap
                 throw new System.Exception("No AchievementsStorage is found on startup");
             _achievementsStorage.Init();
             DontDestroyOnLoad(_achievementsStorage.gameObject);
+
+            if (_levelDataStorage == null)
+                throw new System.Exception("No LevelDataStorage is found on startup");
+            _levelDataStorage.Init();
+            DontDestroyOnLoad(_levelDataStorage.gameObject);
 
             SaveLoadManager.Instance.LoadGame();
 
