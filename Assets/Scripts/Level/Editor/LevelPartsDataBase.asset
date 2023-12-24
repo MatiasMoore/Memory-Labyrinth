@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45a470097ad29d408ba063100b0f555, type: 3}
   m_Name: LevelPartsDataBase
   m_EditorClassIdentifier: 
-  _partsList: []
+  _partsList:
+  - type: 0
+    prefab: {fileID: 4016104633805996424, guid: d771b7319b4c4a24b9c0dc337c1eedc8, type: 3}
+    zDepth: 0
+    offset: {x: 0, y: 0, z: 0}
