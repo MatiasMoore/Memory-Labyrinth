@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallCreator : ElementCreatorPrimitive
+namespace Level.Editor
 {
-    public WallCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
+    public class WallCreator : ElementCreatorPrimitive
     {
-    }
+        public WallCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
+        {
+        }
 
-    public override bool CanBePlacedAtPos(Vector2 position)
-    {
-        return true;
+        public override bool CanBePlacedAtPos(Vector2 position)
+        {
+            return true;
+        }
     }
 }
+
