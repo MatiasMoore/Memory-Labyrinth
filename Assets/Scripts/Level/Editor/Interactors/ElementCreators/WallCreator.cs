@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MemoryLabyrinth.Utils;
 using UnityEngine;
+using static MemoryLabyrinth.Level.Editor.LevelPartsContainer;
 
 namespace MemoryLabyrinth.Level.Editor
 {

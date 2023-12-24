@@ -1,3 +1,4 @@
+using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.WallLib;
 using System.Collections;

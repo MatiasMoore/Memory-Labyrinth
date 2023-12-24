@@ -9,6 +9,7 @@ using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.WallLib;
+using MemoryLabyrinth.Level.Editor;
 
 namespace MemoryLabyrinth.SaveLoad
 {
@@ -16,47 +17,68 @@ namespace MemoryLabyrinth.SaveLoad
     [Serializable]
     public struct BonusListStruct
     {
-        public List<BonusStruct> bonuses;
+        public Dictionary<int, BonusStruct> bonuses;
     }
     [Serializable]
     public struct WallListStruct
     {
-        public List<WallStruct> walls;
+        public Dictionary<int, WallStruct> walls;
     }
     [Serializable]
     public struct PathListStruct
     {
-        public List<PathStruct> paths;
+        public Dictionary<int, PathStruct> paths;
     }
     [Serializable]
     public struct TeleportListStruct
     {
-        public List<TeleportStruct> teleports;
+        public Dictionary<int, TeleportStruct> teleports;
     }
     [Serializable]
     public struct TrapListStruct
     {
-        public List<TrapStruct> traps;
+        public Dictionary<int, TrapStruct> traps;
     }
     [Serializable]
     public struct CheckpointListStruct
     {
-        public List<CheckpointStruct> checkPoints;
+        public Dictionary<int, CheckpointStruct> checkPoints;
     }
     [Serializable]
     public struct StartPointListStruct
     {
-        public List<StartPointStruct> startPoints;
+        public Dictionary<int, StartPointStruct> startPoints;
     }
     [Serializable]
     public struct FinishPointListStruct
     {
-        public List<FinishPointStruct> finishPoints;
+        public Dictionary<int, FinishPointStruct> finishPoints;
     }
+
+    [Serializable]
+    public struct LevelPartStruct
+    {
+        public int id;
+        public LevelPartType partType;
+
+        public LevelPartStruct(int newId, LevelPartType newPartType)
+        {
+            id = newId;
+            partType = newPartType;
+        }
+    }
+
+    [Serializable]
+    public struct LevelPartsListStruct
+    {
+        public List<LevelPartStruct> parts;
+    }
+
     [Serializable]
     public struct LevelData
     {
         public string name;
+        public LevelPartsListStruct parts;
         public PathListStruct paths;
         public WallListStruct walls;
         public BonusListStruct bonuses;

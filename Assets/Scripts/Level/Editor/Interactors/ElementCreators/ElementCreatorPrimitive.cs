@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static MemoryLabyrinth.Level.Editor.LevelPartsContainer;
 
 public abstract class ElementCreatorPrimitive : InteractorPrimitive
 {
-    private LevelPartConfig _config;
+    protected LevelPartConfig _config;
 
     protected LevelPartsContainer _container;
 
@@ -22,7 +23,7 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
         if (CanBePlacedAtPos(position))
         {
             GameObject newPart = CreateAsGameObjectAtPos(position);
-            _container.AddPart(newPart);
+            _container.AddPart(new LevelPartObjectWithType(newPart, _config.type));
             objectPlaced?.Invoke(newPart);
         } else
         {

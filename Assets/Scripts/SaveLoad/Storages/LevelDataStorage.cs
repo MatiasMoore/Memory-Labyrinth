@@ -33,20 +33,7 @@ namespace MemoryLabyrinth.SaveLoad
         {
             if (!this.IsLevelAlreadySaved(newLevelData.name))
             {
-                LevelData _newLevelData = new LevelData();
-
-                _newLevelData.name = newLevelData.name;
-                _newLevelData.paths = newLevelData.paths;
-                _newLevelData.startPoints = newLevelData.startPoints;
-                _newLevelData.teleports = newLevelData.teleports;
-                _newLevelData.traps = newLevelData.traps;
-                _newLevelData.walls = newLevelData.walls;
-                _newLevelData.bonuses = newLevelData.bonuses;
-                _newLevelData.checkPoints = newLevelData.checkPoints;
-                _newLevelData.finishPoints = newLevelData.finishPoints;
-
-
-                _levels.levelDatas.Add(_newLevelData);
+                _levels.levelDatas.Add(newLevelData);
                 Debug.Log($"LevelDataStorage: CreateLevelInfo: Level {newLevelData.name} info has been added");
             }
             else
@@ -60,19 +47,7 @@ namespace MemoryLabyrinth.SaveLoad
             if (this.IsLevelAlreadySaved(newLevelData.name))
             {
                 int levelIndex = _levels.levelDatas.FindIndex(item => item.name == newLevelData.name);
-                LevelData _newLevelData = _levels.levelDatas[levelIndex];
-
-                _newLevelData.name = newLevelData.name;
-                _newLevelData.paths = newLevelData.paths;
-                _newLevelData.startPoints = newLevelData.startPoints;
-                _newLevelData.teleports = newLevelData.teleports;
-                _newLevelData.traps = newLevelData.traps;
-                _newLevelData.walls = newLevelData.walls;
-                _newLevelData.bonuses = newLevelData.bonuses;
-                _newLevelData.checkPoints = newLevelData.checkPoints;
-                _newLevelData.finishPoints = newLevelData.finishPoints;
-
-                _levels.levelDatas[levelIndex] = _newLevelData;
+                _levels.levelDatas[levelIndex] = newLevelData;
 
                 Debug.Log($"LevelDataStorage: UpdateLevelInfo: Level {newLevelData.name} info has been updated");
             }
