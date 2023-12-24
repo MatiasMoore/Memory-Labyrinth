@@ -124,7 +124,10 @@ namespace MemoryLabyrinth.Level.Editor
         public void GetLevelData()
         {
             LevelData levelData = _container.ToLevelData();
+            levelData.name = "Test";
             Debug.Log($"{levelData.walls.walls}, {levelData.bonuses.bonuses}");
+            LevelDataStorage.Instance.AddLevelInfo(levelData);
+            SaveLoadManager.Instance.SaveGame();
         }
 
     }
