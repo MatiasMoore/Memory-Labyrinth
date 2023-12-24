@@ -1,5 +1,6 @@
 using Level.Editor;
 using MemoryLabyrinth.Controls;
+using MemoryLabyrinth.SaveLoad;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -66,6 +67,13 @@ namespace Level.Editor
         public void StartDestroy()
         {
             _interactor = new DestroyFirstElement(_container);
+        }
+
+        [ContextMenu("Get Level Data")]
+        public void GetLevelData()
+        {
+            LevelData levelData = _container.ToLevelData();
+            Debug.Log($"{levelData.walls.walls}, {levelData.bonuses.bonuses}");
         }
 
     }
