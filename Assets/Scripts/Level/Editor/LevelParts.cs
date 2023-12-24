@@ -11,6 +11,18 @@ namespace Level.Editor
         [SerializeField]
         private List<LevelPartConfig> _partsList;
 
+        public LevelPartConfig GetConfigByType(LevelPartType type)
+        {
+            int configIndex = _partsList.FindIndex(x => x.type == type);
+            if(configIndex != -1)
+            {
+                return _partsList[configIndex];
+            } else
+            {
+                Debug.Log($"LevelParts: {type} don't exist");
+                return new LevelPartConfig();
+            }
+        }
 
     }
 
