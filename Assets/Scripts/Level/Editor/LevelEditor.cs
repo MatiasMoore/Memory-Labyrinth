@@ -23,6 +23,7 @@ namespace MemoryLabyrinth.Level.Editor
         public void Init(TouchControls touchControls)
         {
             touchControls.touchDown += OnPlayerTouch;
+            touchControls.touchHold += OnPlayerTouch;
             _container = new LevelPartsContainer();
             StartCreatingLevelPart(LevelPartType.Wall);
         }
