@@ -43,6 +43,20 @@ namespace Level.Editor
             }
 
         }
+
+        public List<T> GetPartsOfType<T>()
+        {
+            List<T> elements = new();
+            foreach (var gameObject in GetAllParts())
+            {
+                T possibleElement = gameObject.GetComponent<T>();
+                if (possibleElement != null)
+                {
+                    elements.Add(possibleElement);
+                }
+            }
+            return elements;
+        }
     }
 }
 
