@@ -57,6 +57,37 @@ namespace Level.Editor
             }
             return elements;
         }
+
+        public LevelData ToLevelData()
+        {
+            LevelData levelData = new LevelData();
+            levelData.walls = GetWallListStruct();
+       /*   TODO:
+            public string name;
+            public PathListStruct paths;
+            public TeleportListStruct teleports;
+            public TrapListStruct traps;
+            public CheckpointListStruct checkPoints;
+            public StartPointListStruct startPoints;
+            public FinishPointListStruct finishPoints;
+        } 
+       */
+            return levelData;
+            
+        }
+
+        public WallListStruct GetWallListStruct()
+        {
+            List<WallStruct> wallList = new();
+            List<Wall> walls = GetPartsOfType<Wall>();
+
+            foreach (var wall in walls)
+            {
+                wallList.Add(wall.ToStruct());
+            }
+
+            return new WallListStruct() { walls = wallList };
+        }
     }
 }
 
