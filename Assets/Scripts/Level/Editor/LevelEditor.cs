@@ -59,6 +59,30 @@ namespace MemoryLabyrinth.Level.Editor
             StartCreatingLevelPart(LevelPartType.Finishpoint);
         }
 
+        [ContextMenu("Start Creating Trap")]
+        public void StartCreatingTrap()
+        {
+            StartCreatingLevelPart(LevelPartType.Trap);
+        }
+
+        [ContextMenu("Start Creating Checkpoint")]
+        public void StartCreatingCheckpoint()
+        {
+            StartCreatingLevelPart(LevelPartType.Checkpoint);
+        }
+
+        [ContextMenu("Start Creating Bonus")]
+        public void StartCreatingBonus()
+        {
+            StartCreatingLevelPart(LevelPartType.Bonus);
+        }
+
+        [ContextMenu("Start Creating Teleport")]
+        public void StartCreatingTeleport()
+        {
+            StartCreatingLevelPart(LevelPartType.Teleport);
+        }
+
         public void StartCreatingLevelPart(LevelPartType type)
         {
             LevelPartConfig config = _levelPartsDataBase.GetConfigByType(type);
