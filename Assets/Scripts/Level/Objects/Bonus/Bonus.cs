@@ -9,8 +9,9 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
         public int id;
         public int bonusAmount;
     }
+
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Bonus : MonoBehaviour
+    public class Bonus : MonoBehaviour, IStructable<BonusStruct>
     {
         int _value = 10;
         int _id;
@@ -73,7 +74,7 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
         {
             Destroy(gameObject);
         }
-
+        
         public BonusStruct ToStruct()
         {
             BonusStruct bonusStruct = new BonusStruct();

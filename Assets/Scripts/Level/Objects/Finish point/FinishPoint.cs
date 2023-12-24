@@ -4,15 +4,20 @@ namespace MemoryLabyrinth.Level.Objects.FinishLib
 {
     public struct FinishPointStruct
     {
-        Vector3 coords;
+        public Vector3 coords;
     }
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Finish : MonoBehaviour
+    public class FinishPoint : MonoBehaviour, IStructable<FinishPointStruct>
     {
-        public Finish()
+        public FinishPoint()
         {
         }
         
+        public FinishPointStruct ToStruct()
+        {
+            return new FinishPointStruct { coords = transform.position };
+        }
+
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;

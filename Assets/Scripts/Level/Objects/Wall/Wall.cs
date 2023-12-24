@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.Wall
+namespace MemoryLabyrinth.Level.Objects.WallLib
 {
-    public class Wall : MonoBehaviour
+    public class Wall : MonoBehaviour, IStructable<WallStruct>
     {
-
         public WallStruct ToStruct()
         {
             return new WallStruct() { coords = transform.position };

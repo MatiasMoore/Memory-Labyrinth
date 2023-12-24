@@ -8,7 +8,7 @@ using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
-using MemoryLabyrinth.Level.Objects.Wall;
+using MemoryLabyrinth.Level.Objects.WallLib;
 
 namespace MemoryLabyrinth.SaveLoad
 {
