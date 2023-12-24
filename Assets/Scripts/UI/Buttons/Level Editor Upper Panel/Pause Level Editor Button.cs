@@ -2,7 +2,7 @@ using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class LevelEditorPausePanelContinueButton : Button
+    public class PauseLevelEditorButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -14,8 +14,8 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             // Main logic
-            MenuManager.ClosePage(MenuManager.Page.PAUSE);
-            MenuManager.OpenPage(MenuManager.Page.LEVEL_EDITOR_UPPER);
+            MenuManager.ClosePage(MenuManager.Page.LEVEL_EDITOR_UPPER);
+            MenuManager.OpenPage(MenuManager.Page.PAUSE);
 
             // Fire events
             FireButtonClickSoundAction();
