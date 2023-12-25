@@ -17,7 +17,7 @@ namespace MemoryLabyrinth.Level.Editor
         }
 
         public void DestroyAtPos(Vector2 pos) {
-            List<GameObject> posObjects = LevelUtils.GetAllObjectsAtPos(pos);
+            List<GameObject> posObjects = _container.GetObjectsAtPos(pos);
             if (posObjects.Count > 0)
             {
                 GameObject destroyableObject = posObjects[0];
