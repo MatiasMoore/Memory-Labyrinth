@@ -57,6 +57,17 @@ namespace MemoryLabyrinth.SaveLoad
             }
         }
 
+        public string GetNextLevelName(string currentLevelName)
+        {
+            int currentlevelIndex = _levels.levelDatas.FindIndex(item => item.name == currentLevelName);
+            string nextLevelName = "";
+            if (currentlevelIndex != _levels.levelDatas.Count - 1)
+            {
+                nextLevelName = _levels.levelDatas[currentlevelIndex + 1].name;
+            }
+            return nextLevelName;
+        }
+
         public void AddLevelInfo(LevelData levelData)
         {
             if (!this.IsLevelAlreadySaved(levelData.name))
@@ -78,20 +89,8 @@ namespace MemoryLabyrinth.SaveLoad
             if (this.IsLevelAlreadySaved(name))
             {
                 int levelIndex = _levels.levelDatas.FindIndex(item => item.name == name);
-                LevelData levelData = new LevelData
-                {
-                    name = name,
-                    bonuses = _levels.levelDatas[levelIndex].bonuses,
-                    checkPoints = _levels.levelDatas[levelIndex].checkPoints,
-                    finishPoints = _levels.levelDatas[levelIndex].finishPoints,
-                    paths = _levels.levelDatas[levelIndex].paths,
-                    startPoints = _levels.levelDatas[levelIndex].startPoints,
-                    teleports = _levels.levelDatas[levelIndex].teleports,
-                    traps = _levels.levelDatas[levelIndex].traps,
-                    walls = _levels.levelDatas[levelIndex].walls
-                };
                 Debug.Log($"GetLevelInfo(): {name}");
-                return levelData;
+                return _levels.levelDatas[levelIndex];
             }
             else
             {

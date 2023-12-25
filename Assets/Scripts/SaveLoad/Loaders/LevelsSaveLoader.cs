@@ -14,7 +14,7 @@ namespace MemoryLabyrinth.SaveLoad
     [Serializable]
     public struct LevelProgress
     {
-        public ResourceManager.Level _level;
+        public string _levelName;
         public int _checkpointId;
         public float _time;
         public List<BonusInfo> _collectedBonuses;

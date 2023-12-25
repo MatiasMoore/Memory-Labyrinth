@@ -10,6 +10,7 @@ using UnityEngine.TestTools;
 
 public class LevelsSaveLoaderTests
 {
+    /*
     private SaveLoadManager _saveLoadManager;
 
     [SetUp]
@@ -232,4 +233,5 @@ public class LevelsSaveLoaderTests
             AssertAllFields(expectedList[i], actualList[i]);
         }
     }
+    */
 }

@@ -79,7 +79,7 @@ namespace MemoryLabyrinth.Level.Logic
             return shouldLoadData;
         }
 
-        public static void Load(ResourceManager.Level level)
+        public static void Load(string levelName)
         {
             SaveLoadManager.Instance.LoadGame();
 
@@ -90,11 +90,11 @@ namespace MemoryLabyrinth.Level.Logic
             }
             _currentLevelProgress = new LevelProgress();
 
-            _currentLevelProgress = LevelProgressStorage.Instance.GetLevelInfo(level);
+            _currentLevelProgress = LevelProgressStorage.Instance.GetLevelInfo(levelName);
 
-            _currentLevelData = LevelDataStorage.Instance.GetLevelDataList()[0];
+            _currentLevelData = LevelDataStorage.Instance.GetLevelInfo(levelName);
 
-            Debug.Log($"CURRENTLEVEL:{level} loaded");
+            Debug.Log($"CURRENTLEVEL:{levelName} loaded");
         }
 
         public static void SaveUnfinishedlevel(LevelProgress newLevelData)
@@ -108,7 +108,7 @@ namespace MemoryLabyrinth.Level.Logic
             }
 
             LevelProgressStorage.Instance.AddLevelInfo(newLevelData);
-            Debug.Log($"CURRENTLEVEL: saved {newLevelData._level}");
+            Debug.Log($"CURRENTLEVEL: saved {newLevelData._levelName}");
 
             SaveLoadManager.Instance.SaveGame();
 

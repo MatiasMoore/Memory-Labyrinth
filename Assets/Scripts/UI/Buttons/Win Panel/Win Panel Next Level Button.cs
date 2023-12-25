@@ -17,9 +17,9 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             /* Main logic */
-            var nextLevel = LevelBuilder.GetCurrentLevelData()._level + 1;
+            var nextLevel = LevelDataStorage.Instance.GetNextLevelName(LevelBuilder.GetCurrentLevelData()._levelName);
             // If level index is out of enum range, load Main Menu
-            if ((int)(nextLevel) > ResourceManager.GetLastLevelIndex())
+            if (nextLevel == "")
                 ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
             // Else, load next level
             else

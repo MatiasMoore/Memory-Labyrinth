@@ -9,7 +9,7 @@ namespace MemoryLabyrinth.UI.Button
     public class LevelSelectButton : Button
     {
         [SerializeField]
-        public ResourceManager.Level _level;
+        public string _levelName;
 
         public override event UnityAction _buttonClick;
 
@@ -22,7 +22,7 @@ namespace MemoryLabyrinth.UI.Button
         {
             // Main logic
             ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-            LevelBuilder.Load(_level);
+            LevelBuilder.Load(_levelName);
 
             // Fire events
             FireButtonClickSoundAction();
