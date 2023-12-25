@@ -66,7 +66,6 @@ namespace MemoryLabyrinth.Level.Editor
             _touchControls.Init();
             _cameraPanControl.Init(_touchControls);
             _levelEditor.Init(_touchControls, _cameraPanControl);
-            _levelEditor.Init(_touchControls);
 
             if (_wallButton != null)
                 _wallButton._buttonClick += () => _levelEditor.StartCreatingLevelPart(LevelPartType.Wall);
