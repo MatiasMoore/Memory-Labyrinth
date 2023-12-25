@@ -1,3 +1,5 @@
+using MemoryLabyrinth.Level.Editor;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +10,9 @@ namespace MemoryLabyrinth.SaveLoad
     {
         public static LevelDataStorage Instance;
 
+        [SerializeField]
+        private LevelDataListContainer _defaultLevels;
+
         [SerializeField] private LevelDataListStruct _levels = new LevelDataListStruct();
 
         public void Init()
@@ -16,6 +21,25 @@ namespace MemoryLabyrinth.SaveLoad
                 return;
             _levels.levelDatas = new List<LevelData>();
             Instance = this;
+        }
+
+        [ContextMenu("Clear All Default Levels")]
+        private void ClearDefaultLevels()
+        {
+            _defaultLevels.Clear();
+        }
+
+        [ContextMenu("Save All Levels As Default")]
+        private void SaveLevelsToFile()
+        {
+            _defaultLevels.Save(GetLevelDataList());
+            _levels.levelDatas.Clear();
+        }
+
+        [ContextMenu("Clear All Saved Levels")]
+        private void ClearSavedLevels()
+        {
+            _levels.levelDatas.Clear();
         }
 
         private bool IsLevelAlreadySaved(string name)
@@ -102,10 +126,15 @@ namespace MemoryLabyrinth.SaveLoad
         }
         public void SetLevelDataList(List<LevelData> levelDatas)
         {
+            //_levels = new LevelDataListStruct();
+            _defaultLevels.Load(out _levels);
             if (levelDatas != null)
-                this._levels.levelDatas = levelDatas;
-            else
-                this._levels.levelDatas = new List<LevelData>(); // TODO: load Scriptable object instead of new list
+            {
+                foreach (var levelData in levelDatas)
+                {
+                    _levels.levelDatas.Add(levelData);
+                }
+            }
         }
     }
 }

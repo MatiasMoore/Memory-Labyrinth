@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd13fa873a1fdcb4199f44a266ed3b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultLevels: {fileID: 11400000, guid: 77a518cd0bf931748b79da27c2a867f9, type: 2}
   _levels:
     levelDatas: []
 --- !u!1660057539 &9223372036854775807
