@@ -1,11 +1,7 @@
-using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.SaveLoad;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using MemoryLabyrinth.Level.Objects.StartpointLib;
+using MemoryLabyrinth.Cam;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -20,20 +16,53 @@ namespace MemoryLabyrinth.Level.Editor
         [SerializeField]
         private LevelParts _levelPartsDataBase;
 
-        public void Init(TouchControls touchControls)
+        private CameraPanControl _cameraPanControl;
+
+        public void Init(TouchControls touchControls, CameraPanControl cameraPanControl)
         {
+            _cameraPanControl = cameraPanControl;
+
             touchControls.touchDown += OnPlayerTouch;
             touchControls.touchHold += OnPlayerTouch;
+
+            touchControls.touchDown += StartCameraPan;
+            touchControls.touchUp += StopCameraPan;
+
             _container = new LevelPartsContainer();
-            StartCreatingLevelPart(LevelPartType.Wall);
+            _interactor = null;
+        }
+
+        private void StartCameraPan()
+        {
+            if (_interactor != null)
+                return;
+
+            _cameraPanControl.StartCameraPan();
+        }
+
+        private void StopCameraPan()
+        {
+            if (_cameraPanControl.IsActive())
+            {
+                _cameraPanControl.StopCameraPan();
+            }
         }
 
         private void OnPlayerTouch()
         {
+            if (_interactor == null)
+                return;
+
             Vector2 pos = TouchControls.Instance.getTouchWorldPosition2d();
             var cellPos = _grid.WorldToCell(pos);
             var worldFromCell = _grid.GetCellCenterWorld(cellPos);
             _interactor.InteractAtPos(worldFromCell);
+        }
+
+        [ContextMenu("Start Panning Camera")]
+        public void StartPanningCamera()
+        {
+            _interactor = null;
         }
 
         [ContextMenu("Start Creating Wall")]

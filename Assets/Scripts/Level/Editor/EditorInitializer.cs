@@ -1,6 +1,5 @@
+using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Editor
@@ -13,10 +12,14 @@ namespace MemoryLabyrinth.Level.Editor
         [SerializeField]
         private LevelEditor _levelEditor;
 
+        [SerializeField]
+        private CameraPanControl _cameraPanControl;
+
         void Start()
         {
             _touchControls.Init();
-            _levelEditor.Init(_touchControls);
+            _cameraPanControl.Init(_touchControls);
+            _levelEditor.Init(_touchControls, _cameraPanControl);
         }
 
     }
