@@ -1,5 +1,5 @@
 using MemoryLabyrinth.SaveLoad;
-using MemoryLabyrinth.UI.Button;
+using MemoryLabyrinth.UI.ButtonsLib;
 using UnityEngine;
 
 namespace MemoryLabyrinth.UI.SlidersLib

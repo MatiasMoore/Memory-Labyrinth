@@ -1,7 +1,7 @@
 using MemoryLabyrinth.Level.Logic;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
     public class LosePanelRestartButton : Button
     {

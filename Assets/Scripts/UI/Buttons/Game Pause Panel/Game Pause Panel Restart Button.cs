@@ -2,7 +2,7 @@ using MemoryLabyrinth.Level.Logic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
     public class GamePausePanelRestartButton : Button
     {
