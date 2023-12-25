@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using MemoryLabyrinth.UI.ButtonsLib;
 
 namespace MemoryLabyrinth.UI
 {
@@ -12,7 +11,7 @@ namespace MemoryLabyrinth.UI
         private TextMeshProUGUI _textField;
 
         [SerializeField]
-        private MemoryLabyrinth.UI.Button.Button _button;
+        private Button _button;
 
         [SerializeField]
         public event UnityAction<string> _inputAccept;
