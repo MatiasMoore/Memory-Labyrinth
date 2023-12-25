@@ -6,7 +6,6 @@ namespace MemoryLabyrinth.UI.Button
     {
         public override event UnityAction _buttonClick;
 
-        //TEMP
         private bool _isClicked = false;
 
         public override void FireButtonClickAction()
@@ -22,7 +21,6 @@ namespace MemoryLabyrinth.UI.Button
                 MenuManager.OpenPage(MenuManager.Page.LEVEL_EDITOR_OBJECTS);
                 _isClicked = true;
             }
-            // TEMP
             else
             {
                 MenuManager.ClosePage(MenuManager.Page.LEVEL_EDITOR_OBJECTS);
