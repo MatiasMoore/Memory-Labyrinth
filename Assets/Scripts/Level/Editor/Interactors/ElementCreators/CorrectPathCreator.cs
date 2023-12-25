@@ -33,6 +33,23 @@ public class CorrectPathCreator : ElementCreatorPrimitive
         bool isTeleportPresent = _container.ContainsPartAtPos<Teleport>(position);
         bool isCorrectPathPresent = _container.ContainsPartAtPos<CorrectPath>(position);
 
-        return !noObjects && !isCorrectPathPresent;
+        if(noObjects || isCorrectPathPresent)
+        {
+            return false;
+        }
+
+        List<CorrectPath> correctPaths = _container.GetPartsOfType<CorrectPath>();
+        if (correctPaths.Count == 0)
+        {
+            return true;
+        }
+
+        CorrectPath lastCorrectPath = correctPaths[correctPaths.Count - 1];
+        bool isLastCorrectPathUp = (Vector2)lastCorrectPath.transform.position == position + Vector2.up;
+        bool isLastCorrectPathDown = (Vector2)lastCorrectPath.transform.position == position + Vector2.down;
+        bool isLastCorrectPathLeft = (Vector2)lastCorrectPath.transform.position == position + Vector2.left;
+        bool isLastCorrectPathRight = (Vector2)lastCorrectPath.transform.position == position + Vector2.right;
+
+        return isLastCorrectPathUp || isLastCorrectPathDown || isLastCorrectPathLeft || isLastCorrectPathRight;
     }
 }
