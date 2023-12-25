@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 4906821045991637250}
   - component: {fileID: 5202339100281784409}
   - component: {fileID: 2830090403444308394}
+  - component: {fileID: 1755673054630062280}
   m_Layer: 0
   m_Name: Input Field
   m_TagString: UI
@@ -670,6 +671,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1755673054630062280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130621342178815530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c97aade2ba6b02488c3d1c01503917f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 8034958945257823370}
+  _button: {fileID: 5371963490959928766}
 --- !u!1 &6027744884536412164
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,6 +698,7 @@ GameObject:
   - component: {fileID: 4921310090800469193}
   - component: {fileID: 8969820422098572057}
   - component: {fileID: 7805057615125379832}
+  - component: {fileID: 5371963490959928766}
   m_Layer: 0
   m_Name: Accept Button
   m_TagString: UI
@@ -790,7 +806,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4921310090800469193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5371963490959928766}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.ButtonsLib.LevelEditorInputButton,
+          Scripts
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7805057615125379832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +834,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 1
+--- !u!114 &5371963490959928766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027744884536412164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ae5a6d564264a4d9c4ae44e9ac6041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8198889790347466841
 GameObject:
   m_ObjectHideFlags: 0
