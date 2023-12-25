@@ -84,6 +84,12 @@ namespace MemoryLabyrinth.Level.Editor
             StartCreatingLevelPart(LevelPartType.Teleport);
         }
 
+        [ContextMenu("Start Creating Correct Path")]
+        public void StartCreatingCorrectPath()
+        {
+            StartCreatingLevelPart(LevelPartType.CorrectPath);
+        }
+
         public void StartCreatingLevelPart(LevelPartType type)
         {
             LevelPartConfig config = _levelPartsDataBase.GetConfigByType(type);
@@ -112,6 +118,9 @@ namespace MemoryLabyrinth.Level.Editor
                     break;
                 case LevelPartType.Teleport:
                     _interactor = new TeleportCreator(_container, config);
+                    break;
+                case LevelPartType.CorrectPath:
+                    _interactor = new CorrectPathCreator(_container, config);
                     break;
                 default:
                     break;
