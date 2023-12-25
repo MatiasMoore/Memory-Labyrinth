@@ -1,6 +1,7 @@
 using MemoryLabyrinth.Level.Objects;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.PathLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
@@ -154,6 +155,17 @@ namespace MemoryLabyrinth.Level.Editor
                 }
             }
             return false;
+        }
+
+        public List<Vector3> GetCorrectPath()
+        {
+            List<CorrectPath> correctPaths = GetPartsOfType<CorrectPath>();
+            List<Vector3> correctPath = new();
+            foreach (var correctPathItem in correctPaths)
+            {
+                correctPath.Add(correctPathItem.transform.position);
+            }
+            return correctPath;
         }
     }
 }
