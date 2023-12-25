@@ -20,10 +20,15 @@ namespace MemoryLabyrinth.Level.Editor
             List<GameObject> posObjects = _container.GetObjectsAtPos(pos);
             if (posObjects.Count > 0)
             {
-                GameObject destroyableObject = posObjects[0];
-                _container.DeletePart(destroyableObject);
-                Object.Destroy(destroyableObject);
+                DestroyElement(posObjects[0]);
+                
             }
+        }
+
+        public void DestroyElement(GameObject element)
+        {
+            _container.DeletePart(element);
+            Object.Destroy(element);
         }
     }
 }
