@@ -1,8 +1,9 @@
+using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class DestroyObjectButton : Button
+    public class LevelEditorNewLevelButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -13,9 +14,6 @@ namespace MemoryLabyrinth.UI.Button
 
         public override void OnClick()
         {
-            // Main logic
-            // TODO: destroy selected object
-
             // Fire events
             FireButtonClickSoundAction();
             FireButtonClickAction();

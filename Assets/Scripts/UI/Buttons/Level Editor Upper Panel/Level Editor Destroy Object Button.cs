@@ -2,7 +2,7 @@ using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class OverviewButton : Button
+    public class LevelEditorDestroyObjectButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -13,9 +13,6 @@ namespace MemoryLabyrinth.UI.Button
 
         public override void OnClick()
         {
-            // Main logic
-            // TODO: allow camera to move freely
-
             // Fire events
             FireButtonClickSoundAction();
             FireButtonClickAction();

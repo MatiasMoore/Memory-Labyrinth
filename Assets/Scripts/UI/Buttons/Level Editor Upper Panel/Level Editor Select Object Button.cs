@@ -2,12 +2,12 @@ using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class SelectObjectButton : Button
+    public class LevelEditorSelectObjectButton : Button
     {
         public override event UnityAction _buttonClick;
 
         //TEMP
-        bool _isClicked = false;
+        private bool _isClicked = false;
 
         public override void FireButtonClickAction()
         {
@@ -17,12 +17,12 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             // Main logic
-            // TODO: open list with available objects
-            if(!_isClicked)
+            if (!_isClicked)
             {
                 MenuManager.OpenPage(MenuManager.Page.LEVEL_EDITOR_OBJECTS);
                 _isClicked = true;
             }
+            // TEMP
             else
             {
                 MenuManager.ClosePage(MenuManager.Page.LEVEL_EDITOR_OBJECTS);
