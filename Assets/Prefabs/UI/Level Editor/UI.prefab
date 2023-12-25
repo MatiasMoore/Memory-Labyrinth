@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 3565641583863783897}
   - component: {fileID: 2986634431283949226}
   - component: {fileID: 6009116595191106380}
+  - component: {fileID: 2864710332183521142}
   m_Layer: 5
   m_Name: Teleport Object
   m_TagString: Untagged
@@ -687,9 +688,9 @@ RectTransform:
   - {fileID: 5204886241562608917}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -349.25266}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8244727143426904035
@@ -774,13 +775,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2864710332183521142}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionTeleportButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -800,6 +802,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &2864710332183521142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711178310339467664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077113d5e69100344bc464873bd7bab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2151283241304417055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1181,7 @@ GameObject:
   - component: {fileID: 2609395618012626634}
   - component: {fileID: 5955268748861898022}
   - component: {fileID: 2016787247070958532}
+  - component: {fileID: 550703824829648866}
   m_Layer: 5
   m_Name: Trap Object
   m_TagString: Untagged
@@ -1189,9 +1204,9 @@ RectTransform:
   - {fileID: 2132724685894494281}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -245.89476}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6235750298788333032
@@ -1276,13 +1291,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 550703824829648866}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionTrapButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1302,6 +1318,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &550703824829648866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840255375855590940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be9d15c7aed3625478da67d94ab5eb8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2870102151501727020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +2036,7 @@ GameObject:
   - component: {fileID: 7113933876658699805}
   - component: {fileID: 4214781613232197642}
   - component: {fileID: 1245295389774967404}
+  - component: {fileID: 2674430894273741852}
   m_Layer: 5
   m_Name: Start Point Object
   m_TagString: Untagged
@@ -2030,9 +2059,9 @@ RectTransform:
   - {fileID: 3196235678050659359}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -142.53685}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &615726246579755572
@@ -2117,13 +2146,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2674430894273741852}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionStartPointButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2143,6 +2173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &2674430894273741852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818574624626500827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5083306261f04104ead3b62bffe79df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3875167805345667270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,6 +2359,7 @@ GameObject:
   - component: {fileID: 3127166046045056102}
   - component: {fileID: 149067400015545135}
   - component: {fileID: 3855894475254605778}
+  - component: {fileID: 7288877687171279105}
   m_Layer: 5
   m_Name: Path Object
   m_TagString: Untagged
@@ -2339,9 +2382,9 @@ RectTransform:
   - {fileID: 3574352358128539870}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -762.68427}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3220029967153540434
@@ -2426,13 +2469,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 7288877687171279105}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionPathButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2452,6 +2496,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &7288877687171279105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3930271999327572383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3507a6fcd5af3344ba2725e93a6aaa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3944266620571224177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,6 +3098,7 @@ GameObject:
   - component: {fileID: 4574287231006701223}
   - component: {fileID: 2782607403558804102}
   - component: {fileID: 3708537375012903258}
+  - component: {fileID: 515533901039926375}
   m_Layer: 5
   m_Name: CheckPoint Object
   m_TagString: Untagged
@@ -3064,9 +3121,9 @@ RectTransform:
   - {fileID: 8237109036241038751}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -555.96844}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8030262312760949550
@@ -3151,13 +3208,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 515533901039926375}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionCheckPointButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3177,6 +3235,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &515533901039926375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936773225410920184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356c00e6aaf7f2147b170484cc880b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5079345663865206662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3372,6 +3442,7 @@ GameObject:
   - component: {fileID: 8494930212858231635}
   - component: {fileID: 4883120530717624286}
   - component: {fileID: 7962452728664752936}
+  - component: {fileID: 3872486680718724446}
   m_Layer: 5
   m_Name: Bonus Object
   m_TagString: Untagged
@@ -3394,9 +3465,9 @@ RectTransform:
   - {fileID: 7997500593102546142}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -659.32635}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2343099905202759433
@@ -3481,13 +3552,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 3872486680718724446}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionBonusButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3507,6 +3579,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &3872486680718724446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5119543166189796847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a79fb9a850051b458eeb58cebeb34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5793951858484488677
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,6 +5343,7 @@ GameObject:
   - component: {fileID: 8451468781222749178}
   - component: {fileID: 8198654194461878757}
   - component: {fileID: 5449614581542491782}
+  - component: {fileID: 7677649024093735948}
   m_Layer: 5
   m_Name: Wall Object
   m_TagString: Untagged
@@ -5281,9 +5366,9 @@ RectTransform:
   - {fileID: 8812946952195918950}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -39.17895}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1574126330142548514
@@ -5368,13 +5453,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 7677649024093735948}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionWallButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5394,6 +5480,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &7677649024093735948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6918286736973412702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b01fc61f061cb147aca180d6cd89423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7003055772343269210
 GameObject:
   m_ObjectHideFlags: 0
@@ -5591,6 +5689,7 @@ GameObject:
   - component: {fileID: 2510691171370482243}
   - component: {fileID: 7733790998386667841}
   - component: {fileID: 7661954401602353052}
+  - component: {fileID: 1510165887018710760}
   m_Layer: 5
   m_Name: Finish Point Object
   m_TagString: Untagged
@@ -5613,9 +5712,9 @@ RectTransform:
   - {fileID: 776373838618328695}
   m_Father: {fileID: 6575265567540004032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.46375, y: -452.61057}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 313.4316, y: 78.3579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &104445651260735236
@@ -5700,13 +5799,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1510165887018710760}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.ObjectSelectionFinishPointButton,
+          Scripts
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5726,6 +5826,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 1
   m_AspectRatio: 4
+--- !u!114 &1510165887018710760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160233581051835132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60e3d20775545746b47cfa21da0141d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7223267639975477763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6085,7 +6197,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.00015258789}
-  m_SizeDelta: {x: 0, y: -34.472595}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423499699636882301
 MonoBehaviour:
@@ -6543,7 +6655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7522469880682534409
 RectTransform:
   m_ObjectHideFlags: 0
