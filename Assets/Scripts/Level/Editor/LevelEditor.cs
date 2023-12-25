@@ -125,8 +125,10 @@ namespace MemoryLabyrinth.Level.Editor
                     _interactor = new PathCreator(_container, config);
                     break;
                 case LevelPartType.Trap:
+                    _interactor = new TrapCreator(_container, config);
                     break;
                 case LevelPartType.Checkpoint:
+                    _interactor = new CheckpointCreator(_container, config);
                     break;
                 case LevelPartType.Startpoint:
                     _interactor = new StartPointCreator(_container, config);
@@ -135,8 +137,10 @@ namespace MemoryLabyrinth.Level.Editor
                     _interactor = new FinishPointCreator(_container, config);
                     break;
                 case LevelPartType.Bonus:
+                    _interactor = new BonusCreator(_container, config);
                     break;
                 case LevelPartType.Teleport:
+                    _interactor = new TeleportCreator(_container, config);
                     break;
                 default:
                     break;
