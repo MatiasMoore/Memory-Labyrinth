@@ -15,7 +15,8 @@ namespace MemoryLabyrinth.UI
             LEVEL_SELECTION,
             LEVEL_EDITOR_UPPER,
             LEVEL_EDITOR_SAVE,
-            LEVEL_EDITOR_OBJECTS
+            LEVEL_EDITOR_OBJECTS,
+            LEVEL_EDITOR_CORRECT_PATH
         }
 
         public static void OpenPage(Page page)
@@ -72,6 +73,8 @@ namespace MemoryLabyrinth.UI
                     return UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_OBJECTS)).gameObject;
                 case Page.LEVEL_EDITOR_SAVE:
                     return UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_SAVE)).gameObject;
+                case Page.LEVEL_EDITOR_CORRECT_PATH:
+                    return UI.transform.Find(GetPageName(Page.LEVEL_EDITOR_CORRECT_PATH)).gameObject;
                 default:
                     throw new System.Exception("MENU MANAGER: GetPageGameObject -> page is not defined in switch");
             }
@@ -101,6 +104,8 @@ namespace MemoryLabyrinth.UI
                     return new string("Upper Panel/Safe Area/Available Objects List");
                 case Page.LEVEL_EDITOR_SAVE:
                     return new string("Save Level Panel");
+                case Page.LEVEL_EDITOR_CORRECT_PATH:
+                    return new string("Upper Panel/Safe Area/Correct Path Control List");
                 default:
                     throw new System.Exception("MENU MANAGER: GetPageName -> page is not defined in switch");
             }
