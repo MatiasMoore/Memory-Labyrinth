@@ -349,6 +349,7 @@ MonoBehaviour:
   _mixerControl: {fileID: 423832223}
   _achievementsStorage: {fileID: 1706998325}
   _levelDataStorage: {fileID: 2139709909}
+  _levelPartsDB: {fileID: 11400000, guid: 78bdeb7975f31db40ad7dbc6b0420025, type: 2}
 --- !u!1 &858154160
 GameObject:
   m_ObjectHideFlags: 0

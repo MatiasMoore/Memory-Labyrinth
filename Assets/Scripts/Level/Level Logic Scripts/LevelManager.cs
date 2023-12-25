@@ -34,7 +34,7 @@ namespace MemoryLabyrinth.Level.Logic
 
         private CorrectPathRenderer _correctPathBuilder;
 
-        private GameObject _currentLevelObject;
+        private List<GameObject> _currentLevelObjects = new List<GameObject>();
 
         public static LevelManager Instance;
 
@@ -74,14 +74,19 @@ namespace MemoryLabyrinth.Level.Logic
         private void StartLevel(LevelProgress levelData)
         {
             //Destroy previous level if necessary
-            if (_currentLevelObject != null)
-                Destroy(_currentLevelObject);
+            if (_currentLevelObjects.Count != 0)
+            {
+                foreach (var obj in _currentLevelObjects)
+                    Destroy(obj);
+            }
 
             //Get level data
             ResourceManager.Level currentLevelEnum = levelData._level;
 
-            GameObject levelPrefab = ResourceManager.GetLevelObject(currentLevelEnum);
-            _currentLevelObject = Instantiate(levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            //GameObject levelPrefab = ResourceManager.GetLevelObject(currentLevelEnum);
+            //_currentLevelObject = Instantiate(levelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+            _currentLevelObjects = LevelBuilder.BuildCurrentLevelToScene();
 
             //Reset all temporary parameters
             _mainCharacter.ResetHealth();
@@ -89,7 +94,7 @@ namespace MemoryLabyrinth.Level.Logic
             _levelModel.SetBonusAmount(0);
             _levelModel.SetCurrentCheckPoint(FindObjectOfType<StartPoint>());
 
-            bool startLevelFromSpawn = levelData._checkpointId == 0;
+            bool startLevelFromSpawn = true || levelData._checkpointId == 0;
 
             //Load parameters if they exist
             if (!startLevelFromSpawn)
@@ -185,14 +190,14 @@ namespace MemoryLabyrinth.Level.Logic
             FogController.Instance.SetFogVisibile(false);
 
             //Show the correct path and wait for it to finish
-            _correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
+            /*_correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
 
             StartShowPath();
             while (!_correctPathBuilder.IsFinished())
             {
                 yield return null;
             }
-            StopShowPath();
+            StopShowPath();*/
 
             //Fade in fog
             FogController.Instance.SetFogVisibile(true);

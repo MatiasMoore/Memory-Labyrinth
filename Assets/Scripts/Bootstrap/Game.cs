@@ -1,4 +1,6 @@
 using MemoryLabyrinth.Audio;
+using MemoryLabyrinth.Level.Editor;
+using MemoryLabyrinth.Level.Logic;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
@@ -27,7 +29,8 @@ namespace MemoryLabyrinth.Bootstrap
         private AchievementsStorage _achievementsStorage;
         [SerializeField]
         private LevelDataStorage _levelDataStorage;
-
+        [SerializeField]
+        private LevelParts _levelPartsDB;
         private void Start()
         {
             
@@ -42,6 +45,10 @@ namespace MemoryLabyrinth.Bootstrap
             if (_musicManager == null)
                 throw new System.Exception("No music manager is found on startup");
             DontDestroyOnLoad(_musicManager.gameObject);
+
+            if (_levelPartsDB == null)
+                throw new System.Exception("No level parts scriptable object is found on startup");
+            LevelBuilder.Init(_levelPartsDB);
 
             if (_bonusStorage == null)
                 throw new System.Exception("No BonusStorage is found on startup");
