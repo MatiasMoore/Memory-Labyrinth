@@ -1,10 +1,11 @@
 using UnityEngine;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.Level.Logic;
+using MemoryLabyrinth.SaveLoad;
 
-namespace MemoryLabyrinth.SaveLoad
+namespace MemoryLabyrinth.Level.Logic
 {
-    public static class CurrentLevel
+    public static class LevelBuilder
     {
         private static LevelProgress _currentLevel = new LevelProgress();
 

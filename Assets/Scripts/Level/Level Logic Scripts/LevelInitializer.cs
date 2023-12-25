@@ -46,7 +46,7 @@ namespace MemoryLabyrinth.Level.Logic
             _timer.Init();
             _fogController.Init();
             _levelModel.Init(_mainCharacter, Timer.Instance);
-            CurrentLevel.SetupListeners(_levelModel);
+            LevelBuilder.SetupListeners(_levelModel);
             _levelManager.Init(_mainCharacter.gameObject, _levelModel, _hudController);
             _cameraScript.Init();
 

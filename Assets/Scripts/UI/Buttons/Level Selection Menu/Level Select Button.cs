@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
+using MemoryLabyrinth.Level.Logic;
 
 namespace MemoryLabyrinth.UI.Button
 {
@@ -21,7 +22,7 @@ namespace MemoryLabyrinth.UI.Button
         {
             // Main logic
             ResourceManager.LoadScene(ResourceManager.AvailableScene.GameField);
-            CurrentLevel.Load(_level);
+            LevelBuilder.Load(_level);
 
             // Fire events
             FireButtonClickSoundAction();

@@ -62,13 +62,13 @@ namespace MemoryLabyrinth.Level.Logic
 
         public void StartCurrentLevelFromSpawn()
         {
-            var newLevelData = new LevelProgress { _level = CurrentLevel.GetCurrentLevelData()._level };
+            var newLevelData = new LevelProgress { _level = LevelBuilder.GetCurrentLevelData()._level };
             StartLevel(newLevelData);
         }
 
         public void StartCurrentLevel()
         {
-            StartLevel(CurrentLevel.GetCurrentLevelData());
+            StartLevel(LevelBuilder.GetCurrentLevelData());
         }
 
         private void StartLevel(LevelProgress levelData)

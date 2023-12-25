@@ -52,7 +52,7 @@ namespace MemoryLabyrinth.Level.Logic
         {
             LevelProgress levelData = new LevelProgress();
 
-            levelData._level = CurrentLevel.GetCurrentLevelData()._level;
+            levelData._level = LevelBuilder.GetCurrentLevelData()._level;
             levelData._livesAmount = _mainCharacter.GetHealth();
             levelData._checkpointId = _isLevelFinish || _currentCheckpoint == null ? 0 : _currentCheckpoint.GetQueue();
             levelData._time = _timer == null ? 0 : _timer.GetElapsedTime();
