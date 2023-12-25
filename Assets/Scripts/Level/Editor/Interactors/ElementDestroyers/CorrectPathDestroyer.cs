@@ -5,25 +5,29 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CorrectPathDestroyer : ElementDestroyerPrimitive
+namespace MemoryLabyrinth.Level.Editor
 {
-    public CorrectPathDestroyer(LevelPartsContainer container) : base(container)
+    public class CorrectPathDestroyer : ElementDestroyerPrimitive
     {
-    }
-
-    public override void InteractAtPos(Vector2 pos)
-    {
-        List<CorrectPath> correctPaths = _container.GetPartsOfType<CorrectPath>();
-
-        if (correctPaths.Count == 0)
+        public CorrectPathDestroyer(LevelPartsContainer container) : base(container)
         {
-            return;
         }
 
-        if ((Vector2) correctPaths.Last().transform.position == pos)
+        public override void InteractAtPos(Vector2 pos)
         {
-            DestroyAtPos(pos);
-        }
+            List<CorrectPath> correctPaths = _container.GetPartsOfType<CorrectPath>();
 
+            if (correctPaths.Count == 0)
+            {
+                return;
+            }
+
+            if ((Vector2)correctPaths.Last().transform.position == pos)
+            {
+                DestroyAtPos(pos);
+            }
+
+        }
     }
 }
+
