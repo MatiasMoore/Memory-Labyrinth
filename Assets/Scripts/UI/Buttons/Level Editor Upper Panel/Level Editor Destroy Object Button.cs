@@ -1,9 +1,8 @@
-using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.Button
 {
-    public class NewLevelButton : Button
+    public class LevelEditorDestroyObjectButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -14,10 +13,6 @@ namespace MemoryLabyrinth.UI.Button
 
         public override void OnClick()
         {
-            // Main logic
-            // TODO: restart scene/clear all objects from scene
-            ResourceManager.LoadScene(ResourceManager.AvailableScene.LevelEditor);
-
             // Fire events
             FireButtonClickSoundAction();
             FireButtonClickAction();
