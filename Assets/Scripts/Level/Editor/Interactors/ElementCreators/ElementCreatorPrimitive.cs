@@ -13,6 +13,8 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
 
     protected event UnityAction<GameObject> objectPlaced;
 
+    protected GameObject _object;
+
     public ElementCreatorPrimitive(LevelPartsContainer container, LevelPartConfig config)
     {
         _container = container;
@@ -24,6 +26,7 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
         {
             GameObject newPart = CreateAsGameObjectAtPos(position);
             _container.AddPart(new LevelPartObjectWithType(newPart, _config.type));
+            _object = newPart;
             objectPlaced?.Invoke(newPart);
         } else
         {

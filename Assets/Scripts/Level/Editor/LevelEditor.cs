@@ -61,6 +61,7 @@ namespace MemoryLabyrinth.Level.Editor
             var cellPos = _grid.WorldToCell(pos);
             var worldFromCell = _grid.GetCellCenterWorld(cellPos);
             _interactor.InteractAtPos(worldFromCell);
+            Debug.Log($"LevelEditor: interacted with {_interactor}");
         }
 
         [ContextMenu("Start Panning Camera")]

@@ -41,19 +41,19 @@ namespace MemoryLabyrinth.Level.Editor
         public override void ConfigurateElement(GameObject element)
         {
             _inputField.gameObject.SetActive(true);
-            _inputField._inputAccept += (string data) => SetUpData(element, data);
+            _inputField._inputAccept += SetUpData;
         }
 
-        public void SetUpData(GameObject element, string data)
+        public void SetUpData(string data)
         {
-            Trap trap = element.GetComponent<Trap>();
+            Trap trap = _object.GetComponent<Trap>();
             int damage = 0;
             bool success = int.TryParse(data, out damage);
             if (success)
             {
                 trap.SetDamage(damage);
+                _inputField._inputAccept -= SetUpData;
                 _inputField.gameObject.SetActive(false);
-                _inputField._inputAccept -= (string data) => SetUpData(element, data);
             }
             
         }
