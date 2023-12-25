@@ -127,8 +127,8 @@ namespace MemoryLabyrinth.Level.Editor
             }
         }
 
-        [ContextMenu("Start Destroy")]
-        public void StartDestroy()
+        [ContextMenu("Start Destroy Parts")]
+        public void StartDestroyParts()
         {
             _interactor = new DestroyFirstElement(_container);
         }
