@@ -7,6 +7,7 @@ using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.WallLib;
+using MemoryLabyrinth.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace MemoryLabyrinth.Level.Editor
 {
     public class CheckpointCreator : ConfigurableElementCreatorPrimitive
     {
-        public CheckpointCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
+        public CheckpointCreator(LevelPartsContainer container, LevelPartConfig config, InputField inputField) : base(container, config, inputField)
         {
         }
 
@@ -35,10 +36,23 @@ namespace MemoryLabyrinth.Level.Editor
 
             return isPathPresent && !isWallPresent && !isCheckpointPresent && !isFinishPresent && !isStartPresent;
         }
-
         public override void ConfigurateElement(GameObject element)
         {
+            _inputField.gameObject.SetActive(true);
+            _inputField._inputAccept += (string data) => SetUpData(element, data);
+        }
 
+        public void SetUpData(GameObject element, string data)
+        {
+            Checkpoint checkpoint = element.GetComponent<Checkpoint>();
+            int queue = 0;
+            bool success = int.TryParse(data, out queue);
+            if (success)
+            {
+                checkpoint.SetQueue(queue);
+                _inputField.gameObject.SetActive(false);
+                _inputField._inputAccept -= (string data) => SetUpData(element, data);
+            }
         }
     }
 

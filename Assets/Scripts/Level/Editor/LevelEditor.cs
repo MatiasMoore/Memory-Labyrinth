@@ -2,6 +2,7 @@ using MemoryLabyrinth.Controls;
 using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 using MemoryLabyrinth.Cam;
+using MemoryLabyrinth.UI;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -17,6 +18,9 @@ namespace MemoryLabyrinth.Level.Editor
         private LevelParts _levelPartsDataBase;
 
         private CameraPanControl _cameraPanControl;
+
+        [SerializeField]
+        private InputField _inputField;
 
         public void Init(TouchControls touchControls, CameraPanControl cameraPanControl)
         {
@@ -131,10 +135,12 @@ namespace MemoryLabyrinth.Level.Editor
                     _interactor = new PathCreator(_container, config);
                     break;
                 case LevelPartType.Trap:
-                    _interactor = new TrapCreator(_container, config);
+
+                    _interactor = new TrapCreator(_container, config, _inputField);
                     break;
                 case LevelPartType.Checkpoint:
-                    _interactor = new CheckpointCreator(_container, config);
+
+                    _interactor = new CheckpointCreator(_container, config, _inputField);
                     break;
                 case LevelPartType.Startpoint:
                     _interactor = new StartPointCreator(_container, config);
@@ -143,10 +149,12 @@ namespace MemoryLabyrinth.Level.Editor
                     _interactor = new FinishPointCreator(_container, config);
                     break;
                 case LevelPartType.Bonus:
-                    _interactor = new BonusCreator(_container, config);
+
+                    _interactor = new BonusCreator(_container, config, _inputField);
                     break;
                 case LevelPartType.Teleport:
-                    _interactor = new TeleportCreator(_container, config);
+
+                    _interactor = new TeleportCreator(_container, config, _inputField);
                     break;
                 case LevelPartType.CorrectPath:
                     _interactor = new CorrectPathCreator(_container, config);

@@ -7,6 +7,7 @@ using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.WallLib;
+using MemoryLabyrinth.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace MemoryLabyrinth.Level.Editor
 {
     public class TeleportCreator : ConfigurableElementCreatorPrimitive
     {
-        public TeleportCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
+        public TeleportCreator(LevelPartsContainer container, LevelPartConfig config, InputField inputField) : base(container, config, inputField)
         {
         }
 

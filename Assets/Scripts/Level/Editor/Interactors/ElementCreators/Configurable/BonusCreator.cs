@@ -7,6 +7,7 @@ using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.WallLib;
+using MemoryLabyrinth.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace MemoryLabyrinth.Level.Editor
 {
     public class BonusCreator : ConfigurableElementCreatorPrimitive
     {
-        public BonusCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
+        public BonusCreator(LevelPartsContainer container, LevelPartConfig config, InputField inputField) : base(container, config, inputField)
         {
         }
 
@@ -38,7 +39,21 @@ namespace MemoryLabyrinth.Level.Editor
 
         public override void ConfigurateElement(GameObject element)
         {
+            _inputField.gameObject.SetActive(true);
+            _inputField._inputAccept += (string data) => SetUpData(element, data);
+        }
 
+        public void SetUpData(GameObject element, string data)
+        {
+            Bonus bonus = element.GetComponent<Bonus>();
+            int value = 0;
+            bool success = int.TryParse(data, out value);
+            if (success)
+            {
+                bonus.SetValue(value);
+                _inputField.gameObject.SetActive(false);
+                _inputField._inputAccept -= (string data) => SetUpData(element, data);
+            }
         }
     }
 }
