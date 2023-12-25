@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace MemoryLabyrinth.Controls
@@ -49,17 +50,33 @@ namespace MemoryLabyrinth.Controls
 
         private void FireTouchDownEvent(InputAction.CallbackContext context)
         {
-            touchDown?.Invoke();
-            _touchHoldCoroutine = StartCoroutine(FireTouchHoldEvent());
+            if (!IsTouchOverUIObject())
+            {
+                touchDown?.Invoke();
+                _touchHoldCoroutine = StartCoroutine(FireTouchHoldEvent());
+            }   
+        }
+
+        private bool IsTouchOverUIObject()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = getTouchScreenPosition();
+
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
         }
 
         private void FireTouchUpEvent(InputAction.CallbackContext context)
         {
-            touchUp?.Invoke();
             if (_touchHoldCoroutine != null)
             {
-                StopCoroutine(_touchHoldCoroutine);
-                _touchHoldCoroutine = null;
+                touchUp?.Invoke();
+                if (_touchHoldCoroutine != null)
+                {
+                    StopCoroutine(_touchHoldCoroutine);
+                    _touchHoldCoroutine = null;
+                }
             }
         }
 
