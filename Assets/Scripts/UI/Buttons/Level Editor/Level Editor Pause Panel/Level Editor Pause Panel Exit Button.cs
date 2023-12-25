@@ -1,9 +1,9 @@
 using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class LevelEditorNewLevelButton : Button
+    public class LevelEditorPausePanelExitButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -14,6 +14,9 @@ namespace MemoryLabyrinth.UI.Button
 
         public override void OnClick()
         {
+            // Main logic
+            ResourceManager.LoadScene(ResourceManager.AvailableScene.MainMenu);
+
             // Fire events
             FireButtonClickSoundAction();
             FireButtonClickAction();

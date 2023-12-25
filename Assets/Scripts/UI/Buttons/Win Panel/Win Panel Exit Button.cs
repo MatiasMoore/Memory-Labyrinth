@@ -1,7 +1,7 @@
 using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
     public class WinPanelExitButton : Button
     {

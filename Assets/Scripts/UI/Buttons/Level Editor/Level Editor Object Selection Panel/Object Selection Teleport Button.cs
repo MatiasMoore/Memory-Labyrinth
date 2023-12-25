@@ -1,9 +1,8 @@
-using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class LevelEditorButton : Button
+    public class ObjectSelectionTeleportButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -14,10 +13,6 @@ namespace MemoryLabyrinth.UI.ButtonsLib
 
         public override void OnClick()
         {
-            // Main logic
-            MenuManager.ClosePage(MenuManager.Page.MAIN);
-            ResourceManager.LoadScene(ResourceManager.AvailableScene.LevelEditor);
-
             // Fire events
             FireButtonClickSoundAction();
             FireButtonClickAction();

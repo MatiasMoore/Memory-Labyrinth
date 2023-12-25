@@ -1,12 +1,8 @@
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
-using MemoryLabyrinth.UI.Button;
-using System.Collections;
-using System.Collections.Generic;
+using MemoryLabyrinth.UI.ButtonsLib;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Button = MemoryLabyrinth.UI.Button.Button;
 
 namespace MemoryLabyrinth.Level.Editor
 {

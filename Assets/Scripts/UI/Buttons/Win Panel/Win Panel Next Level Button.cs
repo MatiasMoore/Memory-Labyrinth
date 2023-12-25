@@ -3,7 +3,7 @@ using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
     public class WinPanelNextLevelButton : Button
     {

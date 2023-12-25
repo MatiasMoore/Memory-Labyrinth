@@ -1,8 +1,8 @@
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class LevelEditorLoadLevelButton : Button
+    public class LevelEditorPausePanelContinueButton : Button
     {
         public override event UnityAction _buttonClick;
 
@@ -14,7 +14,8 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             // Main logic
-            // TODO: load level
+            MenuManager.ClosePage(MenuManager.Page.PAUSE);
+            MenuManager.OpenPage(MenuManager.Page.LEVEL_EDITOR_UPPER);
 
             // Fire events
             FireButtonClickSoundAction();

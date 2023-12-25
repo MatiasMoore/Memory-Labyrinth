@@ -1,8 +1,8 @@
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class ObjectSelectionTeleportButton : Button
+    public class LevelEditorDeleteCorrectPathButton : Button
     {
         public override event UnityAction _buttonClick;
 

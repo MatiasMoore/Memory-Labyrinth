@@ -1,8 +1,8 @@
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class ObjectSelectionCheckPointButton : Button
+    public class ObjectSelectionWallButton : Button
     {
         public override event UnityAction _buttonClick;
 

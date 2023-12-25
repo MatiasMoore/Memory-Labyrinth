@@ -1,11 +1,12 @@
-using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
 namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class LevelEditorButton : Button
+    public class LevelEditorCorrectPathButton : Button
     {
         public override event UnityAction _buttonClick;
+
+        private bool _isClicked = false;
 
         public override void FireButtonClickAction()
         {
@@ -15,8 +16,17 @@ namespace MemoryLabyrinth.UI.ButtonsLib
         public override void OnClick()
         {
             // Main logic
-            MenuManager.ClosePage(MenuManager.Page.MAIN);
-            ResourceManager.LoadScene(ResourceManager.AvailableScene.LevelEditor);
+            if (!_isClicked)
+            {
+                MenuManager.OpenPage(MenuManager.Page.LEVEL_EDITOR_CORRECT_PATH);
+                _isClicked = true;
+            }
+            else
+            {
+                MenuManager.ClosePage(MenuManager.Page.LEVEL_EDITOR_CORRECT_PATH);
+                _isClicked = false;
+            }
+
 
             // Fire events
             FireButtonClickSoundAction();

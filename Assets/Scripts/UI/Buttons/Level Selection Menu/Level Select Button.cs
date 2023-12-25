@@ -4,7 +4,7 @@ using MemoryLabyrinth.Resources;
 using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.Level.Logic;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
     public class LevelSelectButton : Button
     {

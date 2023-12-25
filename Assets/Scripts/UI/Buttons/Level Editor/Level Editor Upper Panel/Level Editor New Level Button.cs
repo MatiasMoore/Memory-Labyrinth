@@ -1,8 +1,9 @@
+using MemoryLabyrinth.Resources;
 using UnityEngine.Events;
 
-namespace MemoryLabyrinth.UI.Button
+namespace MemoryLabyrinth.UI.ButtonsLib
 {
-    public class ObjectSelectionWallButton : Button
+    public class LevelEditorNewLevelButton : Button
     {
         public override event UnityAction _buttonClick;
 
