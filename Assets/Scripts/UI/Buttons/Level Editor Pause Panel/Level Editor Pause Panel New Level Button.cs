@@ -15,7 +15,6 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             // Main logic
-            // TODO: restart scene/clear all objects from scene
             ResourceManager.LoadScene(ResourceManager.AvailableScene.LevelEditor);
 
             // Fire events

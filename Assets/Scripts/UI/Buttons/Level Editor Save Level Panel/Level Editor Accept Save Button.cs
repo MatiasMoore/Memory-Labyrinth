@@ -14,7 +14,6 @@ namespace MemoryLabyrinth.UI.Button
         public override void OnClick()
         {
             // Main logic
-            // TODO: save level with the specified name
             MenuManager.ClosePage(MenuManager.Page.LEVEL_EDITOR_SAVE);
             MenuManager.OpenPage(MenuManager.Page.PAUSE);
             
