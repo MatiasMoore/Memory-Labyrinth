@@ -41,6 +41,10 @@ MonoBehaviour:
     prefab: {fileID: 3775396785115953317, guid: 7d249f1c151781c42a001bbff9d86d20, type: 3}
     zDepth: 2
     offset: {x: 0, y: 0, z: 0}
+  - type: 8
+    prefab: {fileID: 1422222642304400324, guid: 74c563d587772cd4aae864dcad0ea66e, type: 3}
+    zDepth: 2
+    offset: {x: 0, y: 0, z: 0}
   - type: 7
     prefab: {fileID: 8666493941363157885, guid: ceaed21923370e3428a7c32fd0e6c36c, type: 3}
     zDepth: 2
