@@ -8,7 +8,7 @@ namespace MemoryLabyrinth.UI
     public class InputField : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI _textField;
+        private TMP_InputField _textField;
 
         [SerializeField]
         private Button _button;
@@ -23,7 +23,7 @@ namespace MemoryLabyrinth.UI
 
         public void OnInputAccept()
         {
-            _inputAccept?.Invoke(_textField.text.Remove(_textField.text.Length-1,1));
+            _inputAccept?.Invoke(_textField.text);
         }
 
     }
