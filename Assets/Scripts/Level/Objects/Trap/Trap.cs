@@ -53,5 +53,10 @@ namespace MemoryLabyrinth.Level.Objects.Trap
             }
         }
 
+        public void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
+
     }
 }
