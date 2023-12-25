@@ -30,6 +30,11 @@ namespace MemoryLabyrinth.Level.Editor
             _container.DeletePart(element);
             Object.Destroy(element);
         }
+
+        public InteractorPrimitive GetInteractorToReturn()
+        {
+            return this;
+        }
     }
 }
 

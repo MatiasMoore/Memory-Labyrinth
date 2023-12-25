@@ -13,13 +13,13 @@ namespace MemoryLabyrinth.Level.Editor
         {
         }
 
-        public override void InteractAtPos(Vector2 pos)
+        public override InteractorPrimitive InteractAtPos(Vector2 pos)
         {
             List<CorrectPath> correctPaths = _container.GetPartsOfType<CorrectPath>();
 
             if (correctPaths.Count == 0)
             {
-                return;
+                return GetInteractorToReturn();
             }
 
             if ((Vector2)correctPaths.Last().transform.position == pos)
@@ -27,6 +27,12 @@ namespace MemoryLabyrinth.Level.Editor
                 DestroyAtPos(pos);
             }
 
+            return GetInteractorToReturn();
+        }
+
+        public InteractorPrimitive GetInteractorToReturn()
+        {
+            return this;
         }
     }
 }

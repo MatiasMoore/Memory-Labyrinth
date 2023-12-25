@@ -6,7 +6,7 @@ namespace MemoryLabyrinth.Level.Editor
 {
     public abstract class InteractorPrimitive 
     { 
-        public abstract void InteractAtPos(Vector2 pos);
+        public abstract InteractorPrimitive InteractAtPos(Vector2 pos);
     }
 }
 

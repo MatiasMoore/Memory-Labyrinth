@@ -16,8 +16,11 @@ namespace MemoryLabyrinth.Level.Editor
 {
     public class TeleportCreator : ConfigurableElementCreatorPrimitive
     {
+        InteractorPrimitive _interactorToReturn;
         public TeleportCreator(LevelPartsContainer container, LevelPartConfig config, InputField inputField) : base(container, config, inputField)
         {
+            _interactorToReturn = this;
+            objectPlaced += ConfigurateElement;
         }
 
         public override bool CanBePlacedAtPos(Vector2 position)
@@ -39,7 +42,13 @@ namespace MemoryLabyrinth.Level.Editor
 
         public override void ConfigurateElement(GameObject element)
         {
+            Debug.Log($"TeleportCreator: choose target position for {_object.GetComponent<Teleport>()}");
+            _interactorToReturn = new SetTeleportPosition(_object.GetComponent<Teleport>(), this);
+        }
 
+        public override InteractorPrimitive GetInteractorToReturn()
+        {
+            return _interactorToReturn;
         }
     }
 

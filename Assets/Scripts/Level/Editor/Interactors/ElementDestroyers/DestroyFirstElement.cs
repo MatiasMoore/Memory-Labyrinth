@@ -12,7 +12,7 @@ namespace MemoryLabyrinth.Level.Editor
         {
         }
 
-        public override void InteractAtPos(Vector2 pos)
+        public override InteractorPrimitive InteractAtPos(Vector2 pos)
         {
             List<GameObject> objects = _container.GetObjectsAtPos(pos);
             foreach (GameObject obj in objects)
@@ -20,9 +20,11 @@ namespace MemoryLabyrinth.Level.Editor
                 if (obj.GetComponent<CorrectPath>() == null)
                 {
                     DestroyElement(obj);
-                    return;
+                    return GetInteractorToReturn();
                 }
             }
+
+            return GetInteractorToReturn();
         }
     }
 }

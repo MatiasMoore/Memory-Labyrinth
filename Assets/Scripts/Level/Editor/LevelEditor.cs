@@ -3,6 +3,7 @@ using MemoryLabyrinth.SaveLoad;
 using UnityEngine;
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.UI;
+using MemoryLabyrinth.Level.Objects.TeleportLib;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -60,7 +61,7 @@ namespace MemoryLabyrinth.Level.Editor
             Vector2 pos = TouchControls.Instance.getTouchWorldPosition2d();
             var cellPos = _grid.WorldToCell(pos);
             var worldFromCell = _grid.GetCellCenterWorld(cellPos);
-            _interactor.InteractAtPos(worldFromCell);
+            _interactor = _interactor.InteractAtPos(worldFromCell);
             Debug.Log($"LevelEditor: interacted with {_interactor}");
         }
 

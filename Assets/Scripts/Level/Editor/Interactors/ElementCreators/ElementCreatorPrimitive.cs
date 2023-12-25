@@ -20,7 +20,7 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
         _container = container;
         _config = config;
     }
-    public override void InteractAtPos(Vector2 position)
+    public override InteractorPrimitive InteractAtPos(Vector2 position)
     {
         if (CanBePlacedAtPos(position))
         {
@@ -32,6 +32,8 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
         {
             Debug.Log($"ElementCreatorPrimitive: can't create {_config.type} at {position}");
         }
+
+        return GetInteractorToReturn();
     }
 
     protected GameObject CreateAsGameObjectAtPos(Vector2 position)
@@ -43,5 +45,10 @@ public abstract class ElementCreatorPrimitive : InteractorPrimitive
     }
 
     public abstract bool CanBePlacedAtPos(Vector2 position);
+
+    public virtual InteractorPrimitive GetInteractorToReturn()
+    {
+        return this;
+    }
    
 }
