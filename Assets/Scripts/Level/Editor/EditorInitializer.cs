@@ -20,6 +20,8 @@ namespace MemoryLabyrinth.Level.Editor
 
         [SerializeField]
         private CameraPanControl _cameraPanControl;
+
+        [SerializeField]
         private Button _wallButton;
 
         [SerializeField]
@@ -60,6 +62,9 @@ namespace MemoryLabyrinth.Level.Editor
 
         [SerializeField]
         private TextMeshProUGUI _levelName;
+
+        [SerializeField]
+        private Button _overviewButton;
 
         void Start()
         {
@@ -119,6 +124,11 @@ namespace MemoryLabyrinth.Level.Editor
 
             if (_destroyCorrectPathButton != null)
                 _destroyCorrectPathButton._buttonClick += _levelEditor.StartDestroyCorrectPath;
+            else
+                Debug.LogWarning($"LevelEditorInitializer: DestroyCorrectPath button is not set!");
+
+            if (_overviewButton != null)
+                _overviewButton._buttonClick += _levelEditor.StartPanningCamera;
             else
                 Debug.LogWarning($"LevelEditorInitializer: DestroyCorrectPath button is not set!");
 
