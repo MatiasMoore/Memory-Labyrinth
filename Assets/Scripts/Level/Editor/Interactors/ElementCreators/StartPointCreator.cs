@@ -14,20 +14,6 @@ namespace MemoryLabyrinth.Level.Editor
     {
         public StartPointCreator(LevelPartsContainer container, LevelPartConfig config) : base(container, config)
         {
-            objectPlaced += (GameObject obj) => DeletePathAtPos(obj.transform.position);
-        }
-
-        private void DeletePathAtPos(Vector2 position)
-        {
-            var objsAtPos = _container.GetObjectsAtPos(position);
-            foreach (var obj in objsAtPos)
-            {
-                if (obj.GetComponent<Path>() != null)
-                {
-                    _container.DeletePart(obj);
-                    Object.Destroy(obj);
-                }
-            }
         }
 
         public override bool CanBePlacedAtPos(Vector2 position)
