@@ -1,6 +1,7 @@
 using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.PathLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
