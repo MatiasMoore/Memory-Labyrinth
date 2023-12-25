@@ -7,7 +7,7 @@ namespace MemoryLabyrinth.Player
     public class PlayerTeleport : TeleportableObject
     {
         public event UnityAction _teleportEvent;
-        public override bool Teleport(Vector3 position)
+        public override bool Teleport(Vector2 position)
         {
             GetComponent<MainCharacter>().TeleportTo(position);
             _teleportEvent?.Invoke();
