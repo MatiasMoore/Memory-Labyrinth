@@ -85,6 +85,7 @@ namespace MemoryLabyrinth.Level.Editor
             levelData.checkPoints.checkPoints = new Dictionary<int, CheckpointStruct>();
             levelData.startPoints.startPoints = new Dictionary<int, StartPointStruct>();
             levelData.finishPoints.finishPoints = new Dictionary<int, FinishPointStruct>();
+            levelData.correctPathPoints.correctPathPoints = new Dictionary<int, CorrectPathStruct>();
 
             int id = 0;
             foreach (var part in GetAllParts())
@@ -98,6 +99,7 @@ namespace MemoryLabyrinth.Level.Editor
                 SaveClassFromObjAsStructWithId<Checkpoint, CheckpointStruct>(part.obj, levelData.checkPoints.checkPoints, id);
                 SaveClassFromObjAsStructWithId<StartPoint, StartPointStruct>(part.obj, levelData.startPoints.startPoints, id);
                 SaveClassFromObjAsStructWithId<FinishPoint, FinishPointStruct>(part.obj, levelData.finishPoints.finishPoints, id);
+                SaveClassFromObjAsStructWithId<CorrectPath, CorrectPathStruct>(part.obj, levelData.correctPathPoints.correctPathPoints, id);
                 id++;
             }
             return levelData;

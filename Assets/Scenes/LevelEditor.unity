@@ -380,6 +380,19 @@ MonoBehaviour:
   _touchControls: {fileID: 582380630}
   _levelEditor: {fileID: 885707136}
   _cameraPanControl: {fileID: 247140765}
+  _startPointButton: {fileID: 0}
+  _trapButton: {fileID: 0}
+  _teleportButton: {fileID: 0}
+  _finishPointButton: {fileID: 0}
+  _checkpointButton: {fileID: 0}
+  _bonusButton: {fileID: 0}
+  _pathButton: {fileID: 0}
+  _correctPathButton: {fileID: 2121529037}
+  _destroyButton: {fileID: 0}
+  _destroyCorrectPathButton: {fileID: 0}
+  _saveButton: {fileID: 0}
+  _loadButton: {fileID: 0}
+  _levelName: {fileID: 0}
 --- !u!4 &687607328
 Transform:
   m_ObjectHideFlags: 0
@@ -1413,6 +1426,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6020cf530487d140be5263ee18d0036, type: 3}
+--- !u!114 &2121529037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2253125276218974440, guid: f6020cf530487d140be5263ee18d0036, type: 3}
+  m_PrefabInstance: {fileID: 2121529036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95634cbdc27cb1747a6b715e7d8e320d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

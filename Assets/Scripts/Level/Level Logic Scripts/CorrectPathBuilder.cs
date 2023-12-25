@@ -5,6 +5,7 @@ using UnityEngine;
 namespace MemoryLabyrinth.Pathing
 {
     [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public class CorrectPathRenderer : MonoBehaviour
     {
         private ObjectMovementState _objectMovement;
@@ -27,12 +28,14 @@ namespace MemoryLabyrinth.Pathing
             _rightPath = rightPath;
         }
         
-        public void Init()
+        public void Init(List<GameObject> rightPath)
         {
             _lineRenderer = GetComponent<LineRenderer>();
             _transform = GetComponent<Transform>();
             _lineRenderer.positionCount = 1;
             _lineRenderer.SetPosition(0, _transform.position);
+            _rightPath = rightPath;
+
         }
 
         void FixedUpdate()

@@ -13,6 +13,7 @@ using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 
 namespace MemoryLabyrinth.Level.Logic
 {
@@ -29,15 +30,13 @@ namespace MemoryLabyrinth.Level.Logic
             _levelPartsDB = levelParts;
         }
 
-        public static List<GameObject> BuildCurrentLevelToScene()
+        public static LevelPartsContainer BuildCurrentLevelToScene()
         {
             return BuildLevelToSceneFromData(_currentLevelData);
         }
 
-        private static List<GameObject> BuildLevelToSceneFromData(LevelData levelData)
+        private static LevelPartsContainer BuildLevelToSceneFromData(LevelData levelData)
         {
-            List<GameObject> createdObjs = new List<GameObject>();
-
             _currentPartsContainer = new LevelPartsContainer();
             foreach (var levelPart in levelData.parts.parts)
             {
@@ -54,11 +53,11 @@ namespace MemoryLabyrinth.Level.Logic
                 LoadClassDataFromStruct<Checkpoint, CheckpointStruct>(createdObj, levelData.checkPoints.checkPoints, partId);
                 LoadClassDataFromStruct<StartPoint, StartPointStruct>(createdObj, levelData.startPoints.startPoints, partId);
                 LoadClassDataFromStruct<FinishPoint, FinishPointStruct>(createdObj, levelData.finishPoints.finishPoints, partId);
-
+                LoadClassDataFromStruct<CorrectPath, CorrectPathStruct>(createdObj, levelData.correctPathPoints.correctPathPoints, partId);
+                
                 _currentPartsContainer.AddPart(new LevelPartsContainer.LevelPartObjectWithType(createdObj, levelPart.partType));
-                createdObjs.Add(createdObj);
             }
-            return createdObjs;
+            return _currentPartsContainer;
         }
 
         private static bool LoadClassDataFromStruct<ClassName, Struct>(GameObject obj, Dictionary<int, Struct> structDict, int id)

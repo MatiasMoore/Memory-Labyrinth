@@ -10,6 +10,7 @@ using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Level.Objects.Trap;
 using MemoryLabyrinth.Level.Objects.WallLib;
 using MemoryLabyrinth.Level.Editor;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 
 namespace MemoryLabyrinth.SaveLoad
 {
@@ -56,6 +57,12 @@ namespace MemoryLabyrinth.SaveLoad
     }
 
     [Serializable]
+    public struct CorrectPathListStruct
+    {
+        public Dictionary<int, CorrectPathStruct> correctPathPoints;
+    }
+
+    [Serializable]
     public struct LevelPartStruct
     {
         public int id;
@@ -87,6 +94,7 @@ namespace MemoryLabyrinth.SaveLoad
         public CheckpointListStruct checkPoints;
         public StartPointListStruct startPoints;
         public FinishPointListStruct finishPoints;
+        public CorrectPathListStruct correctPathPoints;
     }
 
     [Serializable]

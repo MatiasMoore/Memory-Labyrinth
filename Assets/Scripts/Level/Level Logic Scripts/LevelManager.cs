@@ -1,6 +1,8 @@
 using MemoryLabyrinth.Fog;
+using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Pathing;
 using MemoryLabyrinth.Player;
@@ -9,6 +11,7 @@ using MemoryLabyrinth.SaveLoad;
 using MemoryLabyrinth.UI.HUD;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,7 +37,7 @@ namespace MemoryLabyrinth.Level.Logic
 
         private CorrectPathRenderer _correctPathBuilder;
 
-        private List<GameObject> _currentLevelObjects = new List<GameObject>();
+        private LevelPartsContainer _currentLevelContainer = new LevelPartsContainer();
 
         public static LevelManager Instance;
 
@@ -74,14 +77,22 @@ namespace MemoryLabyrinth.Level.Logic
         private void StartLevel(LevelProgress levelData)
         {
             //Destroy previous level if necessary
-            if (_currentLevelObjects.Count != 0)
+            if (_currentLevelContainer.GetAllParts().Count != 0)
             {
-                foreach (var obj in _currentLevelObjects)
-                    Destroy(obj);
+                foreach (var obj in _currentLevelContainer.GetAllParts())
+                    Destroy(obj.obj);
+                    
             }
 
             //Get level objects
-            _currentLevelObjects = LevelBuilder.BuildCurrentLevelToScene();
+            _currentLevelContainer = LevelBuilder.BuildCurrentLevelToScene();
+
+            //Hide CorrectLevelPoints
+            List<CorrectPath> correctPaths = _currentLevelContainer.GetPartsOfType<CorrectPath>();
+            foreach (var correctPath in correctPaths)
+            {
+                correctPath.gameObject.SetActive(false);
+            }
 
             //Reset all temporary parameters
             _mainCharacter.ResetHealth();
@@ -168,7 +179,13 @@ namespace MemoryLabyrinth.Level.Logic
 
         private void StartShowPath()
         {
-            _correctPathBuilder.Init();
+            List<GameObject> correctPathGameObjects = new();
+            foreach(var correctPathGameObject in _currentLevelContainer.GetPartsOfType<CorrectPath>())
+            {
+                correctPathGameObjects.Add(correctPathGameObject.gameObject);
+            }
+
+            _correctPathBuilder.Init(correctPathGameObjects);
             _correctPathBuilder.ShowRightPath(_correctPathSpeed);
         }
 
@@ -186,14 +203,17 @@ namespace MemoryLabyrinth.Level.Logic
 
             //TODO
             //Show the correct path and wait for it to finish
-            /*_correctPathBuilder = FindObjectOfType<CorrectPathRenderer>();
+
+            GameObject correctPathBuilder = new GameObject("Path Renderer");
+            _correctPathBuilder = correctPathBuilder.AddComponent<CorrectPathRenderer>();
+            correctPathBuilder.transform.position = _currentLevelContainer.GetPartsOfType<CorrectPath>().First().transform.position;
 
             StartShowPath();
             while (!_correctPathBuilder.IsFinished())
             {
                 yield return null;
             }
-            StopShowPath();*/
+            StopShowPath();
 
             //Fade in fog
             FogController.Instance.SetFogVisibile(true);
