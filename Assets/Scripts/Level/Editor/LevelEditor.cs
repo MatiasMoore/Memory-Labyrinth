@@ -133,6 +133,12 @@ namespace MemoryLabyrinth.Level.Editor
             _interactor = new DestroyFirstElement(_container);
         }
 
+        [ContextMenu("Start Destroy Correct Path")]
+        public void StartDestroyCorrectPath()
+        {
+            _interactor = new CorrectPathDestroyer(_container);
+        }
+
         [ContextMenu("Get Level Data")]
         public void GetLevelData()
         {
