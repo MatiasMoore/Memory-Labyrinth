@@ -113,6 +113,12 @@ namespace MemoryLabyrinth.Level.Editor
             StartCreatingLevelPart(LevelPartType.Teleport);
         }
 
+        [ContextMenu("Start Creating Correct Path")]
+        public void StartCreatingCorrectPath()
+        {
+            StartCreatingLevelPart(LevelPartType.CorrectPath);
+        }
+
         public void StartCreatingLevelPart(LevelPartType type)
         {
             LevelPartConfig config = _levelPartsDataBase.GetConfigByType(type);
@@ -142,15 +148,24 @@ namespace MemoryLabyrinth.Level.Editor
                 case LevelPartType.Teleport:
                     _interactor = new TeleportCreator(_container, config);
                     break;
+                case LevelPartType.CorrectPath:
+                    _interactor = new CorrectPathCreator(_container, config);
+                    break;
                 default:
                     break;
             }
         }
 
-        [ContextMenu("Start Destroy")]
-        public void StartDestroy()
+        [ContextMenu("Start Destroy Parts")]
+        public void StartDestroyParts()
         {
             _interactor = new DestroyFirstElement(_container);
+        }
+
+        [ContextMenu("Start Destroy Correct Path")]
+        public void StartDestroyCorrectPath()
+        {
+            _interactor = new CorrectPathDestroyer(_container);
         }
 
         [ContextMenu("Get Level Data")]

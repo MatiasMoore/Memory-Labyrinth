@@ -48,7 +48,8 @@ namespace MemoryLabyrinth.Level.Editor
         Startpoint,
         Finishpoint,
         Bonus,
-        Teleport
+        Teleport,
+        CorrectPath
     }
 }
 

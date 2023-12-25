@@ -1,4 +1,5 @@
 using MemoryLabyrinth.Level.Editor;
+using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,15 @@ namespace MemoryLabyrinth.Level.Editor
 
         public override void InteractAtPos(Vector2 pos)
         {
-            DestroyAtPos(pos);
+            List<GameObject> objects = _container.GetObjectsAtPos(pos);
+            foreach (GameObject obj in objects)
+            {
+                if (obj.GetComponent<CorrectPath>() == null)
+                {
+                    DestroyElement(obj);
+                    return;
+                }
+            }
         }
     }
 }
