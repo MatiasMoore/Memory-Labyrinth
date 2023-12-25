@@ -23,7 +23,7 @@ namespace MemoryLabyrinth.UI
 
         public void OnInputAccept()
         {
-            _inputAccept?.Invoke(_textField.text);
+            _inputAccept?.Invoke(_textField.text.Remove(_textField.text.Length-1,1));
         }
 
     }
