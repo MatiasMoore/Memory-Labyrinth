@@ -172,11 +172,11 @@ namespace MemoryLabyrinth.Level.Editor
 
         public void ClearAll()
         {
-            foreach (var item in GetAllParts())
-            {
-                _parts.Remove(item);
+            foreach (var item in _parts)
+            {              
                 Object.Destroy(item.obj);
             }
+            _parts.Clear();
         }
     }
 }
