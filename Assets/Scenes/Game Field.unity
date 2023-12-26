@@ -409,16 +409,24 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
+      propertyPath: _timeToRemovePath
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _showCorrectPathTime
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _timeToDrawCorrectPath
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _timeToShowCorrectPath
-      value: 3
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
+      propertyPath: _timeToShowTeleportPath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _timeToShowCorrectPathOnePoint
@@ -529,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 96.1979
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.x

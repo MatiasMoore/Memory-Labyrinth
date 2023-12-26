@@ -47,6 +47,12 @@ namespace MemoryLabyrinth.Level.Logic
         private float _timeToShowCorrectPath;
 
         [SerializeField]
+        private float _timeToShowTeleportPath;
+
+        [SerializeField]
+        private float _timeToRemovePath;
+
+        [SerializeField]
         private PathRenderer _pathRenderer;
 
         public void Init(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
@@ -202,19 +208,18 @@ namespace MemoryLabyrinth.Level.Logic
                     item.transform.position,
                     item.GetTeleportPosition()
                 };
-                item.gameObject.GetComponent<PathRenderer>().DrawPath(path, _timeToDrawCorrectPath);
+                item.gameObject.GetComponent<PathRenderer>().DrawPath(path, _timeToShowTeleportPath);
             }
         }
 
         private void StopShowPath()
         {
-            _pathRenderer.RemoveLine();
+            _pathRenderer.RemoveLine(_timeToRemovePath);
 
             List<Teleport> teleports = _currentLevelContainer.GetPartsOfType<Teleport>();
             foreach (var item in teleports)
             {
-
-                item.gameObject.GetComponent<PathRenderer>().RemoveLine();
+                item.gameObject.GetComponent<PathRenderer>().RemoveLine(_timeToRemovePath);
             }
         }
 
