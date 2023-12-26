@@ -1,5 +1,6 @@
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.Controls;
+using MemoryLabyrinth.UI;
 using MemoryLabyrinth.UI.ButtonsLib;
 using TMPro;
 using UnityEngine;
@@ -51,13 +52,10 @@ namespace MemoryLabyrinth.Level.Editor
         private Button _destroyCorrectPathButton;
 
         [SerializeField]
-        private Button _saveButton;
+        private InputField _saveInputField;
 
         [SerializeField]
-        private Button _loadButton;
-
-        [SerializeField]
-        private TextMeshProUGUI _levelName;
+        private InputField _loadInputField;
 
         [SerializeField]
         private Button _overviewButton;
@@ -128,7 +126,10 @@ namespace MemoryLabyrinth.Level.Editor
             else
                 Debug.LogWarning($"LevelEditorInitializer: DestroyCorrectPath button is not set!");
 
-
+            if (_saveInputField != null)
+                _saveInputField._inputAccept += _levelEditor.SaveLevel;
+            else
+                Debug.LogWarning($"LevelEditorInitializer: _saveInputField is not set!");
 
         }
 
