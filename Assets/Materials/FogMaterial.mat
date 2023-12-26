@@ -117,6 +117,8 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Scale: 150
+    - _Scale1: 150
+    - _Scale2: 140
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -126,7 +128,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _xSpeed: 0.01
+    - _xSpeed1: 0.01
+    - _xSpeed2: 0.02
     - _ySpeed: 0.01
+    - _ySpeed1: 0.01
+    - _ySpeed2: 0.015
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
