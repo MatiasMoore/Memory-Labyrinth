@@ -105,7 +105,10 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter.ResetHealth();
             Timer.Instance.ResetTimer();
             _levelModel.SetBonusAmount(0);
-            _levelModel.SetCurrentCheckPoint(FindObjectOfType<StartPoint>());
+            _levelModel.SetCurrentCheckPoint(_currentLevelContainer.GetPartsOfType<StartPoint>().First());
+
+            //Reset collected bonuses
+            _levelModel.SetCollectedBonuses(new List<BonusInfo>());
 
             bool startLevelFromSpawn = levelData._checkpointId == 0;
 
@@ -118,26 +121,22 @@ namespace MemoryLabyrinth.Level.Logic
                 _levelModel.SetCollectedBonuses(levelData._collectedBonuses);
 
                 //Remove collected bonuses from map
-                int currentMoney = 0;
                 List<int> bonusesIdToRemove = new List<int>();
                 foreach (BonusInfo bonusInfo in levelData._collectedBonuses) 
-                {
-                    currentMoney += bonusInfo._value;
+                {                  
                     bonusesIdToRemove.Add(bonusInfo._id);
                 }
-                
-                Bonus[] bonuses = FindObjectsOfType<Bonus>();
+
+                List<Bonus> bonuses = _currentLevelContainer.GetPartsOfType<Bonus>();
                 foreach (Bonus bonusOnMap in bonuses)
                 {
                     if (bonusesIdToRemove.Contains(bonusOnMap.GetID()))
-                        bonusOnMap.DestroySelf();
+                    {
+                        _currentLevelContainer.DeletePart(bonusOnMap.gameObject);
+                        Destroy(bonusOnMap.gameObject);
+                    }
                 }
-
-                _levelModel.SetBonusAmount(currentMoney);
             }
-
-            //Reset collected bonuses
-            _levelModel.SetCollectedBonuses(new List<BonusInfo>());
 
             //Put the player on the checkpoint
             _playerObj.transform.position = _levelModel.GetCurrentCheckPoint().transform.position + new Vector3(0, 0, -1);
@@ -160,7 +159,7 @@ namespace MemoryLabyrinth.Level.Logic
 
         private void ActivateCheckPointWithQueue(int targetQueue)
         {
-            Checkpoint[] checkpoints = FindObjectsOfType<Checkpoint>();
+            List<Checkpoint> checkpoints = _currentLevelContainer.GetPartsOfType<Checkpoint>();
             foreach (Checkpoint checkpoint in checkpoints)
             {
                 if (checkpoint.GetQueue() == targetQueue)
