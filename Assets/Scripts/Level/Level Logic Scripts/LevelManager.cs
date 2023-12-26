@@ -208,9 +208,6 @@ namespace MemoryLabyrinth.Level.Logic
             Timer.Instance.SetTimerActive(false);
             FogController.Instance.SetFogVisibile(false);
 
-            //TODO
-            //Show the correct path and wait for it to finish
-
             GameObject correctPathBuilder = new GameObject("Path Renderer");
             _correctPathBuilder = correctPathBuilder.AddComponent<CorrectPathRenderer>();
             correctPathBuilder.transform.position = _currentLevelContainer.GetPartsOfType<CorrectPath>().First().transform.position;
