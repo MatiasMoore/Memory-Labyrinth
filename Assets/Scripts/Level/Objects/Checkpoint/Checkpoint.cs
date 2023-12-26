@@ -8,7 +8,6 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
         public int queue;
     }
     [RequireComponent(typeof(BoxCollider2D))]
-    [RequireComponent(typeof(SpriteRenderer))]
     public class Checkpoint : MonoBehaviour, IStructable<CheckpointStruct>
     {
         [SerializeField]
@@ -58,7 +57,7 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
                     checkpointObject.getCheckpoint(this);
                     _isReached = true;
                     // Change color to yellow
-                    GetComponent<SpriteRenderer>().color = Color.yellow;
+                    GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
                 }
                 else
                 {
