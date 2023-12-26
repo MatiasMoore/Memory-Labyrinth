@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &234969158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8800741553586194258, guid: f6020cf530487d140be5263ee18d0036, type: 3}
+  m_PrefabInstance: {fileID: 2121529036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aea883829678614e991e1069ff650b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &247140760
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,9 +410,9 @@ MonoBehaviour:
   _checkpointButton: {fileID: 839437065}
   _bonusButton: {fileID: 1979957612}
   _pathButton: {fileID: 2074554680}
-  _correctPathButton: {fileID: 2121529037}
+  _correctPathButton: {fileID: 754450157}
   _destroyButton: {fileID: 1012840025}
-  _destroyCorrectPathButton: {fileID: 0}
+  _destroyCorrectPathButton: {fileID: 234969158}
   _saveInputField: {fileID: 1841002811}
   _loadInputField: {fileID: 1918210462}
   _overviewButton: {fileID: 635324832}
@@ -420,6 +431,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754450157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1768914888865045278, guid: f6020cf530487d140be5263ee18d0036, type: 3}
+  m_PrefabInstance: {fileID: 2121529036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f9e4f134c33b34da6f074e1f8eda32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &839437065 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 515533901039926375, guid: f6020cf530487d140be5263ee18d0036, type: 3}
@@ -1773,17 +1795,6 @@ PrefabInstance:
       addedObject: {fileID: 1939380068}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6020cf530487d140be5263ee18d0036, type: 3}
---- !u!114 &2121529037 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2253125276218974440, guid: f6020cf530487d140be5263ee18d0036, type: 3}
-  m_PrefabInstance: {fileID: 2121529036}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95634cbdc27cb1747a6b715e7d8e320d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
