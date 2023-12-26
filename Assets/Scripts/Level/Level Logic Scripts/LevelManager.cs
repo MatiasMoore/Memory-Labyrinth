@@ -5,6 +5,7 @@ using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.CorrectPathLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
+using MemoryLabyrinth.Level.Objects.TeleportLib;
 using MemoryLabyrinth.Pathing;
 using MemoryLabyrinth.Player;
 using MemoryLabyrinth.Resources;
@@ -40,10 +41,13 @@ namespace MemoryLabyrinth.Level.Logic
         public static LevelManager Instance;
 
         [SerializeField]
+        private float _timeToDrawCorrectPath;
+
+        [SerializeField]
         private float _timeToShowCorrectPath;
 
         [SerializeField]
-        private LineRenderer _lineRenderer;
+        private PathRenderer _pathRenderer;
 
         public void Init(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
         {
@@ -187,6 +191,33 @@ namespace MemoryLabyrinth.Level.Logic
             Debug.Log("LevelManager: level lose");
         }
 
+        private void StartShowPath()
+        {
+            _pathRenderer.DrawPath(_currentLevelContainer.GetCorrectPath(), _timeToDrawCorrectPath);
+            List<Teleport> teleports = _currentLevelContainer.GetPartsOfType<Teleport>();
+            foreach (var item in teleports)
+            {
+                List<Vector3> path = new()
+                {
+                    item.transform.position,
+                    item.GetTeleportPosition()
+                };
+                item.gameObject.GetComponent<PathRenderer>().DrawPath(path, _timeToDrawCorrectPath);
+            }
+        }
+
+        private void StopShowPath()
+        {
+            _pathRenderer.RemoveLine();
+
+            List<Teleport> teleports = _currentLevelContainer.GetPartsOfType<Teleport>();
+            foreach (var item in teleports)
+            {
+
+                item.gameObject.GetComponent<PathRenderer>().RemoveLine();
+            }
+        }
+
         private IEnumerator PlayLevelIntro()
         {
             var finishPoints = _currentLevelContainer.GetPartsOfType<FinishPoint>();
@@ -199,36 +230,20 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter.SetActive(false);
             Timer.Instance.SetTimerActive(false);
             FogController.Instance.SetFogVisibile(false);
-
-            GameObject correctPathBuilder = new GameObject("Path Renderer");
-            _correctPathBuilder = correctPathBuilder.AddComponent<CorrectPathRenderer>();
-            correctPathBuilder.transform.position = _currentLevelContainer.GetPartsOfType<CorrectPath>().First().transform.position;
-
-
-            List<Vector3> correctPath = _currentLevelContainer.GetCorrectPath();
-            _lineRenderer.positionCount = 1;
-            _lineRenderer.SetPosition(0, correctPath[0]);
-            float timerForLerp = 0;
-            int currentTargetPoint = 1;
-            Vector3 currentPos = correctPath[0];
-            float timeToShowCorrectPathOnePoint = _timeToShowCorrectPath / correctPath.Count;
-            while (currentTargetPoint < correctPath.Count)
-            {
-                timerForLerp += Time.unscaledDeltaTime;
-                float lerpValue = timerForLerp / timeToShowCorrectPathOnePoint;
-                Vector3 newPos = Vector3.Lerp(currentPos, correctPath[currentTargetPoint], lerpValue);
-                _lineRenderer.positionCount++;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount -1, newPos);
-                if (lerpValue >= 1)
-                {
-                    currentTargetPoint++;
-                    timerForLerp = 0;
-                    currentPos = newPos;
-                }
+            
+            StartShowPath();
+            while (_pathRenderer.IsDrawing())
+            {               
                 yield return null;
             }
-
-            _lineRenderer.positionCount = 0;
+     
+            float timer = 0;
+            while (timer < _timeToShowCorrectPath)
+            {
+                timer += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            StopShowPath();
 
             foreach (FinishPoint finishPoint in finishPoints)
             {
@@ -240,7 +255,7 @@ namespace MemoryLabyrinth.Level.Logic
             FogController.Instance.FadeInToAllTargets(_fadeInFogTime);
 
             //Wait until it has faded in completely and enable player movement
-            float timer = 0;
+            timer = 0;
             while (timer < _fadeInFogTime)
             {
                 timer += Time.deltaTime;
@@ -254,5 +269,6 @@ namespace MemoryLabyrinth.Level.Logic
             _mainCharacter.SetActive(true);
             Timer.Instance.SetTimerActive(true);
         }
+
     }
 }
