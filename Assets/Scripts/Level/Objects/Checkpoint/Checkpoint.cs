@@ -6,6 +6,14 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
     public class Checkpoint : MonoBehaviour
     {
         [SerializeField]
+        private SpriteRenderer _spriteRenderer;
+
+        private Sprite _deactivatedSprite;
+
+        [SerializeField]
+        private Sprite _activatedSprite;
+
+        [SerializeField]
         private int _queue;
 
         private bool _isReached = false;
@@ -18,6 +26,8 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
         public void Start()
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
+            if (_spriteRenderer != null)
+                _deactivatedSprite = _spriteRenderer.sprite;
         }
 
         public int GetQueue()
@@ -41,7 +51,8 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
                     checkpointObject.getCheckpoint(this);
                     _isReached = true;
                     // Change color to yellow
-                    GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                    if (_spriteRenderer != null)
+                        _spriteRenderer.sprite = _activatedSprite;
                 }
                 else
                 {
