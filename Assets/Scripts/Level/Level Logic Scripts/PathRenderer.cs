@@ -39,6 +39,7 @@ namespace MemoryLabyrinth.Level.Logic
             {
                 _timer += Time.unscaledDeltaTime;
                 int pointsToRemove = (int)(_timer / _timeToRemoveOnePoint);
+                _timer -= pointsToRemove * _timeToRemoveOnePoint;
                 if (_lineRenderer.positionCount - pointsToRemove > 0)
                 {
                     _lineRenderer.positionCount -= pointsToRemove;
