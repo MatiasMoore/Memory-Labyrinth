@@ -102,6 +102,7 @@ namespace MemoryLabyrinth.SaveLoad
         }
         public void AddLevelInfo(LevelProgress levelData)
         {
+            levelData._collectedBonuses = new(levelData._collectedBonuses);
             if (!this.IsLevelAlreadySaved(levelData._levelName))
             {
                 CreateLevelInfo(levelData);

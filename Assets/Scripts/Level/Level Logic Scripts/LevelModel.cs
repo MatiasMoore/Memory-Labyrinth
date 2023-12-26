@@ -102,14 +102,14 @@ namespace MemoryLabyrinth.Level.Logic
             if (_currentCheckpoint == null)
             {
                 _currentCheckpoint = checkpoint;
+                _onPlayerGetCheckpoint?.Invoke(GetLevelData());
             }
             else if (checkpoint.GetQueue() > _currentCheckpoint.GetQueue())
             {
                 _currentCheckpoint = checkpoint;
+                _onPlayerGetCheckpoint?.Invoke(GetLevelData());
             }
-
-            _onPlayerGetCheckpoint?.Invoke(GetLevelData());
-
+           
         }
 
         public int GetBonusAmount()
@@ -136,6 +136,13 @@ namespace MemoryLabyrinth.Level.Logic
         public void SetCollectedBonuses(List<BonusInfo> collectedBonusesID)
         {
             _collectedBonuses = new List<BonusInfo>(collectedBonusesID);
+            int bonusAmount = 0;
+            foreach (var item in _collectedBonuses)
+            {
+                bonusAmount += item._value;
+                
+            }
+            SetBonusAmount(bonusAmount);
         }
 
         public List<BonusInfo> GetCollectedBonuses()
