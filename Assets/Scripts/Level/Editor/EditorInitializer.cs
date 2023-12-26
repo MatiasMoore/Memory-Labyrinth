@@ -131,6 +131,11 @@ namespace MemoryLabyrinth.Level.Editor
             else
                 Debug.LogWarning($"LevelEditorInitializer: _saveInputField is not set!");
 
+            if (_loadInputField != null)
+                _loadInputField._inputAccept += _levelEditor.LoadLevel;
+            else
+                Debug.LogWarning($"LevelEditorInitializer: _loadInputField is not set!");
+
         }
 
     }

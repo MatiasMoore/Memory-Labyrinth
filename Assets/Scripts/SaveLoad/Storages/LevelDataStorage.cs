@@ -42,7 +42,7 @@ namespace MemoryLabyrinth.SaveLoad
             _levels.levelDatas.Clear();
         }
 
-        private bool IsLevelAlreadySaved(string name)
+        public bool IsLevelAlreadySaved(string name)
         {
             if (_levels.levelDatas.Count == 0)
             {

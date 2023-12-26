@@ -7,6 +7,7 @@ using MemoryLabyrinth.Level.Objects.TeleportLib;
 using TMPro;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
+using MemoryLabyrinth.Level.Logic;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -195,13 +196,13 @@ namespace MemoryLabyrinth.Level.Editor
         {
             bool isStartPointExist = _container.GetPartsOfType<StartPoint>().Count > 0;
             if (!isStartPointExist)
-                Debug.LogWarning($"LevelEditor: no start point!");
+                Debug.Log($"LevelEditor: no start point!");
             bool isFinishPointExist = _container.GetPartsOfType<FinishPoint>().Count > 0;
             if (!isFinishPointExist)
-                Debug.LogWarning($"LevelEditor: no finish point!");
+                Debug.Log($"LevelEditor: no finish point!");
             bool isCorrectPathExist = _container.GetCorrectPath().Count > 0;
             if (!isCorrectPathExist)
-                Debug.LogWarning($"LevelEditor: no correct path!");
+                Debug.Log($"LevelEditor: no correct path!");
 
             return isStartPointExist && isFinishPointExist && isCorrectPathExist;
         }
@@ -219,6 +220,23 @@ namespace MemoryLabyrinth.Level.Editor
             LevelDataStorage.Instance.AddLevelInfo(levelData);
             SaveLoadManager.Instance.SaveGame();
 
+        }
+
+        public void ClearLevelMap()
+        {
+            _container.ClearAll();
+        }
+
+        public void LoadLevel(string name)
+        {
+            if(!LevelDataStorage.Instance.IsLevelAlreadySaved(name))
+            {
+                Debug.Log($"LevelEditor: level {name} not found!");
+                return;
+            }
+            _container.ClearAll();
+            LevelBuilder.Load(name);
+            _container = LevelBuilder.BuildCurrentLevelToScene();
         }
 
     }
