@@ -169,6 +169,15 @@ namespace MemoryLabyrinth.Level.Editor
             }
             return correctPath;
         }
+
+        public void ClearAll()
+        {
+            foreach (var item in GetAllParts())
+            {
+                _parts.Remove(item);
+                Object.Destroy(item.obj);
+            }
+        }
     }
 }
 
