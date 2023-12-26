@@ -410,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _timeToShowCorrectPath
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8312774247013588126, guid: 23370b8fb1c15d34fb42f3f2edea3199, type: 3}
       propertyPath: _timeToShowCorrectPathOnePoint
@@ -717,7 +717,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d332409ab5772c344821ba60342b15a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
