@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 7140982210645817992}
   - component: {fileID: 3152977386066854834}
   - component: {fileID: 1442572280453077738}
-  - component: {fileID: 3881461620218903197}
+  - component: {fileID: 3015958685293804764}
   m_Layer: 0
   m_Name: Decline Button
   m_TagString: UI
@@ -989,8 +989,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3881461620218903197}
-        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.LevelEditorDeclineSaveButton,
+      - m_Target: {fileID: 3015958685293804764}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.ButtonsLib.LevelEditorDeclineLoadButton,
           Scripts
         m_MethodName: OnClick
         m_Mode: 1
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &3881461620218903197
+--- !u!114 &3015958685293804764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1952030587259835460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc696651cdd467541acde6bafa042b66, type: 3}
+  m_Script: {fileID: 11500000, guid: 96cffb46dd1a4a049866689cd135b940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2151283241304417055
@@ -1892,7 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 2087089966290544141}
-  _button: {fileID: 3220475434228180185}
+  _button: {fileID: 0}
 --- !u!1 &3106728566090508098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,7 +4183,7 @@ GameObject:
   - component: {fileID: 4078926935491247158}
   - component: {fileID: 5349727503076264501}
   - component: {fileID: 798585601402315719}
-  - component: {fileID: 3220475434228180185}
+  - component: {fileID: 4313522952684145867}
   m_Layer: 0
   m_Name: Accept Button
   m_TagString: UI
@@ -4292,8 +4292,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3220475434228180185}
-        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.Button.LevelEditorAcceptSaveButton,
+      - m_Target: {fileID: 4313522952684145867}
+        m_TargetAssemblyTypeName: MemoryLabyrinth.UI.ButtonsLib.LevelEditorAcceptLoadButton,
           Scripts
         m_MethodName: OnClick
         m_Mode: 1
@@ -4339,7 +4339,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &3220475434228180185
+--- !u!114 &4313522952684145867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4348,7 +4348,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5067159111309303997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fcd386e858ae254096557934f36ba6f, type: 3}
+  m_Script: {fileID: 11500000, guid: ab3ca2ce7694dfd489a86b178c218a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5079345663865206662
