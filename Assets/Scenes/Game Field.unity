@@ -177,6 +177,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3510956462078615222, guid: 44f90ea4aef37024c9952e37853e3308, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 342157f6c60eea642bf0c274f967e03f, type: 2}
     - target: {fileID: 3687264717367930706, guid: 44f90ea4aef37024c9952e37853e3308, type: 3}
       propertyPath: m_Name
       value: Fog Controller
@@ -443,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 48.09895
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3052330291753504638, guid: 59397a5840843a74186427538eaad3be, type: 3}
       propertyPath: m_AnchoredPosition.y
