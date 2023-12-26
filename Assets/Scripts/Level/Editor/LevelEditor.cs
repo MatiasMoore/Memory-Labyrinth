@@ -4,6 +4,9 @@ using UnityEngine;
 using MemoryLabyrinth.Cam;
 using MemoryLabyrinth.UI;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
+using TMPro;
+using MemoryLabyrinth.Level.Objects.StartpointLib;
+using MemoryLabyrinth.Level.Objects.FinishLib;
 
 namespace MemoryLabyrinth.Level.Editor
 {
@@ -22,6 +25,7 @@ namespace MemoryLabyrinth.Level.Editor
 
         [SerializeField]
         private InputField _inputField;
+
 
         public void Init(TouchControls touchControls, CameraPanControl cameraPanControl)
         {
@@ -179,13 +183,42 @@ namespace MemoryLabyrinth.Level.Editor
         }
 
         [ContextMenu("Get Level Data")]
-        public void GetLevelData()
+        public LevelData GetLevelData()
         {
             LevelData levelData = _container.ToLevelData();
-            levelData.name = "Test";
             Debug.Log($"{levelData.walls.walls}, {levelData.bonuses.bonuses}");
+
+            return levelData;
+        }
+
+        public bool IsSaveLevelCanBeSaved()
+        {
+            bool isStartPointExist = _container.GetPartsOfType<StartPoint>().Count > 0;
+            if (!isStartPointExist)
+                Debug.LogWarning($"LevelEditor: no start point!");
+            bool isFinishPointExist = _container.GetPartsOfType<FinishPoint>().Count > 0;
+            if (!isFinishPointExist)
+                Debug.LogWarning($"LevelEditor: no finish point!");
+            bool isCorrectPathExist = _container.GetCorrectPath().Count > 0;
+            if (!isCorrectPathExist)
+                Debug.LogWarning($"LevelEditor: no correct path!");
+
+            return isStartPointExist && isFinishPointExist && isCorrectPathExist;
+        }
+
+        public void SaveLevel(string name)
+        {
+            if (!IsSaveLevelCanBeSaved())
+            {
+                return;
+            }
+
+            LevelData levelData = GetLevelData();
+            levelData.name = name;
+
             LevelDataStorage.Instance.AddLevelInfo(levelData);
             SaveLoadManager.Instance.SaveGame();
+
         }
 
     }
