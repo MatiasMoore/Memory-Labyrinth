@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc0253e42e5afd84cb0b165dee0a99fd
+guid: 10909c0e1d945784db5c8d893fe81017
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - VellgishFont
+  - Ubuntu Condensed
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
