@@ -6,7 +6,7 @@ using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.PathLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
-using MemoryLabyrinth.Level.Objects.Trap;
+using MemoryLabyrinth.Level.Objects.TrapLib;
 using MemoryLabyrinth.Level.Objects.WallLib;
 using System.Collections;
 using System.Collections.Generic;

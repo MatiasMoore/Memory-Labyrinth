@@ -2,25 +2,11 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.FinishLib
 {
-    public struct FinishPointStruct
-    {
-        public Vec3 coords;
-    }
     [RequireComponent(typeof(BoxCollider2D))]
-    public class FinishPoint : MonoBehaviour, IStructable<FinishPointStruct>
+    public class FinishPoint : MonoBehaviour
     {
         public FinishPoint()
         {
-        }
-        
-        public FinishPointStruct ToStruct()
-        {
-            return new FinishPointStruct { coords = new Vec3(transform.position) };
-        }
-
-        public void FromStruct(FinishPointStruct str)
-        {
-            transform.position = str.coords.ToVector3();
         }
 
         public void Start()

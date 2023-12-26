@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.Trap
+namespace MemoryLabyrinth.Level.Objects.TrapLib
 {
     public abstract class DamagableObject : MonoBehaviour
     {

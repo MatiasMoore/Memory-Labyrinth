@@ -1,7 +1,7 @@
 using MemoryLabyrinth.Player;
 using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.Trap
+namespace MemoryLabyrinth.Level.Objects.TrapLib
 {
     public class PlayerDamage : DamagableObject
     {

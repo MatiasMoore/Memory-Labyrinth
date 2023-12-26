@@ -3,15 +3,8 @@ using static log4net.Appender.ColoredConsoleAppender;
 
 namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
-    public struct BonusStruct 
-    {
-        public Vec3 coords;
-        public int id;
-        public int bonusAmount;
-    }
-
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Bonus : MonoBehaviour, IStructable<BonusStruct>
+    public class Bonus : MonoBehaviour
     {
         int _value = 10;
         int _id;
@@ -74,21 +67,6 @@ namespace MemoryLabyrinth.Level.Objects.BonusLib
         {
             Destroy(gameObject);
         }
-        
-        public BonusStruct ToStruct()
-        {
-            BonusStruct bonusStruct = new BonusStruct();
-            bonusStruct.coords = new Vec3(transform.position);
-            bonusStruct.id = _id;
-            bonusStruct.bonusAmount = _value;
-            return bonusStruct;
-        }
-
-        public void FromStruct(BonusStruct str)
-        {
-            transform.position = str.coords.ToVector3();
-            _value = str.bonusAmount;
-            _id = str.id;
-        }
+       
     }
 }

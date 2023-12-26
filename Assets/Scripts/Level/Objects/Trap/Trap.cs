@@ -1,14 +1,9 @@
 using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.Trap
+namespace MemoryLabyrinth.Level.Objects.TrapLib
 {
-    public struct TrapStruct
-    {
-        public Vec3 coords;
-        public int damage;
-    }
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Trap : MonoBehaviour, IStructable<TrapStruct>
+    public class Trap : MonoBehaviour
     {
         [SerializeField]
         private int _damage = 1;
@@ -16,17 +11,6 @@ namespace MemoryLabyrinth.Level.Objects.Trap
         public Trap(int damage)
         {
             _damage = damage;
-        }
-
-        public TrapStruct ToStruct()
-        {
-            return new TrapStruct { coords = new Vec3(transform.position), damage = _damage };
-        }
-
-        public void FromStruct(TrapStruct str)
-        {
-            transform.position = str.coords.ToVector3();
-            _damage = str.damage;
         }
 
         public Trap()
@@ -58,5 +42,9 @@ namespace MemoryLabyrinth.Level.Objects.Trap
             _damage = damage;
         }
 
+        public int GetDamage()
+        {
+            return _damage;
+        }
     }
 }

@@ -1,11 +1,6 @@
-using MemoryLabyrinth.Level.Editor;
-using MemoryLabyrinth.Level.Objects.BonusLib;
-using MemoryLabyrinth.Level.Objects.WallLib;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects
+namespace MemoryLabyrinth.SaveLoad.Saveable
 {
     public struct Vec3
     {
@@ -24,10 +19,11 @@ namespace MemoryLabyrinth.Level.Objects
         }
     }
 
-    public interface IStructable<T>
+    public abstract class SaveablePrimitive : MonoBehaviour
     {
-        public T ToStruct();
+        public abstract string SaveToString();
 
-        public void FromStruct(T str);
+        public abstract bool LoadFromString(string serStr);
+
     }
 }

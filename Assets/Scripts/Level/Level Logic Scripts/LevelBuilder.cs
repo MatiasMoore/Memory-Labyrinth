@@ -9,11 +9,12 @@ using MemoryLabyrinth.Level.Objects;
 using MemoryLabyrinth.Level.Objects.WallLib;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.TeleportLib;
-using MemoryLabyrinth.Level.Objects.Trap;
+using MemoryLabyrinth.Level.Objects.TrapLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.CorrectPathLib;
+using MemoryLabyrinth.SaveLoad.Saveable;
 
 namespace MemoryLabyrinth.Level.Logic
 {
@@ -42,40 +43,19 @@ namespace MemoryLabyrinth.Level.Logic
             {
                 var prefab = _levelPartsDB.GetConfigByType(levelPart.partType).prefab;
                 var createdObj = Object.Instantiate(prefab);
+                createdObj.transform.position = levelPart.coords.ToVector3();
 
                 int partId = levelPart.id;
                
-                LoadClassDataFromStruct<Path, PathStruct>(createdObj, levelData.paths.paths, partId);
-                LoadClassDataFromStruct<Wall, WallStruct>(createdObj, levelData.walls.walls, partId);
-                LoadClassDataFromStruct<Bonus, BonusStruct>(createdObj, levelData.bonuses.bonuses, partId);
-                LoadClassDataFromStruct<Teleport, TeleportStruct>(createdObj, levelData.teleports.teleports, partId);
-                LoadClassDataFromStruct<Trap, TrapStruct>(createdObj, levelData.traps.traps, partId);
-                LoadClassDataFromStruct<Checkpoint, CheckpointStruct>(createdObj, levelData.checkPoints.checkPoints, partId);
-                LoadClassDataFromStruct<StartPoint, StartPointStruct>(createdObj, levelData.startPoints.startPoints, partId);
-                LoadClassDataFromStruct<FinishPoint, FinishPointStruct>(createdObj, levelData.finishPoints.finishPoints, partId);
-                LoadClassDataFromStruct<CorrectPath, CorrectPathStruct>(createdObj, levelData.correctPathPoints.correctPathPoints, partId);
+                var saveable = createdObj.GetComponent<SaveablePrimitive>();
+                if (saveable == null)
+                    throw new System.Exception("Object must have saveable primitive");
+
+                saveable.LoadFromString(levelPart.serStr);
                 
                 _currentPartsContainer.AddPart(new LevelPartsContainer.LevelPartObjectWithType(createdObj, levelPart.partType));
             }
             return _currentPartsContainer;
-        }
-
-        private static bool LoadClassDataFromStruct<ClassName, Struct>(GameObject obj, Dictionary<int, Struct> structDict, int id)
-        {
-            var objComp = obj.GetComponent<ClassName>();
-
-            Struct structFromDict;
-            bool structFound = structDict.TryGetValue(id, out structFromDict);
-
-            bool shouldLoadData = objComp != null && structFound;
-
-            if (shouldLoadData)
-            {
-                var compAsStructable = (IStructable<Struct>)objComp;
-                compAsStructable.FromStruct(structFromDict);
-            }
-
-            return shouldLoadData;
         }
 
         public static void Load(string levelName)

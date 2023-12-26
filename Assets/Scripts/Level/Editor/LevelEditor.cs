@@ -187,7 +187,7 @@ namespace MemoryLabyrinth.Level.Editor
         public LevelData GetLevelData()
         {
             LevelData levelData = _container.ToLevelData();
-            Debug.Log($"{levelData.walls.walls}, {levelData.bonuses.bonuses}");
+            //Debug.Log($"{levelData.walls.walls}, {levelData.bonuses.bonuses}");
 
             return levelData;
         }

@@ -3,26 +3,12 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.StartpointLib
 {
-    public struct StartPointStruct
-    {
-        public Vec3 coords;
-    }
-    public class StartPoint : Checkpoint, IStructable<StartPointStruct>
+    public class StartPoint : Checkpoint
     {
         private Transform _transform;
 
         public StartPoint() : base(0)
         {
-        }
-
-        public StartPointStruct ToStruct()
-        {
-            return new StartPointStruct { coords = new Vec3(_transform.position) };
-        }
-
-        public void FromStruct(StartPointStruct str)
-        {
-            transform.position = str.coords.ToVector3();
         }
 
         private void Awake()

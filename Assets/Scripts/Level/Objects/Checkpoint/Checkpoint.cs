@@ -2,13 +2,8 @@ using UnityEngine;
 
 namespace MemoryLabyrinth.Level.Objects.CheckpointLib
 {
-   public struct CheckpointStruct
-    {
-        public Vec3 coords;
-        public int queue;
-    }
     [RequireComponent(typeof(BoxCollider2D))]
-    public class Checkpoint : MonoBehaviour, IStructable<CheckpointStruct>
+    public class Checkpoint : MonoBehaviour
     {
         [SerializeField]
         private int _queue;
@@ -18,17 +13,6 @@ namespace MemoryLabyrinth.Level.Objects.CheckpointLib
         public Checkpoint(int queue)
         {
             _queue = queue;
-        }
-
-        public CheckpointStruct ToStruct()
-        {
-            return new CheckpointStruct { coords = new Vec3(transform.position), queue = GetQueue() };
-        }
-
-        public void FromStruct(CheckpointStruct str)
-        {
-            transform.position = str.coords.ToVector3();
-            _queue = str.queue;
         }
 
         public void Start()

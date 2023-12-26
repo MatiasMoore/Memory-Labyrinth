@@ -1,77 +1,25 @@
 
 using System;
 using System.Collections.Generic;
-using MemoryLabyrinth.Level.Objects.PathLib;
-using MemoryLabyrinth.Level.Objects.BonusLib;
-using MemoryLabyrinth.Level.Objects.CheckpointLib;
-using MemoryLabyrinth.Level.Objects.FinishLib;
-using MemoryLabyrinth.Level.Objects.StartpointLib;
-using MemoryLabyrinth.Level.Objects.TeleportLib;
-using MemoryLabyrinth.Level.Objects.Trap;
-using MemoryLabyrinth.Level.Objects.WallLib;
 using MemoryLabyrinth.Level.Editor;
-using MemoryLabyrinth.Level.Objects.CorrectPathLib;
+using MemoryLabyrinth.SaveLoad.Saveable;
 
 namespace MemoryLabyrinth.SaveLoad
 {
-    // спасибо я поел
-    [Serializable]
-    public struct BonusListStruct
-    {
-        public Dictionary<int, BonusStruct> bonuses;
-    }
-    [Serializable]
-    public struct WallListStruct
-    {
-        public Dictionary<int, WallStruct> walls;
-    }
-    [Serializable]
-    public struct PathListStruct
-    {
-        public Dictionary<int, PathStruct> paths;
-    }
-    [Serializable]
-    public struct TeleportListStruct
-    {
-        public Dictionary<int, TeleportStruct> teleports;
-    }
-    [Serializable]
-    public struct TrapListStruct
-    {
-        public Dictionary<int, TrapStruct> traps;
-    }
-    [Serializable]
-    public struct CheckpointListStruct
-    {
-        public Dictionary<int, CheckpointStruct> checkPoints;
-    }
-    [Serializable]
-    public struct StartPointListStruct
-    {
-        public Dictionary<int, StartPointStruct> startPoints;
-    }
-    [Serializable]
-    public struct FinishPointListStruct
-    {
-        public Dictionary<int, FinishPointStruct> finishPoints;
-    }
-
-    [Serializable]
-    public struct CorrectPathListStruct
-    {
-        public Dictionary<int, CorrectPathStruct> correctPathPoints;
-    }
-
     [Serializable]
     public struct LevelPartStruct
     {
         public int id;
         public LevelPartType partType;
+        public Vec3 coords;
+        public string serStr;
 
-        public LevelPartStruct(int newId, LevelPartType newPartType)
+        public LevelPartStruct(int newId, LevelPartType newPartType, Vec3 newCoords, string newSerStr)
         {
             id = newId;
             partType = newPartType;
+            coords = newCoords;
+            serStr = newSerStr;
         }
     }
 
@@ -86,15 +34,6 @@ namespace MemoryLabyrinth.SaveLoad
     {
         public string name;
         public LevelPartsListStruct parts;
-        public PathListStruct paths;
-        public WallListStruct walls;
-        public BonusListStruct bonuses;
-        public TeleportListStruct teleports;
-        public TrapListStruct traps;
-        public CheckpointListStruct checkPoints;
-        public StartPointListStruct startPoints;
-        public FinishPointListStruct finishPoints;
-        public CorrectPathListStruct correctPathPoints;
     }
 
     [Serializable]

@@ -1,14 +1,6 @@
-using MemoryLabyrinth.Level.Objects;
-using MemoryLabyrinth.Level.Objects.BonusLib;
-using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.CorrectPathLib;
-using MemoryLabyrinth.Level.Objects.FinishLib;
-using MemoryLabyrinth.Level.Objects.PathLib;
-using MemoryLabyrinth.Level.Objects.StartpointLib;
-using MemoryLabyrinth.Level.Objects.TeleportLib;
-using MemoryLabyrinth.Level.Objects.Trap;
-using MemoryLabyrinth.Level.Objects.WallLib;
 using MemoryLabyrinth.SaveLoad;
+using MemoryLabyrinth.SaveLoad.Saveable;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -77,57 +69,19 @@ namespace MemoryLabyrinth.Level.Editor
         {
             LevelData levelData = new LevelData();
             levelData.parts.parts = new List<LevelPartStruct>();
-            levelData.bonuses.bonuses = new Dictionary<int, BonusStruct>();
-            levelData.walls.walls = new Dictionary<int, WallStruct>();
-            levelData.paths.paths = new Dictionary<int, PathStruct>();
-            levelData.teleports.teleports = new Dictionary<int, TeleportStruct>();
-            levelData.traps.traps = new Dictionary<int, TrapStruct>();
-            levelData.checkPoints.checkPoints = new Dictionary<int, CheckpointStruct>();
-            levelData.startPoints.startPoints = new Dictionary<int, StartPointStruct>();
-            levelData.finishPoints.finishPoints = new Dictionary<int, FinishPointStruct>();
-            levelData.correctPathPoints.correctPathPoints = new Dictionary<int, CorrectPathStruct>();
 
             int id = 0;
             foreach (var part in GetAllParts())
             {
-                levelData.parts.parts.Add(new LevelPartStruct(id, part.type));
-                SaveClassFromObjAsStructWithId<Bonus, BonusStruct>(part.obj, levelData.bonuses.bonuses, id);
-                SaveClassFromObjAsStructWithId<Wall, WallStruct>(part.obj, levelData.walls.walls, id);
-                SaveClassFromObjAsStructWithId<Path, PathStruct>(part.obj, levelData.paths.paths, id);
-                SaveClassFromObjAsStructWithId<Teleport, TeleportStruct>(part.obj, levelData.teleports.teleports, id);
-                SaveClassFromObjAsStructWithId<Trap, TrapStruct>(part.obj, levelData.traps.traps, id);
-                SaveClassFromObjAsStructWithId<Checkpoint, CheckpointStruct>(part.obj, levelData.checkPoints.checkPoints, id);
-                SaveClassFromObjAsStructWithId<StartPoint, StartPointStruct>(part.obj, levelData.startPoints.startPoints, id);
-                SaveClassFromObjAsStructWithId<FinishPoint, FinishPointStruct>(part.obj, levelData.finishPoints.finishPoints, id);
-                SaveClassFromObjAsStructWithId<CorrectPath, CorrectPathStruct>(part.obj, levelData.correctPathPoints.correctPathPoints, id);
+                var saveable = part.obj.GetComponent<SaveablePrimitive>();
+                if (saveable == null)
+                    throw new System.Exception("Object must have a saveable primitive!");
+
+                levelData.parts.parts.Add(new LevelPartStruct(id, part.type, new Vec3(part.obj.transform.position), saveable.SaveToString()));
                 id++;
             }
             return levelData;
             
-        }
-
-        public bool SaveClassFromObjAsStructWithId<ClassName, Struct>(GameObject obj, Dictionary<int, Struct> dict, int id)
-        {
-            var classComp = obj.GetComponent<ClassName>();
-            if (classComp != null)
-            {
-                var structable = (IStructable<Struct>)classComp;
-                dict.Add(id, structable.ToStruct());
-                return true;
-            }
-            return false;
-        }
-
-        public List<Struct> GetStructList<ClassName, Struct>()
-        {
-            var objList = GetPartsOfType<ClassName>();
-            List<Struct> structList = new List<Struct>();
-            foreach (var obj in objList)
-            {
-                IStructable<Struct> structable = (IStructable<Struct>)obj;
-                structList.Add(structable.ToStruct());
-            }
-            return structList;
         }
 
         public List<GameObject> GetObjectsAtPos(Vector2 position)
