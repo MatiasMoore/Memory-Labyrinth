@@ -416,6 +416,7 @@ MonoBehaviour:
   _saveInputField: {fileID: 1841002811}
   _loadInputField: {fileID: 1918210462}
   _overviewButton: {fileID: 635324832}
+  _newLevelButton: {fileID: 1775274416}
 --- !u!4 &687607328
 Transform:
   m_ObjectHideFlags: 0
@@ -693,6 +694,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5083306261f04104ead3b62bffe79df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1775274416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1463456803146000255, guid: f6020cf530487d140be5263ee18d0036, type: 3}
+  m_PrefabInstance: {fileID: 2121529036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c892f25defed5c4c96c6a4ba73795c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1785501045 stripped

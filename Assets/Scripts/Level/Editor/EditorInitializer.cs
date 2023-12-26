@@ -60,6 +60,9 @@ namespace MemoryLabyrinth.Level.Editor
         [SerializeField]
         private Button _overviewButton;
 
+        [SerializeField]
+        private Button _newLevelButton;
+
         void Start()
         {
             _touchControls.Init();
@@ -135,6 +138,13 @@ namespace MemoryLabyrinth.Level.Editor
                 _loadInputField._inputAccept += _levelEditor.LoadLevel;
             else
                 Debug.LogWarning($"LevelEditorInitializer: _loadInputField is not set!");
+
+            if (_newLevelButton != null)
+                _newLevelButton._buttonClick += _levelEditor.ClearLevelMap;
+            else
+                Debug.LogWarning($"LevelEditorInitializer: _loadInputField is not set!");
+
+
 
         }
 
