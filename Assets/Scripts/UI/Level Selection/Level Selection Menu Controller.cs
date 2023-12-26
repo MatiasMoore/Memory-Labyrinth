@@ -20,7 +20,7 @@ namespace MemoryLabyrinth.UI.LevelSelectionLib
 
         private void GenerateLevelsButtons()
         {
-            GameObject levelButton = new GameObject();
+            GameObject levelButton;
             List<LevelData> levels = LevelDataStorage.Instance.GetLevelDataList();
 
             Debug.Log(levels.Count);
