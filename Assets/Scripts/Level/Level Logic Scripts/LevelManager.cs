@@ -3,6 +3,7 @@ using MemoryLabyrinth.Level.Editor;
 using MemoryLabyrinth.Level.Objects.BonusLib;
 using MemoryLabyrinth.Level.Objects.CheckpointLib;
 using MemoryLabyrinth.Level.Objects.CorrectPathLib;
+using MemoryLabyrinth.Level.Objects.FinishLib;
 using MemoryLabyrinth.Level.Objects.StartpointLib;
 using MemoryLabyrinth.Pathing;
 using MemoryLabyrinth.Player;
@@ -188,6 +189,12 @@ namespace MemoryLabyrinth.Level.Logic
 
         private IEnumerator PlayLevelIntro()
         {
+            var finishPoints = _currentLevelContainer.GetPartsOfType<FinishPoint>();
+            foreach (FinishPoint finishPoint in finishPoints)
+            {
+                finishPoint.SetOpen(false);
+            }
+
             //Pause player, timer, and disable fog
             _mainCharacter.SetActive(false);
             Timer.Instance.SetTimerActive(false);
@@ -222,6 +229,11 @@ namespace MemoryLabyrinth.Level.Logic
             }
 
             _lineRenderer.positionCount = 0;
+
+            foreach (FinishPoint finishPoint in finishPoints)
+            {
+                finishPoint.SetOpen(true);
+            }
 
             //Fade in fog
             FogController.Instance.SetFogVisibile(true);
