@@ -84,6 +84,13 @@ namespace MemoryLabyrinth.Level.Logic
                     
             }
 
+            //Destroy correct path if exist
+            if (_correctPathBuilder != null)
+            {
+                _correctPathBuilder.Hide();
+                Destroy(_correctPathBuilder);
+            }
+
             //Get level objects
             _currentLevelContainer = LevelBuilder.BuildCurrentLevelToScene();
 
