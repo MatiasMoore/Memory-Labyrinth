@@ -41,6 +41,12 @@ namespace MemoryLabyrinth.Level.Logic
 
         public static LevelManager Instance;
 
+        [SerializeField]
+        private float _timeToShowCorrectPath;
+
+        [SerializeField]
+        private LineRenderer _lineRenderer;
+
         public void Init(GameObject playerObj, LevelModel levelModel, HUDController HUDController)
         {
             if (Instance != null)
@@ -211,12 +217,33 @@ namespace MemoryLabyrinth.Level.Logic
             _correctPathBuilder = correctPathBuilder.AddComponent<CorrectPathRenderer>();
             correctPathBuilder.transform.position = _currentLevelContainer.GetPartsOfType<CorrectPath>().First().transform.position;
 
-            StartShowPath();
-            while (!_correctPathBuilder.IsFinished())
+
+            List<Vector3> correctPath = _currentLevelContainer.GetCorrectPath();
+            _lineRenderer.positionCount = 1;
+            _lineRenderer.SetPosition(0, correctPath[0]);
+            float timerForCorrectPath = 0;
+            float timerForLerp = 0;
+            int currentTragetPoint = 1;
+            Vector3 currentPos = correctPath[0];
+            float timeToShowCorrectPathOnePoint = _timeToShowCorrectPath / correctPath.Count;
+            while (timerForCorrectPath < _timeToShowCorrectPath && currentTragetPoint < correctPath.Count)
             {
+                timerForCorrectPath += Time.deltaTime;
+                timerForLerp += Time.deltaTime;
+                float lerpValue = timerForLerp / timeToShowCorrectPathOnePoint;
+                Vector3 newPos = Vector3.Lerp(currentPos, correctPath[currentTragetPoint], lerpValue);
+                _lineRenderer.positionCount++;
+                _lineRenderer.SetPosition(_lineRenderer.positionCount -1, newPos);
+                if (lerpValue >= 1)
+                {
+                    currentTragetPoint++;
+                    timerForLerp = 0;
+                    currentPos = newPos;
+                }
                 yield return null;
             }
-            StopShowPath();
+
+            _lineRenderer.positionCount = 0;
 
             //Fade in fog
             FogController.Instance.SetFogVisibile(true);
