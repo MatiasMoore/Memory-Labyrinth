@@ -53,6 +53,22 @@ namespace MemoryLabyrinth.Level.Editor
                 bonus.SetValue(value);            
                 _inputField._inputAccept -= SetUpData;
                 _inputField.gameObject.SetActive(false);
+
+                //Create unique id
+                List<Bonus> bonuses = _container.GetPartsOfType<Bonus>();
+                List<int> ids = new List<int>();
+                foreach (var item in bonuses)
+                {
+                    ids.Add(item.GetID());
+                }
+                int uniqueId = 0;
+                while (ids.Contains(uniqueId))
+                {
+                    uniqueId++;
+                }
+
+                bonus.SetID(uniqueId);
+                Debug.Log($"BonusCreator: place bonus with id = {uniqueId}, value = {value}");
             }
         }
     }
