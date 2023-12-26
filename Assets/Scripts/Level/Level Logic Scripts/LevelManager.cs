@@ -241,19 +241,19 @@ namespace MemoryLabyrinth.Level.Logic
             {               
                 yield return null;
             }
-     
+
+            foreach (FinishPoint finishPoint in finishPoints)
+            {
+                finishPoint.SetOpen(true);
+            }
+
             float timer = 0;
             while (timer < _timeToShowCorrectPath)
             {
                 timer += Time.unscaledDeltaTime;
                 yield return null;
             }
-            StopShowPath();
-
-            foreach (FinishPoint finishPoint in finishPoints)
-            {
-                finishPoint.SetOpen(true);
-            }
+            StopShowPath();            
 
             //Fade in fog
             FogController.Instance.SetFogVisibile(true);
