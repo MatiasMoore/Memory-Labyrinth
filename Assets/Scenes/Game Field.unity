@@ -823,6 +823,10 @@ PrefabInstance:
       propertyPath: _preferredRadius
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 683312079905841580, guid: de7aba2057a64c84eb8bbf4cac5c7f64, type: 3}
+      propertyPath: _maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1121544512328502643, guid: de7aba2057a64c84eb8bbf4cac5c7f64, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47229195
