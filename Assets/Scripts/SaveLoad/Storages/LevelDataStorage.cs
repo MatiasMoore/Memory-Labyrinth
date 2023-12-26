@@ -11,7 +11,7 @@ namespace MemoryLabyrinth.SaveLoad
         public static LevelDataStorage Instance;
 
         [SerializeField]
-        private LevelDataListContainer _defaultLevels;
+        private LevelDataToFileSaver _defaultLevels;
 
         [SerializeField] private LevelDataListStruct _levels = new LevelDataListStruct();
 
@@ -32,7 +32,7 @@ namespace MemoryLabyrinth.SaveLoad
         [ContextMenu("Save All Levels As Default")]
         private void SaveLevelsToFile()
         {
-            _defaultLevels.Save(GetLevelDataList());
+            _defaultLevels.Save(_levels.levelDatas);
             _levels.levelDatas.Clear();
         }
 
@@ -126,14 +126,14 @@ namespace MemoryLabyrinth.SaveLoad
         }
         public void SetLevelDataList(List<LevelData> levelDatas)
         {
-            //_levels = new LevelDataListStruct();
-            _defaultLevels.Load(out _levels);
+            _levels = new LevelDataListStruct();
             if (levelDatas != null)
             {
-                foreach (var levelData in levelDatas)
-                {
-                    _levels.levelDatas.Add(levelData);
-                }
+                _levels.levelDatas = levelDatas;
+            }
+            else
+            {
+                _defaultLevels.Load(out _levels);
             }
         }
     }
