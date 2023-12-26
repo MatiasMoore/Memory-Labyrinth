@@ -383,8 +383,8 @@ MonoBehaviour:
   m_text: "\u0421\u043E\u0431\u0440\u0430\u0442\u044C 15 \u0431\u043E\u043D\u0443\u0441\u043E\u0432, 
     \u0438 \u043D\u0435 \u0441\u043E\u0439\u0442\u0438 \u0441 \u0443\u043C\u0430"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 95453b913ccb6084ea63337e353823f3, type: 2}
-  m_sharedMaterial: {fileID: 4079350745474015551, guid: 95453b913ccb6084ea63337e353823f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 66f8bbd76a1345c4bb28af4e806cfcc2, type: 2}
+  m_sharedMaterial: {fileID: -4510701330567726042, guid: 66f8bbd76a1345c4bb28af4e806cfcc2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

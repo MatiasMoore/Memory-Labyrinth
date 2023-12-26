@@ -38,7 +38,7 @@ namespace MemoryLabyrinth.UI.Achievements
 
         private void GenerateAchievementsObjects()
         {
-            GameObject achievementObject = new GameObject();
+            GameObject achievementObject;
             List<Achievement> achievementsData = GetAchievementsData();
 
             foreach (Achievement achievement in achievementsData)

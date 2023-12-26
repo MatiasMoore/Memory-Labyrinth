@@ -24,7 +24,7 @@ namespace MemoryLabyrinth.Level.Editor
 
             if ((Vector2)correctPaths.Last().transform.position == pos)
             {
-                DestroyAtPos(pos);
+                DestroyElement(correctPaths.Last().gameObject);
             }
 
             return GetInteractorToReturn();
