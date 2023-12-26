@@ -40,9 +40,20 @@ namespace MemoryLabyrinth.Fog
             }
         }
 
+        public void RemoveAllMasks()
+        {
+            _masks = FindObjectsOfType<FogMaskTarget>();
+            foreach (var mask in _masks)
+            {
+                mask.DeleteMask();              
+            }
+        }
+
         public void SetFogVisibile(bool isVisible)
         {
             _spriteRenderer.enabled = isVisible;
+            if (!isVisible)
+                RemoveAllMasks();
         }
     }
 }
