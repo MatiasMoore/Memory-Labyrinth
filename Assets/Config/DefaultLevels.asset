@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0968988e713ab9478865af70e36b107, type: 3}
   m_Name: DefaultLevels
   m_EditorClassIdentifier: 
-  _serStr: 
+  _textAsset: {fileID: 4900000, guid: 0ce440608af88204aa3dba171cc33a96, type: 3}
