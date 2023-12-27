@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MemoryLabyrinth.Cam
@@ -30,6 +31,7 @@ namespace MemoryLabyrinth.Cam
         {
             //Create bounds and add every object's bound inside it
             Bounds bounds = new Bounds();
+            List<Bounds> boundsToInclude = new List<Bounds>();
             foreach (GameObject obj in objsToFit)
             {
                 // Egor: in order to camera does not scale relative to UI objects
@@ -37,12 +39,19 @@ namespace MemoryLabyrinth.Cam
                 {
                     Collider2D collider2D = obj.GetComponent<Collider2D>();
                     Collider collider = obj.GetComponent<Collider>();
-
                     if (collider2D != null)
-                        bounds.Encapsulate(collider2D.bounds);
+                        boundsToInclude.Add(collider2D.bounds);
                     else if (collider != null)
-                        bounds.Encapsulate(collider.bounds);
+                        boundsToInclude.Add(collider.bounds);
                 }
+
+            }
+
+            if (boundsToInclude.Count > 0)
+            {
+                bounds = boundsToInclude[0];
+                for (int i = 1; i < boundsToInclude.Count; i++)
+                    bounds.Encapsulate(boundsToInclude[i]);
             }
 
             //Add edge padding
