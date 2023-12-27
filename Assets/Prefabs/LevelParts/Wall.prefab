@@ -823,6 +823,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cd1adf427634c4ea5973d833223a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: wall
+  _interactWith: []
+  _distToNeighbour: 1
+  _updateOnTransformChange: 1
+  _updateOnEnable: 1
+  _updateOnDisable: 1
   _edgeLeft: {fileID: 2804403501290072761}
   _edgeRight: {fileID: 2247037526310192723}
   _edgeTop: {fileID: 1441905611781482078}
@@ -1285,7 +1291,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7167546390503675493}
-  - component: {fileID: 6992424346737907524}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -1309,30 +1314,6 @@ Transform:
   - {fileID: 2788965969636727360}
   m_Father: {fileID: 6795210332487988622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6992424346737907524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7362629342132095761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50cd1adf427634c4ea5973d833223a98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _edgeLeft: {fileID: 2804403501290072761}
-  _edgeRight: {fileID: 2247037526310192723}
-  _edgeTop: {fileID: 1441905611781482078}
-  _edgeBottom: {fileID: 599530949785404864}
-  _outerTopLeft: {fileID: 6311761924908868520}
-  _outerTopRight: {fileID: 5600503965757009279}
-  _outerBottomRight: {fileID: 8798359185649810689}
-  _outerBottomLeft: {fileID: 18675319592618424}
-  _innerTopLeft: {fileID: 5968596187486794192}
-  _innerTopRight: {fileID: 2285076326377911472}
-  _innerBottomRight: {fileID: 4927971196019144573}
-  _innerBottomLeft: {fileID: 1733315640968347125}
 --- !u!1 &8296668442756297040
 GameObject:
   m_ObjectHideFlags: 0

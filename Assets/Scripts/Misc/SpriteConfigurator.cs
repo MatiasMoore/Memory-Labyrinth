@@ -1,11 +1,30 @@
-using System.Collections;
+using Codice.LogWrapper;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MemoryLabyrinth.Level.Objects.WallLib
+namespace MemoryLabyrinth.Level.Objects
 {
-    public class WallSpriteCofigurator : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public class SpriteConfigurator : MonoBehaviour
     {
+        [SerializeField]
+        private string _name;
+
+        [SerializeField]
+        private List<string> _interactWith;
+
+        [SerializeField]
+        private float _distToNeighbour = 1f;
+
+        [SerializeField]
+        private bool _updateOnTransformChange = true;
+
+        [SerializeField]
+        private bool _updateOnEnable = true;
+
+        [SerializeField]
+        private bool _updateOnDisable = true;
+
         [SerializeField]
         private GameObject _edgeLeft;
 
@@ -44,26 +63,35 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
 
         private struct ConfiguratorNeighbours
         {
-            public WallSpriteCofigurator topLeft, top, topRight, right, bottomRight, bottom, bottomLeft, left;
+            public SpriteConfigurator topLeft, top, topRight, right, bottomRight, bottom, bottomLeft, left;
         }
 
         private void Update()
         {
+            if (!_updateOnTransformChange)
+                return;
+
             if (transform.hasChanged)
                 UpdateSprite();
         }
 
         private void OnEnable()
         {
+            if (!_updateOnEnable) 
+                return;
+
             UpdateSprite();
         }
 
         private void OnDisable()
         {
+            if (!_updateOnDisable) 
+                return;
+
             UpdateSprite();
         }
 
-        private void UpdateSprite()
+        public void UpdateSprite()
         {
             UpdateMyself(true);
         }
@@ -71,7 +99,7 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
         private void UpdateMyself(bool updateNeighbours)
         {
             var n = GetNeighbours();
-            ConfigureByWallBools(
+            ConfigureByNeighbourBools(
                 n.topLeft != null,
                 n.topRight != null,
                 n.bottomLeft != null,
@@ -84,7 +112,7 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
 
             if (updateNeighbours)
             {
-                WallSpriteCofigurator[] confs = { n.topLeft,
+                SpriteConfigurator[] confs = { n.topLeft,
                 n.topRight,
                 n.bottomLeft,
                 n.bottomRight,
@@ -102,7 +130,7 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
             }
         }
 
-        private void ConfigureByWallBools(bool hasTopLeft, bool hasTopRight, bool hasBottomLeft, bool hasBottomRight,
+        private void ConfigureByNeighbourBools(bool hasTopLeft, bool hasTopRight, bool hasBottomLeft, bool hasBottomRight,
             bool hasLeft, bool hasTop, bool hasRight, bool hasBottom)
         {
             //Edges
@@ -127,7 +155,7 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
         private ConfiguratorNeighbours GetNeighbours()
         {
             Vector3 center = transform.position;
-            float dist = 1f;
+            float dist = _distToNeighbour;
 
             ConfiguratorNeighbours neighbours = new ConfiguratorNeighbours();
             neighbours.top = GetConfiguratorAt(center + dist * Vector3.up);
@@ -143,16 +171,21 @@ namespace MemoryLabyrinth.Level.Objects.WallLib
             return neighbours;
         }
 
-        private WallSpriteCofigurator GetConfiguratorAt(Vector2 pos)
+        private SpriteConfigurator GetConfiguratorAt(Vector2 pos)
         {
             var colliders = Physics2D.OverlapPointAll(pos);
             foreach (var collider in colliders)
             {
-                var configurator = collider.gameObject.GetComponent<WallSpriteCofigurator>();
-                if (configurator != null)
+                var configurator = collider.gameObject.GetComponent<SpriteConfigurator>();
+                if (configurator != null && ShouldInteractWith(configurator))
                     return configurator;
             }
             return null;
+        }
+
+        private bool ShouldInteractWith(SpriteConfigurator otherConf)
+        {
+            return _name == otherConf._name || (_interactWith.Contains(otherConf._name) && otherConf._interactWith.Contains(_name));
         }
     }
 
