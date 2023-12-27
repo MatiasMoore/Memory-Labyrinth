@@ -127,6 +127,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _speedScaleFactor: 0.15
     - _xSpeed: 0.01
     - _xSpeed1: 0.01
     - _xSpeed2: 0.02
