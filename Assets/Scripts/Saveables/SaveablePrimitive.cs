@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace MemoryLabyrinth.SaveLoad.Saveable
 {
+    [Serializable]
     public struct Vec3
     {
         public float x, y, z;
