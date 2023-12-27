@@ -61,6 +61,8 @@ namespace MemoryLabyrinth.Level.Objects
         [SerializeField]
         private GameObject _innerBottomLeft;
 
+        private List<SpriteConfigurator> _lastNeighbours = new List<SpriteConfigurator>();
+
         private struct ConfiguratorNeighbours
         {
             public SpriteConfigurator topLeft, top, topRight, right, bottomRight, bottom, bottomLeft, left;
@@ -72,7 +74,10 @@ namespace MemoryLabyrinth.Level.Objects
                 return;
 
             if (transform.hasChanged)
+            {
                 UpdateSprite();
+                transform.hasChanged = false;
+            }
         }
 
         private void OnEnable()
@@ -110,6 +115,14 @@ namespace MemoryLabyrinth.Level.Objects
                 n.right != null,
                 n.bottom != null);
 
+            foreach (var lastNeighbour in _lastNeighbours)
+            {
+                if (lastNeighbour != null)
+                    lastNeighbour.UpdateMyself(false);
+            }
+
+            _lastNeighbours = new List<SpriteConfigurator>();
+
             if (updateNeighbours)
             {
                 SpriteConfigurator[] confs = { n.topLeft,
@@ -125,7 +138,10 @@ namespace MemoryLabyrinth.Level.Objects
                 foreach (var conf in confs)
                 {
                     if (conf != null)
+                    {
                         conf.UpdateMyself(false);
+                        _lastNeighbours.Add(conf);
+                    }
                 }
             }
         }
