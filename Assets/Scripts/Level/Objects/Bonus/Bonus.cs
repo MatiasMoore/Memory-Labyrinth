@@ -1,5 +1,4 @@
 using UnityEngine;
-using static log4net.Appender.ColoredConsoleAppender;
 
 namespace MemoryLabyrinth.Level.Objects.BonusLib
 {
