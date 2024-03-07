@@ -14,6 +14,10 @@
 - Модульная система отслеживания достижений
 - Организация разработки в рамках методологии agile с использованием Kanban(MVP) доски и Scrum(Доработка продукта) доски
 
+# Видеодемонстрация
+
+[![Demo](https://img.youtube.com/vi/VTKHZ2jKS24/0.jpg)](https://www.youtube.com/watch?v=VTKHZ2jKS24)
+
 # Документация
 
 - [Дизайн документ](https://docs.google.com/document/d/1cfExFB4yJSF0aS86hrFfKSQTilI3knpR/edit?usp=drive_link&ouid=103823382358724097321&rtpof=true&sd=true "Дизайн документ")
